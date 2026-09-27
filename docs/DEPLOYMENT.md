@@ -10,7 +10,7 @@
 - Lofi Cities 独立演示：`https://yydshly.github.io/0927_codex_project/003-lofi-cities/`
 - 产品理解：演示地址加 `#understanding`。
 
-003 已于 2026-09-27 完成首次发布和远端网页验证。002 加入本次发布；远端资源与交互验证成功后回填 `project.json` 的 `demo` 字段。
+002 与 003 均已于 2026-09-27 完成发布和远端网页验证，正式地址已写入各自 `project.json` 的 `demo` 字段。FreeMoCap 的五项加粗摘要、完整引导图及 150% 缩放、演示切换和合成 NPY 解析回放已通过公网检查；脚本、样式、PNG / SVG、数据样例与既有 Lofi Cities 页面均返回 HTTP 200。[FreeMoCap 首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36295964557)。
 
 ## 构建和发布
 
@@ -27,7 +27,7 @@ python scripts/build_site.py
 
 推送到 `main` 的相关修改，或手动运行 Deploy research demos 工作流，都会执行检查、构建、上传 Pages artifact 和部署。仓库 Settings → Pages 使用 GitHub Actions 来源。发布任务仅授予 `pages: write` 与 `id-token: write`，不在代码或浏览器中放入部署密钥。
 
-站点使用相对资源路径与 hash 路由，适配 `/0927_codex_project/003-lofi-cities/` 子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或本地数据。
+站点使用相对资源路径与 hash 路由，适配 `/0927_codex_project/002-freemocap-lab/` 和 `/0927_codex_project/003-lofi-cities/` 子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或用户本地数据。
 
 ## 增加其他子项目
 

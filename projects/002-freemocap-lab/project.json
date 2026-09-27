@@ -7,7 +7,7 @@
   "source": "https://github.com/freemocap/freemocap",
   "source_type": "github",
   "status": "已完成",
-  "demo": "",
+  "demo": "https://yydshly.github.io/0927_codex_project/002-freemocap-lab/#capabilities",
   "cover": "assets/freemocap-capability-map.png",
   "cover_alt": "FreeMoCap 完整能力引导图：输入、摄像头条件、重建原理、输出、角色驱动、使用场景、小云项目价值与能力边界；研究示意，非实拍结果。"
 }

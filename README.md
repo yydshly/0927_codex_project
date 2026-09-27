@@ -15,7 +15,7 @@
 
 | 编号 | 项目与研究入口 | 摘要 | 研究状态 | 参考来源 | Web 演示 |
 | --- | --- | --- | --- | --- | --- |
-| 002 | [FreeMoCap 动作实验室](projects/002-freemocap-lab/README.md) | **能力：**从同步多视角视频重建真人三维骨架与动作数据<br>**呈现效果：**骨架回放、关节轨迹及数据导出，本页提供合成回放与重建实验<br>**使用场景：**动画素材、运动教学、科研、体感交互与动作数据集<br>**可扩展方向：**质量评估、批处理、角色重定向与统一动作库<br>**对我的意义：**为“小云”采集专属真人表演，与 Kimodo 生成动作共同进入角色动作库。 | 已完成 | [GitHub](https://github.com/freemocap/freemocap) | — |
+| 002 | [FreeMoCap 动作实验室](projects/002-freemocap-lab/README.md) | **能力：**从同步多视角视频重建真人三维骨架与动作数据<br>**呈现效果：**骨架回放、关节轨迹及数据导出，本页提供合成回放与重建实验<br>**使用场景：**动画素材、运动教学、科研、体感交互与动作数据集<br>**可扩展方向：**质量评估、批处理、角色重定向与统一动作库<br>**对我的意义：**为“小云”采集专属真人表演，与 Kimodo 生成动作共同进入角色动作库。 | 已完成 | [GitHub](https://github.com/freemocap/freemocap) | [在线体验](https://yydshly.github.io/0927_codex_project/002-freemocap-lab/#capabilities) |
 | 003 | [Lofi Cities](projects/003-lofi-cities/README.md) | **能力：**动态城市、实时合成音乐与环境混音<br>**效果：**可调节的沉浸氛围<br>**场景：**阅读、工作、放松<br>**扩展：**物件联动、时间变化与空间分享<br>**对我：**用独立产品“栖间”验证可保存、可交互的个人环境。 | 已完成 | [Lofi Cities · Istanbul](https://loficities.com/istanbul/) | [在线体验](https://yydshly.github.io/0927_codex_project/003-lofi-cities/) |
 
 ### 项目图片

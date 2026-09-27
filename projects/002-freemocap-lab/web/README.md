@@ -27,7 +27,7 @@
 
 构建输出在 dist/。所有资源采用相对路径，支持 /0927_codex_project/002-freemocap-lab/；hash 导航无需服务端路由。无 CDN 或外部请求依赖。
 
-本次未上线。不单独发布覆盖整个仓库的 Pages 站点，可将 dist/ 接入仓库将来的统一发布产物。
+已于 2026-09-27 发布到 [GitHub Pages](https://yydshly.github.io/0927_codex_project/002-freemocap-lab/#capabilities)。仓库的 `scripts/build_site.py` 将本项目与 Lofi Cities 合并为统一发布产物，配置和维护方法见 [部署说明](../../../docs/DEPLOYMENT.md)。公网已验证五项加粗摘要、完整长图及 150% 缩放、页面切换、合成 NPY 样例解析回放；PNG / SVG、样例、样式与脚本均返回 HTTP 200，未观察到浏览器脚本错误。
 
 ## NPY 格式
 

@@ -10,7 +10,7 @@
 
 **对我的意义：** 为桌面女友“小云”录制有个人动作习惯的专属表演，与 Kimodo 生成的动作共同进入角色动作库，由对话与事件系统选择播放。
 
-[返回总索引](../../README.md) · [上游仓库](https://github.com/freemocap/freemocap) · [研究笔记](notes/research.md) · [运行说明](web/README.md)
+[在线体验：理解与应用](https://yydshly.github.io/0927_codex_project/002-freemocap-lab/#capabilities) · [返回总索引](../../README.md) · [上游仓库](https://github.com/freemocap/freemocap) · [研究笔记](notes/research.md) · [运行说明](web/README.md)
 
 ## 一张图理解 FreeMoCap
 
@@ -57,7 +57,7 @@
     npm test
     npm run build
 
-静态产物在 web/dist/，使用相对资源路径，适合仓库既定的 GitHub Pages 子路径。当前未上线，project.json 的 demo 为空。
+静态产物在 web/dist/，使用相对资源路径，适配仓库既定的 GitHub Pages 子路径。已于 2026-09-27 上线，纳入仓库统一站点，与 Lofi Cities 一起发布。公网摘要、完整长图缩放、演示切换与合成 NPY 解析回放已验证；[部署记录](https://github.com/yydshly/0927_codex_project/actions/runs/36295964557)。
 
 ## 建议体验顺序
 
