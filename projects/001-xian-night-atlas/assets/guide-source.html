@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>西安夜行图 · 产品截图引导图</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;width:1400px;height:1000px;overflow:hidden}
+  body{font-family:Inter,"Microsoft YaHei","Segoe UI",sans-serif;color:#eef3ff;background:#0a1020}
+  .sheet{width:1400px;height:1000px;padding:34px;background:radial-gradient(circle at 74% 29%,#1c2a43 0,#111b31 24%,transparent 57%),linear-gradient(150deg,#0c1428,#080d1b 76%);display:flex;flex-direction:column;gap:20px}
+  header{height:90px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #abc3f325;padding-bottom:18px}
+  .identity{display:flex;align-items:center;gap:16px}
+  .mark{width:56px;height:56px;border:1px solid #b3c5ff61;border-radius:18px;display:grid;place-items:center;background:#a6b8fa12;color:#c8d5ff;font-size:26px;font-weight:600;box-shadow:0 0 28px #829cff19}
+  .eyebrow{display:block;color:#9cadd1;letter-spacing:.16em;font-size:12px;font-weight:600;margin-bottom:5px}
+  h1{font-size:29px;line-height:1.25;font-weight:650;letter-spacing:.03em;margin:0}
+  .source{text-align:right;color:#96a7c3;font-size:13px;line-height:1.8}
+  .source strong{display:block;color:#e9eeff;font-size:18px;font-weight:560}
+  .gallery{display:grid;grid-template-columns:950px 354px;gap:28px}
+  figure{margin:0;border:1px solid #a8c1fa31;border-radius:20px;background:#121c30;padding:14px;box-shadow:0 24px 65px #0005}
+  .desktop{height:640px}
+  .desktop img{display:block;width:920px;height:575px;object-fit:cover;border-radius:12px;border:1px solid #c5d6ff1c}
+  .mobile{height:640px;text-align:center}
+  .mobile img{display:block;width:267px;height:578px;object-fit:cover;border-radius:18px;border:5px solid #273551;box-shadow:0 10px 24px #0008;margin:0 auto}
+  figcaption{height:39px;display:flex;align-items:flex-end;justify-content:space-between;color:#b8c7e1;font-size:13px;line-height:1.2}
+  .mobile figcaption{justify-content:center}
+  figcaption b{font-size:13px;color:#e7eeff;font-weight:580}
+  figcaption span{font-size:11px;color:#91a5c5}
+  .facts{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:auto}
+  .fact{min-height:137px;padding:17px 15px;border:1px solid #a8c1fa25;border-radius:14px;background:#ffffff08}
+  .fact em{display:block;font-style:normal;color:#96aedb;font-size:11px;letter-spacing:.12em;margin-bottom:9px}
+  .fact strong{display:block;font-size:17px;font-weight:600;line-height:1.5;margin-bottom:5px;color:#f2f5ff}
+  .fact p{margin:0;font-size:12px;line-height:1.6;color:#9cacca}
+  .fact:nth-child(3) strong{color:#9fe6d2}.fact:nth-child(4) strong{color:#d2c6ff}
+  .footnote{display:flex;justify-content:space-between;font-size:11px;color:#8396b8;line-height:1;margin-top:-5px}
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header>
+    <div class="identity"><div class="mark">01</div><div><span class="eyebrow">RESEARCH TO INTERACTIVE DEMO</span><h1>西安夜行图 · 从时间的高度看见城市</h1></div></div>
+    <div class="source">交互参考<strong>東京終電図</strong>画面来自我们的西安原型</div>
+  </header>
+  <section class="gallery" aria-label="西安夜行图实际产品截图">
+    <figure class="desktop"><img src="reach-v3.png" alt="西安夜行图桌面夜间可达范围实际截图"><figcaption><b>桌面 · 三维夜行图谱</b><span>时间高度 / 路线分层 / 可达站点</span></figcaption></figure>
+    <figure class="mobile"><img src="mobile-plan-v3.png" alt="西安夜行图手机夜游返程实际截图"><figcaption><b>手机 · 夜游返程计划</b></figcaption></figure>
+  </section>
+  <section class="facts" aria-label="项目理解">
+    <div class="fact"><em>01 / 能力</em><strong>时间 × 城市线网</strong><p>用时间轴、三维高度与亮暗变化呈现末班连接。</p></div>
+    <div class="fact"><em>02 / 效果</em><strong>看见“还能去哪里”</strong><p>真实地理底图上高亮站点、线路与返程结果。</p></div>
+    <div class="fact"><em>03 / 场景</em><strong>夜间交通的解释与展示</strong><p>适合场馆散场、夜游信息和交通网络研究。</p></div>
+    <div class="fact"><em>04 / 扩展</em><strong>景点路线与步行导览</strong><p>亦可面向活动接驳、夜班通勤；需真实数据。</p></div>
+    <div class="fact"><em>05 / 对我的意义</em><strong>沉淀时空交互能力</strong><p>复用视觉与计算方法，检验具体业务需求。</p></div>
+  </section>
+  <div class="footnote"><span>西安夜行图 · 6 条演示线路 / 71 个关键站</span><span>演示班次与步行时间为模拟数据，不用于实际乘车。</span></div>
+</main>
+</body>
+</html>

@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'projects/001-xian-night-atlas/**'
       - 'projects/002-freemocap-lab/**'
       - 'projects/003-lofi-cities/**'
       - 'projects/005-jailbreaks-research/**'
@@ -32,6 +33,8 @@ jobs:
         run: |
           python3 scripts/projects.py check
           python3 -m unittest discover -s scripts -p 'test_*.py'
+          npm --prefix projects/001-xian-night-atlas/web ci
+          npm --prefix projects/001-xian-night-atlas/web test
           node --check projects/002-freemocap-lab/web/src/app.mjs
           npm --prefix projects/002-freemocap-lab/web test
           npm --prefix projects/003-lofi-cities/web run check

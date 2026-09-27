@@ -15,7 +15,7 @@
 
 | 编号 | 项目与研究入口 | 摘要 | 研究状态 | 参考来源 | Web 演示 |
 | --- | --- | --- | --- | --- | --- |
-| 001 | [西安夜行图](projects/001-xian-night-atlas/README.md) | 以西安真实地理底图展示三维末班车图谱、日夜切换、时间演化与夜间返程判断。 | 已完成 | [参考网页](https://tokyo-last-train.matodesign.workers.dev/) | — |
+| 001 | [西安夜行图](projects/001-xian-night-atlas/README.md) | <strong>能力：</strong>参考東京終電図的三维线网与时间轴，我们以西安演示返程和可达范围计算<br><strong>呈现效果：</strong>夜景线路按末班时刻抬升，时间推进时区段渐暗、可达站点发光<br><strong>使用场景：</strong>交通网络研究、活动散场和夜游信息展示，当前仅为模拟原型<br><strong>可扩展方向：</strong>景点关联主题路线与步行导览、场馆接驳、园区夜班交通<br><strong>对我的意义：</strong>沉淀可复用的时空交互与路线计算方法，验证具体业务需求。 | 已完成 | [東京終電図](https://tokyo-last-train.matodesign.workers.dev/) | — |
 | 002 | [FreeMoCap 动作实验室](projects/002-freemocap-lab/README.md) | <strong>能力：</strong>从同步多视角视频重建真人三维骨架与动作数据<br><strong>呈现效果：</strong>骨架回放、关节轨迹及数据导出，本页提供合成回放与重建实验<br><strong>使用场景：</strong>动画素材、运动教学、科研、体感交互与动作数据集<br><strong>可扩展方向：</strong>质量评估、批处理、角色重定向与统一动作库<br><strong>对我的意义：</strong>为“小云”采集专属真人表演，与 Kimodo 生成动作共同进入角色动作库。 | 已完成 | [FreeMoCap](https://github.com/freemocap/freemocap) | [在线体验](https://yydshly.github.io/0927_codex_project/002-freemocap-lab/#capabilities) |
 | 003 | [Lofi Cities](projects/003-lofi-cities/README.md) | <strong>能力：</strong>动态城市、实时合成音乐与环境混音<br><strong>效果：</strong>可调节的沉浸氛围<br><strong>场景：</strong>阅读、工作、放松<br><strong>扩展：</strong>物件联动、时间变化与空间分享<br><strong>对我：</strong>用独立产品“栖间”验证可保存、可交互的个人环境。 | 已完成 | [Lofi Cities · Istanbul](https://loficities.com/istanbul/) | [在线体验](https://yydshly.github.io/0927_codex_project/003-lofi-cities/) |
 | 004 | [AI 工程面试题库研究](projects/004-ai-engineering-interview-guide/README.md) | 以中文交互网页梳理 AI 工程题库的 10 个模块、4 条岗位路线与 35 个公司章节。 | 已完成 | [ai-engineering-interview-questions-company-wise](https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise) | — |
@@ -25,11 +25,19 @@
 
 #### 001 · 西安夜行图
 
-[![西安夜行图第二版：三维发光线路、真实地理底图、悬浮面板与时间轴。](projects/001-xian-night-atlas/assets/overview.png)](projects/001-xian-night-atlas/README.md)
+[![西安夜行图实际产品截图引导图：桌面三维可达地图、手机返程计划及能力、效果、场景、扩展和个人价值。](projects/001-xian-night-atlas/assets/guide-v1.png)](projects/001-xian-night-atlas/README.md)
 
-西安夜行图第二版：三维发光线路、真实地理底图、悬浮面板与时间轴。
+西安夜行图实际产品截图引导图：桌面三维可达地图、手机返程计划及能力、效果、场景、扩展和个人价值。
 
-以西安真实地理底图展示三维末班车图谱、日夜切换、时间演化与夜间返程判断。
+<strong>能力：</strong>参考東京終電図的三维线网与时间轴，我们以西安演示返程和可达范围计算
+
+<strong>呈现效果：</strong>夜景线路按末班时刻抬升，时间推进时区段渐暗、可达站点发光
+
+<strong>使用场景：</strong>交通网络研究、活动散场和夜游信息展示，当前仅为模拟原型
+
+<strong>可扩展方向：</strong>景点关联主题路线与步行导览、场馆接驳、园区夜班交通
+
+<strong>对我的意义：</strong>沉淀可复用的时空交互与路线计算方法，验证具体业务需求。
 
 #### 002 · FreeMoCap 动作实验室
 

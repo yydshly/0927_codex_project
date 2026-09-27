@@ -1,10 +1,11 @@
 # 多个 Web 演示的远端部署
 
-本仓库沿用 GitHub Pages 的统一站点结构，通过 `.github/workflows/deploy-pages.yml` 构建和发布。发布清单包含 **002 · FreeMoCap 动作实验室**、**003 · Lofi Cities** 和 **005 · Jailbreaks 越狱研究指南**；统一构建发布，保留已经上线的演示。
+本仓库沿用 GitHub Pages 的统一站点结构，通过 `.github/workflows/deploy-pages.yml` 构建和发布。发布清单包含 **001 · 西安夜行图**、**002 · FreeMoCap 动作实验室**、**003 · Lofi Cities** 和 **005 · Jailbreaks 越狱研究指南**；统一构建发布，保留已经上线的演示。
 
 ## 站点入口
 
 - 站点索引：`https://yydshly.github.io/0927_codex_project/`
+- 西安夜行图：`https://yydshly.github.io/0927_codex_project/001-xian-night-atlas/`。页面班次与可达范围为模拟数据。
 - FreeMoCap 理解与应用：`https://yydshly.github.io/0927_codex_project/002-freemocap-lab/#capabilities`
 - FreeMoCap 动作回放 / 重建实验：演示地址加 `#motion` / `#geometry`。
 - Lofi Cities 独立演示：`https://yydshly.github.io/0927_codex_project/003-lofi-cities/`
@@ -21,6 +22,7 @@
 python scripts/projects.py check
 python -m unittest discover -s scripts -p 'test_*.py'
 npm --prefix projects/002-freemocap-lab/web test
+npm --prefix projects/001-xian-night-atlas/web test
 npm --prefix projects/003-lofi-cities/web run check
 npm --prefix projects/003-lofi-cities/web test
 npm --prefix projects/005-jailbreaks-research/web run check
@@ -29,7 +31,7 @@ python scripts/build_site.py
 
 推送到 `main` 的相关修改，或手动运行 Deploy research demos 工作流，都会执行检查、构建、上传 Pages artifact 和部署。仓库 Settings → Pages 使用 GitHub Actions 来源。发布任务仅授予 `pages: write` 与 `id-token: write`，不在代码或浏览器中放入部署密钥。
 
-站点使用相对资源路径与 hash 路由，适配三个已列入发布清单的项目子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或用户本地数据。
+站点使用相对资源路径与 hash 路由，适配四个已列入发布清单的项目子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或用户本地数据。
 
 ## 增加其他子项目
 

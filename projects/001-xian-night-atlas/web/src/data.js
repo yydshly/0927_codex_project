@@ -62,7 +62,7 @@ export const scenarios = [
   {id:'late',name:'高新加班',en:'LATE WORK',origin:'科技路',destination:'纺织城',time:1395,walk:10,description:'晚一点下班，回家的选择会怎样变化？'},
 ];
 export const dataInfo = {
-  type:'synthetic', version:'2026-09-27-demo-v2',
+  type:'synthetic', version:'2026-09-27-demo-v3',
   reference:'https://tokyo-last-train.matodesign.workers.dev/',
   geographySource:'https://jtj.xa.gov.cn/zmhd/xxcx/dtxl/2005485975194095618.html',
 };
