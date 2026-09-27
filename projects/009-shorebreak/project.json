@@ -7,7 +7,7 @@
   "source": "https://github.com/cryptomanavan/ShoreBreak",
   "source_type": "github",
   "status": "已完成",
-  "demo": "",
+  "demo": "https://yydshly.github.io/0927_codex_project/009-shorebreak/#overview",
   "cover": "assets/understanding-map.svg",
   "cover_alt": "ShoreBreak 能力与原理总图：模型分工、可见效果、使用场景和边界；教学整理，非模拟输出。",
   "source_name": "ShoreBreak"

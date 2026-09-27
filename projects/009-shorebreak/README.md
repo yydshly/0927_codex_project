@@ -2,7 +2,7 @@
 
 多尺度风浪、参数化破浪、独立浪唇网格和 GPU 浅水求解器各管一段，再用共同的时间、地形和水面状态把它们衔接起来。
 
-[返回总索引](../../README.md) · [原站演示](https://shorebreak-living-coast.netlify.app/) · [上游仓库](https://github.com/cryptomanavan/ShoreBreak) · [另一个库：coastal-simulation](../008-coastal-simulation/README.md) · [本地展示页运行方式](web/README.md) · [研究记录](notes/research.md)
+[在线理解与演示](https://yydshly.github.io/0927_codex_project/009-shorebreak/#overview) · [返回总索引](../../README.md) · [原站演示](https://shorebreak-living-coast.netlify.app/) · [上游仓库](https://github.com/cryptomanavan/ShoreBreak) · [另一个库：coastal-simulation](../008-coastal-simulation/README.md) · [本地展示页运行方式](web/README.md) · [研究记录](notes/research.md)
 
 新增 [算法与场景实验室](../010-algorithm-scene-lab/README.md)：调整独立教学模型，做 A/B 对照、数值检查和场景迁移实验。
 

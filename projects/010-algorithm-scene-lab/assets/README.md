@@ -15,3 +15,5 @@
 - 数据源为 `web/summary-data.json`，生成逻辑为 `web/build_summary.py`，文字版本为 `notes/synthesis.md`。
 - 总图为独立整理的原理图，不是仿真截图；参考两库的固定提交，图中明确区分原库能力、教学取舍和扩展建议。
 - `summary-desktop.jpg` / `summary-mobile.jpg`：新增汇总页的真实浏览器截图，分别用于确认桌面导览和手机布局。
+
+- `published-summary.jpg`：2026-09-27 从正式 GitHub Pages 页面采集的五项摘要实拍，发布来源与验证见 `notes/deployment.md`。

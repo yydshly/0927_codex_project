@@ -47,7 +47,7 @@ python scripts/build_site.py
 
 推送到 `main` 的相关修改，或手动运行 Deploy research demos 工作流，都会执行检查、构建、上传 Pages artifact 和部署。仓库 Settings → Pages 使用 GitHub Actions 来源。发布任务仅授予 `pages: write` 与 `id-token: write`，不在代码或浏览器中放入部署密钥。
 
-站点使用相对资源路径与 hash 路由，适配七个已列入发布清单的项目子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或用户本地数据。
+站点使用相对资源路径、页面文件和 hash 路由，适配已列入发布清单的项目子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或用户本地数据。
 
 ## 增加其他子项目
 
@@ -71,3 +71,7 @@ python scripts/build_site.py
 汇总页按呈现效果、内部模块、使用场景、可扩展产品方向和对我的意义组织，补充四种产品方向的已有基础与待补能力。实验室仅为独立教学模型，不是原库完整画质或工程预测系统。
 
 构建使用 Python 标准库；010 的七组算法在浏览器本地计算，无外部运行依赖。008 / 009 的上游 iframe 仅按需加载。发布状态与实际公网核验结果见 [010 发布记录](../projects/010-algorithm-scene-lab/notes/deployment.md)。正式 `demo` 地址在验证成功后填写。
+
+## 008 / 009 / 010 正式发布结果
+
+2026-09-27 [首次部署成功](https://github.com/yydshly/0927_codex_project/actions/runs/36315076602)，三个项目正式入口和资源已完成公网验证。统一入口为 [https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html](https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html)；首页 010 引导图使用此前生成的统一 SVG。五项摘要、四个产品方向、总图缩放和波浪 A/B 数值检查已验证，正式地址已写入项目元数据。详情见 [发布记录](../projects/010-algorithm-scene-lab/notes/deployment.md)。

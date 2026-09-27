@@ -2,7 +2,7 @@
 
 从场景目标出发，调整真实运行的教学模型，用 A/B 画面、实时数值和解析检查理解算法。
 
-[返回总索引](../../README.md) · [coastal 研究](../008-coastal-simulation/README.md) · [ShoreBreak 研究](../009-shorebreak/README.md) · [运行方法](web/README.md) · [验证记录](notes/validation.md)
+[在线理解与演示](https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html) · [返回总索引](../../README.md) · [coastal 研究](../008-coastal-simulation/README.md) · [ShoreBreak 研究](../009-shorebreak/README.md) · [运行方法](web/README.md) · [验证记录](notes/validation.md)
 
 ![统一理解总图：算法、效果、场景、扩展与验证](assets/water-algorithm-map.svg)
 
@@ -24,7 +24,8 @@
 
 - [完整文字记录](notes/synthesis.md)
 - [矢量总图 SVG](assets/water-algorithm-map.svg) / [高清总图 PNG](assets/water-algorithm-map.png)
-- 本地入口：http://127.0.0.1:4328/algorithm-preview/010-algorithm-scene-lab/summary.html
+- 正式入口：[https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html](https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html)
+- [发布与公网验证记录](notes/deployment.md)
 
 总图区分原库实现、独立教学模型和后续开发建议。可在汇总页缩放查看、保存原图，或从任一模块跳到对应实验。
 

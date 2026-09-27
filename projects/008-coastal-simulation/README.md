@@ -2,7 +2,7 @@
 
 围绕一个固定范围的浅水求解器，连接外海波浪、泡沫输运、湿沙材质与海岸漫游。它是一个可研究、可改造的完整演示项目。
 
-[返回总索引](../../README.md) · [原站演示](https://iamtechartist.github.io/coastal-simulation/?webgl=1) · [上游仓库](https://github.com/iamtechartist/coastal-simulation) · [另一个库：ShoreBreak](../009-shorebreak/README.md) · [本地展示页运行方式](web/README.md) · [研究记录](notes/research.md)
+[在线理解与演示](https://yydshly.github.io/0927_codex_project/008-coastal-simulation/#overview) · [返回总索引](../../README.md) · [原站演示](https://iamtechartist.github.io/coastal-simulation/?webgl=1) · [上游仓库](https://github.com/iamtechartist/coastal-simulation) · [另一个库：ShoreBreak](../009-shorebreak/README.md) · [本地展示页运行方式](web/README.md) · [研究记录](notes/research.md)
 
 新增 [算法与场景实验室](../010-algorithm-scene-lab/README.md)：调整独立教学模型，做 A/B 对照、数值检查和场景迁移实验。
 

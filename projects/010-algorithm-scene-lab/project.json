@@ -7,7 +7,7 @@
   "source": "https://github.com/iamtechartist/coastal-simulation",
   "source_type": "github",
   "status": "已完成",
-  "demo": "",
+  "demo": "https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html",
   "cover": "assets/water-algorithm-map.svg",
   "cover_alt": "统一理解总图：水面因果链、十个模块、八种场景配方、四级扩展与验证；区分原库能力、教学模型和后续开发建议。",
   "source_name": "coastal-simulation（另参照 ShoreBreak）"

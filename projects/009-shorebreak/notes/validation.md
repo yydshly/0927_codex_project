@@ -28,3 +28,7 @@
 研究页 JavaScript 使用 Node.js 22.15.0 做语法检查；这不代表上游支持该版本，上游要求 Node.js 24.x。
 
 交付为本地静态页面，已接入现有 GitHub Pages 构建配置；未推送或发布，项目元数据 `demo` 留空。
+
+## 正式部署验证（2026-09-27）
+
+已发布到 [正式网页](https://yydshly.github.io/0927_codex_project/009-shorebreak/#overview)，页面与资源可访问。[成功工作流](https://github.com/yydshly/0927_codex_project/actions/runs/36315076602)；完整验证与范围见 [统一发布记录](../../010-algorithm-scene-lab/notes/deployment.md)。此前“未发布”说明记录的是本地研究阶段。

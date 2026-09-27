@@ -57,3 +57,7 @@
 - 本轮未修改数值模型，未重复数学基准；新增内容与现有模型、检查清单和原库研究记录对应。仍为本地版本，未推送或发布。
 
 页面实拍：[桌面汇总](../assets/summary-desktop.jpg)、[手机汇总](../assets/summary-mobile.jpg)。
+
+## 正式部署验证（2026-09-27）
+
+已发布到 [正式网页](https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html)，页面与资源可访问。[成功工作流](https://github.com/yydshly/0927_codex_project/actions/runs/36315076602)；完整验证与范围见 [统一发布记录](deployment.md)。此前“未发布”说明记录的是本地研究阶段。

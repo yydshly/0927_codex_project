@@ -27,3 +27,7 @@
 本次没有本地安装上游源码，没有测量同硬件性能、完整海况覆盖或流体精度。原站默认 WebGPU 入口在本环境停留于初始化，实际截图来自其 `?webgl=1` 入口。详见[研究记录](research.md)。
 
 交付为本地静态页面，已接入现有 GitHub Pages 构建配置；未推送或发布，项目元数据 `demo` 留空。
+
+## 正式部署验证（2026-09-27）
+
+已发布到 [正式网页](https://yydshly.github.io/0927_codex_project/008-coastal-simulation/#overview)，页面与资源可访问。[成功工作流](https://github.com/yydshly/0927_codex_project/actions/runs/36315076602)；完整验证与范围见 [统一发布记录](../../010-algorithm-scene-lab/notes/deployment.md)。此前“未发布”说明记录的是本地研究阶段。
