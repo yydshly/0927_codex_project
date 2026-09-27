@@ -59,3 +59,15 @@ python scripts/build_site.py
 需要服务端、数据库或私密 API 的项目应另行部署后端；GitHub Pages 仅托管静态网页。
 
 配置依据：[GitHub Pages 自定义工作流官方文档](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
+
+## 海岸研究与统一算法导览（008 / 009 / 010）
+
+本次将三项海岸研究加入既有 GitHub Pages 发布流程，同时保留原有七项演示。发布前已完成五项摘要、原库能力与独立教学模型边界的整理，010 的首页引导图使用此前生成的 `water-algorithm-map.svg`；PNG 供保存。
+
+- 008：`008-coastal-simulation/#overview`，浅水、泡沫、湿沙与水面光学。
+- 009：`009-shorebreak/#overview`，频谱风浪、独立浪唇、GPU 浅水与水下视觉。
+- 010：`010-algorithm-scene-lab/summary.html`，统一理解入口；总图为 `summary.html#map`，交互实验为该项目根目录的 `#workspace`。
+
+汇总页按呈现效果、内部模块、使用场景、可扩展产品方向和对我的意义组织，补充四种产品方向的已有基础与待补能力。实验室仅为独立教学模型，不是原库完整画质或工程预测系统。
+
+构建使用 Python 标准库；010 的七组算法在浏览器本地计算，无外部运行依赖。008 / 009 的上游 iframe 仅按需加载。发布状态与实际公网核验结果见 [010 发布记录](../projects/010-algorithm-scene-lab/notes/deployment.md)。正式 `demo` 地址在验证成功后填写。

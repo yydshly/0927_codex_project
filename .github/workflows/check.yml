@@ -47,3 +47,13 @@ jobs:
         run: |
           node --check projects/007-system-design-notes/web/app.js
           node projects/007-system-design-notes/web/build.mjs
+      - name: Check coastal research and algorithm guide
+        run: |
+          node --check projects/008-coastal-simulation/web/app.js
+          node --check projects/009-shorebreak/web/app.js
+          node --check projects/010-algorithm-scene-lab/web/app.mjs
+          node --check projects/010-algorithm-scene-lab/web/summary.js
+          node --test projects/010-algorithm-scene-lab/web/model.test.mjs
+          python3 projects/008-coastal-simulation/web/build.py
+          python3 projects/009-shorebreak/web/build.py
+          python3 projects/010-algorithm-scene-lab/web/build.py

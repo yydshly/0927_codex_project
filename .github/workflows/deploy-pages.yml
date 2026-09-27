@@ -11,6 +11,9 @@ on:
       - 'projects/005-jailbreaks-research/**'
       - 'projects/006-threejs-gpu-rasterizer/**'
       - 'projects/007-system-design-notes/**'
+      - 'projects/008-coastal-simulation/**'
+      - 'projects/009-shorebreak/**'
+      - 'projects/010-algorithm-scene-lab/**'
       - 'scripts/build_site.py'
       - 'scripts/projects.py'
       - 'docs/site-projects.json'
@@ -48,6 +51,12 @@ jobs:
           npm --prefix projects/006-threejs-gpu-rasterizer/web run check
           node --check projects/007-system-design-notes/web/app.js
           node projects/007-system-design-notes/web/build.mjs
+          node --check projects/008-coastal-simulation/web/app.js
+          node --check projects/009-shorebreak/web/app.js
+          node --check projects/010-algorithm-scene-lab/web/app.mjs
+          node --check projects/010-algorithm-scene-lab/web/render.mjs
+          node --check projects/010-algorithm-scene-lab/web/summary.js
+          node --test projects/010-algorithm-scene-lab/web/model.test.mjs
       - uses: actions/configure-pages@v5
       - name: Build every published demo and the shared index
         run: python3 scripts/build_site.py

@@ -43,9 +43,21 @@ class SiteTests(unittest.TestCase):
         self.assertIn('<strong>技术原理：</strong>GPU 筛选', page)
 
     def test_navigation_cannot_escape_project(self):
-        for route in ('https://example.com', '/other', 'javascript:alert(1)', '#bad"quote'):
+        for route in ('https://example.com', '/other', 'javascript:alert(1)', '#bad"quote', '../summary.html', '//example.com', 'summary.html?redirect=x', 'a/b.html'):
             with self.assertRaises(ValueError):
                 project_links('002-freemocap-lab', {'002-freemocap-lab': {'entry': route}})
+
+    def test_summary_page_routes_and_requested_summary_fields(self):
+        project = dict(id=10, slug='algorithm-scene-lab', name='算法与场景实验室',
+                       summary='呈现效果：A/B 对照；内部模块：七组模型；使用场景：算法教学；可扩展产品方向：水材质编辑器；对我的意义：判断复用边界',
+                       source='https://github.com/iamtechartist/coastal-simulation',
+                       cover='assets/water-algorithm-map.svg', cover_alt='统一理解总图')
+        routes = {'010-algorithm-scene-lab': {'entry': 'summary.html', 'guide': 'summary.html#map'}}
+        page = render_home([project], 'yydshly/0927_codex_project', routes)
+        self.assertIn('href="./010-algorithm-scene-lab/summary.html#map"', page)
+        self.assertIn('src="./covers/010-algorithm-scene-lab.svg"', page)
+        for label in ('呈现效果', '内部模块', '使用场景', '可扩展产品方向', '对我的意义'):
+            self.assertIn(f'<strong>{label}：</strong>', page)
 
 
 if __name__ == '__main__':

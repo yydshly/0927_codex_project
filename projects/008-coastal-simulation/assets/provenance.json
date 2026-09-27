@@ -1,0 +1,24 @@
+{
+  "captured_on": "2026-09-27",
+  "author": "Techartist / iamtechartist",
+  "source_snapshot": "2e95e1a3e757ca1268247417dee01606e5e3d55c",
+  "deployment_matches_snapshot": "not_verified",
+  "images": [
+    {
+      "file": "coastal-overview.jpg",
+      "label": "海岸与岩石",
+      "caption": "原站实拍 · Ocean to Shore 视角。水面反射、白沫、浅水可见的滩底与岩石共同构成画面。",
+      "alt": "coastal-simulation 实际画面：浅水白沫、岩石、沙滩和天空"
+    },
+    {
+      "file": "coastal-wet-sand.jpg",
+      "label": "薄水与湿沙",
+      "caption": "原站实拍 · Wash & Wet Sand 视角。可以观察薄水边缘、泡沫残留和岸边的明暗过渡。",
+      "alt": "coastal-simulation 湿沙视角：贴近沙滩的薄水层与零散白沫"
+    }
+  ],
+  "demo": "https://iamtechartist.github.io/coastal-simulation/?webgl=1",
+  "method": "Codex in-app browser; unmodified viewport screenshots",
+  "diagram": "Independent educational SVG; not simulation output",
+  "research_page_captures": ["research-desktop.jpg"]
+}

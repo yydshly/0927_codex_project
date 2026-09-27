@@ -1,0 +1,14 @@
+{
+  "id": 8,
+  "order": 8,
+  "slug": "coastal-simulation",
+  "name": "coastal-simulation 海岸浅水研究",
+  "summary": "呈现效果：连续的海岸浪涌、绕石白沫、冲滩回流、浅水透明度、湿沙反光与接触水花，重点呈现水流和地面的连贯变化。；内部模块：四组解析波、固定网格浅水、泡沫生成与输运、水膜与湿度、光学与程序材质、喷溅、环境及相机；Worker 与可选 Wasm 负责流动计算。；使用场景：海岸视觉展示、图形算法教学、景观水体原型、浅水与湿润材质研究。；可扩展产品方向：可开发可调海岸展厅、浅水效果组件、湿地表材质编辑器或交互教学课程；需补齐模块接口、场景导入、预设管理和设备适配。；对我的意义：看懂浪、水流、泡沫、湿痕与光线怎样连接，形成可带到湖池、沟渠和雨后地面的算法复用方法。",
+  "source": "https://github.com/iamtechartist/coastal-simulation",
+  "source_type": "github",
+  "status": "已完成",
+  "demo": "",
+  "cover": "assets/understanding-map.svg",
+  "cover_alt": "coastal-simulation 能力与原理总图：模型分工、可见效果、使用场景和边界；教学整理，非模拟输出。",
+  "source_name": "coastal-simulation"
+}

@@ -17,8 +17,8 @@ def project_links(folder, entrypoints):
     route = (entrypoints or {}).get(folder, {})
     entry, guide = route.get('entry', ''), route.get('guide', '')
     for fragment in (entry, guide):
-        if not isinstance(fragment, str) or (fragment and not re.fullmatch(r'#[a-z][a-z0-9_-]*', fragment)):
-            raise ValueError(f'Entrypoint must be an internal hash route: {folder}')
+        if not isinstance(fragment, str) or not re.fullmatch(r'(?:[a-z][a-z0-9_-]*\.html)?(?:#[a-z][a-z0-9_-]*)?', fragment):
+            raise ValueError(f'Entrypoint must be a local HTML file or hash route: {folder}')
     return f'./{folder}/{entry}', f'./{folder}/{guide}' if guide else None, route.get('label', '打开 Web 演示')
 
 
@@ -45,9 +45,12 @@ def render_home(projects, repository, entrypoints=None):
           </details>
           <small>{escape(project['cover_alt'])}</small>
         </article>''')
+    coastal_summary = ''
+    if any(directory_name(p) == '010-algorithm-scene-lab' for p in projects):
+        coastal_summary = '<article aria-label="海岸算法专题汇总"><span>008 + 009 + 010 / 专题导览</span><h2>从算法，到一片水的样子</h2><p>三个网页的统一理解：十个模块、八种场景配方、四级扩展路径，以及一张可放大保存的完整总图。</p><nav><a class="primary" href="./010-algorithm-scene-lab/summary.html">网页与理解汇总 →</a><a href="./010-algorithm-scene-lab/summary.html#map">查看算法总图</a><a href="./010-algorithm-scene-lab/#workspace">进入调参实验室</a></nav></article>'
     return '''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>项目研究 · 能力与在线体验</title><meta name="description" content="理解开源项目与网页产品的能力、呈现效果、使用场景、可扩展方向和个人价值，查看完整引导图并打开在线演示。"><style>
     *{box-sizing:border-box}body{margin:0;background:#111d23;color:#e5e7dc;font:15px/1.8 system-ui,'Microsoft YaHei',sans-serif}main{max-width:1200px;margin:auto;padding:60px 40px}header{margin-bottom:36px}header>span,.project-heading>span{font-size:11px;letter-spacing:2px;color:#c6d1b4}h1{font-size:32px;font-weight:550;margin:12px 0}header p{color:#abbcb3;max-width:820px}article{border:1px solid #ffffff21;border-radius:16px;padding:28px;background:#1a282e;margin-bottom:30px}h2{font-size:26px;font-weight:550;margin:6px 0 20px}.preview{display:block}.preview img{display:block;width:100%;height:auto;border-radius:10px}.summary{margin:22px 0}.summary p{color:#d0d9cb;margin:10px 0;line-height:1.95}.summary strong{color:#e2f8d5;font-weight:750}nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center}a{color:#d5dfbf;text-underline-offset:4px}nav a{padding:9px 13px}.primary{color:#172629;background:#d1d7b5;border-radius:22px;text-decoration:none}.guide{margin:25px 0 0;border-top:1px solid #ffffff21;padding-top:10px}.guide summary{cursor:pointer;color:#c6d1b4;padding:9px 0 18px}small{display:block;color:#98ada3;font-size:12px;margin-top:18px}footer{color:#a6b8ac;font-size:12px;margin-top:35px}:focus-visible{outline:2px solid #caf2b2;outline-offset:5px}@media(max-width:600px){main{padding:30px 16px}article{padding:20px}h1{font-size:26px}h2{font-size:23px}nav{gap:8px}nav a{padding:7px}}
-    </style></head><body><main><header><span>RESEARCH INTO EXPERIENCE</span><h1>看清一个项目能做什么，再亲手验证。</h1><p>用分项摘要和完整引导图整理能力、效果、场景、扩展方向与个人价值。每个研究项目提供独立入口，说明上游能力、当前演示和待开发部分的区别。</p></header>''' + ''.join(cards) + f'''<footer>当前发布 {len(projects)} 个演示 · <a href="https://github.com/{repository}">查看完整研究索引</a></footer></main></body></html>'''
+    </style></head><body><main><header><span>RESEARCH INTO EXPERIENCE</span><h1>看清一个项目能做什么，再亲手验证。</h1><p>用分项摘要和完整引导图整理能力、效果、场景、扩展方向与个人价值。每个研究项目提供独立入口，说明上游能力、当前演示和待开发部分的区别。</p></header>''' + coastal_summary + ''.join(cards) + f'''<footer>当前发布 {len(projects)} 个演示 · <a href="https://github.com/{repository}">查看完整研究索引</a></footer></main></body></html>'''
 
 
 def build_project(root, directory):

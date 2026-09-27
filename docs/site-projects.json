@@ -7,7 +7,10 @@
     "004-ai-engineering-interview-guide",
     "005-jailbreaks-research",
     "006-threejs-gpu-rasterizer",
-    "007-system-design-notes"
+    "007-system-design-notes",
+    "008-coastal-simulation",
+    "009-shorebreak",
+    "010-algorithm-scene-lab"
   ],
   "entrypoints": {
     "001-xian-night-atlas": {
@@ -43,6 +46,21 @@
       "entry": "#overview",
       "guide": "#capability-map",
       "label": "查看系统设计笔记 28 章能力总图"
+    },
+    "008-coastal-simulation": {
+      "entry": "#overview",
+      "guide": "#principle",
+      "label": "查看 coastal-simulation 能力与效果"
+    },
+    "009-shorebreak": {
+      "entry": "#overview",
+      "guide": "#principle",
+      "label": "查看 ShoreBreak 能力与效果"
+    },
+    "010-algorithm-scene-lab": {
+      "entry": "summary.html",
+      "guide": "summary.html#map",
+      "label": "查看算法、效果与场景理解汇总"
     }
   }
 }

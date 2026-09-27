@@ -1,0 +1,24 @@
+{
+  "captured_on": "2026-09-27",
+  "author": "Christopher Canavan / awakewithai.com",
+  "source_snapshot": "11c8c057db671628ef2dbc308ab9fe0f233f48dc",
+  "deployment_matches_snapshot": "not_verified",
+  "images": [
+    {
+      "file": "shorebreak-overview.jpg",
+      "label": "海岸漫游",
+      "caption": "原站实拍 · 默认漫游视角。浅色沙滩、青绿色海水、岸线白沫与海滨建筑同处一个场景。",
+      "alt": "ShoreBreak 实际画面：海浪、沙滩、棕榈树和海滨建筑"
+    },
+    {
+      "file": "shorebreak-nearshore.jpg",
+      "label": "近岸观察",
+      "caption": "原站实拍 · ?clip 固定视角。用于观察近岸波形与冲滩；单张截图不证明完整破浪周期或物理准确性。",
+      "alt": "ShoreBreak 固定近岸视角的海水与冲滩画面"
+    }
+  ],
+  "demo": "https://shorebreak-living-coast.netlify.app/",
+  "method": "Codex in-app browser; unmodified viewport screenshots",
+  "diagram": "Independent educational SVG; not simulation output",
+  "research_page_captures": ["research-desktop.jpg", "research-mobile.jpg"]
+}

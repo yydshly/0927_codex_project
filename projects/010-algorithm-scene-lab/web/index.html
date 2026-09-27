@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="按场景学习波浪、浅水、输运、湿度、光学和材质。调整参数，用 A/B 对照与数学验证理解算法。"><title>算法与场景实验室 · Coastal Lab</title><link rel="stylesheet" href="./styles.css"><link rel="icon" href="./favicon.svg"><script type="module" src="./app.mjs"></script></head>
+<body>
+<a class="skip" href="#workspace">跳到实验区</a>
+<aside class="sidebar">
+  <a class="brand" href="#workspace"><span class="brand-icon">∿</span><span>算法与场景<small>COASTAL LAB / 010</small></span></a>
+  <div class="nav-caption">从一个目标开始 <span>01</span></div>
+  <nav id="scene-list" aria-label="场景目标"></nav>
+  <div class="sidebar-bottom"><span class="status-dot"></span>本地计算 · 无需联网
+    <a href="./summary.html">网页与理解汇总 · 完整总图 ↗</a><a href="../008-coastal-simulation/">008 · coastal-simulation ↗</a><a href="../009-shorebreak/">009 · ShoreBreak ↗</a><a href="../">返回项目研究索引</a>
+  </div>
+</aside>
+<main>
+  <header class="topbar"><div><span class="breadcrumb">海岸研究 / 算法实验室</span><span class="edition">INTERACTIVE NOTEBOOK 01</span></div><div class="header-actions"><button id="share" class="text-button">复制实验链接 ↗</button><button id="export" class="button small">导出记录 ↓</button></div></header>
+  <section class="introduction"><div><div class="eyebrow">从算法，到看得见的因果</div><h1>改变一个参数，<em>看懂一层原理。</em></h1><p>选择场景，拆开算法。保持 A 为参考，调整 B，用同一时刻的画面和数值检验你的猜想。</p></div><div class="intro-index"><strong>07</strong><span>算法实验<br>08 个场景目标</span></div></section>
+  <a class="summary-entry" href="./summary.html"><span><strong>先看全局，再拆开一层</strong><small>三个网页导览 · 十个算法模块 · 八种场景配方 · 四级扩展方向</small></span><span>理解汇总与完整总图 ↗</span></a>
+  <section class="target-strip" aria-label="当前场景"><span id="scene-symbol" aria-hidden="true">≈</span><div><small>当前目标</small><h2 id="scene-title">开阔海面</h2></div><p id="scene-note"></p><div id="scene-modules" aria-label="建议组合"></div></section>
+  <div class="lab-tabs" id="lab-tabs" role="group" aria-label="算法实验"></div>
+  <section id="workspace" class="workspace" aria-label="实时实验">
+    <div class="experiment-main">
+      <div class="experiment-heading"><div><span id="lab-kind" class="eyebrow"></span><h2 id="lab-title"></h2></div><span class="teaching-badge">独立教学模型</span></div>
+      <p id="lab-description" class="lab-description"></p>
+      <div class="views"><figure><figcaption><span><b class="letter a">A</b>参考方案</span><small>固定参数</small></figcaption><canvas id="view-a" width="600" height="400" role="img" aria-label="A 参考方案的算法实时画面"></canvas></figure><figure><figcaption><span><b class="letter b">B</b>调整方案</span><small>与你的参数同步</small></figcaption><canvas id="view-b" width="600" height="400" role="img" aria-label="B 调整方案的算法实时画面"></canvas></figure></div>
+      <div class="playback"><div class="play-buttons"><button id="play" class="button dark" aria-pressed="true">Ⅱ 暂停</button><button id="step" class="button" title="暂停并推进 1/30 秒">单步 +</button><button id="restart" class="text-button">↺ 重播</button><button id="pulse" class="text-button" hidden>同一扰动</button></div><span class="time-label">共同时间 <output id="clock">0.00 s</output></span></div>
+      <div class="comparison-metrics" id="metrics" aria-label="实时数值对照"></div>
+      <div class="chart-row"><div><span class="eyebrow">随时间记录</span><strong id="chart-label"></strong><p><span class="key a"></span>A 参考 <span class="key b"></span>B 调整</p></div><canvas id="history" width="700" height="120" role="img" aria-label="两方案第一项指标的时间变化曲线"></canvas></div>
+      <p class="view-note" id="view-note">画面用于解释模型，没有复现原站完整画质。</p>
+    </div>
+    <aside class="control-panel" aria-label="实验参数"><div class="panel-top"><span class="letter b">B</span><h3>调整方案</h3><button id="reset" class="text-button">恢复默认</button></div><div id="controls"></div><label class="seed-row" for="seed">固定随机种子<input id="seed" type="number" min="1" max="9999" value="42"><small>波浪频谱使用；其余模型确定性运行</small></label><button id="pin" class="button full">将当前 B 设为参考 A</button><p class="control-note">修改参数后，两侧从 0 秒同时重播。A 的参数保留，直到重新设为参考。</p><details class="baseline-details"><summary>查看 A 的参数</summary><div id="baseline-values"></div></details></aside>
+  </section>
+  <section class="guided" aria-label="引导实验"><div class="guided-number">试一试<br><strong>01</strong></div><div><span class="eyebrow">一次只改变一个原因</span><h3 id="challenge-title"></h3><p id="challenge-expected"></p></div><button id="challenge" class="button accent">应用这个实验 →</button></section>
+  <div class="learning-grid">
+    <section id="understand" class="understand card"><div class="section-label">02 / UNDERSTAND</div><h2>这一层到底算了什么？</h2><div class="pipeline"><div><small>输入</small><p id="input-text"></p></div><span>→</span><div><small>保存的状态</small><p id="state-text"></p></div></div><code id="formula"></code><p id="process-text"></p><h3>建议这样观察</h3><p id="observe-text"></p></section>
+    <section class="validation card" id="validation"><div class="section-label">03 / VERIFY</div><div class="validation-title"><h2>验证模型，不只看画面</h2><span id="check-badge">尚未运行</span></div><p>针对当前 B 参数运行独立测试，比较解析解与不变量。此处不验证原库、设备帧率或工程精度。</p><button id="check" class="button accent">运行当前算法检查</button><div id="check-results" aria-live="polite"><p class="empty-state">改变参数后再运行，看看规律是否仍然成立。</p></div></section>
+  </div>
+  <section class="reuse card" id="reuse"><div class="section-label">04 / TRANSFER</div><h2>下次做场景，怎样带走这一层？</h2><div class="reuse-columns"><div><h3>可以迁移到哪里</h3><p id="reuse-text"></p></div><div><h3>这次模型的边界</h3><p id="boundary-text"></p></div></div><div class="table-scroll"><table><caption>从改变外观，到改变物理行为</caption><thead><tr><th>复用层级</th><th>典型变化</th><th>要改什么</th></tr></thead><tbody><tr><td><span class="level one">01</span>调整参数</td><td>浪更高、反光更强、地面干得更快</td><td>已有模型中的数值与材质映射</td></tr><tr><td><span class="level two">02</span>适配场景</td><td>海岸换成沟渠，湿沙换成石板</td><td>地形、边界、触发来源、坐标与材质</td></tr><tr><td><span class="level three">03</span>增加模型</td><td>瀑布、倒水、船体浮力、侵蚀</td><td>新的三维几何或物理系统，以及双向耦合</td></tr></tbody></table></div></section>
+  <section class="sources card"><div class="section-label">05 / TRACE</div><h2>回到真实项目</h2><p>实验代码为本项目独立编写，用于拆解原理。原库的完整视觉、网格分辨率、参数和模块耦合见对应研究页。</p><div id="source-links"></div><div class="repo-links"><a href="../008-coastal-simulation/">coastal-simulation 研究页 ↗</a><a href="../009-shorebreak/">ShoreBreak 研究页 ↗</a></div><small>参考快照：coastal 2e95e1a3e757 · ShoreBreak 11c8c057db67 ｜ 教学实验 v1.0 ｜ 所有验证在本机运行</small></section>
+  <footer><span>ALGORITHM → SCENE → EXPERIMENT → EVIDENCE</span><a href="#workspace">返回实验区 ↑</a></footer>
+</main><dialog id="record-dialog" aria-labelledby="record-title"><div class="record-heading"><h2 id="record-title">保存这次实验</h2><form method="dialog"><button class="text-button" aria-label="关闭实验记录">关闭 ×</button></form></div><p>记录包含 A/B 参数、当前指标、检查结果和手动扰动时刻。链接重播只恢复初始参数；记录可用于核对实验过程。</p><label for="record-content">实验记录（JSON）</label><textarea id="record-content" readonly spellcheck="false"></textarea><div class="record-actions"><a id="download-record" class="button accent" download>下载 JSON 文件 ↓</a><button id="copy-record" class="button">复制完整记录</button></div></dialog><div id="toast" role="status" aria-live="polite" hidden></div><noscript><p class="no-script">实时实验需要开启 JavaScript。可在项目 README 中阅读模型、场景与验证说明。</p></noscript>
+</body></html>
