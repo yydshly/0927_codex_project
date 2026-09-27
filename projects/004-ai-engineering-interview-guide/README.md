@@ -2,7 +2,7 @@
 
 > 整理 AI 工程面试题库的能力、主题与公司索引，并在网页中直接呈现题目、参考入口和重点答题要点。
 
-[返回总索引](../../README.md) · [完整引导图](assets/ai-engineering-guide-map.png) · [网页导览](web/README.md) · [上游仓库](https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise) · [能力地图](notes/capability-map.md) · [公司索引](notes/company-index.md) · [使用指南](notes/usage-guide.md) · [研究记录](notes/research.md)
+[在线网页](https://yydshly.github.io/0927_codex_project/004-ai-engineering-interview-guide/#overview) · [返回总索引](../../README.md) · [完整引导图](assets/ai-engineering-guide-map.png) · [网页导览](web/README.md) · [上游仓库](https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise) · [能力地图](notes/capability-map.md) · [公司索引](notes/company-index.md) · [使用指南](notes/usage-guide.md) · [研究记录](notes/research.md)
 
 ## 核心结论
 
@@ -107,6 +107,6 @@
 
 建议依次阅读：本页 → [能力地图](notes/capability-map.md) → [公司索引](notes/company-index.md) → [使用指南](notes/usage-guide.md)。核对版本和统计方法时查看 [研究记录](notes/research.md)。
 
-研究文档可以直接阅读。[中文网页导览](web/README.md)已收录全部 598 道原题，展示 232 道题所附的 310 个仓库参考链接，并为 45 道重点题提供独立整理的中文题意与答题要点。每个模块卡片展示两道具体题目；网页还支持按模块、公司、中文或英文关键词以及答案状态筛选。查看模块可以阅读完整通用题及答案入口；查看公司可在本页浏览相应专项题。网页无需第三方依赖或 API Key，本地启动需 Node.js 20 或更新版本，目前未发布到公网。统计只对应上述提交，不能直接当作上游最新状态。
+研究文档可以直接阅读。[中文网页导览](web/README.md)已收录全部 598 道原题，展示 232 道题所附的 310 个仓库参考链接，并为 45 道重点题提供独立整理的中文题意与答题要点。每个模块卡片展示两道具体题目；网页还支持按模块、公司、中文或英文关键词以及答案状态筛选。查看模块可以阅读完整通用题及答案入口；查看公司可在本页浏览相应专项题。网页无需第三方依赖或 API Key，本地启动需 Node.js 20 或更新版本，现已通过 GitHub Pages [公开访问](https://yydshly.github.io/0927_codex_project/004-ai-engineering-interview-guide/#overview)。统计只对应上述提交，不能直接当作上游最新状态。
 
 上游由 README 标注的 Outcome School 整理维护。本项目提供中文归纳、结构统计和独立建议，保留 [上游许可证](notes/UPSTREAM-LICENSE.txt)。状态“已完成”表示本次资料整理完成，不表示所有答案或招聘流程已经验证。

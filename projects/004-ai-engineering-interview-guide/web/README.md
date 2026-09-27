@@ -1,6 +1,6 @@
 # AI 工程面试题库 · 网页导览
 
-[返回研究概览](../README.md) · [完整引导图](../assets/ai-engineering-guide-map.png) · [来源统计](../data/source-summary.json)
+[在线网页](https://yydshly.github.io/0927_codex_project/004-ai-engineering-interview-guide/#overview) · [返回研究概览](../README.md) · [完整引导图](../assets/ai-engineering-guide-map.png) · [来源统计](../data/source-summary.json)
 
 ## 页面内容
 
@@ -48,9 +48,9 @@ npm run build
 
 ## 部署兼容性
 
-所有资源使用相对地址，无单页路由回退要求。已验证根地址与计划子路径 /0927_codex_project/004-ai-engineering-interview-guide/ 均可正常加载。可将 dist/ 内容接入 [总仓库的统一静态部署规划](../../../docs/DEPLOYMENT.md)。
+所有资源使用相对地址，无单页路由回退要求。根地址与正式子路径 /0927_codex_project/004-ai-engineering-interview-guide/ 均可正常加载；部署方式见[总仓库的统一静态部署说明](../../../docs/DEPLOYMENT.md)。
 
-本项目接入仓库的 GitHub Pages 统一部署流程。正式网页验证后，将在线地址写入 project.json 的 demo 字段并同步总索引。
+本项目已通过仓库的 GitHub Pages 统一部署流程发布。正式地址写入 project.json 的 demo 字段；引导图可在在线网页的 `#guide-map` 阅读，站点首页也展示同一张图。
 
 ## 验证记录（2026-09-27）
 
@@ -62,4 +62,4 @@ npm run build
 
 上述截图记录的是加入中文题意前的版本：[网页概览](../assets/web-overview.png)、[题目阅读](../assets/web-questions.png)。未逐条核验上游外部答案，本次网页验证不改变原研究的证据边界。
 
-最新更新加入 45 道重点题的中文题意、中文关键词检索与每个模块的两道真实题示例。构建、脚本语法和 45 条题意与答题要点的对应关系已经核对；应用内浏览器因 URL 安全策略拒绝打开本地预览，最新视觉效果尚未在浏览器中复核。
+最新更新加入 45 道重点题的中文题意、中文关键词检索、每个模块的两道真实题示例和完整引导图。整站构建通过；公开网页、站点首页四项摘要、引导图文件与题目数据文件已核对为 HTTP 200。已在公开网页检查首屏、四项摘要卡片与按完整比例显示的引导图；引导图内的细字需点击打开高清原图阅读。
