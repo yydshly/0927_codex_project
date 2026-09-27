@@ -58,7 +58,14 @@ def validate(project, directory, check_files=True):
     require(SLUG.fullmatch(project["slug"]), f"{directory}: slug 格式不正确")
     require(directory.name == directory_name(project), f"{directory}: 目录名与编号或 slug 不一致")
     require(project["status"] in STATUSES, f"{directory}: 未知研究状态")
-    require(valid_url(project["source"], github=True), f"{directory}: source 必须是 HTTPS GitHub 仓库地址")
+    source_type = project.get("source_type", "github")
+    if "source_name" in project:
+        require(isinstance(project["source_name"], str) and bool(project["source_name"].strip())
+                and not any(ord(c) < 32 for c in project["source_name"]),
+                f"{directory}: source_name 必须是非空单行文本")
+    require(source_type in ("github", "website"), f"{directory}: source_type 必须是 github 或 website")
+    require(valid_url(project["source"], github=source_type == "github"),
+            f"{directory}: source 必须是有效的 HTTPS 来源地址（github 类型须为仓库地址）")
     require(not project["demo"] or valid_url(project["demo"]), f"{directory}: demo 必须为空或 HTTPS 地址")
     if check_files:
         require((directory / "README.md").is_file(), f"{directory}: 缺少 README.md")
@@ -103,16 +110,18 @@ def link_url(value):
 def render_index(projects):
     lines = [
         f"当前收录 **{len(projects)}** 个项目。", "",
-        "| 编号 | 项目与研究入口 | 摘要 | 研究状态 | 原仓库 | Web 演示 |",
+        "| 编号 | 项目与研究入口 | 摘要 | 研究状态 | 参考来源 | Web 演示 |",
         "| --- | --- | --- | --- | --- | --- |",
     ]
     for project in projects:
         path = f"projects/{directory_name(project)}"
         demo = f"[在线体验]({link_url(project['demo'])})" if project["demo"] else "—"
+        source_label = markdown(project.get("source_name") or
+                                ("参考网页" if project.get("source_type") == "website" else "GitHub"))
         lines.append(
             f"| {project['id']:03d} | [{markdown(project['name'])}]({path}/README.md) "
             f"| {markdown(project['summary'])} | {project['status']} "
-            f"| [GitHub]({link_url(project['source'])}) | {demo} |"
+            f"| [{source_label}]({link_url(project['source'])}) | {demo} |"
         )
     if not projects:
         lines.append("| — | 暂无项目 | 添加第一个研究项目后自动更新 | — | — | — |")
@@ -156,6 +165,7 @@ def create_project(root, args, projects):
         "name": args.name,
         "summary": args.summary,
         "source": args.source,
+        "source_type": args.source_type,
         "status": "待研究",
         "demo": "",
         "cover": "",
@@ -190,7 +200,9 @@ def main():
     new = subparsers.add_parser("new", help="创建下一个编号的研究项目")
     new.add_argument("slug", help="英文短名称，例如 browser-use")
     new.add_argument("--name", required=True, help="对外展示名称")
-    new.add_argument("--source", required=True, help="上游 GitHub 仓库地址")
+    new.add_argument("--source", required=True, help="上游 GitHub 仓库或参考网页地址")
+    new.add_argument("--source-type", choices=("github", "website"), default="github",
+                     help="来源类型，默认 github；仅有参考网页时使用 website")
     new.add_argument("--summary", required=True, help="一句话研究摘要")
     subparsers.add_parser("sync", help="更新首页索引和图片")
     subparsers.add_parser("check", help="检查元数据、图片与首页同步情况")

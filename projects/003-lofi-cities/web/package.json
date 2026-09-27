@@ -1,0 +1,12 @@
+{
+  "name": "quiet-spaces",
+  "version": "3.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "python -m http.server 4313 --bind 127.0.0.1",
+    "build": "python build.py",
+    "test": "node --test tests/preset.test.js tests/lab.test.js tests/product.test.js tests/motion.test.js tests/moments.test.js",
+    "check": "node --check app.js && node --check content.js && node --check preset.js && node --check lab.js && node --check lab-model.js && node --check lab-scene.js && node --check lab-audio.js && node --check studio/app.js && node --check studio/model.js && node --check studio/scenes.js && node --check studio/audio.js && node --check studio/icons.js && node --check studio/music.js && node --check studio/motion.js && node --check studio/moments.js && node --check studio/understanding.js"
+  }
+}

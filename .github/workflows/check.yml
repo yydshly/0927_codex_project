@@ -15,3 +15,12 @@ jobs:
       - uses: actions/checkout@v6
       - name: Validate project metadata and README index
         run: python3 scripts/projects.py check
+      - name: Check reference-source validation
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check Lofi Cities desktop product
+        run: |
+          npm --prefix projects/003-lofi-cities/web run check
+          npm --prefix projects/003-lofi-cities/web test

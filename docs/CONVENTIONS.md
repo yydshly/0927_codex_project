@@ -10,6 +10,8 @@ python scripts/projects.py new example-project --name "项目名称" --source "h
 
 脚本分配当前最大编号的下一个编号，复制模板并更新首页。短名称使用小写英文字母、数字和单个连字符，例如 `browser-use`。还没有真实研究对象时保持索引为空。
 
+只有参考网页、尚未找到对应源码仓库时，传入 `--source-type website`，并将 `--source` 设为实际网页地址。在研究笔记中记录“源码与许可证未确认”，不要使用无关仓库替代。旧项目省略 `source_type` 时仍按 GitHub 仓库校验。
+
 生成的目录：
 
 ```text
@@ -48,7 +50,9 @@ projects/001-example-project/
 | `order` | 首页展示顺序，按数字升序；相同时按 `id` 升序 |
 | `slug` | 与目录名对应，创建后保持稳定 |
 | `name` / `summary` | 对外名称和一句话研究摘要 |
-| `source` | 上游 GitHub 仓库链接 |
+| `source` | 上游 GitHub 仓库链接，或已明确声明类型的参考网页 |
+| `source_name` | 可选，原网页或仓库的正式名称；填写后索引来源链接直接显示这个名称 |
+| `source_type` | 可选，默认 `github`；仅有网页参考时用 `website`，不推定存在开源仓库或许可证 |
 | `status` | `待研究`、`研究中`、`已完成` 或 `已归档` |
 | `demo` | 验证可访问后填写的完整 HTTPS 演示链接；未部署留空 |
 | `cover` | 相对子项目目录的真实图片路径，例如 `assets/cover.webp` |

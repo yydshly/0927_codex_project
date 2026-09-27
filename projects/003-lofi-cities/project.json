@@ -1,0 +1,14 @@
+{
+  "id": 3,
+  "order": 3,
+  "slug": "lofi-cities",
+  "name": "Lofi Cities",
+  "summary": "能力：动态城市、实时合成音乐与环境混音；效果：可调节的沉浸氛围；场景：阅读、工作、放松；扩展：物件联动、时间变化与空间分享；对我：用独立产品“栖间”验证可保存、可交互的个人环境。",
+  "source": "https://loficities.com/istanbul/",
+  "source_name": "Lofi Cities · Istanbul",
+  "source_type": "website",
+  "status": "已完成",
+  "demo": "",
+  "cover": "assets/product-guide.png",
+  "cover_alt": "栖间实际网页产品引导图：雪山动态场景、六套氛围组合、左侧功能导航、环境调节与底部音乐播放器；这是独立实现的演示，不是源站截图。"
+}

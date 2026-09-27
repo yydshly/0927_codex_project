@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><title>栖间场景运动验证</title><style>body{background:#14212b;color:#e9eee9;font:15px system-ui;margin:30px}button{padding:12px;margin:10px;background:#d8ba8b;border:0;border-radius:6px}canvas{width:640px;max-width:95%;display:block;margin:20px 0}li{padding:8px}a{color:#d8ba8b}.pass{color:#ade1b7}.fail{color:#ffaaa3}</style>
+<h1>场景运动验证</h1><p>在关闭天气与灯光叠层后，检查主体动画的实际像素变化；检查全局暂停与静止模式。</p><button id="run">运行六场景检查</button><button id="record">录制列车动态</button><p id="status" role="status">尚未运行</p><ul id="results"></ul><canvas id="preview" data-preview="train"></canvas><a id="download" hidden>下载动态预览</a>
+<script type="module">
+import {createVisual} from '../studio/scenes.js';
+import {scenes,normalizeSettings} from '../studio/model.js';
+const output=document.querySelector('#results'),status=document.querySelector('#status'),canvas=document.querySelector('#preview');
+const pixels=c=>c.getContext('2d').getImageData(0,0,c.width,c.height).data;
+function difference(a,b){let changed=0;for(let i=0;i<a.length;i+=4)if(Math.abs(a[i]-b[i])+Math.abs(a[i+1]-b[i+1])+Math.abs(a[i+2]-b[i+2])>12)changed++;return changed/(a.length/4)*100;}
+document.querySelector('#run').onclick=async()=>{
+  output.replaceChildren();status.textContent='正在运行…';let failures=0;
+  for(const scene of scenes){
+    const visual=createVisual(canvas,scene.id);await visual.ready;
+    const settings=normalizeSettings({scene:scene.id,particles:false,lighting:false,activity:100,motion:true});
+    visual.draw(0,settings);const first=pixels(canvas);
+    for(let i=1;i<=80;i++)visual.draw(i*.05,settings);
+    const animated=pixels(canvas),delta=difference(first,animated);
+    for(let i=81;i<=100;i++)visual.draw(i*.05,{...settings,motion:false});
+    const paused=difference(animated,pixels(canvas));
+    visual.draw(5.1,{...settings,dynamics:false});const still=pixels(canvas);
+    for(let i=103;i<=120;i++)visual.draw(i*.05,{...settings,dynamics:false});
+    const disabled=difference(still,pixels(canvas));
+    const pass=delta>.1&&paused===0&&disabled===0&&canvas.dataset.artwork==='ready'&&(scene.id!=='train'||canvas.dataset.layers==='foreground-and-landscape');
+    const li=document.createElement('li');li.className=pass?'pass':'fail';li.textContent=(pass?'PASS ':'FAIL ')+scene.name+'：主体变化 '+delta.toFixed(2)+'%，暂停变化 '+paused.toFixed(2)+'%，关闭场景运动 '+disabled.toFixed(2)+'%';output.append(li);if(!pass)failures++;
+    await new Promise(requestAnimationFrame);
+  }
+  status.textContent=failures?'失败 '+failures+' 项':'通过 6 / 6：主体独立运动，暂停稳定，关闭场景运动稳定';
+};
+document.querySelector('#record').onclick=async()=>{
+  const visual=createVisual(canvas,'train');await visual.ready;const settings=normalizeSettings({scene:'train',activity:80,intensity:40});
+  const stream=canvas.captureStream(24),type=MediaRecorder.isTypeSupported('video/webm;codecs=vp9')?'video/webm;codecs=vp9':'video/webm',recorder=new MediaRecorder(stream,{mimeType:type,videoBitsPerSecond:2600000}),chunks=[];
+  const button=document.querySelector('#record');button.disabled=true;status.textContent='正在录制 8 秒动态预览…';
+  recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
+  recorder.onstop=()=>{stream.getTracks().forEach(t=>t.stop());const a=document.querySelector('#download');a.href=URL.createObjectURL(new Blob(chunks,{type:'video/webm'}));a.download='quiet-spaces-train-motion.webm';a.hidden=false;status.textContent='动态预览已完成';button.disabled=false;};
+  recorder.start();let start=null;function render(now){if(start===null)start=now;visual.draw((now-start)/1000,settings);if(now-start<8000)requestAnimationFrame(render);else recorder.stop();}requestAnimationFrame(render);
+};
+</script></html>

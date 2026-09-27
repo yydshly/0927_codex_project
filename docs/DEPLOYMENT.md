@@ -1,39 +1,38 @@
-# 多个 Web 演示的部署规划
+# 多个 Web 演示的远端部署
 
-当前仅初始化研究仓库和演示目录模板，**尚未部署任何 Web，也未启用 Pages 发布流程**。后续根据第一个实际子项目的技术栈补充构建和发布配置。
+本仓库沿用 GitHub Pages 的统一站点结构，通过 `.github/workflows/deploy-pages.yml` 构建和发布。当前发布清单只包含 **003 · Lofi Cities**，其他本地子项目尚未加入本次发布。
 
-## 地址与目录
+## 站点入口
 
-GitHub Pages 每个仓库提供一个站点，可以在该站点的不同子路径放置多个静态演示。因此本仓库计划统一汇总构建产物，再一次性发布，详见 [GitHub Pages 官方说明](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages)。
+- 站点索引：`https://yydshly.github.io/0927_codex_project/`
+- Lofi Cities 独立演示：`https://yydshly.github.io/0927_codex_project/003-lofi-cities/`
+- 产品理解：演示地址加 `#understanding`。
 
-默认域名下的计划地址如下；这些地址目前不是已上线的演示链接：
+首次发布验证完成后，才将演示地址写入 `project.json` 的 `demo` 字段。该字段为空时仍表示未确认上线；具体发布结果记录在子项目运行说明中。
 
-```text
-https://yydshly.github.io/0927_codex_project/
-├── 001-project-a/
-└── 002-project-b/
+## 构建和发布
+
+`docs/site-projects.json` 是唯一的已发布项目清单。`scripts/build_site.py` 构建其中每个项目，汇总到 `dist/pages/`，并生成带真实截图、源网页名称和来源链接的站点索引。脚本要求输出目录为空，避免旧文件误入发布物；可用 `--output` 指定另一个空目录。
+
+```sh
+python scripts/projects.py check
+python -m unittest discover -s scripts -p 'test_*.py'
+npm --prefix projects/003-lofi-cities/web run check
+npm --prefix projects/003-lofi-cities/web test
+python scripts/build_site.py
 ```
 
-每个项目的源码保存在 `projects/<编号-名称>/web/`。将来发布时，由统一流程构建到以下结构；`dist/` 为生成目录，不提交到源码仓库：
+推送到 `main` 的相关修改，或手动运行 Deploy research demos 工作流，都会执行检查、构建、上传 Pages artifact 和部署。仓库 Settings → Pages 使用 GitHub Actions 来源。发布任务仅授予 `pages: write` 与 `id-token: write`，不在代码或浏览器中放入部署密钥。
 
-```text
-dist/
-├── index.html              # 所有已部署演示的导航页
-├── 001-project-a/          # 第一个演示的静态构建产物
-└── 002-project-b/          # 第二个演示的静态构建产物
-```
+站点使用相对资源路径与 hash 路由，适配 `/0927_codex_project/003-lofi-cities/` 子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或本地数据。
 
-## 接入第一个演示时
+## 增加其他子项目
 
-1. 在子项目 `web/README.md` 写明安装、开发、构建命令及运行环境。
-2. 按该项目的框架配置资源基础路径，例如 `/0927_codex_project/001-project-a/`，验证图片、脚本和样式在该路径下正常加载。
-3. 对需要前端路由的应用验证刷新行为，按框架选择静态导出或 hash 路由方案。
-4. 增加一个统一的发布工作流，构建所有已接入的演示，将它们汇总到同一个 Pages artifact。以后增加项目时更新汇总步骤，避免各子项目独立发布导致站点内容被覆盖。
-5. 在仓库 Settings → Pages 中配置 GitHub Actions 发布来源，按[官方自定义工作流指南](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)设置部署权限和环境。
-6. 上线后验证演示地址，再将完整 URL 写入对应 `project.json` 的 `demo` 字段，更新首页索引。
+1. 将源码和研究记录提交，确保已有构建能输出 `dist/<编号-名称>/`。
+2. 将目录名加入 `docs/site-projects.json`，同时补齐工作流中的项目检查和路径触发规则。
+3. 统一构建、发布全部已上线项目，避免单独部署覆盖其他演示。
+4. 实测远端资源、交互和截图，确认后填写 `demo` 并同步首页索引。
 
-## 需要服务端的项目
+需要服务端、数据库或私密 API 的项目应另行部署后端；GitHub Pages 仅托管静态网页。
 
-GitHub Pages 用于静态资源托管。需要常驻后端、数据库或私密 API 密钥的项目，在对应子项目中记录外部服务的部署方式；也可提供明确标注模拟数据的纯前端演示。配置字段可写入 `.env.example`，实际密钥由部署环境提供。
-
-尚未确定框架的子项目可以暂时只有研究笔记与运行截图；准备好可演示内容后再接入发布流程。
+配置依据：[GitHub Pages 自定义工作流官方文档](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
