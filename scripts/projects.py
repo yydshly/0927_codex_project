@@ -107,6 +107,29 @@ def link_url(value):
     return quote(value, safe="/:?=&%#@+;,-._~")
 
 
+SUMMARY_LABELS = ("能力", "呈现效果", "效果", "使用场景", "场景", "可扩展方向", "扩展", "对我的意义", "对我")
+SUMMARY_PATTERN = re.compile(r"(?:^|[；;])\s*(" + "|".join(SUMMARY_LABELS) + r")[:：]\s*")
+
+
+def summary_sections(value):
+    """Recognize labelled plain text; all rendering still escapes user content."""
+    matches = list(SUMMARY_PATTERN.finditer(value))
+    if not matches or matches[0].start() != 0:
+        return [(None, value)]
+    return [(match[1], value[match.end():matches[i+1].start() if i+1 < len(matches) else len(value)].strip())
+            for i, match in enumerate(matches)]
+
+
+def summary_markdown(value, separator="<br>"):
+    return separator.join(f"**{label}：**{markdown(body)}" if label else markdown(body)
+                          for label, body in summary_sections(value))
+
+
+def summary_html(value):
+    return ''.join(f'<p><strong>{html.escape(label)}：</strong>{html.escape(body)}</p>'
+                   if label else f'<p>{html.escape(body)}</p>' for label, body in summary_sections(value))
+
+
 def render_index(projects):
     lines = [
         f"当前收录 **{len(projects)}** 个项目。", "",
@@ -120,7 +143,7 @@ def render_index(projects):
                                 ("参考网页" if project.get("source_type") == "website" else "GitHub"))
         lines.append(
             f"| {project['id']:03d} | [{markdown(project['name'])}]({path}/README.md) "
-            f"| {markdown(project['summary'])} | {project['status']} "
+            f"| {summary_markdown(project['summary'])} | {project['status']} "
             f"| [{source_label}]({link_url(project['source'])}) | {demo} |"
         )
     if not projects:
@@ -135,7 +158,7 @@ def render_index(projects):
             f"#### {project['id']:03d} · {markdown(project['name'])}", "",
             f"[![{markdown(project['cover_alt'])}]({path}/{project['cover']})]({path}/README.md)", "",
             markdown(project["cover_alt"]), "",
-            markdown(project["summary"]), "",
+            summary_markdown(project["summary"], separator="\n\n"), "",
         ])
     return "\n".join(lines).rstrip()
 

@@ -1,0 +1,94 @@
+Use case: infographic-diagram.
+Create ONE polished, comprehensive Simplified Chinese technical explainer infographic for a Chinese product builder, a high resolution portrait long poster, ideally 2160 × 3840 or larger at the same proportions. This is an information-rich reference poster to zoom and read, NOT a slide, screenshot, website mockup, or photoreal photo. Everything must be contained in a single image with a clear top-to-bottom reading order. Use accurate Chinese glyphs, readable dark ink type on ivory/off-white, teal for FreeMoCap's native pipeline, purple for data and analysis, orange for downstream custom development. Spacious typographic hierarchy, sharp vector-style technical illustrations, fine ruled lines and clear arrowheads. Strong elegant editorial layout, not a sea of equal cards. Make diagrams helpful, not decorative. No watermark, no QR code, no fabricated accuracy or speed claims. Use all content below without dropping important qualifications; shorten line breaks, not meaning.
+
+TITLE: "FreeMoCap 能力全景图"
+SUBTITLE: "把真人运动变成三维数据，再用于分析或驱动角色"
+DEFINITION: "本质：开源无标记动作捕捉系统，整合采集、同步、标定、姿态识别、三维重建与导出。"
+KEY TAKEAWAY in prominent pill: "至少两个有效视角才能做多视角三维重建；离线处理时无需连接摄像头。"
+
+SECTION 01: "输入与启动条件"
+Two illustrated parallel inputs feeding the same pipeline:
+A "现场采集" / "2 台或更多摄像头 → 从不同角度同时拍摄同一个人"
+B "已有录像" / "同一次动作的多视角同步视频 + 对应的标定数据"
+Small shared requirement strip: "标定板提供已知尺寸｜画面时间对齐｜身体处于共同视野｜摄像头移动后重新标定"
+Small clarification: "单摄像头可用于采集或二维识别，但不能完成多视角三角测量。先用样例录像也能研究流程。"
+
+SECTION 02, the most visually explanatory section: "核心原理：AI 找点，几何定位"
+Show numbered pipeline, branching visual detail in the geometry step:
+"1 采集与同步" / "让不同画面对准同一时刻"
+"2 相机标定" / "ChArUco 板 → 镜头参数、畸变、相机位置与朝向"
+"3 二维姿态识别" / "RTMPose / MediaPipe → 每个视角中的肩、肘、腕、髋、膝等点"
+"4 多视角三角测量" / "去畸变 → 同名关键点建立约束 → DLT + SVD 求三维位置"
+"5 质量处理" / "重投影检查、异常点处理、平滑、短时缺失与骨长约束；具体流程依版本"
+"6 组织动作序列" / "逐帧记录每个关键点的 X、Y、Z"
+Include a real conceptual geometry inset: two cameras at separated positions looking at the SAME raised wrist of one skeleton; differently colored rays intersect at the wrist; labels "视角 A", "视角 B", "估计的三维手腕位置". Label "单个视角给方向，多个视角共同约束空间位置". Rays must genuinely converge at a single joint, no multiple inconsistent people.
+Inset formula: "理想平行双目：Z = fB / d" / "f：焦距　B：相机间距　d：视差" / "仅用于解释深度关系；实际支持一般多相机布局。"
+Bottom line: "这一步计算的是三维坐标，不是把多段视频拼接起来。"
+
+SECTION 03: "输出什么？能看到什么效果？"
+Three illustrated output columns:
+"三维骨架与轨迹" / "回放、换角度观察、查看动作随时间的变化"
+"结构化动作数据" / "NPY / CSV / Parquet" / "核心结构：帧 × 关键点 × XYZ；另含追踪器与标定信息"
+"检查与动画工作流" / "二维关键点标注视频；按版本与配置导出 Blender 场景"
+Use a skeleton trajectory and small line chart, clearly label illustrations "效果示意".
+Separate highlight: "角度、速度、节奏、对称性等可在数据上计算；动作评分、训练建议仍需领域规则与验证。"
+
+SECTION 04, orange-framed to distinguish custom integration: "怎样驱动你的 3D 人物？"
+Show a clear downstream pipeline:
+"FreeMoCap 三维关键点"
+→ "骨架拟合 / IK 求姿态"
+→ "动作重定向"
+→ "烘焙动画片段"
+→ "播放器驱动人物"
+Explain under relevant nodes:
+"把位置转成目标骨架所需的姿态与旋转"
+"骨骼对应、参考姿态、坐标轴、单位与身材比例"
+"修正脚滑与穿插，处理根位移；按目标导出动画"
+"Three.js / Unity / Unreal：循环、混合、过渡与打断"
+Add side input illustration of an articulated avatar:
+"角色前提：人物网格 + 骨骼 + 蒙皮"
+"仅有静态外观文件，还需要绑定。"
+Prominent distinction: "动作数据 ≠ 任意模型即插即用；角色适配与运行控制需要额外开发。"
+Small note: "面部表情、说话口型、视线与行为决策需要单独设计。"
+
+SECTION 05: "可以用在哪里？"
+Five compact rows with "场景 / 得到的价值 / 还需补齐":
+"动画与游戏｜把真人表演变成动作素材｜角色适配与动画清理"
+"运动教学｜回放动作，比较关节轨迹与节奏｜指标定义与专业解释"
+"科研实验｜获取可分析的三维运动序列｜精度验证与实验设计"
+"互动装置｜用身体动作触发内容或反馈｜动作识别与延迟优化"
+"动作数据集｜积累真人动作样本｜标注、质量检查与骨架统一"
+
+SECTION 06, visually emphasized personal relevance: "对你的价值：为“小云”增加真人动作来源"
+"你表演专属挥手 / 伸懒腰 → FreeMoCap 捕捉 → 适配小云骨架 → 加入动作库 → 对话与事件触发播放"
+Two-source mini diagram converging into one library:
+"Kimodo：描述 → 生成动作"
+"FreeMoCap：表演 → 还原动作"
+Both → "统一角色动作库"
+Three short statements:
+"外观资产决定她长什么样"
+"动作资产决定她怎么动"
+"角色系统决定何时做什么"
+Value line: "降低真人动作采集门槛，保留你的动作习惯，形成可复用的专属素材。"
+
+SECTION 07: "工程组成与可扩展方向"
+"界面：React / Electron　↔　REST / WebSocket　↔　Python / FastAPI 后端"
+"采集同步：SkellyCam / SkellySync　｜　检测：SkellyTracker　｜　几何与后处理　｜　导出"
+"可扩展：替换姿态模型、增加质量评估、批量处理、统一动作库、固定角色重定向、开发业务指标。"
+Small fact: "v2 包含实时与离线流程；实际速度取决于模型、硬件、画面与摄像头数量。"
+
+SECTION 08: "能力边界与落地顺序"
+Use modest caution color, not alarm styling.
+"重建质量受同步、标定、遮挡、光照与识别误差影响；平滑不等于准确。"
+"手部、面部、多人及导出兼容性需按版本核查；三维点不直接等于力、力矩或机器人控制命令。"
+"v2.0.0-alpha.25 发布说明列出约 10% 的尺度偏差问题；这不是通用精度指标。"
+"上游代码采用 AGPL-3.0，集成和分发需考虑许可证要求。"
+Implementation sequence in four clear chevrons:
+"样例录像跑通 → 验证真实采集 → 适配一个角色 → 扩充动作与产品功能"
+
+FOOTER small but readable:
+"研究整理：2026-09-27｜版本基准：v2.0.0-alpha.25"
+"来源：github.com/freemocap/freemocap｜docs.freemocap.org｜官方发布说明"
+"本图为原理与能力示意；当前本地实验网页使用合成数据，尚未实测摄像头采集。"
+
+Design requirements: use headings 01–08 once each; keep exact numeric version and the qualified 10% statement; maximum two main columns within sections, full-width arrows across integration section; generous margins; all text fits; crisp rich diagrams with matching labels; no invented logos or source claims. Prioritize readability and complete causal connections over ornament.

@@ -1,22 +1,25 @@
 # 多个 Web 演示的远端部署
 
-本仓库沿用 GitHub Pages 的统一站点结构，通过 `.github/workflows/deploy-pages.yml` 构建和发布。当前发布清单只包含 **003 · Lofi Cities**，其他本地子项目尚未加入本次发布。
+本仓库沿用 GitHub Pages 的统一站点结构，通过 `.github/workflows/deploy-pages.yml` 构建和发布。当前发布清单包含 **002 · FreeMoCap 动作实验室** 和 **003 · Lofi Cities**；统一构建发布，保留已经上线的演示。
 
 ## 站点入口
 
 - 站点索引：`https://yydshly.github.io/0927_codex_project/`
+- FreeMoCap 理解与应用：`https://yydshly.github.io/0927_codex_project/002-freemocap-lab/#capabilities`
+- FreeMoCap 动作回放 / 重建实验：演示地址加 `#motion` / `#geometry`。
 - Lofi Cities 独立演示：`https://yydshly.github.io/0927_codex_project/003-lofi-cities/`
 - 产品理解：演示地址加 `#understanding`。
 
-003 已于 2026-09-27 完成首次发布和远端网页验证，演示地址已回填 `project.json` 的 `demo` 字段。其他项目仅在实测上线后填写该字段。
+003 已于 2026-09-27 完成首次发布和远端网页验证。002 加入本次发布；远端资源与交互验证成功后回填 `project.json` 的 `demo` 字段。
 
 ## 构建和发布
 
-`docs/site-projects.json` 是唯一的已发布项目清单。`scripts/build_site.py` 构建其中每个项目，汇总到 `dist/pages/`，并生成带真实截图、源网页名称和来源链接的站点索引。脚本要求输出目录为空，避免旧文件误入发布物；可用 `--output` 指定另一个空目录。
+`docs/site-projects.json` 是唯一的发布清单，`entrypoints` 配置各项目自己的体验与理解入口。`scripts/build_site.py` 支持项目的 `web/build.py` 或 `web/build.mjs`，汇总到 `dist/pages/`。站点摘要按能力、效果、场景、扩展与个人意义加粗分项，完整引导图按原始比例呈现。脚本要求输出目录为空，避免旧文件误入发布物；可用 `--output` 指定另一个空目录。
 
 ```sh
 python scripts/projects.py check
 python -m unittest discover -s scripts -p 'test_*.py'
+npm --prefix projects/002-freemocap-lab/web test
 npm --prefix projects/003-lofi-cities/web run check
 npm --prefix projects/003-lofi-cities/web test
 python scripts/build_site.py
@@ -28,7 +31,7 @@ python scripts/build_site.py
 
 ## 增加其他子项目
 
-1. 将源码和研究记录提交，确保已有构建能输出 `dist/<编号-名称>/`。
+1. 将源码和研究记录提交，Python 构建输出到 `dist/<编号-名称>/`，Node 构建输出到项目的 `web/dist/`。
 2. 将目录名加入 `docs/site-projects.json`，同时补齐工作流中的项目检查和路径触发规则。
 3. 统一构建、发布全部已上线项目，避免单独部署覆盖其他演示。
 4. 实测远端资源、交互和截图，确认后填写 `demo` 并同步首页索引。

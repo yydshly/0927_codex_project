@@ -1,0 +1,13 @@
+{
+  "id": 2,
+  "order": 2,
+  "slug": "freemocap-lab",
+  "name": "FreeMoCap 动作实验室",
+  "summary": "能力：从同步多视角视频重建真人三维骨架与动作数据；呈现效果：骨架回放、关节轨迹及数据导出，本页提供合成回放与重建实验；使用场景：动画素材、运动教学、科研、体感交互与动作数据集；可扩展方向：质量评估、批处理、角色重定向与统一动作库；对我的意义：为“小云”采集专属真人表演，与 Kimodo 生成动作共同进入角色动作库。",
+  "source": "https://github.com/freemocap/freemocap",
+  "source_type": "github",
+  "status": "已完成",
+  "demo": "",
+  "cover": "assets/freemocap-capability-map.png",
+  "cover_alt": "FreeMoCap 完整能力引导图：输入、摄像头条件、重建原理、输出、角色驱动、使用场景、小云项目价值与能力边界；研究示意，非实拍结果。"
+}

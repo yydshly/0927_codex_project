@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="理解 FreeMoCap 的本质、摄像头要求、三维重建原理、输入输出与角色驱动。比较 Kimodo，探索使用场景与个人价值，附交互实验和高清全景图。">
+  <title>FreeMoCap · 动作实验室</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e151c'/%3E%3Cpath d='M8 23V9h16M8 16h12' stroke='%235ee6bd' stroke-width='3' fill='none'/%3E%3Ccircle cx='24' cy='23' r='3' fill='%235ee6bd'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./src/app.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到实验内容</a>
+  <aside class="sidebar">
+    <a class="brand" href="#motion" aria-label="FreeMoCap 动作实验室首页"><span class="brand-mark">F<span>·</span></span><span>FreeMoCap<small>动作实验室</small></span></a>
+    <div class="side-label">EXPLORE / 探索</div>
+    <nav role="tablist" aria-label="实验室内容" aria-orientation="vertical">
+      <button id="tab-motion" role="tab" aria-controls="motion" aria-selected="true" data-view="motion"><span class="nav-symbol">⌁</span>动作数据<span class="nav-number">01</span></button>
+      <button id="tab-geometry" role="tab" aria-controls="geometry" aria-selected="false" tabindex="-1" data-view="geometry"><span class="nav-symbol">⌖</span>重建原理<span class="nav-number">02</span></button>
+      <button id="tab-capabilities" role="tab" aria-controls="capabilities" aria-selected="false" tabindex="-1" data-view="capabilities"><span class="nav-symbol">▦</span>理解与应用<span class="nav-number">03</span></button>
+    </nav>
+    <div class="sidebar-note"><span class="small-label">从影像到运动数据</span><p>识别关键点<br>恢复空间位置<br>理解动作变化</p><div class="tiny-diagram" aria-hidden="true"><i></i><b></b><i></i><b></b><i></i></div></div>
+    <div class="side-bottom"><a href="https://github.com/freemocap/freemocap" target="_blank" rel="noopener noreferrer">查看上游项目 ↗</a><span>研究基准 v2.0.0-alpha.25</span><span>独立教学演示 · 非官方界面</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><span>GITHUB 项目研究 <span class="divider">/</span> <strong>002</strong></span><span class="local-tag">本地计算 · 无需上传</span></header>
+    <main id="main">
+      <section id="motion" class="view" role="tabpanel" aria-labelledby="tab-motion">
+        <div class="page-heading"><div><span class="eyebrow">MOTION EXPLORER</span><h1>让动作成为数据<span class="accent">。</span></h1><p>旋转骨架、逐帧回放，观察一个动作如何变成轨迹与角度。</p></div><button class="button secondary" id="open-import">＋ 导入身体数据</button></div>
+        <div class="source-strip"><span id="data-source" class="source-badge">合成动作 · 教学演示</span><span id="data-description">参数化生成的 17 点骨架，不代表 FreeMoCap 实测精度。</span></div>
+        <div class="motion-layout">
+          <div class="panel scene-panel">
+            <div class="panel-heading"><span><i class="status-dot"></i>三维骨架</span><div class="segmented" aria-label="选择教学动作"><button class="active" data-motion="squat" aria-pressed="true">深蹲</button><button data-motion="walk" aria-pressed="false">行走</button><button data-motion="reach" aria-pressed="false">抬手</button></div></div>
+            <div class="scene-wrap"><canvas id="scene" aria-label="可旋转的三维身体骨架，左侧青色，右侧蓝色"></canvas><div class="scene-caption"><span>WORLD SPACE</span><span id="coordinate-label">显示坐标 · 米 / Y 向上</span></div><div class="scene-legend"><span class="legend-left">左侧</span><span class="legend-right">右侧</span><span class="legend-trail">右手轨迹</span></div><div class="scene-tools"><button id="rotate-left" aria-label="向左旋转视角">↶</button><button id="reset-view">复位</button><button id="rotate-right" aria-label="向右旋转视角">↷</button></div><span class="drag-hint">拖动旋转 · 滚轮缩放</span></div>
+            <div class="transport"><button id="play" class="play-button" aria-label="暂停回放">Ⅱ</button><span id="timecode">00.00 / 06.00</span><input id="timeline" type="range" min="0" max="179" value="0" aria-label="回放帧"><label class="speed-label">速度<select id="speed" aria-label="回放速度"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label></div>
+            <div class="scene-footer"><span id="frame-meta">180 帧 / 30 FPS / 17 关键点</span><button id="export-csv" class="text-button">导出当前动作 CSV ↓</button></div>
+          </div>
+          <aside class="insights">
+            <div class="panel metric-panel"><div class="panel-heading"><span>动作读数</span><span class="small-label">当前帧</span></div><div class="metric"><span>左膝夹角</span><div><strong id="knee-angle">—</strong><span> °</span></div></div><canvas id="angle-chart" aria-label="整个动作中左膝夹角的变化曲线"></canvas><div class="chart-labels"><span>开始</span><span>整段动作</span><span>结束</span></div><div class="metric-foot"><span>髋部中点高度</span><strong id="hip-height">—</strong></div><p class="microcopy">夹角由髋、膝、踝三点计算；伸直时接近 180°。不作为训练评分。</p></div>
+            <div class="panel cameras-panel"><div class="panel-heading"><span>同一动作，两个视角</span></div><div class="camera-cell"><span>A / 正面</span><canvas id="camera-a" aria-label="骨架的正面二维投影"></canvas></div><div class="camera-cell"><span>B / 侧面</span><canvas id="camera-b" aria-label="骨架的侧面二维投影"></canvas></div><p class="microcopy">由三维数据投影生成，非摄像头实拍。</p></div>
+          </aside>
+        </div>
+        <div class="takeaway"><span class="takeaway-number">01 → 02</span><p><strong>位置随时间变化，就形成了动作。</strong>下一步看看：两个平面画面为什么能恢复深度？</p><button class="text-button" data-go="geometry">进入重建实验 →</button></div>
+      </section>
+      <section id="geometry" class="view" role="tabpanel" aria-labelledby="tab-geometry" hidden>
+        <div class="page-heading"><div><span class="eyebrow">TRIANGULATION LAB</span><h1>深度，来自不同视角<span class="accent">。</span></h1><p>改变机位间距与观测误差，看两条视线如何确定同一个空间点。</p></div><span class="source-badge">简化双目模型</span></div>
+        <div class="geometry-layout">
+          <div class="panel geometry-panel"><div class="panel-heading"><span>俯视图 · 两个平行摄像头</span><span class="small-label">单位：米</span></div><canvas id="geometry-canvas" aria-label="两个摄像头的视线、真实点与重建点的俯视几何图"></canvas><div class="geometry-legend"><span class="legend-left">A 观测射线</span><span class="legend-right">B 观测射线</span><span>○ 真实点</span><span class="legend-estimate">＋ 重建点</span></div><div class="formula"><span>理想平行双目</span><strong>Z = f × B / d</strong><p>深度 Z = 焦距 f × 机位间距 B ÷ 视差 d</p></div></div>
+          <div class="panel controls-panel"><div class="panel-heading"><span>亲手改变条件</span><button id="reset-geometry" class="text-button">重置</button></div><label class="range-label" for="baseline">摄像头间距 B <output id="baseline-out">1.20 m</output></label><input id="baseline" type="range" min="0.2" max="3" step="0.05" value="1.2"><label class="range-label" for="depth">目标深度 Z <output id="depth-out">3.00 m</output></label><input id="depth" type="range" min="1" max="6" step="0.1" value="3"><label class="range-label" for="noise">二维定位偏移 <output id="noise-out">±0 px</output></label><input id="noise" type="range" min="0" max="8" step="0.5" value="0"><label class="range-label" for="sync">两机拍摄时间差 <output id="sync-out">0 ms</output></label><input id="sync" type="range" min="0" max="120" step="10" value="0"><label class="check-label"><input id="second-camera" type="checkbox" checked>启用摄像头 B</label><div class="experiment-readings"><div><span>观测视差 d</span><strong id="disparity">—</strong></div><div><span>重建深度</span><strong id="reconstructed-depth">—</strong></div><div><span>深度绝对误差</span><strong id="depth-error">—</strong></div></div><p id="experiment-insight" class="experiment-insight" aria-live="polite"></p><p class="microcopy">焦距固定为 700 px；目标横向速度设为 0.8 m/s。偏移为左右各相反方向的固定像素扰动，仅用于解释几何关系。</p></div>
+        </div>
+        <div class="learning-grid"><article><span class="step-number">01</span><h2>AI 找出“这是手腕”</h2><p>YOLOX 定位人体，RTMPose 或 MediaPipe 预测二维关键点。输出的是每台摄像头里的像素坐标。</p></article><article><span class="step-number">02</span><h2>标定建立空间关系</h2><p>已知尺寸的 ChArUco 板帮助估计镜头参数与机位关系。一个像素点因而对应一条空间射线。</p></article><article><span class="step-number">03</span><h2>几何求解三维位置</h2><p>FreeMoCap 使用 DLT 建立多视角约束，再用 SVD 求解。此实验采用平行双目的解析公式。</p></article><article><span class="step-number">04</span><h2>检查并整理骨架</h2><p>把三维点投回画面检查误差，再做平滑、短暂丢点补偿和骨长约束。平滑不等于测量准确。</p></article></div>
+        <details class="technical-details"><summary>展开数学原理与代码对应</summary><div class="details-content"><p class="math">s [u, v, 1]ᵀ = K [R | t] [X, Y, Z, 1]ᵀ</p><p>K 表示内参，R、t 表示世界坐标到摄像头坐标的变换。每台摄像头提供两条线性约束，组合为 A·X = 0；SVD 求得齐次坐标，再除以最后一个分量得到 XYZ。</p><p>本页的双目公式假设两台相机平行、焦距一致且已去畸变。实际 FreeMoCap 支持更一般的多机位情况，并处理异常观测。</p><a href="https://github.com/freemocap/freemocap/blob/main/freemocap/core/tasks/triangulation/helpers/triangulate_simple.py" target="_blank" rel="noopener noreferrer">阅读上游 DLT / SVD 实现 ↗</a></div></details>
+      </section>
+      <section id="capabilities" class="view understanding-view" role="tabpanel" aria-labelledby="tab-capabilities" hidden>
+        <div class="page-heading"><div><span class="eyebrow">FROM UNDERSTANDING TO APPLICATION</span><h1>从真人动作，到你的 3D 角色<span class="accent">。</span></h1><p>把我们讨论过的本质、输入、原理与应用，放回同一条完整链路。</p></div><span class="source-badge">理解汇总 · 2026-09-27</span></div>
+        <div class="understanding-hero">
+          <article class="panel essence-card">
+            <span class="eyebrow">先记住这一件事</span><h2>FreeMoCap 把真实发生的动作，<br>变成可以计算和复用的三维数据。</h2>
+            <p>它是一套开源无标记动作捕捉系统，把<strong>采集、同步、标定、人体识别、三维重建和导出</strong>串起来。动作数据可以用于分析，也可以经过适配后驱动人物。</p>
+            <dl class="overview-digest">
+              <div><dt><strong>能力</strong></dt><dd>从同步多视角视频重建真人三维骨架与动作数据。</dd></div>
+              <div><dt><strong>呈现效果</strong></dt><dd>骨架回放、关节轨迹与数据导出；本页提供合成回放、重建实验和完整引导图。</dd></div>
+              <div><dt><strong>使用场景</strong></dt><dd>动画素材、运动教学、科研、体感交互与动作数据集。</dd></div>
+              <div><dt><strong>可扩展方向</strong></dt><dd>质量评估、录像批处理、角色重定向与统一动作库。</dd></div>
+              <div><dt><strong>对我的意义</strong></dt><dd>为“小云”采集专属真人表演，与 Kimodo 生成动作共同进入角色动作库。</dd></div>
+            </dl>
+          </article>
+          <aside class="panel poster-card"><button type="button" class="poster-preview" data-open-map aria-label="放大阅读 FreeMoCap 能力全景图"><img src="./assets/freemocap-capability-map.png" width="2700" height="7140" alt="FreeMoCap 完整引导图，涵盖输入、三维重建、角色驱动和应用价值" loading="lazy"><span>完整引导图 · 点击放大 ↗</span></button><div class="poster-caption"><strong>一张图串起全部理解</strong><span>高清长图 · 可保存 / 放大</span><a href="./assets/freemocap-capability-map.png" download>下载 PNG ↓</a><a href="./assets/freemocap-capability-map.svg" download>下载矢量 SVG ↓</a></div></aside>
+        </div>
+        <div class="understanding-nav" role="navigation" aria-label="理解汇总章节"><span>按问题阅读</span><button data-scroll="understanding-input">摄像头与输入</button><button data-scroll="understanding-principle">技术原理</button><button data-scroll="understanding-output">输出与效果</button><button data-scroll="understanding-drive">驱动 3D 人物</button><button data-scroll="understanding-compare">与 Kimodo 比较</button><button data-scroll="understanding-value">场景与个人价值</button><button data-scroll="understanding-limits">边界与来源</button></div>
+        <p class="guide-note">本页是研究整理与教学演示。动作回放使用合成数据或你导入的数据；网页未连接摄像头，也未运行 FreeMoCap 的姿态推理。</p>
+
+        <article id="understanding-input" class="knowledge-section" tabindex="-1">
+          <div class="knowledge-heading"><span class="knowledge-number">01</span><div><span class="eyebrow">INPUT & SETUP</span><h2>一定要连接多个摄像头，才能运行吗？</h2></div></div>
+          <p class="section-lead"><strong>多视角三维重建需要至少两个有效视角；处理已有录像时，不必连接摄像头。</strong>真正需要的是多个视角的数据，以及与这些画面对应的标定信息。</p>
+          <div class="answer-grid">
+            <article class="panel answer-card"><span class="card-index">A / 现场采集</span><h3>摄像头接入电脑</h3><p>两台或更多摄像头从不同角度，同时拍摄同一个人的动作。先标定，再采集与处理。</p><span class="answer-tag">输入：实时画面 + 相机标定</span></article>
+            <article class="panel answer-card"><span class="card-index">B / 已有录像</span><h3>导入后离线处理</h3><p>使用提前拍摄、时间对齐的多角度录像，以及对应标定数据。计算阶段可以断开摄像头。</p><span class="answer-tag">输入：同步视频 + 标定信息</span></article>
+          </div>
+          <div class="condition-strip"><strong>两种方式都要满足</strong><span>同一次动作</span><span>同一时刻对齐</span><span>共同看见目标点</span><span>相机移动后重新标定</span></div>
+          <details class="knowledge-detail"><summary>只有一个摄像头，或者暂时没有摄像头呢？</summary><div><p><strong>单摄像头</strong>可用于采集或二维识别，但不能完成多视角三角测量。单目 AI 可以根据学到的人体规律推断深度，那是另一种估计方式。</p><p><strong>没有摄像头</strong>也能先用已有的合格样例录像研究流程，或在本实验室观察合成骨架与几何关系。不同时间分别拍的正面、侧面视频，不能直接当作同步多视角录像。</p></div></details>
+          <a class="source-inline" href="https://docs.freemocap.org/freemocap/docs/guides/posthoc-mocap/" target="_blank" rel="noopener noreferrer">依据：官方离线处理流程 ↗</a>
+        </article>
+
+        <article id="understanding-principle" class="knowledge-section" tabindex="-1">
+          <div class="knowledge-heading"><span class="knowledge-number">02</span><div><span class="eyebrow">HOW IT WORKS</span><h2>“多角度拍摄，再算法合成”具体是什么？</h2></div></div>
+          <p class="section-lead">更准确的名字是<strong>多视角三维重建</strong>。AI 找出画面里的身体部位，几何算法计算空间位置，再把每一帧的位置连成动作。</p>
+          <ol class="knowledge-pipeline">
+            <li><span>01</span><h3>同步画面</h3><p>确保不同摄像头看到的是同一时刻的动作。</p></li>
+            <li><span>02</span><h3>标定相机</h3><p>用已知尺寸的 ChArUco 板，求镜头参数、畸变、机位关系与尺度。</p></li>
+            <li><span>03</span><h3>AI 找关键点</h3><p>RTMPose / MediaPipe 等识别各画面里的肩、肘、手腕、髋、膝。</p></li>
+            <li><span>04</span><h3>几何求三维</h3><p>去畸变，组合多视角约束，用 DLT + SVD 求每个点的 XYZ。</p></li>
+            <li><span>05</span><h3>整理动作序列</h3><p>检查重投影误差，处理异常、抖动与缺失，按流程施加骨架约束。</p></li>
+          </ol>
+          <div class="wrist-example panel"><div><span class="eyebrow">以抬起右手为例</span><h3>两个视角，共同定位同一只手腕。</h3><p>A 画面给出一条从相机出发的空间射线，B 画面提供另一条。理想情况下射线相交；真实观测有误差，需要求符合多个视角约束的位置。</p><p class="microcopy">处理的是坐标与时间序列。相机不同步、关键点被遮挡或标定不准，都会影响重建；平滑并不等于准确。</p></div><div class="principle-cta"><span class="formula-label">理想平行双目</span><strong>Z = fB / d</strong><p>深度 = 焦距 × 机位间距 ÷ 视差</p><button class="button secondary" data-go="geometry">拖动参数，观察深度变化 →</button></div></div>
+        </article>
+
+        <article id="understanding-output" class="knowledge-section" tabindex="-1">
+          <div class="knowledge-heading"><span class="knowledge-number">03</span><div><span class="eyebrow">OUTPUT & RESULTS</span><h2>输出什么？最终能看到什么？</h2></div></div>
+          <div class="output-grid">
+            <article class="panel answer-card"><span class="card-index">看动作</span><h3>三维骨架与轨迹</h3><p>回放、逐帧检查、换角度观察，看到各身体部位如何随时间运动。</p><button class="text-button" data-go="motion">查看本页合成回放 →</button></article>
+            <article class="panel answer-card"><span class="card-index">算数据</span><h3>结构化坐标序列</h3><p>NPY / CSV / Parquet 等数据，另含追踪器定义与标定信息。</p><code class="data-shape">帧 × 关键点 × XYZ</code></article>
+            <article class="panel answer-card"><span class="card-index">接工作流</span><h3>检查结果与动画素材</h3><p>二维关键点标注视频；按版本与配置导出 Blender 场景，继续进行动画加工。</p><span class="answer-tag">具体文件与骨架定义依配置</span></article>
+          </div>
+          <div class="derived-note"><strong>数据之后，才是你的业务逻辑。</strong><p>关节角度、速度、节奏、左右差异可以在坐标上计算；“动作是否标准”“为什么有问题”“应该怎样训练”，还需要领域规则和验证。</p></div>
+        </article>
+
+        <article id="understanding-drive" class="knowledge-section integration-section" tabindex="-1">
+          <div class="knowledge-heading"><span class="knowledge-number">04</span><div><span class="eyebrow">FROM DATA TO A MOVING CHARACTER</span><h2>都是动作文件，就能让 3D 人物动起来吗？</h2></div></div>
+          <p class="section-lead"><strong>最终可以，但要把动作适配到人物骨架。</strong>FreeMoCap 的核心数据是关节点位置；驱动角色还要得到目标骨骼所需的姿态与旋转，处理参考姿态、坐标轴、单位和身材比例。</p>
+          <div class="role-triad"><div><span>人物资产</span><strong>她长什么样</strong><p>网格 + 骨骼 + 蒙皮</p></div><div><span>动作资产</span><strong>她怎么动</strong><p>随时间变化的位置与姿态</p></div><div><span>角色系统</span><strong>她何时做什么</strong><p>选择、播放、混合与打断</p></div></div>
+          <ol class="knowledge-pipeline drive-pipeline">
+            <li class="native-step"><span>FreeMoCap</span><h3>三维关键点</h3><p>还原真人运动的坐标序列。</p></li>
+            <li><span>后续适配</span><h3>求骨架姿态</h3><p>骨架拟合 / IK，把点的位置转换成骨架姿态。</p></li>
+            <li><span>后续适配</span><h3>动作重定向</h3><p>对齐骨骼、参考姿态与身材比例。</p></li>
+            <li><span>动画制作</span><h3>烘焙与修正</h3><p>处理脚滑、穿插、根位移和动作衔接。</p></li>
+            <li><span>你的产品</span><h3>驱动人物</h3><p>通过 Three.js、Unity 或 Unreal 等播放器执行。</p></li>
+          </ol>
+          <div class="answer-grid"><div class="integration-note"><h3>先有能被驱动的身体</h3><p>只有漂亮外观的静态模型，需要先绑骨与蒙皮。动作数据通常不能唯一确定所有骨骼扭转，也不是任意人物都可直接播放的通用文件。</p></div><div class="integration-note"><h3>再补齐角色表现</h3><p>面部表情、说话口型、视线与行为决策需要单独设计。FreeMoCap 提供动作来源，不自动完成整个桌面女友系统。</p></div></div>
+          <p class="guide-note">这里展示的是集成路线。本实验室尚未完成真实角色的重定向或播放引擎接入。</p>
+        </article>
+
+        <article id="understanding-compare" class="knowledge-section" tabindex="-1">
+          <div class="knowledge-heading"><span class="knowledge-number">05</span><div><span class="eyebrow">KIMODO × FREEMOCAP</span><h2>和前面研究的 Kimodo，有什么本质差异？</h2></div></div>
+          <p class="section-lead"><strong>Kimodo 根据描述生成动作，FreeMoCap 从真人表演中还原动作。</strong>它们可以成为同一个角色的两种动作来源。</p>
+          <div class="panel"><div class="table-scroll" tabindex="0" role="region" aria-label="Kimodo 与 FreeMoCap 对照，可横向滚动"><table class="comparison-table"><thead><tr><th>比较维度</th><th>Kimodo</th><th>FreeMoCap</th></tr></thead><tbody>
+            <tr><td>输入</td><td>文字、关键姿态、运动路径等约束</td><td>多视角同步画面 + 对应标定数据</td></tr>
+            <tr><td>底层方法</td><td>动作扩散模型，根据条件逐步生成动作序列</td><td>AI 二维识别 + 多视角几何重建 + 时序处理</td></tr>
+            <tr><td>输出重点</td><td>关节位置、旋转与身体移动等生成数据</td><td>关节点随时间变化的三维位置数据</td></tr>
+            <tr><td>同样是挥手</td><td>输入“开心地挥手”，生成一种表演</td><td>拍下你的挥手，还原你的动作与节奏</td></tr>
+            <tr><td>核心价值</td><td>创作新动作、产生多个版本</td><td>采集真实表演、保留动作特征</td></tr>
+            <tr><td>共同的下一步</td><td colspan="2">适配目标角色骨架，检查修正后，交给动画播放器使用。</td></tr>
+          </tbody></table></div></div>
+          <a class="source-inline" href="https://github.com/nv-tlabs/kimodo" target="_blank" rel="noopener noreferrer">依据：Kimodo 官方实现 ↗</a>
+        </article>
+
+        <article id="understanding-value" class="knowledge-section" tabindex="-1">
+          <div class="knowledge-heading"><span class="knowledge-number">06</span><div><span class="eyebrow">USE CASES & YOUR PROJECT</span><h2>对你的价值：把表演变成可复用的资产。</h2></div></div>
+          <div class="companion-case panel"><span class="eyebrow">桌面女友“小云”</span><h3>你演一段专属问候，让她以后都能使用。</h3><p class="companion-flow">真人表演 <span>→</span> FreeMoCap 捕捉 <span>→</span> 适配小云骨架 <span>→</span> 统一动作库 <span>→</span> 对话 / 事件触发播放</p><p>Kimodo 可以提供描述生成的定制动作；FreeMoCap 可以保留你的挥手节奏、身体习惯与表演细节。先适配一具角色，再扩充动作库。</p></div>
+          <div class="scenario-grid">
+            <article><span>01</span><h3>动画与游戏</h3><p>把真人表演转换成素材。</p><small>还需角色适配与动画清理</small></article>
+            <article><span>02</span><h3>运动教学</h3><p>回放动作，比较轨迹与节奏。</p><small>还需指标定义与专业解释</small></article>
+            <article><span>03</span><h3>科研实验</h3><p>获取结构化三维运动序列。</p><small>还需精度验证与实验设计</small></article>
+            <article><span>04</span><h3>互动装置</h3><p>用身体动作触发内容或反馈。</p><small>还需动作识别与延迟优化</small></article>
+            <article><span>05</span><h3>动作数据集</h3><p>积累真人动作样本。</p><small>还需标注与骨架、质量统一</small></article>
+          </div>
+          <details class="knowledge-detail"><summary>工程组成与可以扩展的方向</summary><div><p>v2 的 React / Electron 界面通过 REST / WebSocket 与 Python / FastAPI 后端协作。相关组件包括 SkellyCam、SkellySync、SkellyTracker，以及标定、三角测量、后处理和导出模块。</p><p><strong>可以扩展：</strong>替换姿态模型、增加质量评估、批量处理录像、统一动作库、开发固定角色重定向，以及面向具体场景的动作指标。</p><p>它把常见设备、预训练模型与几何计算组织成完整流程，降低了获取动作数据的门槛；实际搭建、性能和质量仍需要验证。</p></div></details>
+          <div class="next-steps"><span>建议落地顺序</span><ol><li>样例录像跑通</li><li>验证真实采集</li><li>适配一个角色</li><li>扩充动作与产品功能</li></ol></div>
+        </article>
+
+        <article id="understanding-limits" class="knowledge-section" tabindex="-1">
+          <div class="knowledge-heading"><span class="knowledge-number">07</span><div><span class="eyebrow">EVIDENCE & BOUNDARIES</span><h2>哪些已经展示，哪些还需要验证？</h2></div></div>
+          <div class="panel boundaries"><div class="panel-heading"><span>上游能力与本实验室的实际范围</span><span class="small-label">研究基准 v2.0.0-alpha.25</span></div><div class="table-scroll" tabindex="0" role="region" aria-label="上游与本实验室能力边界，可横向滚动"><table><thead><tr><th>能力</th><th>上游状态与条件</th><th>本实验室展示</th></tr></thead><tbody>
+            <tr><td>三维骨架与轨迹</td><td>标定后的多视角关键点可重建为三维数据</td><td>合成骨架回放；本地 NPY 导入</td></tr>
+            <tr><td>身体、手与脸</td><td>模型与配置决定关键点覆盖范围</td><td>仅身体主骨架，无手指与面部网格</td></tr>
+            <tr><td>实时处理</td><td>v2 包含实时与离线流程；速度依设备与配置</td><td>数据回放，不运行摄像头推理</td></tr>
+            <tr><td>质心与生物力学</td><td>质心依据人体分段参数估算</td><td>髋部中点不等于人体质心；三点夹角不等于完整生物力学关节角</td></tr>
+            <tr><td>多人跟踪</td><td>需按版本核查，不能视为已成熟支持</td><td>单人骨架</td></tr>
+            <tr><td>驱动角色</td><td>通过导出与下游动画加工继续集成</td><td>说明适配路线，未接入真实角色</td></tr>
+          </tbody></table></div></div>
+          <div class="notice"><span>版本提示</span><p><strong>v2.0.0-alpha.25 仍是测试版。</strong>发布说明列出约 10% 的重建尺度偏差问题。这是该版本的已知问题，不是统一精度指标；实际测量需独立验证。</p><a href="https://github.com/freemocap/freemocap/releases/tag/v2.0.0-alpha.25" target="_blank" rel="noopener noreferrer">发布说明 ↗</a></div>
+          <p class="guide-note">三维关键点不直接等于力、力矩或机器人可执行命令。上游代码采用 AGPL-3.0，集成和分发需考虑许可证要求。</p>
+          <div class="sources"><h3>一手资料与后续阅读</h3><a href="https://github.com/freemocap/freemocap" target="_blank" rel="noopener noreferrer">FreeMoCap 仓库 ↗</a><a href="https://docs.freemocap.org/freemocap/docs/guides/posthoc-mocap/" target="_blank" rel="noopener noreferrer">已有录像的离线处理 ↗</a><a href="https://docs.freemocap.org/freemocap/docs/architecture/backend-calibration/" target="_blank" rel="noopener noreferrer">相机标定 ↗</a><a href="https://docs.freemocap.org/freemocap/docs/architecture/backend-mocap/" target="_blank" rel="noopener noreferrer">骨架处理流程 ↗</a><a href="https://github.com/freemocap/freemocap_blender_addon" target="_blank" rel="noopener noreferrer">Blender 插件 ↗</a><a href="https://github.com/nv-tlabs/kimodo" target="_blank" rel="noopener noreferrer">Kimodo ↗</a><a href="https://github.com/freemocap/freemocap/issues/597" target="_blank" rel="noopener noreferrer">多人跟踪议题 ↗</a><p>整理于 2026-09-27。部分新文档由 AI 起草，关键判断参考上游代码与发布说明。本项目未实测真实采集、推理性能与测量精度。</p></div>
+          <div class="guide-actions"><button class="text-button" data-scroll="capabilities">回到理解汇总顶部 ↑</button><button class="text-button" data-open-map>放大阅读能力全景图 ↗</button></div>
+        </article>
+      </section>
+      <footer>FREEMOCAP LAB <span>002 / 开源项目研究</span></footer>
+    </main>
+  </div>
+  <dialog id="import-dialog" aria-labelledby="import-title"><form id="import-form"><div class="dialog-heading"><div><span class="eyebrow">LOCAL DATA</span><h2 id="import-title">导入 FreeMoCap 身体数据</h2></div><button id="close-import" type="button" class="icon-button" aria-label="关闭导入窗口">×</button></div><p>选择已处理的三维关键点 .npy 文件。数据只在当前浏览器中解析，不会上传。</p><label class="file-picker">选择 .npy 文件<input id="npy-file" type="file" accept=".npy" required></label><p class="microcopy">支持 C-order、float32 / float64，形状为 [帧数, 关键点数, 3]。最大 64 MB / 30,000 帧。MediaPipe 身体数组为 33 点，RTMPose WholeBody 为 133 点。</p><button id="load-sample" class="text-button" type="button">没有数据？载入合成 NPY 格式样例 →</button><div class="form-grid"><label>骨架定义<select id="import-schema"><option value="mediapipe">MediaPipe（身体 33 点）</option><option value="rtmpose">RTMPose / COCO（17 或 133 点）</option></select></label><label>帧率 FPS<input id="import-fps" type="number" min="1" max="240" value="30" required></label><label>坐标单位<select id="import-unit"><option value="0.001">毫米 mm</option><option value="1">米 m</option></select></label><label>原数据向上轴<select id="import-up"><option value="z">Z 向上</option><option value="y">Y 向上</option></select></label></div><p class="microcopy">为方便显示，会将首帧髋部居中，并以采样数据的最低身体点设置显示地面；角度保留，显示高度不是标定地面高度。</p><p id="import-error" class="error" role="alert"></p><button class="button primary" type="submit">载入并回放</button></form></dialog>
+  <dialog id="map-dialog" class="map-dialog" aria-labelledby="map-title">
+    <div class="dialog-heading"><div><span class="eyebrow">THE COMPLETE PICTURE</span><h2 id="map-title">FreeMoCap 能力全景图</h2></div><button id="close-map" type="button" class="icon-button" aria-label="关闭全景图">×</button></div>
+    <div class="map-toolbar"><label for="map-zoom">阅读缩放 <output id="map-zoom-out">100%</output></label><input id="map-zoom" type="range" min="100" max="250" step="25" value="100" aria-label="全景图阅读缩放"><button id="fit-map" class="text-button" type="button">适应宽度</button><a href="./assets/freemocap-capability-map.png" download>下载高清 PNG ↓</a><a href="./assets/freemocap-capability-map.svg" download>下载 SVG ↓</a></div>
+    <p class="microcopy">上下滚动阅读整张长图；放大后可横向滚动。图中流程为研究示意，非实拍结果。</p>
+    <div id="map-scroll" class="map-scroll" tabindex="0" role="region" aria-label="能力全景图，可上下及左右滚动"><img id="map-image" src="./assets/freemocap-capability-map.png" width="2700" height="7140" alt="FreeMoCap 能力全景图：输入、核心原理、输出、角色驱动、场景、对小云的价值、工程扩展与能力边界；文字说明见理解与应用页面" loading="lazy"></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+</body>
+</html>

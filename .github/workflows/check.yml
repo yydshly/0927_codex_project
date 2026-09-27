@@ -20,6 +20,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Check FreeMoCap lab
+        run: |
+          node --check projects/002-freemocap-lab/web/src/app.mjs
+          npm --prefix projects/002-freemocap-lab/web test
+          npm --prefix projects/002-freemocap-lab/web run build
       - name: Check Lofi Cities desktop product
         run: |
           npm --prefix projects/003-lofi-cities/web run check

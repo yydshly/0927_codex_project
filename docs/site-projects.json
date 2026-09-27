@@ -1,4 +1,8 @@
 {
   "repository": "yydshly/0927_codex_project",
-  "projects": ["003-lofi-cities"]
+  "projects": ["002-freemocap-lab", "003-lofi-cities"],
+  "entrypoints": {
+    "002-freemocap-lab": {"entry": "#capabilities", "guide": "#capabilities", "label": "进入 FreeMoCap 动作实验室"},
+    "003-lofi-cities": {"entry": "#space", "guide": "#understanding", "label": "进入体验 · 栖间"}
+  }
 }

@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'projects/002-freemocap-lab/**'
       - 'projects/003-lofi-cities/**'
       - 'scripts/build_site.py'
       - 'scripts/projects.py'
@@ -30,6 +31,8 @@ jobs:
         run: |
           python3 scripts/projects.py check
           python3 -m unittest discover -s scripts -p 'test_*.py'
+          node --check projects/002-freemocap-lab/web/src/app.mjs
+          npm --prefix projects/002-freemocap-lab/web test
           npm --prefix projects/003-lofi-cities/web run check
           npm --prefix projects/003-lofi-cities/web test
       - uses: actions/configure-pages@v5
