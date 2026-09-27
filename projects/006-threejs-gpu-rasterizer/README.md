@@ -2,7 +2,7 @@
 
 > 先理解 [three.js](https://github.com/mrdoob/three.js) 源码库能构建什么网页三维体验，再研究 [PR #33605](https://github.com/mrdoob/three.js/pull/33605) 怎样分配高密度场景的绘制工作，并用海上风电场巡检做交互演示。
 
-[返回总索引](../../README.md) · [研究记录](notes/research.md) · [本地演示说明](web/README.md) · [上游 WebGPU 示例](https://threejs.org/examples/webgpu_compute_rasterizer.html)
+[在线查看理解总图与交互演示](https://yydshly.github.io/0927_codex_project/006-threejs-gpu-rasterizer/#map) · [返回总索引](../../README.md) · [研究记录](notes/research.md) · [本地演示说明](web/README.md) · [上游 WebGPU 示例](https://threejs.org/examples/webgpu_compute_rasterizer.html)
 
 ## 理解总图
 

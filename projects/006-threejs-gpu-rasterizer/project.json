@@ -8,7 +8,7 @@
   "source_name": "three.js",
   "source_type": "github",
   "status": "已完成",
-  "demo": "",
+  "demo": "https://yydshly.github.io/0927_codex_project/006-threejs-gpu-rasterizer/#map",
   "cover": "assets/understanding-map.svg",
   "cover_alt": "Three.js 与 GPU 驱动渲染理解总图：区分基础库、官方示例与 PR #33605，概括能力、技术原理、呈现效果、使用场景、产品方向和个人价值。"
 }

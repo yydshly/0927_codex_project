@@ -12,13 +12,15 @@
 - 产品理解：演示地址加 `#understanding`。
 - AI 工程面试题库导览：`https://yydshly.github.io/0927_codex_project/004-ai-engineering-interview-guide/#overview`；完整引导图使用 `#guide-map`。
 - Jailbreaks 越狱研究指南：`https://yydshly.github.io/0927_codex_project/005-jailbreaks-research/#overview`；完整引导图使用 `#guide-map`。
-- Three.js 能力与 GPU 渲染研究：构建后理解总图入口为 `/006-threejs-gpu-rasterizer/#map`，能力导览为 `#threejs`，交互演示为 `#experience`，PR 原理说明为 `#principle`。风机与告警为模拟数据；完整公网地址须在实际部署并验证后写入 `project.json`。
+- Three.js 能力与 GPU 渲染研究：`https://yydshly.github.io/0927_codex_project/006-threejs-gpu-rasterizer/#map`，能力导览为 `#threejs`，交互演示为 `#experience`，PR 原理说明为 `#principle`。风机与告警为模拟数据。
 
 001、002、003 与 005 均已于 2026-09-27 完成发布和远端网页验证，正式地址已写入各自 `project.json` 的 `demo` 字段。[西安夜行图首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36299771812) 后，已在公开页面核对三维地图、夜游返程面板、五项摘要、原网页名称与使用本项目截图的引导图。班次与可达范围仍为模拟数据。
 
 FreeMoCap 的五项加粗摘要、完整引导图及 150% 缩放、演示切换和合成 NPY 解析回放已通过公网检查；脚本、样式、PNG / SVG、数据样例与既有 Lofi Cities 页面均返回 HTTP 200。[FreeMoCap 首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36295964557)。Jailbreaks 的五项加粗摘要、完整引导图、25 条来源记录和参考来源链接已在公开页面核对；网页未进行模型越狱效果测试。[Jailbreaks 成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36297771926)。
 
 AI 工程题库已在 2026-09-27 接入统一站点并完成公网检查：站点首页的「能力 / 内容 / 使用场景 / 对我的意义」四项摘要、004 页面、完整引导图、题目数据文件均返回 HTTP 200。网页收录 598 道题，232 道附外部参考链接，本站另为 45 道题整理中文答题要点；外链内容未逐条核验。[004 首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36302271824)。
+
+Three.js 研究页已在 2026-09-27 发布并通过公开浏览器核对：006 页面可打开，完整理解总图 SVG 可单独打开；站点首页显示「能力 / 呈现效果 / 使用场景 / 技术原理 / 可扩展方向 / 对我的意义」六项分段摘要，并以同一张 SVG 作为引导图。[006 首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36307603728)。
 
 ## 构建和发布
 
