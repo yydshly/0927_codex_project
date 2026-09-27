@@ -18,8 +18,17 @@ function setupFilm(videoSelector, buttonSelector) {
       video.play().then(() => { button.textContent = '暂停影片'; }).catch(() => { button.textContent = '播放镜头'; });
     }, { threshold: .28 });
     startOnEntry.observe(video);
-  } else if (reducedMotion.matches) video.pause();
-  else video.play().catch(() => { button.textContent = '播放背景视频'; });
+  } else {
+    video.pause();
+    if (!reducedMotion.matches) {
+      const startOnEntry = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        startOnEntry.disconnect();
+        video.play().catch(() => { button.textContent = '播放背景视频'; });
+      }, { rootMargin: '240px 0px' });
+      startOnEntry.observe(video);
+    }
+  }
   button.addEventListener('click', async () => {
     if (video.paused) {
       video.dataset.started = 'true';
@@ -71,11 +80,12 @@ $('#film-speed').addEventListener('input', (event) => {
 const frameCanvas = $('#sequence-canvas');
 const frameContext = frameCanvas.getContext('2d');
 const frameRange = $('#frame-range');
-const frameImages = Array.from({ length: 72 }, (_, index) => {
-  const image = new Image();
-  image.src = `media/watch-frames/watch-${String(index).padStart(3, '0')}.webp`;
+const frameImages = Array.from({ length: 72 }, () => new Image());
+function loadFrame(index) {
+  const image = frameImages[index];
+  if (!image.src) image.src = `media/watch-frames/watch-${String(index).padStart(3, '0')}.webp`;
   return image;
-});
+}
 let currentFrame = 0;
 let sequenceAutoplay = false;
 let sequenceLastTick = 0;
@@ -91,7 +101,7 @@ function setSequenceAutoplay(value) {
 }
 function showFrame(index) {
   currentFrame = ((index % 72) + 72) % 72;
-  const image = frameImages[currentFrame];
+  const image = loadFrame(currentFrame);
   const draw = () => {
     if (currentFrame !== index && ((index % 72) + 72) % 72 !== currentFrame) return;
     if (image.naturalWidth) frameContext.drawImage(image, 0, 0, 960, 540);
@@ -110,6 +120,12 @@ $('#frame-auto').addEventListener('click', toggleSequenceAutoplay);
 $('#sequence-demo').addEventListener('click', toggleSequenceAutoplay);
 let dragX = null;
 const sequenceStage = $('#sequence-stage');
+const preloadSequence = new IntersectionObserver(entries => {
+  if (!entries[0].isIntersecting) return;
+  preloadSequence.disconnect();
+  frameImages.forEach((_, index) => loadFrame(index));
+}, { rootMargin: '320px 0px' });
+preloadSequence.observe(sequenceStage);
 sequenceStage.addEventListener('pointerdown', (event) => { dragX = event.clientX; sequenceStage.setPointerCapture(event.pointerId); });
 sequenceStage.addEventListener('pointermove', (event) => {
   if (dragX === null) return;
