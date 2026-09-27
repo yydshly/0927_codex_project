@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="看懂 CUDA WebShader 怎样把 CUDA 计算程序搬到浏览器 GPU：开发者写算法，库负责翻译和运行，绘制程序把结果变成画面。">
+  <meta name="color-scheme" content="dark">
+  <title>CUDA WebShader · 能力与效果展厅</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./basics.css">
+  <link rel="stylesheet" href="./understanding.css">
+  <link rel="stylesheet" href="./use-guide.css">
+  <link rel="stylesheet" href="./prototypes.css">
+  <link rel="stylesheet" href="./coastal-scene.css">
+  <script type="module" src="./app.mjs"></script>
+  <script type="module" src="./prototypes.mjs"></script>
+  <script type="module" src="./coastal-scene.mjs"></script>
+</head>
+<body>
+<a class="skip" href="#viewer">跳到效果预览</a>
+<header class="site-header">
+  <a class="brand" href="../" aria-label="返回项目研究索引"><span class="brand-mark">CW<span>·</span></span><span>CUDA WebShader<small>能力与效果展厅 / 011</small></span></a>
+  <nav aria-label="本页导航"><a href="#capability-map">一图总览</a><a href="#understanding">模块与用途</a><a href="#applications">实际怎么用</a><a href="#real-coast">三维海岸</a><a href="#catalog">全部样例</a></nav>
+  <a class="header-source" href="https://github.com/SamG-Coder/cuda-webshader" target="_blank" rel="noopener noreferrer">上游仓库 ↗</a>
+</header>
+<main>
+  <section class="hero" id="overview">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="live-dot"></span> OPEN SOURCE RESEARCH / 011</p>
+      <h1>让 CUDA 算法，<br><em>在网页 GPU 上运行。</em></h1>
+      <p class="hero-lead">开发者写计算规则并提供数据；CUDA WebShader 将受支持的 CUDA C 核函数转成浏览器能执行的 WGSL，交给 WebGPU 运行。得到的数值再由应用绘制成粒子、海浪或图像。</p>
+      <div class="hero-actions"><a class="button primary" href="#capability-map">先用一张图看懂 <span>↓</span></a><a class="button quiet" href="#real-coast">再看三维海岸 <span>↗</span></a></div>
+      <p class="hero-note">海岸作品是作者使用此库制作的独立应用。本站的港湾俯视图是教学模型；上游 50 个样例是不同计算任务的演示。</p>
+    </div>
+    <div class="hero-panel" aria-label="CUDA 到浏览器 GPU 的工作链">
+      <div class="panel-top"><span>COMPUTE PIPELINE</span><span class="panel-code">CUDA → WGSL → WebGPU</span></div>
+      <div class="flow-visual" aria-hidden="true">
+        <div class="flow-card cuda"><small>01 / YOU PROVIDE</small><strong>写计算规则</strong><span>CUDA C 核函数 + 数据</span></div>
+        <div class="flow-path"><i></i><i></i><i></i><span>编译与绑定</span></div>
+        <div class="flow-card wgsl"><small>02 / LIBRARY</small><strong>翻译并执行</strong><span>WGSL + WebGPU</span></div>
+        <div class="flow-path"><i></i><i></i><i></i><span>GPU 调度</span></div>
+        <div class="flow-card gpu"><small>03 / APPLICATION</small><strong>绘制结果</strong><span>数值 → 可见画面</span></div>
+      </div>
+      <div class="panel-bottom"><span><b>50</b> 上游样例入口</span><span><b>5</b> 效果家族</span><span><b>20</b> 性能对照工况</span></div>
+    </div>
+  </section>
+
+  <section class="capability-map-section" id="capability-map">
+    <div class="section-heading"><div><span class="section-kicker">00 / ONE-PAGE MAP</span><h2>从算法，到效果，再到真实用途</h2><p>五类计算覆盖源库的 50 项展示；右列是按输入和结果推演的应用方向。先看总图，再到下方选择你关心的样例。</p></div></div>
+    <figure class="capability-map-figure"><a href="./capability-map.png" target="_blank" rel="noopener noreferrer" aria-label="打开高清 CUDA WebShader 能力总览图"><img src="./capability-map.png" width="2200" height="1770" alt="CUDA WebShader 能力总图：开发者提供 CUDA 算法和数据，库转成 WGSL 并由 WebGPU 计算，应用负责绘制。五类上游样例分别为动态模拟 8 项、图像与纹理 21 项、三维与体数据 7 项、数值与信号 10 项、几何与渲染 4 项；图中列出效果、可扩展场景、适用条件和对海岸及 Three.js 项目的价值。" loading="eager"></a><figcaption><span>点击图片放大或保存高清版本。</span><a href="https://github.com/SamG-Coder/cuda-webshader" target="_blank" rel="noopener noreferrer">核对上游仓库 ↗</a></figcaption></figure>
+  </section>
+
+  <section class="understanding-section" id="understanding">
+    <div class="section-heading"><div><span class="section-kicker">01 / RESEARCH SUMMARY</span><h2>这套库能做什么，何时值得用？</h2><p>它是计算转换和运行工具。上游样例展示的是算法执行后的结果；实际产品还需要自己的数据、界面、绘制和验证。</p></div></div>
+    <div class="understanding-grid">
+      <article><span>呈现效果 / 已有证据</span><h3>网页能看到哪些结果</h3><p>上游样例可以显示动态海面、流体与粒子、图像处理前后、三维体数据、路径追踪画面，也能输出排序、频谱和数值结果。本站的 12 个 Canvas 画面与港湾模型只用于解释目标视觉效果，并非此库运行输出。</p><a href="#catalog">逐项查看 50 个上游入口 ↗</a></article>
+      <article><span>内部模块 / 上游仓库结构</span><h3>从代码到画面的四层</h3><ol><li><b>编译器</b>：解析受支持的 CUDA C，生成 WGSL 与缓冲区绑定信息。</li><li><b>运行时</b>：管理 WebGPU 设备、缓冲区、核函数调度和 Three.js 共享缓冲区。</li><li><b>工作台</b>：Sandbox 编辑、编译、执行多步流程和预览结果；Kernel Lab 检查粒子、正确性与性能。</li><li><b>样例与验证</b>：内核、Showcase、测试和报告说明每项输入、运行与对照。</li></ol><p>另有实验性的 CPU/Wasm 后端，用于 GPU 管线准备阶段的过渡；它不是所有样例的默认执行路径。</p><a href="https://github.com/SamG-Coder/cuda-webshader#repository-layout" target="_blank" rel="noopener noreferrer">核对源库目录 ↗</a></article>
+      <article><span>内部算法 / 上游样例归类</span><h3>五类计算，50 个样例</h3><p><b>动态模拟 8：</b>SPH、FFT 海洋、流体、粒子与 N 体。<br><b>图像纹理 21：</b>Sobel、光流、视差、降噪、卷积与采样。<br><b>三维体数据 7：</b>Marching Cubes、体渲染、FDTD。<br><b>数值信号 10：</b>FFT、Walsh、Haar、排序与准随机采样。<br><b>几何渲染 4：</b>四叉树、贝塞尔、路径追踪与分形。</p><p>五类是本站为浏览而做的分组；这些算法由样例代码实现，库本身的核心是转换与调度。</p></article>
+      <article><span>使用场景 / 采用条件</span><h3>什么时候选它</h3><p>适合已有受支持的 CUDA 核函数，希望让用户在网页反复、大量地计算并立即观察结果：如水体与粒子交互展示、图像处理工具、三维扫描数据浏览、算法教学或原生 CUDA 与网页结果对照。上线前应在目标 WebGPU 设备上核对结果、耗时和兼容性。</p><a href="#applications">从四个真实任务理解输入与输出 ↓</a></article>
+      <article><span>可扩展产品方向 / 尚需开发</span><h3>从样例走向产品</h3><ul><li><b>GPU 算法工作台：</b>上传数据、调参、结果对照、导出报告。</li><li><b>交互视觉组件：</b>将海浪、流体、粒子计算接入真实场景和 Three.js。</li><li><b>图像分析工具：</b>照片或视频的降噪、边缘、光流与深度预览。</li><li><b>三维数据浏览器：</b>体数据导入、表面提取、切片与标注。</li></ul><p>每个方向都需要数据接入、用户界面、产品级错误处理和场景验证；这里是可行的研发方向，不是现成应用。</p></article>
+      <article><span>对你的意义 / 具体下一步</span><h3>连接你已有的三条研究线</h3><p>Three.js 负责把结果画出来；海岸与算法实验提供可计算的水位、流速或粒子状态；CUDA WebShader 提供把合适的 CUDA 计算接到浏览器 GPU 的路线。先选一个粒子输运或高度场更新内核，用相同输入比较当前实现、手写 WGSL 与转换版的数值和速度，再决定是否采用。</p><a href="#meaning">查看这条实验路线 ↓</a></article>
+    </div>
+  </section>
+
+  <section class="capability-basics" id="capability-basics">
+    <div class="section-heading"><div><span class="section-kicker">00 / CORE CAPABILITY</span><h2>这套库，接住的是“计算”</h2><p>它让已有的 CUDA 计算逻辑有机会在浏览器 GPU 上执行。你看到的画面，还需要应用把计算结果绘出来。</p></div></div>
+    <div class="basics-chain" aria-label="从算法到画面的职责链">
+      <article><span>你提供</span><strong>算法 + 输入</strong><p>例如：每个水面格子下一刻的水位怎么算，初始地形和浪强是多少。</p></article>
+      <i aria-hidden="true">→</i>
+      <article class="basics-library"><span>CUDA WEBSHADER</span><strong>编译 + 运行</strong><p>把受支持的 CUDA 核函数转成 WGSL，建立 WebGPU 计算任务，让 GPU 更新数值。</p></article>
+      <i aria-hidden="true">→</i>
+      <article><span>应用负责</span><strong>把结果画出来</strong><p>Three.js 等读取水位、粒子位置或像素结果，再加地形、材质、光照和相机。</p></article>
+    </div>
+    <div class="basics-example"><div><span>用一片海面举例</span><h3>波浪从哪里来？</h3><p>水位更新公式由开发者写；库负责让它在浏览器 GPU 上反复计算；绘制程序把高度变成水面。白沫、反光、岩石和视角由场景代码继续完成。</p></div><div class="basics-example-steps"><span><b>01</b> CUDA：更新水位与流速</span><span><b>02</b> WebGPU：并行算很多网格</span><span><b>03</b> Three.js：绘成动态海岸</span></div></div>
+    <p class="basics-boundary"><strong>能力边界：</strong>需要提供符合该项目支持范围的 CUDA 核函数、输入数据和运行安排。它不会自行设计物理公式或自动生成写实场景；任意 CUDA 工程也不能直接整包移入浏览器。<a href="https://github.com/SamG-Coder/cuda-webshader#what-a-kernel-can-use" target="_blank" rel="noopener noreferrer">查看上游支持范围 ↗</a></p>
+    <a class="basics-next" href="#applications">接下来按实际任务看怎么用 <span>↓</span></a>
+  </section>
+
+  <section class="application-section" id="applications">
+    <div class="section-heading"><div><span class="section-kicker">FROM DEMO TO USE</span><h2>先说实际任务，再选计算样例</h2><p>每个案例都从真实输入开始，经过浏览器 GPU 计算，再交给网页呈现。下方链接可查看相关的上游运行样例。</p></div></div>
+    <div class="application-loop" aria-label="一次实际使用的过程"><span><b>1</b> 用户输入数据或调整条件</span><i>→</i><span><b>2</b> 库运行开发者写的计算</span><i>→</i><span><b>3</b> 网页显示结果供观察</span></div>
+    <div class="scenario-grid application-grid">
+      <article class="scenario-card"><div class="scenario-head"><span>实际任务 / 海岸展示</span><strong>调风浪，看海湾怎样变化</strong></div><dl><div><dt>输入什么</dt><dd>浪强、风向、潮位、海岸地形等条件。</dd></div><div><dt>库算什么</dt><dd>运行开发者编写的波浪或流体核函数，更新水位与流速。</dd></div><div><dt>得到什么、怎么用</dt><dd>网页绘制动态海面和测点曲线，供科普展项或课堂交互观察。工程预测还需要实测数据和模型验证。</dd></div></dl><div class="scenario-links"><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=ocean" target="_blank" rel="noopener noreferrer">看上游海洋计算 ↗</a><a href="#coastal-scene">看本站港湾教学图 ↓</a></div></article>
+      <article class="scenario-card"><div class="scenario-head"><span>实际任务 / 图像处理</span><strong>上传照片，立即查看处理前后</strong></div><dl><div><dt>输入什么</dt><dd>用户上传的照片与边缘强度、降噪程度等参数。</dd></div><div><dt>库算什么</dt><dd>逐像素运行边缘检测、降噪或纹理采样核函数。</dd></div><div><dt>得到什么、怎么用</dt><dd>网页显示原图与处理图，可用于图像工具或视觉算法教学；实际产品还需要上传、交互和导出界面。</dd></div></dl><div class="scenario-links"><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=sobel" target="_blank" rel="noopener noreferrer">看上游边缘检测 ↗</a><a href="#scenarios">看本站对比画面 ↓</a></div></article>
+      <article class="scenario-card"><div class="scenario-head"><span>实际任务 / 三维数据</span><strong>把扫描数据变成可转动的模型</strong></div><dl><div><dt>输入什么</dt><dd>由扫描或测量得到的三维体素值。</dd></div><div><dt>库算什么</dt><dd>运行 Marching Cubes 提取表面，或沿视线采样体数据。</dd></div><div><dt>得到什么、怎么用</dt><dd>网页显示可旋转表面或内部切片，适合材料、地形与科学数据的探索展示。</dd></div></dl><div class="scenario-links"><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=marching" target="_blank" rel="noopener noreferrer">看上游网格生成 ↗</a><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=volume" target="_blank" rel="noopener noreferrer">看上游体渲染 ↗</a></div></article>
+      <article class="scenario-card"><div class="scenario-head"><span>实际任务 / 交互画面</span><strong>触碰画面，让粒子随力移动</strong></div><dl><div><dt>输入什么</dt><dd>粒子初始位置、速度，以及鼠标施加的扰动。</dd></div><div><dt>库算什么</dt><dd>每一帧并行更新大量粒子的位置和运动状态。</dd></div><div><dt>得到什么、怎么用</dt><dd>网页从同一 GPU 数据绘制轨迹或烟雾，可用在交互展屏和实时视觉作品中。</dd></div></dl><div class="scenario-links"><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=fluids" target="_blank" rel="noopener noreferrer">看上游交互流体 ↗</a><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=smoke" target="_blank" rel="noopener noreferrer">看上游烟雾粒子 ↗</a></div></article>
+    </div>
+    <p class="application-note"><strong>这些案例如何落地：</strong>上游样例证明相关计算可在浏览器运行；完整应用还要接入自己的数据、参数控件和画面设计。本站港湾教学图和十二个算法画面由 JavaScript Canvas 制作，用来说明目标效果，并非该库的运行结果。</p>
+  </section>
+
+  <section class="feature-rail" aria-label="推荐观看的效果">
+    <div><span class="section-kicker">先看这些</span><h2>从画面进入计算</h2></div>
+    <div id="featured" class="feature-list"></div>
+  </section>
+
+  <section class="real-coast-section" id="real-coast">
+    <div class="section-heading"><div><span class="section-kicker">01 / IMMERSIVE COAST</span><h2>带着这条链，走进海岸</h2><p>这是作者基于 CUDA WebShader 制作的三维海岸作品：浪头绕过岩石，白沫沿水流扩散，浅水冲上沙滩又退回。画面、地形与光照一起呈现。</p></div><span class="real-coast-badge">OFFICIAL WEBGPU SCENE ↗</span></div>
+    <div class="real-coast-frame"><div class="real-coast-framebar"><span><i></i> SALTREACH / COASTAL WATER</span><span>原版场景截图 · 点击进入 GPU 移植版</span></div><a class="real-coast-poster" href="https://samg-coder.github.io/coastal-simulation-cuda-webshader/" target="_blank" rel="noopener noreferrer" aria-label="打开作者的 CUDA WebShader 三维海岸实时演示"><img src="./coastal-reference.jpg" alt="原版 coastal-simulation 的三维海岸画面：天空、海水、岸线与岩石" loading="eager"><span class="real-coast-poster-content"><small>LIVE WEBGPU COAST</small><strong>进入正在运动的海岸</strong><span>观看浪涌绕岩、白沫与冲滩 <b>↗</b></span></span><span class="real-coast-poster-credit">画面预览：原版 coastal-simulation 截图 · 实时移植版请点击</span></a></div>
+    <div class="real-coast-action"><p>推荐在画面下方切换 <strong>Rocky Surf</strong>、<strong>Shoreline</strong> 和 <strong>Along the Breaker</strong>；条件面板可调海况、风向和潮位。首次加载需要一些时间，浏览器需支持 WebGPU。</p><div><a class="button primary" href="https://samg-coder.github.io/coastal-simulation-cuda-webshader/" target="_blank" rel="noopener noreferrer">全屏感受真实海岸 ↗</a><a class="button quiet" href="#coastal-scene">对照港湾数值图 ↓</a></div></div>
+    <div class="real-coast-evidence"><span><b>01</b> 浪涌绕岩与撞击</span><span><b>02</b> 破浪白沫与喷溅</span><span><b>03</b> 浅水、湿沙与反光</span></div>
+    <p class="real-coast-note">预览截图来自<a href="https://github.com/iamtechartist/coastal-simulation" target="_blank" rel="noopener noreferrer">原版 coastal-simulation</a>，不是 CUDA WebShader 的运行截图。点击后打开<a href="https://github.com/SamG-Coder/coastal-simulation-cuda-webshader" target="_blank" rel="noopener noreferrer">作者的 GPU 移植版</a>：它保留原版场景和浅水模型，并加入增强的波浪、泡沫、喷雾和相机控制。浏览器中的跨站嵌入当前未能显示，因此直接进入独立页面。该作品仍是简化浅水模拟与图形表现，不等于实测海岸或工程预测。</p>
+  </section>
+
+  <section class="coastal-section" id="coastal-scene">
+    <div class="section-heading coastal-heading"><div><span class="section-kicker">02 / MODEL INSPECTION</span><h2>再看港湾里的水怎样动</h2><p>用俯视数值图拆开观察入射波、浅水传播、防波堤遮挡、泡沫输运和测点读数。</p></div><span class="coastal-live"><i></i> LOCAL INTERACTIVE MODEL</span></div>
+    <div class="coastal-shell">
+      <div class="coastal-main">
+        <div class="coastal-topline"><span>HARBOR WAVE STUDY <b>01</b></span><span id="coastal-status">计算中 · 点击海面激起一圈波纹</span></div>
+        <div class="coastal-canvas-wrap"><canvas id="coastal-canvas" width="960" height="540" aria-label="俯视港湾中的波浪传播、防波堤遮挡、岸边泡沫和两个测点"></canvas><div class="coastal-map-key"><span><i class="key-deep"></i>深水</span><span><i class="key-shallow"></i>浅滩</span><span><i class="key-crest"></i>浪峰</span><span><i class="key-breakwater"></i>防波堤</span></div><span class="coastal-north" aria-hidden="true">N ↑</span></div>
+        <div class="coastal-stage-foot"><span>左侧外海持续输入风浪 · 点击海面加入局部扰动</span><span>俯视示意 · 非工程预测</span></div>
+      </div>
+      <aside class="coastal-console" aria-label="港湾场景控制台">
+        <div class="console-title"><span>SCENE CONTROL / 01</span><h3>风浪与潮位</h3><p>改变边界条件，观察波峰如何绕过防波堤、在浅滩变形。</p></div>
+        <label class="coastal-slider" for="wave-strength"><span>入射浪强 <output id="wave-strength-value">中等</output></span><input id="wave-strength" type="range" min="25" max="125" value="72"></label>
+        <label class="coastal-slider" for="tide-level"><span>潮位 <output id="tide-level-value">常位</output></span><input id="tide-level" type="range" min="-30" max="30" value="0"></label>
+        <fieldset class="coastal-modes"><legend>观察视图</legend><div role="group" aria-label="观察视图"><button type="button" data-scene-mode="surface" aria-pressed="true">海面</button><button type="button" data-scene-mode="velocity" aria-pressed="false">流速</button><button type="button" data-scene-mode="elevation" aria-pressed="false">水位</button></div></fieldset>
+        <div class="coastal-buttons"><button type="button" id="coastal-pause">暂停</button><button type="button" id="coastal-reset">重置</button></div>
+        <div class="coastal-readings"><div><span>外海测点 A</span><strong id="coastal-offshore">+0.00 <small>相对水位</small></strong></div><div><span>港内测点 B</span><strong id="coastal-harbor">+0.00 <small>相对水位</small></strong></div></div>
+        <div class="coastal-chart"><div><span>测点变化 / 最近 12 秒</span><small><i></i>外海 A <i></i>港内 B</small></div><canvas id="coastal-chart" width="320" height="112" aria-label="外海和港内相对水位的时间曲线"></canvas></div>
+      </aside>
+    </div>
+    <div class="coastal-process" aria-label="场景计算关系"><div><b>01</b><strong>外海入射波</strong><span>多频率叠加</span></div><i>→</i><div><b>02</b><strong>港湾传播</strong><span>水深与边界</span></div><i>→</i><div><b>03</b><strong>泡沫输运</strong><span>沿同一速度场移动</span></div><i>→</i><div><b>04</b><strong>观测与成像</strong><span>同一状态生成读数</span></div></div>
+    <div class="coastal-explain"><p><strong>它在说明什么？</strong>入射波在外海较整齐；遇到浅滩和防波堤后，波速、波形与传播方向改变。泡沫跟随计算出的流速移动，两个测点直接读取同一数值场。提高浪强或改变潮位，整幅画面和读数会一起变化。</p><p><strong>实现边界：</strong>本站用 JavaScript Canvas 实现简化二维浅水波教学模型，加入可视化泡沫粒子；它不是实测港口、精细流体求解或 CUDA WebShader 运行结果。相关上游能力可分别查看<a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=ocean" target="_blank" rel="noopener noreferrer">FFT 海洋 ↗</a>、<a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=fluids" target="_blank" rel="noopener noreferrer">交互流体 ↗</a>与<a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=particle-collision" target="_blank" rel="noopener noreferrer">粒子碰撞 ↗</a>。</p></div>
+  </section>
+
+  <section class="scenario-section" id="scenarios">
+    <div class="section-heading"><div><span class="section-kicker">03 / ALGORITHM TO ART DIRECTION</span><h2>从算法，看到最适合的画面</h2><p>十二个可直接观看的本地算法样机。先按视觉目标筛选，再进入对应的上游 CUDA/WebGPU 真实样例。</p></div><span class="prototype-count" id="prototype-count">12 / 12 个算法画面</span></div>
+    <div class="prototype-tools"><div class="prototype-filters" id="prototype-filters" role="group" aria-label="按视觉方向筛选算法画面"></div><button type="button" class="prototype-pause" id="prototype-pause" aria-pressed="false">暂停动画</button></div>
+    <div class="prototype-grid">
+      <article class="prototype-card" data-prototype="ocean"><div class="prototype-visual"><canvas width="480" height="270" aria-label="多频波浪驱动的动态海岸画面"></canvas><span class="prototype-badge">实时 · 波浪</span></div><div class="prototype-copy"><span class="prototype-index">01 / WAVE SUPERPOSITION</span><h3>多频波浪 <span>→</span> 电影式海岸</h3><p>不同频率、振幅和相位的波叠加为海面高度；把数值场画成远近不同的浪线、反光与海岸线。</p><div class="prototype-meta"><span>目标用途：交互海岸与湖面展示</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=ocean" target="_blank" rel="noopener noreferrer">运行上游 FFT 海洋 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="flow"><div class="prototype-visual"><canvas width="480" height="270" aria-label="可用鼠标搅动的流场粒子画面"></canvas><span class="prototype-badge">交互 · 流场</span><span class="prototype-hint">拖动画面</span></div><div class="prototype-copy"><span class="prototype-index">02 / ADVECTION</span><h3>流场平流 <span>→</span> 可触碰的墨水</h3><p>让示踪粒子沿速度场移动；鼠标扰动流向。适合把水、风或数据流动做成可交互的视觉层。</p><div class="prototype-meta"><span>目标用途：水流与风向的互动展示</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=fluids" target="_blank" rel="noopener noreferrer">运行上游交互流体 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="nbody"><div class="prototype-visual"><canvas width="480" height="270" aria-label="多体引力驱动的动态星系画面"></canvas><span class="prototype-badge">实时 · 引力</span></div><div class="prototype-copy"><span class="prototype-index">03 / N-BODY</span><h3>多体引力 <span>→</span> 星系轨道</h3><p>物体两两施加软化引力，速度与位置逐帧积分；轨迹把运动过程变成空间叙事。</p><div class="prototype-meta"><span>目标用途：天体轨道科普展项</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=nbody" target="_blank" rel="noopener noreferrer">运行上游 N 体 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="sobel"><div class="prototype-visual"><canvas width="480" height="270" aria-label="原始城市图像与 Sobel 边缘提取的实时对比"></canvas><span class="prototype-badge">实时 · 图像</span></div><div class="prototype-copy"><span class="prototype-index">04 / SOBEL CONVOLUTION</span><h3>Sobel 卷积 <span>→</span> 视觉扫描</h3><p>3×3 邻域计算水平和垂直亮度梯度；左侧保留原画面，右侧只显示结构边缘。</p><div class="prototype-meta"><span>目标用途：照片边缘预览与教学</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=sobel" target="_blank" rel="noopener noreferrer">运行上游 Sobel ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="contour"><div class="prototype-visual"><canvas width="480" height="270" aria-label="从标量场提取的动态地形等高线画面"></canvas><span class="prototype-badge">实时 · 标量场</span></div><div class="prototype-copy"><span class="prototype-index">05 / ISO-CONTOUR EXTRACTION</span><h3>等值线提取 <span>→</span> 地形地图</h3><p>采样连续的高度场，在网格边上找等值交点；这是 Marching Cubes 三维网格提取的二维截面原型。</p><div class="prototype-meta"><span>目标用途：高程与扫描切片查看</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=marching" target="_blank" rel="noopener noreferrer">运行上游三维网格 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="fractal"><div class="prototype-visual"><canvas width="480" height="270" aria-label="可点击放大的 Mandelbrot 分形画面"></canvas><span class="prototype-badge">交互 · 迭代</span><span class="prototype-hint">点击放大 · 双击复位</span></div><div class="prototype-copy"><span class="prototype-index">06 / COMPLEX ITERATION</span><h3>Mandelbrot <span>→</span> 无限分形</h3><p>对每个像素迭代复数，按逃逸次数着色；点击画面可向该位置放大，寻找新的边界纹理。</p><div class="prototype-meta"><span>目标用途：数学互动展项</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=mandelbrot" target="_blank" rel="noopener noreferrer">运行上游分形 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="volume"><div class="prototype-visual"><canvas width="480" height="270" aria-label="射线步进生成的动态三维体数据画面"></canvas><span class="prototype-badge">实时 · 体数据</span></div><div class="prototype-copy"><span class="prototype-index">07 / VOLUME RAY MARCHING</span><h3>体积采样 <span>→</span> 科学扫描</h3><p>沿每条视线逐步采样三维密度并累积颜色和透明度，让内部结构成为可观看的空间影像。</p><div class="prototype-meta"><span>目标用途：材料与扫描体数据探索</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=volume" target="_blank" rel="noopener noreferrer">运行上游体渲染 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="raytrace"><div class="prototype-visual"><canvas width="480" height="270" aria-label="光线相交和反射生成的材质展示画面"></canvas><span class="prototype-badge">实时 · 光照</span></div><div class="prototype-copy"><span class="prototype-index">08 / RAY INTERSECTION</span><h3>光线反射 <span>→</span> 材质摄影棚</h3><p>逐像素求光线与球体、地面的交点，再计算遮挡、直射光和反射；展示金属与磨砂材质的差别。</p><div class="prototype-meta"><span>目标用途：产品材质与光照预览</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=pathtracer" target="_blank" rel="noopener noreferrer">运行上游路径追踪 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="quasirandom"><div class="prototype-visual"><canvas width="480" height="270" aria-label="低差异序列生成并旋转的三维点云画面"></canvas><span class="prototype-badge">实时 · 采样</span></div><div class="prototype-copy"><span class="prototype-index">09 / LOW-DISCREPANCY SEQUENCE</span><h3>准随机采样 <span>→</span> 数据星云</h3><p>用低差异序列均匀铺开三维采样点，并投影成可旋转的点云，观察分布中的空隙与聚集。</p><div class="prototype-meta"><span>目标用途：采样分布检查与教学</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=quasirandom" target="_blank" rel="noopener noreferrer">运行上游点云 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="haar"><div class="prototype-visual"><canvas width="480" height="270" aria-label="Haar 小波分解的原始信号和多尺度系数画面"></canvas><span class="prototype-badge">实时 · 信号</span></div><div class="prototype-copy"><span class="prototype-index">10 / HAAR WAVELET</span><h3>小波分解 <span>→</span> 脉冲分析台</h3><p>将信号反复拆成低频平均与高频细节；上方看时域波形，下方看不同尺度的变化系数。</p><div class="prototype-meta"><span>目标用途：传感器波形分解</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=haar" target="_blank" rel="noopener noreferrer">运行上游 Haar 小波 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="bitonic"><div class="prototype-visual"><canvas width="480" height="270" aria-label="逐阶段执行双调排序网络的数据柱图"></canvas><span class="prototype-badge">实时 · 排序</span></div><div class="prototype-copy"><span class="prototype-index">11 / BITONIC SORTING NETWORK</span><h3>双调排序 <span>→</span> 数据编排墙</h3><p>比较交换网络逐阶段重排 64 个数值；颜色标出正在交换的元素，适合观察并行排序过程。</p><div class="prototype-meta"><span>目标用途：GPU 排序过程教学</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=bitonic-sort" target="_blank" rel="noopener noreferrer">运行上游双调排序 ↗</a></div></div></article>
+      <article class="prototype-card" data-prototype="bicubic"><div class="prototype-visual"><canvas width="480" height="270" aria-label="最近邻与双三次插值的动态纹理对照"></canvas><span class="prototype-badge">实时 · 纹理</span></div><div class="prototype-copy"><span class="prototype-index">12 / BICUBIC INTERPOLATION</span><h3>双三次插值 <span>→</span> 纹理放大镜</h3><p>同一张低分辨率图像分别用最近邻和双三次插值放大，直接比较块状边缘与平滑过渡。</p><div class="prototype-meta"><span>目标用途：低分辨率图像放大</span><a href="https://samg-coder.github.io/cuda-webshader/sandbox.html?example=bicubic" target="_blank" rel="noopener noreferrer">运行上游纹理采样 ↗</a></div></div></article>
+    </div>
+    <p class="scenario-caveat"><strong>两层效果：</strong>上方画面是本站用 JavaScript Canvas 实现的轻量算法样机，用于选择目标视觉样式；不是 CUDA WebShader 的运行结果。海洋、流体、网格、路径追踪与准随机序列均采用简化或同类算法。每张卡片的“运行上游”会打开对应的真实 CUDA→WGSL→WebGPU 样例；其余效果可在<a href="#catalog">50 项完整目录</a>查看。</p>
+  </section>
+
+  <section class="viewer-section" id="viewer">
+    <div class="section-heading"><div><span class="section-kicker">04 / LIVE VIEWER</span><h2>上游真实运行窗口</h2><p>选择样例后按需加载。首次运行可能需要编译着色器；浏览器需支持 WebGPU。</p></div><span class="external-pill">LIVE FROM UPSTREAM ↗</span></div>
+    <div class="viewer-layout">
+      <div class="viewer-stage">
+        <div class="stage-bar"><span><i class="stage-dot"></i><span id="stage-name">上游演示</span></span><span id="stage-state">等待加载</span></div>
+        <div class="stage-body" id="stage-body">
+          <div class="stage-placeholder" id="stage-placeholder"><span class="placeholder-glyph" aria-hidden="true">✺</span><span class="placeholder-label">LIVE WEBGPU SHOWCASE</span><h3 id="placeholder-title">选择一个样例</h3><p>可尝试嵌入上游真实 GPU 画面；若跨站限制导致空白，请在独立窗口运行。</p><button class="button primary" id="load-preview" type="button">尝试页内预览 ↗</button></div>
+        </div>
+        <div class="stage-footer"><p id="viewer-status" role="status" aria-live="polite">尚未加载。嵌入页面不代表本地复刻或完成 GPU 验证。</p><button id="stop-preview" class="text-button" type="button" hidden>停止演示</button></div>
+      </div>
+      <aside class="viewer-info"><span class="info-overline" id="selected-family">效果家族</span><h3 id="selected-title">载入目录中…</h3><p id="selected-summary"></p><div class="viewer-use"><small>可扩展到的现实任务 · 本站推演</small><strong id="selected-scene"></strong><small>什么时候用</small><p id="selected-when"></p></div><div class="fact"><small>上游样例标注</small><p id="selected-scale"></p></div><div class="fact"><small>验证状态</small><p id="selected-proof"></p></div><div class="viewer-links"><a class="button primary" id="open-upstream" href="https://samg-coder.github.io/cuda-webshader/" target="_blank" rel="noopener noreferrer">独立窗口运行 ↗</a><a id="open-source" href="https://github.com/SamG-Coder/cuda-webshader" target="_blank" rel="noopener noreferrer">查看上游仓库 ↗</a></div><p class="small-note">原站菜单可检查 CUDA 输入、生成的 WGSL、日志和样例说明；不同样例可操作的参数不同。</p></aside>
+    </div>
+  </section>
+
+  <section class="catalog-section" id="catalog">
+    <div class="section-heading"><div><span class="section-kicker">05 / SHOWCASE INDEX</span><h2>50 个样例，什么时候用？</h2><p>每张卡片保留上游计算内容，再补上可延伸的现实任务和采用时机。应用场景是本站推演，不代表上游已交付完整产品。</p></div><span class="result-count" id="result-count">50 / 50</span></div>
+    <div class="use-fit"><div><span>先判断是否适合引入</span><h3>这三件事同时成立时，库最有价值</h3></div><ol><li>你有符合支持范围的 CUDA C 计算，或明确要复用同类算法。</li><li>用户要在网页里反复处理大量数据，结果需要快速更新。</li><li>目标浏览器支持 WebGPU；数值正确性和速度可在目标设备验证。</li></ol></div>
+    <div class="catalog-tools"><label class="search-field" for="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="搜索海洋、照片、扫描、排序、用途…" autocomplete="off"><kbd>/</kbd></label><div class="filters" id="filters" role="group" aria-label="按效果家族筛选"></div></div>
+    <div class="catalog-grid" id="catalog-grid" aria-live="polite"></div>
+    <p class="catalog-use-note"><strong>阅读方法：</strong>“上游计算”来自源库样例；“现实任务”和“什么时候用”是本站根据算法输入输出做的应用推演。点击卡片的“输入与结果”可看还缺哪些应用工作。<a href="https://github.com/SamG-Coder/cuda-webshader#showcase-explorer" target="_blank" rel="noopener noreferrer">查看上游样例说明 ↗</a></p>
+    <p id="empty-results" class="empty-results" hidden>没有匹配的样例。换个关键词或选择“全部”。</p>
+  </section>
+
+  <section class="principle-section" id="principle">
+    <div class="section-heading"><div><span class="section-kicker">06 / HOW IT WORKS</span><h2>一段 CUDA 如何走到画面</h2></div></div>
+    <div class="principle-grid">
+      <article><span>01</span><h3>选择计算核心</h3><p>编译器选取一个 <code>__global__</code> 核函数和可达的设备辅助函数。核函数之外，JavaScript 仍负责缓冲区、网格规模和多步流程。</p></article>
+      <article><span>02</span><h3>转换执行模型</h3><p>线程与块索引转成 WebGPU 调用索引；指针参数变为存储缓冲区，标量参数写入 uniform，共享内存变为 workgroup 内存。</p></article>
+      <article><span>03</span><h3>提交与绘制</h3><p>运行时验证 WGSL、建立 compute pipeline 并调度。粒子等样例让 Three.js 读取同一 GPU 缓冲区，普通帧无需下载位置到 CPU。</p></article>
+    </div>
+    <div class="boundary"><strong>范围要看清</strong><p>这是一套有边界的 CUDA C 子集编译器。任意 CUDA 工程、CUDA 库和张量核心不会自动移植；部分数据布局、同步与设备限制会被拒绝或需要重新设计。Three.js 缓冲区桥接依赖固定的 r186 内部接口。</p><a href="https://github.com/SamG-Coder/cuda-webshader#what-a-kernel-can-use" target="_blank" rel="noopener noreferrer">查看上游支持范围 ↗</a></div>
+  </section>
+
+  <section class="evidence-section" id="evidence">
+    <div class="section-heading"><div><span class="section-kicker">07 / EVIDENCE</span><h2>画面背后的验证记录</h2><p>以下是上游 2026 年 9 月在 RTX 5080 上公布的结果。本页没有在你的设备上重复性能测试。</p></div></div>
+    <div class="evidence-grid"><div class="evidence-number"><strong>79<span>/79</span></strong><p>浏览器 GPU 数值与渲染测试通过</p></div><div class="evidence-number"><strong>20<span>/20</span></strong><p>10 类核函数 × 2 种规模完成两端数值验证</p></div><div class="evidence-number"><strong>131k</strong><p>粒子样例的默认实时画面规模</p></div></div>
+    <div class="benchmark"><div><h3>同一 RTX 5080 的几个对照</h3><p>大规模工况，单位为 GPU 微秒。数字越小越快；计时排除了编译、初次上传和读回。</p></div><div class="table-scroll"><table><thead><tr><th scope="col">计算</th><th scope="col">WebGPU</th><th scope="col">CUDA Graph</th><th scope="col">观察</th></tr></thead><tbody><tr><th scope="row">SAXPY · 419 万元素</th><td>16.26</td><td>16.16</td><td>接近</td></tr><tr><th scope="row">分块矩阵乘 · 512²</th><td>64.26</td><td>63.08</td><td>接近</td></tr><tr><th scope="row">朴素矩阵乘 · 512²</th><td>231.42</td><td>107.18</td><td>WebGPU 较慢</td></tr><tr><th scope="row">粒子更新 · 26 万</th><td>4.51</td><td>4.93</td><td>本次接近</td></tr></tbody></table></div><p class="benchmark-note">这些是特定设备、特定核函数的批量 GPU 计时，不代表应用帧率或跨设备的普遍结论。<a href="https://github.com/SamG-Coder/cuda-webshader/blob/main/reports/performance-comparison.md" target="_blank" rel="noopener noreferrer">阅读完整的 20 工况报告 ↗</a></p></div>
+  </section>
+
+  <section class="meaning-section" id="meaning"><span class="section-kicker">08 / FOR YOUR WORK</span><h2>对现有研究有什么用？</h2><div class="meaning-grid"><p>你的 <a href="../006-threejs-gpu-rasterizer/">Three.js 研究</a>关注三维呈现，<a href="../010-algorithm-scene-lab/">算法与场景实验室</a>关注水体等模型的因果。这个库展示两者如何通过 GPU 缓冲区接在一起：算法计算状态，画面直接读取状态。</p><p>最合适的下一步是挑一个边界清楚的粒子输运或高度场更新，以相同输入比较现有实现和 WebGPU 版本的数值、画面与目标设备耗时。已有算法若仅用 JavaScript/Wasm，直接编写 WGSL 也值得比较。</p></div><a href="https://github.com/SamG-Coder/WaterCuda" target="_blank" rel="noopener noreferrer">看作者的海洋应用 WaterCuda ↗</a></section>
+</main>
+<footer><span>011 / CUDA WEBSHADER RESEARCH</span><p>目录和数字引用上游；中文说明与页面为本项目研究整理。<a href="https://github.com/SamG-Coder/cuda-webshader" target="_blank" rel="noopener noreferrer">原项目与许可证 ↗</a></p><a href="#overview">回到顶部 ↑</a></footer>
+<noscript><p class="noscript">目录交互需要 JavaScript。你仍可在 <a href="https://samg-coder.github.io/cuda-webshader/">上游样例目录</a>浏览全部效果。</p></noscript>
+</body>
+</html>

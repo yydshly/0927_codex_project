@@ -13,7 +13,7 @@
 编号从 `001` 开始，创建后保持不变；默认按编号顺序展示，也可通过 `order` 调整展示顺序。
 
 <!-- PROJECTS:START -->
-当前收录 **10** 个项目。
+当前收录 **11** 个项目。
 
 | 编号 | 项目与研究入口 | 摘要 | 研究状态 | 参考来源 | Web 演示 |
 | --- | --- | --- | --- | --- | --- |
@@ -27,6 +27,7 @@
 | 008 | [coastal-simulation 海岸浅水研究](projects/008-coastal-simulation/README.md) | <strong>呈现效果：</strong>连续的海岸浪涌、绕石白沫、冲滩回流、浅水透明度、湿沙反光与接触水花，重点呈现水流和地面的连贯变化。<br><strong>内部模块：</strong>四组解析波、固定网格浅水、泡沫生成与输运、水膜与湿度、光学与程序材质、喷溅、环境及相机；Worker 与可选 Wasm 负责流动计算。<br><strong>使用场景：</strong>海岸视觉展示、图形算法教学、景观水体原型、浅水与湿润材质研究。<br><strong>可扩展产品方向：</strong>可开发可调海岸展厅、浅水效果组件、湿地表材质编辑器或交互教学课程；需补齐模块接口、场景导入、预设管理和设备适配。<br><strong>对我的意义：</strong>看懂浪、水流、泡沫、湿痕与光线怎样连接，形成可带到湖池、沟渠和雨后地面的算法复用方法。 | 已完成 | [coastal-simulation](https://github.com/iamtechartist/coastal-simulation) | [在线体验](https://yydshly.github.io/0927_codex_project/008-coastal-simulation/#overview) |
 | 009 | [ShoreBreak 破浪与水下研究](projects/009-shorebreak/README.md) | <strong>呈现效果：</strong>多尺度海浪、向前翻卷的水幕与浪腔、落水白沫、精细冲滩、湿岩石以及水下气泡与朦胧感；强调近景破浪与漫游。<br><strong>内部模块：</strong>三层 FFT 风浪、事件破浪、独立浪唇网格、GPU 浅水、白水与喷溅、地形和湿度、水面与水下光学、行走游泳及质量控制。<br><strong>使用场景：</strong>沉浸海岸互动、冲浪视觉镜头、水下体验、游戏与景观场景预演、图形学学习。<br><strong>可扩展产品方向：</strong>可开发海岸漫游展厅、可控破浪镜头工具、水下视觉组件或效果调试台；需完善资产许可、模块接口、编辑器、触控与设备分级。<br><strong>对我的意义：</strong>理解高度场、独立几何、粒子和局部体积各自的能力边界，学会按目标拆分系统、连接状态并评估移植成本。 | 已完成 | [ShoreBreak](https://github.com/cryptomanavan/ShoreBreak) | [在线体验](https://yydshly.github.io/0927_codex_project/009-shorebreak/#overview) |
 | 010 | [算法与场景实验室](projects/010-algorithm-scene-lab/README.md) | <strong>呈现效果：</strong>把海岸水面拆成七组可调的 A/B 教学画面，配合实时数值、历史曲线和总图解释变化原因；原库真实效果另设研究页。<br><strong>内部模块：</strong>波浪、浅水、输运、湿度、光学、翻卷与喷溅、噪声与三向投影；配套八个场景入口、参数与时间管理、24 项局部检查、链接和记录导出。<br><strong>使用场景：</strong>水面算法学习、参数对照、效果原型验证、海岸与湖池及雨后地面等场景的模块选型与复用评估。<br><strong>可扩展产品方向：</strong>图形学交互课程、水效果参数与素材编辑器、沉浸海岸展示、场景视觉预演工具；需继续接入课程管理、GPU 材质、模块接口和设备适配。<br><strong>对我的意义：</strong>建立从场景目标到算法组合、参数验证和模块复用的判断方法，区分调参数、适配场景、连接模块与新增模型，沉淀自己的三维交互知识资产。 | 已完成 | [coastal-simulation（另参照 ShoreBreak）](https://github.com/iamtechartist/coastal-simulation) | [在线体验](https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html) |
+| 011 | [CUDA WebShader 能力与效果展厅](projects/011-cuda-webshader/README.md) | <strong>能力：</strong>将受支持的 CUDA C 核函数转成 WGSL，并在浏览器用 WebGPU 运行<br><strong>呈现效果：</strong>上游 50 项样例展示海浪、流体粒子、图像处理、三维体数据、路径追踪和数值结果，本站 12 个 Canvas 画面是解释性样机<br><strong>内部模块：</strong>CUDA 前端与 WGSL 生成器、WebGPU 运行时与 Three\.js 缓冲区桥接、Sandbox 和 Kernel Lab、样例及验证<br><strong>内部算法：</strong>动态模拟 8、图像纹理 21、三维体数据 7、数值信号 10、几何渲染 4<br><strong>使用场景：</strong>网页端大量重复计算的交互展示、图像和扫描数据处理、算法教学与原生 CUDA 结果对照<br><strong>可扩展产品方向：</strong>GPU 算法工作台、交互视觉组件、图像分析工具和三维数据浏览器，均需补齐数据、界面与验证<br><strong>对我的意义：</strong>把 Three\.js 呈现与海岸、粒子等模型的 GPU 计算连接起来，并用固定输入比较精度、速度和设备适配后再决定是否采用。 | 已完成 | [CUDA WebShader](https://github.com/SamG-Coder/cuda-webshader) | — |
 
 ### 项目图片
 
@@ -191,6 +192,26 @@ ShoreBreak 能力与原理总图：模型分工、可见效果、使用场景和
 <strong>可扩展产品方向：</strong>图形学交互课程、水效果参数与素材编辑器、沉浸海岸展示、场景视觉预演工具；需继续接入课程管理、GPU 材质、模块接口和设备适配。
 
 <strong>对我的意义：</strong>建立从场景目标到算法组合、参数验证和模块复用的判断方法，区分调参数、适配场景、连接模块与新增模型，沉淀自己的三维交互知识资产。
+
+#### 011 · CUDA WebShader 能力与效果展厅
+
+[![CUDA WebShader 一图总览：从 CUDA 算法经 WGSL 和 WebGPU 计算到可见效果；汇总五类共 50 个上游样例、现实用途推演、适用条件与个人价值。](projects/011-cuda-webshader/assets/capability-map.png)](projects/011-cuda-webshader/README.md)
+
+CUDA WebShader 一图总览：从 CUDA 算法经 WGSL 和 WebGPU 计算到可见效果；汇总五类共 50 个上游样例、现实用途推演、适用条件与个人价值。
+
+<strong>能力：</strong>将受支持的 CUDA C 核函数转成 WGSL，并在浏览器用 WebGPU 运行
+
+<strong>呈现效果：</strong>上游 50 项样例展示海浪、流体粒子、图像处理、三维体数据、路径追踪和数值结果，本站 12 个 Canvas 画面是解释性样机
+
+<strong>内部模块：</strong>CUDA 前端与 WGSL 生成器、WebGPU 运行时与 Three\.js 缓冲区桥接、Sandbox 和 Kernel Lab、样例及验证
+
+<strong>内部算法：</strong>动态模拟 8、图像纹理 21、三维体数据 7、数值信号 10、几何渲染 4
+
+<strong>使用场景：</strong>网页端大量重复计算的交互展示、图像和扫描数据处理、算法教学与原生 CUDA 结果对照
+
+<strong>可扩展产品方向：</strong>GPU 算法工作台、交互视觉组件、图像分析工具和三维数据浏览器，均需补齐数据、界面与验证
+
+<strong>对我的意义：</strong>把 Three\.js 呈现与海岸、粒子等模型的 GPU 计算连接起来，并用固定输入比较精度、速度和设备适配后再决定是否采用。
 <!-- PROJECTS:END -->
 
 ## 开始一项研究

@@ -35,6 +35,7 @@ class SourceTests(unittest.TestCase):
         self.assertNotIn('<script>', page)
         self.assertEqual(summary_markdown('普通摘要；场景不是标题'), '普通摘要；场景不是标题')
         self.assertIn('\n\n<strong>场景：</strong>动画', summary_markdown('能力：数据；场景：动画', '\n\n'))
+        self.assertIn('<strong>内部算法：</strong>FFT 与 SPH', summary_html('内部模块：编译器；内部算法：FFT 与 SPH'))
 
     def test_source_label_uses_repository_name(self):
         self.project['source'] = 'https://github.com/freemocap/freemocap'

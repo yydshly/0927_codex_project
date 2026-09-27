@@ -1,0 +1,506 @@
+{
+  "observedAt": "2026-09-27",
+  "source": "https://samg-coder.github.io/cuda-webshader/",
+  "items": [
+    {
+      "id": "chrono",
+      "title": "Chrono 溃坝水",
+      "upstreamTitle": "Chrono water dam-break",
+      "family": "simulation",
+      "summary": "原版 SPH 物理核函数分成 15 个计算步骤，展示压力着色的溃坝流体；目前慢于实时。",
+      "scale": "Original CUDA physics Native comparisons Pressure colours",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=chrono",
+      "experimental": true
+    },
+    {
+      "id": "quadtree",
+      "title": "递归四叉树",
+      "upstreamTitle": "NVIDIA recursive quadtree",
+      "family": "geometry",
+      "summary": "由 GPU 递归划分点集并生成完整四叉树。",
+      "scale": "1,024 points · 193 nodes Exact native output GPU recursive launches",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=quadtree",
+      "experimental": false
+    },
+    {
+      "id": "bezier",
+      "title": "动态贝塞尔曲线",
+      "upstreamTitle": "NVIDIA Bezier curves",
+      "family": "geometry",
+      "summary": "父核函数根据曲线细节生成顶点，并调度子任务。",
+      "scale": "256 curves · 3,958 vertices Native CUDA compared GPU allocation + child launches",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=bezier",
+      "experimental": false
+    },
+    {
+      "id": "pathtracer",
+      "title": "玻璃与金属路径追踪",
+      "upstreamTitle": "Glass, metal and 488 spheres",
+      "family": "geometry",
+      "summary": "五个计算步骤绘制玻璃、金属和 488 个球体。",
+      "scale": "1200 × 800 pixels 10 samples per pixel Native CUDA compared",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=pathtracer",
+      "experimental": false
+    },
+    {
+      "id": "layered",
+      "title": "分层纹理采样",
+      "upstreamTitle": "NVIDIA layered texture",
+      "family": "image",
+      "summary": "对五层全分辨率纹理取样并比较结果。",
+      "scale": "1,310,720 native matches Five 512 × 512 layers",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=layered",
+      "experimental": false
+    },
+    {
+      "id": "cubemap",
+      "title": "立方体贴图",
+      "upstreamTitle": "NVIDIA cubemap texture",
+      "family": "image",
+      "summary": "通过方向向量采样立方体贴图的六个面。",
+      "scale": "24,576 native matches Six texture faces",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=cubemap",
+      "experimental": false
+    },
+    {
+      "id": "walsh",
+      "title": "Walsh 卷积",
+      "upstreamTitle": "NVIDIA complete Walsh convolution",
+      "family": "numeric",
+      "summary": "对 838 万个值完成变换、调制和逆变换。",
+      "scale": "8,388,608 values Three full transforms",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=walsh",
+      "experimental": false
+    },
+    {
+      "id": "binomial",
+      "title": "二项式期权",
+      "upstreamTitle": "NVIDIA binomial options",
+      "family": "numeric",
+      "summary": "以原版核函数计算 1024 个期权的结果。",
+      "scale": "1,024 native comparisons Original input data",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=binomial",
+      "experimental": false
+    },
+    {
+      "id": "odd-even-sort",
+      "title": "奇偶归并排序",
+      "upstreamTitle": "NVIDIA odd-even merge sort",
+      "family": "numeric",
+      "summary": "使用共享内存阶段与全局归并排序百万个键值对。",
+      "scale": "1,048,576 pairs 30 native-verified cases",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=odd-even-sort",
+      "experimental": false
+    },
+    {
+      "id": "bitonic-sort",
+      "title": "双调排序",
+      "upstreamTitle": "NVIDIA complete bitonic sort",
+      "family": "numeric",
+      "summary": "使用双调排序网络处理百万个键值对。",
+      "scale": "1,048,576 pairs 30 native-verified cases",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=bitonic-sort",
+      "experimental": false
+    },
+    {
+      "id": "sobol",
+      "title": "Sobol 高维投影",
+      "upstreamTitle": "NVIDIA Sobol projections",
+      "family": "numeric",
+      "summary": "计算百维 Sobol 序列，并投影成可观察的三维点。",
+      "scale": "100 dimensions Native bit-for-bit match",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=sobol",
+      "experimental": false
+    },
+    {
+      "id": "quasirandom",
+      "title": "准随机三维点云",
+      "upstreamTitle": "NVIDIA quasirandom cube",
+      "family": "numeric",
+      "summary": "生成并旋转观察百万级准随机三维点。",
+      "scale": "1,048,576 points Native bit-for-bit match",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=quasirandom",
+      "experimental": false
+    },
+    {
+      "id": "dxt",
+      "title": "DXT 纹理压缩",
+      "upstreamTitle": "NVIDIA DXT compression",
+      "family": "image",
+      "summary": "压缩茶壶图像为 DXT1，再解码展示。",
+      "scale": "16,384 blocks Native byte-for-byte match",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=dxt",
+      "experimental": false
+    },
+    {
+      "id": "fft-custom",
+      "title": "自定义 FFT 卷积",
+      "upstreamTitle": "NVIDIA custom FFT convolution",
+      "family": "numeric",
+      "summary": "展示图像 FFT 卷积的实数/复数预处理与频域相乘。",
+      "scale": "2000 × 2000 input Native CUDA verified",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=fft-custom",
+      "experimental": false
+    },
+    {
+      "id": "fft-fused",
+      "title": "融合 FFT 卷积",
+      "upstreamTitle": "NVIDIA fused FFT convolution",
+      "family": "numeric",
+      "summary": "展示融合后的频谱转换、相乘和逆变换准备。",
+      "scale": "2000 × 2000 input Native CUDA verified",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=fft-fused",
+      "experimental": false
+    },
+    {
+      "id": "fft-convolution",
+      "title": "FFT 图像卷积",
+      "upstreamTitle": "NVIDIA FFT convolution",
+      "family": "numeric",
+      "summary": "对四百万输入值进行纹理填充、FFT 与频域卷积。",
+      "scale": "2000 × 2000 input 2048 × 2048 FFT",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=fft-convolution",
+      "experimental": false
+    },
+    {
+      "id": "optical",
+      "title": "光流运动估计",
+      "upstreamTitle": "NVIDIA optical flow",
+      "family": "image",
+      "summary": "由图像金字塔、扭曲和求解步骤估计两帧运动。",
+      "scale": "614,400 native-exact values 5 pyramid levels 7,500 solver iterations",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=optical",
+      "experimental": false
+    },
+    {
+      "id": "stereo",
+      "title": "双目视差",
+      "upstreamTitle": "NVIDIA stereo disparity",
+      "family": "image",
+      "summary": "从双目图像计算视差，得到与深度相关的画面。",
+      "scale": "341,120 native-exact pixels 17 disparity candidates Depth-related image",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=stereo",
+      "experimental": false
+    },
+    {
+      "id": "fluids",
+      "title": "交互流体",
+      "upstreamTitle": "NVIDIA fluid flow",
+      "family": "simulation",
+      "summary": "拖动搅动粒子，观察 GPU FFT 投影的流体响应。",
+      "scale": "64 native steps compared Drag to stir GPU FFT solver",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=fluids",
+      "experimental": false
+    },
+    {
+      "id": "smoke",
+      "title": "体积烟雾粒子",
+      "upstreamTitle": "NVIDIA smoke particles",
+      "family": "simulation",
+      "summary": "观察粒子积分、GPU 排序和体积阴影形成的烟雾。",
+      "scale": "64 native steps compared Volumetric shadows GPU feedback",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=smoke",
+      "experimental": false
+    },
+    {
+      "id": "volume-preintegrated",
+      "title": "预积分体渲染",
+      "upstreamTitle": "NVIDIA pre-integrated volume",
+      "family": "volume",
+      "summary": "调节颜色和透明度表，观察体数据射线步进。",
+      "scale": "Two 1024² transfer layers 6 native image comparisons CUDA / WGSL comparison",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=volume-preintegrated",
+      "experimental": false
+    },
+    {
+      "id": "particle-collision",
+      "title": "粒子碰撞",
+      "upstreamTitle": "NVIDIA particle collisions",
+      "family": "simulation",
+      "summary": "观察球体下落、碰撞和堆积。",
+      "scale": "64 native steps compared GPU spatial grid Animated 3D spheres",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=particle-collision",
+      "experimental": false
+    },
+    {
+      "id": "ocean",
+      "title": "FFT 海洋",
+      "upstreamTitle": "NVIDIA FFT ocean",
+      "family": "simulation",
+      "summary": "风驱频谱经过逆 FFT 变成实时三维海面。",
+      "scale": "256 × 256 ocean 130,050 triangles Native cuFFT compared",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=ocean",
+      "experimental": false
+    },
+    {
+      "id": "dct-optimized",
+      "title": "优化 DCT 图像变换",
+      "upstreamTitle": "NVIDIA optimized DCT",
+      "family": "image",
+      "summary": "共享图像块，在行列变换后重建茶壶图像。",
+      "scale": "512 × 512 image Native CUDA matched Shared-memory helpers",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=dct-optimized",
+      "experimental": false
+    },
+    {
+      "id": "dct",
+      "title": "DCT 图像变换",
+      "upstreamTitle": "NVIDIA DCT image",
+      "family": "image",
+      "summary": "分块变换、量化并重建茶壶图像。",
+      "scale": "512 × 512 image Native CUDA matched GPU intermediate copies",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=dct",
+      "experimental": false
+    },
+    {
+      "id": "denoise-knn",
+      "title": "KNN 图像降噪",
+      "upstreamTitle": "NVIDIA KNN denoising",
+      "family": "image",
+      "summary": "用邻域颜色距离为带噪人像平滑降噪。",
+      "scale": "320 × 408 portrait Native CUDA checked Editable filter settings",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=denoise-knn",
+      "experimental": false
+    },
+    {
+      "id": "denoise-nlm",
+      "title": "非局部均值降噪",
+      "upstreamTitle": "NVIDIA non-local means",
+      "family": "image",
+      "summary": "比较图像小块，在保留细节时降低噪声。",
+      "scale": "320 × 408 portrait Native CUDA checked Editable filter settings",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=denoise-nlm",
+      "experimental": false
+    },
+    {
+      "id": "denoise-nlm2",
+      "title": "共享内存非局部均值",
+      "upstreamTitle": "NVIDIA shared non-local means",
+      "family": "image",
+      "summary": "用共享内存复用权重的非局部均值滤波。",
+      "scale": "320 × 408 portrait Native CUDA checked Editable filter settings",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=denoise-nlm2",
+      "experimental": false
+    },
+    {
+      "id": "sobel-shared",
+      "title": "共享内存 Sobel 边缘",
+      "upstreamTitle": "NVIDIA Sobel shared tile",
+      "family": "image",
+      "summary": "线程协作加载图像块并输出 Sobel 边缘。",
+      "scale": "1024² grayscale image 4 native image comparisons Original shared kernel",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=sobel-shared",
+      "experimental": false
+    },
+    {
+      "id": "sobel",
+      "title": "Sobel 边缘检测",
+      "upstreamTitle": "NVIDIA Sobel edges",
+      "family": "image",
+      "summary": "用 3×3 邻域计算图像边缘强度。",
+      "scale": "1024² grayscale image 8 native image comparisons Editable edge scale",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=sobel",
+      "experimental": false
+    },
+    {
+      "id": "box-filter",
+      "title": "盒式模糊",
+      "upstreamTitle": "NVIDIA box filter",
+      "family": "image",
+      "summary": "行列两次模糊，共享 GPU 中间图像。",
+      "scale": "1024² colour image 8 native image comparisons Editable radius",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=box-filter",
+      "experimental": false
+    },
+    {
+      "id": "marching-volume",
+      "title": "Bucky 体素转网格",
+      "upstreamTitle": "NVIDIA Bucky mesh",
+      "family": "volume",
+      "summary": "从原版 Bucky 体数据提取三角曲面。",
+      "scale": "11,126 triangles 3 native mesh comparisons Original 32³ volume",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=marching-volume",
+      "experimental": false
+    },
+    {
+      "id": "marching",
+      "title": "Marching Cubes 网格",
+      "upstreamTitle": "NVIDIA marching cubes",
+      "family": "volume",
+      "summary": "分类、扫描、压缩后在 GPU 上生成三角网格。",
+      "scale": "2,080 triangles Native CUDA verified Orbit the GPU mesh",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=marching",
+      "experimental": false
+    },
+    {
+      "id": "volume-filter",
+      "title": "体数据滤波",
+      "upstreamTitle": "NVIDIA volume filter",
+      "family": "volume",
+      "summary": "滤波三维体数据并查看不同深度的切片。",
+      "scale": "32³ voxels 16 native volume comparisons Interactive Z slices",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=volume-filter",
+      "experimental": false
+    },
+    {
+      "id": "mandelbrot",
+      "title": "Mandelbrot 与 Julia 集",
+      "upstreamTitle": "NVIDIA Mandelbrot",
+      "family": "geometry",
+      "summary": "编辑视窗与颜色，观察 Mandelbrot 和 Julia 分形。",
+      "scale": "Six native frame comparisons Mandelbrot + Julia Editable colours",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=mandelbrot",
+      "experimental": false
+    },
+    {
+      "id": "bilateral",
+      "title": "双边滤波",
+      "upstreamTitle": "NVIDIA bilateral filter",
+      "family": "image",
+      "summary": "平滑照片，同时保留颜色边界。",
+      "scale": "Native CUDA compared 640 × 480 photograph Editable smoothing",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=bilateral",
+      "experimental": false
+    },
+    {
+      "id": "postprocess",
+      "title": "高光辉光",
+      "upstreamTitle": "NVIDIA post-process glow",
+      "family": "image",
+      "summary": "模糊并增强茶壶图像的高光。",
+      "scale": "Five native image comparisons 512 × 512 colour image Editable highlights",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=postprocess",
+      "experimental": false
+    },
+    {
+      "id": "bicubic",
+      "title": "双三次纹理采样",
+      "upstreamTitle": "NVIDIA bicubic filtering",
+      "family": "image",
+      "summary": "比较最近邻、双线性、双三次等五种取样。",
+      "scale": "Five filter modes 15 native image comparisons CUDA / WGSL comparison",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=bicubic",
+      "experimental": false
+    },
+    {
+      "id": "convolution",
+      "title": "纹理卷积",
+      "upstreamTitle": "NVIDIA texture convolution",
+      "family": "image",
+      "summary": "可编辑卷积系数，查看两步 GPU 图像滤波。",
+      "scale": "Two original kernels Native CUDA compared 512 × 512 image",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=convolution",
+      "experimental": false
+    },
+    {
+      "id": "wave",
+      "title": "正弦波曲面",
+      "upstreamTitle": "NVIDIA sine wave",
+      "family": "simulation",
+      "summary": "原版 simpleGL 内核生成动态点云曲面。",
+      "scale": "12 native CUDA checks 12 WebGPU checks",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=wave",
+      "experimental": false
+    },
+    {
+      "id": "nbody",
+      "title": "N 体引力",
+      "upstreamTitle": "NVIDIA N-body",
+      "family": "simulation",
+      "summary": "512 个物体在 GPU 中进行引力计算和位置反馈。",
+      "scale": "Native CUDA verified NVIDIA WebGPU verified CUDA / WGSL comparison",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=nbody",
+      "experimental": false
+    },
+    {
+      "id": "fdtd",
+      "title": "三维 FDTD 场",
+      "upstreamTitle": "NVIDIA FDTD3d",
+      "family": "volume",
+      "summary": "三维有限差分核函数更新场数据并着色展示。",
+      "scale": "Native CUDA verified NVIDIA WebGPU verified 3D scalar field",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=fdtd",
+      "experimental": false
+    },
+    {
+      "id": "surface",
+      "title": "GPU 表面写入",
+      "upstreamTitle": "NVIDIA surface write",
+      "family": "image",
+      "summary": "写入 GPU 表面后用旋转核函数再次采样。",
+      "scale": "Two original kernels Native CUDA compared GPU surface writes",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=surface",
+      "experimental": false
+    },
+    {
+      "id": "texture2d",
+      "title": "二维纹理旋转",
+      "upstreamTitle": "NVIDIA texture rotation",
+      "family": "image",
+      "summary": "改变角度与过滤方式，旋转原版茶壶纹理。",
+      "scale": "512 × 512 image Native CUDA compared Float GPU texture",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=texture2d",
+      "experimental": false
+    },
+    {
+      "id": "volume",
+      "title": "Bucky 体渲染",
+      "upstreamTitle": "NVIDIA volume renderer",
+      "family": "volume",
+      "summary": "对 Bucky 体数据做射线步进并调节相机与密度。",
+      "scale": "Full ray-marching kernel Native image comparison 32³ volume",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=volume",
+      "experimental": false
+    },
+    {
+      "id": "texture3d",
+      "title": "三维纹理切片",
+      "upstreamTitle": "NVIDIA 3D texture slice",
+      "family": "volume",
+      "summary": "从三维纹理中选择深度切片及采样方式。",
+      "scale": "32³ volume Native CUDA verified 3D GPU sampler",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=texture3d",
+      "experimental": false
+    },
+    {
+      "id": "gaussian",
+      "title": "递归高斯滤波",
+      "upstreamTitle": "NVIDIA recursive Gaussian",
+      "family": "image",
+      "summary": "四个 GPU 步骤完成递归高斯图像滤波。",
+      "scale": "Four GPU passes Native CUDA verified RGBA image preview",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=gaussian",
+      "experimental": false
+    },
+    {
+      "id": "haar",
+      "title": "Haar 小波",
+      "upstreamTitle": "NVIDIA Haar wavelet",
+      "family": "numeric",
+      "summary": "将信号分解为粗尺度与细节系数。",
+      "scale": "Full transform Native CUDA verified Two GPU passes",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=haar",
+      "experimental": false
+    },
+    {
+      "id": "separable",
+      "title": "可分离卷积",
+      "upstreamTitle": "NVIDIA separable convolution",
+      "family": "image",
+      "summary": "行列核函数接力，复用 GPU 中间图像。",
+      "scale": "Two GPU passes Native CUDA verified Editable coefficients",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=separable",
+      "experimental": false
+    },
+    {
+      "id": "particles",
+      "title": "轨道粒子场",
+      "upstreamTitle": "Orbital field",
+      "family": "simulation",
+      "summary": "编辑 CUDA 粒子核函数并观察共享缓冲区驱动的轨道粒子场。",
+      "scale": "Editable particle count Shared render buffer",
+      "url": "https://samg-coder.github.io/cuda-webshader/sandbox.html?example=particles",
+      "experimental": false
+    }
+  ]
+}

@@ -10,7 +10,8 @@
     "007-system-design-notes",
     "008-coastal-simulation",
     "009-shorebreak",
-    "010-algorithm-scene-lab"
+    "010-algorithm-scene-lab",
+    "011-cuda-webshader"
   ],
   "entrypoints": {
     "001-xian-night-atlas": {
@@ -61,6 +62,11 @@
       "entry": "summary.html",
       "guide": "summary.html#map",
       "label": "查看算法、效果与场景理解汇总"
+    },
+    "011-cuda-webshader": {
+      "entry": "#capability-map",
+      "guide": "#understanding",
+      "label": "一图看懂 CUDA WebShader"
     }
   }
 }
