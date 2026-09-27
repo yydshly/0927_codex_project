@@ -11,7 +11,7 @@
 - 产品理解：演示地址加 `#understanding`。
 - Jailbreaks 越狱研究指南：`https://yydshly.github.io/0927_codex_project/005-jailbreaks-research/#overview`；完整引导图使用 `#guide-map`。
 
-002 与 003 均已于 2026-09-27 完成发布和远端网页验证，正式地址已写入各自 `project.json` 的 `demo` 字段。FreeMoCap 的五项加粗摘要、完整引导图及 150% 缩放、演示切换和合成 NPY 解析回放已通过公网检查；脚本、样式、PNG / SVG、数据样例与既有 Lofi Cities 页面均返回 HTTP 200。[FreeMoCap 首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36295964557)。005 已加入发布清单，远端验证完成后再将地址写入其 `demo` 字段。
+002、003 与 005 均已于 2026-09-27 完成发布和远端网页验证，正式地址已写入各自 `project.json` 的 `demo` 字段。FreeMoCap 的五项加粗摘要、完整引导图及 150% 缩放、演示切换和合成 NPY 解析回放已通过公网检查；脚本、样式、PNG / SVG、数据样例与既有 Lofi Cities 页面均返回 HTTP 200。[FreeMoCap 首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36295964557)。Jailbreaks 的五项加粗摘要、完整引导图、25 条来源记录和参考来源链接已在公开页面核对；网页未进行模型越狱效果测试。[Jailbreaks 成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36297771926)。
 
 ## 构建和发布
 

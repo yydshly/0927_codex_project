@@ -8,7 +8,7 @@
   "source_name": "jailbreaks",
   "source_type": "github",
   "status": "已完成",
-  "demo": "",
+  "demo": "https://yydshly.github.io/0927_codex_project/005-jailbreaks-research/#overview",
   "cover": "assets/jailbreaks-overview.png",
   "cover_alt": "Jailbreaks 完整引导图：10 组模型或系列、越狱目标、规则遵循原理、可能效果及个人价值；模型效果未实测。"
 }

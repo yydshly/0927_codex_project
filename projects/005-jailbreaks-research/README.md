@@ -27,7 +27,7 @@
 
 [返回总索引](../../README.md) · [参考来源：jailbreaks](https://github.com/togg53192-cmd/jailbreaks) · [用户指定文件](https://github.com/togg53192-cmd/jailbreaks/blob/e5130bbcc1e183a207126bdfe2fa41d1ba46df81/deepseek-4-1.md)
 
-**网页阅读：[Jailbreaks 越狱研究指南](web/index.html)**。包含越狱意图、场景切换、承载方式、研究记录模板、效果判断和个人价值说明。可在浏览器直接打开，或按[网页说明](web/README.md)启动本地预览。
+**在线网页：[Jailbreaks 越狱研究指南](https://yydshly.github.io/0927_codex_project/005-jailbreaks-research/#overview)**。包含越狱意图、场景切换、承载方式、研究记录模板、效果判断和个人价值说明。也可[直接打开本地网页](web/index.html)，或按[网页说明](web/README.md)启动本地预览。
 
 ![越狱研究首页：内容限制与普通提示词优化的区别](assets/guide-desktop.png)
 
