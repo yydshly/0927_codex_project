@@ -7,7 +7,7 @@
   "source": "https://github.com/liquidslr/system-design-notes",
   "source_type": "github",
   "status": "已完成",
-  "demo": "",
+  "demo": "https://yydshly.github.io/0927_codex_project/007-system-design-notes/#overview",
   "cover": "assets/goal-capability-map.svg",
   "cover_alt": "系统设计笔记 28 章能力与场景总图：按五类主题展示章节、关注能力、典型目标，以及根据产品特性按需选用的路径。"
 }
