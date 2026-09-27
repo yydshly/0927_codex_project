@@ -3,12 +3,12 @@
   "order": 4,
   "slug": "ai-engineering-interview-guide",
   "name": "AI 工程面试题库研究",
-  "summary": "以中文交互网页梳理 AI 工程题库的 10 个模块、4 条岗位路线与 35 个公司章节。",
+  "summary": "能力：这是按技术主题和公司组织的 AI 工程面试题库与学习索引，可用于定位知识范围、练习解释原理和分析工程取舍；内容：固定版本收录 598 道题，包含 10 个通用模块的 119 题和 35 个公司或分组章节的 479 题，232 题附外部参考链接，本站为 45 题补充中文答题要点；使用场景：目标公司求职、转向 AI 工程、现有项目查漏补缺、同伴模拟面试与团队讨论；对我的意义：把岗位要求转成可练习的题目清单，用自答、实现、验证和复盘发现薄弱项，形成能解释也能动手的能力证据。",
   "source": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise",
   "source_name": "ai-engineering-interview-questions-company-wise",
   "source_type": "github",
   "status": "已完成",
   "demo": "",
-  "cover": "assets/web-overview.png",
-  "cover_alt": "AI 工程面试题库中文导览：仓库能力、内容规模与模块阅读卡片。"
+  "cover": "assets/ai-engineering-guide-map.png",
+  "cover_alt": "AI 工程面试题库完整引导图：题库能力、10 个内容模块、35 个公司章节、使用场景、个人价值与练习顺序。"
 }

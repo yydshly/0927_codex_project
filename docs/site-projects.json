@@ -1,10 +1,11 @@
 {
   "repository": "yydshly/0927_codex_project",
-  "projects": ["001-xian-night-atlas", "002-freemocap-lab", "003-lofi-cities", "005-jailbreaks-research"],
+  "projects": ["001-xian-night-atlas", "002-freemocap-lab", "003-lofi-cities", "004-ai-engineering-interview-guide", "005-jailbreaks-research"],
   "entrypoints": {
     "001-xian-night-atlas": {"entry": "", "label": "进入西安夜行图"},
     "002-freemocap-lab": {"entry": "#capabilities", "guide": "#capabilities", "label": "进入 FreeMoCap 动作实验室"},
     "003-lofi-cities": {"entry": "#space", "guide": "#understanding", "label": "进入体验 · 栖间"},
+    "004-ai-engineering-interview-guide": {"entry": "#overview", "guide": "#guide-map", "label": "进入 AI 工程题库导览"},
     "005-jailbreaks-research": {"entry": "#overview", "guide": "#guide-map", "label": "进入 Jailbreaks 越狱研究指南"}
   }
 }

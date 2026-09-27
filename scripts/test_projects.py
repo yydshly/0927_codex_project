@@ -23,9 +23,10 @@ class SourceTests(unittest.TestCase):
         self.assertIn("[参考网页](https://example.com/atlas/)", render_index([self.project]))
 
     def test_summary_labels_are_bold_without_executing_markup(self):
-        summary = '能力：<script> & 数据 | 表；使用场景：动画；对我的意义：*专属动作*'
+        summary = '能力：<script> & 数据 | 表；内容：题库；使用场景：动画；对我的意义：*专属动作*'
         md = summary_markdown(summary)
         self.assertIn('<strong>能力：</strong>&lt;script&gt; &amp; 数据 \\| 表', md)
+        self.assertIn('<br><strong>内容：</strong>题库', md)
         self.assertIn('<br><strong>使用场景：</strong>动画', md)
         self.assertIn('<strong>对我的意义：</strong>\\*专属动作\\*', md)
         page = summary_html(summary)

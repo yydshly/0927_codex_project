@@ -107,7 +107,7 @@ def link_url(value):
     return quote(value, safe="/:?=&%#@+;,-._~")
 
 
-SUMMARY_LABELS = ("能力", "呈现效果", "效果", "使用场景", "场景", "可扩展方向", "扩展", "对我的意义", "对我")
+SUMMARY_LABELS = ("能力", "内容", "呈现效果", "效果", "使用场景", "场景", "可扩展方向", "扩展", "对我的意义", "对我")
 SUMMARY_PATTERN = re.compile(r"(?:^|[；;])\s*(" + "|".join(SUMMARY_LABELS) + r")[:：]\s*")
 
 

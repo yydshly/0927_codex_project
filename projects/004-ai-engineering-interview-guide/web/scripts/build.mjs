@@ -20,4 +20,5 @@ for (const file of ['index.html', 'styles.css', 'content.js', 'app.js']) {
 await writeFile(path.join(output, 'source-data.js'), `export default ${JSON.stringify(source)};\n`);
 await writeFile(path.join(output, 'question-data.js'), `export const catalog = ${JSON.stringify(questions)};\nexport const answerNotes = ${JSON.stringify(notes)};\nexport const questionTitles = ${JSON.stringify(questionTitles)};\n`);
 await copyFile(path.join(root, '../notes/UPSTREAM-LICENSE.txt'), path.join(output, 'UPSTREAM-LICENSE.txt'));
+await copyFile(path.join(root, '../assets/ai-engineering-guide-map.png'), path.join(output, 'guide-map.png'));
 console.log(`Built ${output} — ${questions.questions.length} questions, ${questions.answer_linked_count} answer-linked, ${Object.keys(notes.notes).length} site notes.`);

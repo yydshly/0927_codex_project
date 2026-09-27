@@ -39,3 +39,7 @@ jobs:
         run: |
           npm --prefix projects/005-jailbreaks-research/web run check
           npm --prefix projects/005-jailbreaks-research/web run build
+      - name: Check AI engineering interview guide
+        run: |
+          node --check projects/004-ai-engineering-interview-guide/web/app.js
+          npm --prefix projects/004-ai-engineering-interview-guide/web run build
