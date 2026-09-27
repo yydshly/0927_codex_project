@@ -82,4 +82,12 @@ python build.py
 python build.py --package
 ```
 
-根目录 `dist/quiet-spaces-3.1.0.zip` 只包含产品入口、运行代码、场景素材和使用说明；研究页面与测试工具不包含在内。保持目录结构部署到 HTTP(S) 静态托管即可，无需依赖安装或后端。当前仅完成本地交付，没有发布到公共域名。
+根目录 `dist/quiet-spaces-3.1.0.zip` 只包含产品入口、运行代码、场景素材和使用说明；研究页面与测试工具不包含在内。保持目录结构部署到 HTTP(S) 静态托管即可，无需依赖安装或后端。已发布至 [GitHub Pages](https://yydshly.github.io/0927_codex_project/003-lofi-cities/)，使用子路径与 hash 路由。
+
+## 远端运行
+
+- 在线体验：https://yydshly.github.io/0927_codex_project/003-lofi-cities/#space
+- 理解与产品引导：https://yydshly.github.io/0927_codex_project/003-lofi-cities/#understanding
+- 站点索引：https://yydshly.github.io/0927_codex_project/
+
+由仓库根目录的 `scripts/build_site.py` 统一构建，Pages 工作流自动发布；配置与后续接入说明见 [部署文档](../../../docs/DEPLOYMENT.md)。

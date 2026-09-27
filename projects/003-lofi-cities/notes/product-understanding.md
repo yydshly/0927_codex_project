@@ -1,6 +1,6 @@
 # 新增产品理解：由用户掌控的个人氛围空间
 
-网页入口：[产品理解](http://127.0.0.1:4313/#understanding)。主导航“理解”和原研究页均可进入。
+网页入口：[产品理解](https://yydshly.github.io/0927_codex_project/003-lofi-cities/#understanding)。主导航“理解”和原研究页均可进入。
 
 ## 核心定位
 

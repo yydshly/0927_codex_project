@@ -2,7 +2,7 @@
 
 > 源网页：[Lofi Cities · Istanbul](https://loficities.com/istanbul/)。研究它如何把动态画面、实时合成音乐与环境混音组织成个人氛围空间，并以独立产品“栖间”验证这些思路。
 
-[返回总索引](../../README.md) · [产品说明](notes/product.md) · [新增产品理解](notes/product-understanding.md) · [研究记录](notes/research.md) · [场景原理](notes/scene-lab.md) · [原站能力走查](notes/web-audit.md) · [产品方向](notes/product-directions.md) · [运行说明](web/README.md)
+[在线体验](https://yydshly.github.io/0927_codex_project/003-lofi-cities/#space) · [产品理解与引导](https://yydshly.github.io/0927_codex_project/003-lofi-cities/#understanding) · [源网页 Lofi Cities](https://loficities.com/istanbul/) · [返回总索引](../../README.md) · [产品说明](notes/product.md) · [新增产品理解](notes/product-understanding.md) · [研究记录](notes/research.md) · [场景原理](notes/scene-lab.md) · [原站能力走查](notes/web-audit.md) · [产品方向](notes/product-directions.md) · [运行说明](web/README.md)
 
 ## 五个问题读懂这项研究
 
@@ -18,7 +18,7 @@
 
 ## 实际网页产品引导图
 
-[![栖间实际运行界面：场景、组合、调节和播放器](assets/product-guide.png)](web/index.html)
+[![栖间实际运行界面：场景、组合、调节和播放器](assets/product-guide.png)](https://yydshly.github.io/0927_codex_project/003-lofi-cities/#space)
 
 这张图来自栖间实际运行的桌面网页，没有额外绘制模拟界面；它不是 Lofi Cities 源站截图。图片呈现布局，动画与声音需打开在线体验。
 
@@ -59,7 +59,7 @@ python projects/003-lofi-cities/web/build.py --package
 python scripts/projects.py check
 ```
 
-构建输出为 `dist/003-lofi-cities/`，另生成独立成品包 `dist/quiet-spaces-3.1.0.zip`，支持子路径部署。成品包包含入口、代码、素材与使用说明。当前未公开部署。
+构建输出为 `dist/003-lofi-cities/`，另生成独立成品包 `dist/quiet-spaces-3.1.0.zip`，支持子路径部署。成品包包含入口、代码、素材与使用说明。已通过 GitHub Pages 公开部署，支持 [在线体验](https://yydshly.github.io/0927_codex_project/003-lofi-cities/#space)。
 
 ## 动态效果
 
@@ -83,10 +83,15 @@ python scripts/projects.py check
 
 ## 研究档案
 
-原来的展示、证据和单场景教学实验保留在 [研究档案](http://127.0.0.1:4313/research.html#overview) 与 [雨夜书房原理实验](http://127.0.0.1:4313/research.html#lab)。
+原来的展示、证据和单场景教学实验保留在 [研究档案](https://yydshly.github.io/0927_codex_project/003-lofi-cities/research.html#overview) 与 [雨夜书房原理实验](https://yydshly.github.io/0927_codex_project/003-lofi-cities/research.html#lab)。
 
 参考对象为 [Lofi Cities](https://loficities.com/istanbul/)，作者 [Safa Elmali](https://github.com/SafaElmali)。已阅读线上公开脚本，确认 Canvas 绘制与 Web Audio 合成主要路径；未确认对应开源仓库或许可证。栖间的程序独立编写，场景原画独立生成，没有接入或分发原站应用引擎。引用截图仍在研究页标明来源，详见 [图片与来源](assets/README.md)。
 
 ## 新增产品理解
 
-[网页中的产品理解](http://127.0.0.1:4313/#understanding)：个人意图、视听环境、交互反馈、持续匹配；可切换阅读、工作与放松示例，并区分当前能力、下一步联动与长期推荐。原研究页也已接入该入口。
+[网页中的产品理解](https://yydshly.github.io/0927_codex_project/003-lofi-cities/#understanding)：个人意图、视听环境、交互反馈、持续匹配；可切换阅读、工作与放松示例，并区分当前能力、下一步联动与长期推荐。原研究页也已接入该入口。
+## 远端发布验证
+
+2026-09-27 已发布到 GitHub Pages。源网页链接、站点索引、默认场景、组合播放/暂停、产品理解示例和实际截图引导均已从远端检查；场景图片加载正常，播放控制切换正常，组合操作不会自动启动专注计时。浏览器未发现脚本错误。
+
+27 项产品测试、5 项索引与站点检查通过，远端检查和部署工作流成功。后续对本项目的相关修改推送到 `main` 后会自动更新。GitHub Pages 保存静态网页，个人设置仍在各自浏览器中，不会在本地地址和远端地址之间自动同步。

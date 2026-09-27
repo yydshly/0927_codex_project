@@ -15,7 +15,7 @@
 
 | 编号 | 项目与研究入口 | 摘要 | 研究状态 | 参考来源 | Web 演示 |
 | --- | --- | --- | --- | --- | --- |
-| 003 | [Lofi Cities](projects/003-lofi-cities/README.md) | 能力：动态城市、实时合成音乐与环境混音；效果：可调节的沉浸氛围；场景：阅读、工作、放松；扩展：物件联动、时间变化与空间分享；对我：用独立产品“栖间”验证可保存、可交互的个人环境。 | 已完成 | [Lofi Cities · Istanbul](https://loficities.com/istanbul/) | — |
+| 003 | [Lofi Cities](projects/003-lofi-cities/README.md) | 能力：动态城市、实时合成音乐与环境混音；效果：可调节的沉浸氛围；场景：阅读、工作、放松；扩展：物件联动、时间变化与空间分享；对我：用独立产品“栖间”验证可保存、可交互的个人环境。 | 已完成 | [Lofi Cities · Istanbul](https://loficities.com/istanbul/) | [在线体验](https://yydshly.github.io/0927_codex_project/003-lofi-cities/) |
 
 ### 项目图片
 

@@ -8,7 +8,7 @@
 - Lofi Cities 独立演示：`https://yydshly.github.io/0927_codex_project/003-lofi-cities/`
 - 产品理解：演示地址加 `#understanding`。
 
-首次发布验证完成后，才将演示地址写入 `project.json` 的 `demo` 字段。该字段为空时仍表示未确认上线；具体发布结果记录在子项目运行说明中。
+003 已于 2026-09-27 完成首次发布和远端网页验证，演示地址已回填 `project.json` 的 `demo` 字段。其他项目仅在实测上线后填写该字段。
 
 ## 构建和发布
 
