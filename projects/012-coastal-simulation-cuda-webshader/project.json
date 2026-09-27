@@ -8,7 +8,7 @@
   "source_type": "github",
   "status": "已完成",
   "demo": "https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#overview",
-  "cover": "assets/source-ocean-to-shore.jpg",
-  "cover_alt": "原始 coastal-simulation 在线演示 Ocean to Shore 视角的真实截图：浅水、白沫、岩石与沙滩；012 页面另展示 GPU 移植版实测图。",
+  "cover": "assets/coastal-capabilities-overview.png",
+  "cover_alt": "GPU 海岸模拟库完整能力总图：水与固定岩石、地形的互动、内部算法、可见效果、场景和个人价值；海岸配图为生成示意，012 页面另附源库实拍。",
   "source_name": "coastal-simulation-cuda-webshader"
 }

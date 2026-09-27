@@ -216,9 +216,9 @@ CUDA WebShader 一图总览：从 CUDA 算法经 WGSL 和 WebGPU 计算到可见
 
 #### 012 · coastal-simulation GPU 海岸能力研究
 
-[![原始 coastal-simulation 在线演示 Ocean to Shore 视角的真实截图：浅水、白沫、岩石与沙滩；012 页面另展示 GPU 移植版实测图。](projects/012-coastal-simulation-cuda-webshader/assets/source-ocean-to-shore.jpg)](projects/012-coastal-simulation-cuda-webshader/README.md)
+[![GPU 海岸模拟库完整能力总图：水与固定岩石、地形的互动、内部算法、可见效果、场景和个人价值；海岸配图为生成示意，012 页面另附源库实拍。](projects/012-coastal-simulation-cuda-webshader/assets/coastal-capabilities-overview.png)](projects/012-coastal-simulation-cuda-webshader/README.md)
 
-原始 coastal-simulation 在线演示 Ocean to Shore 视角的真实截图：浅水、白沫、岩石与沙滩；012 页面另展示 GPU 移植版实测图。
+GPU 海岸模拟库完整能力总图：水与固定岩石、地形的互动、内部算法、可见效果、场景和个人价值；海岸配图为生成示意，012 页面另附源库实拍。
 
 <strong>能力：</strong>模拟海浪与固定岩石、海床和岸线的浅水接触，水受阻后分流、绕石、冲滩和退回，岩石不会被水推动
 

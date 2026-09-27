@@ -4,7 +4,7 @@
 
 [正式 Web 展示](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#summary) · [三维演示](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/extensions.html) · [返回总索引](../../README.md) · [本地展示页与交互实验台](web/README.md) · [官方在线演示](https://samg-coder.github.io/coastal-simulation-cuda-webshader/) · [上游仓库](https://github.com/SamG-Coder/coastal-simulation-cuda-webshader) · [研究笔记](notes/research.md)
 
-**阅读顺序：**[真实样例截图导览](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#guide-map) → [理解与应用结论](notes/understanding.md) → [运行与验证记录](notes/research.md)。提交范围、检查结果和建议说明见[提交范围与验收](notes/submission.md)。
+**阅读顺序：**[能力总图与真实样例](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#guide-map) → [理解与应用结论](notes/understanding.md) → [运行与验证记录](notes/research.md)。提交范围、检查结果和建议说明见[提交范围与验收](notes/submission.md)。
 
 ## 一页摘要
 
@@ -28,13 +28,19 @@
 
 移植版还增加了动量平流、持续的破浪湍流与泡沫、八组定向短波、改进的水面高光、岩石接触与喷溅表现。这些属于**模型和视觉改动**；减少 GPU 与 CPU 间的数据搬运属于**执行与数据流改动**。两类变化应分开评价。[上游 README：Port details](https://github.com/SamG-Coder/coastal-simulation-cuda-webshader#port-details)
 
+## GPU 海岸模拟库能力总图
+
+![一张图看懂 GPU 海岸模拟库：水与岩石、地形的互动，内部算法、可见效果、使用场景及个人价值；海岸配图为生成示意](assets/coastal-capabilities-overview.png)
+
+这张总图是我们对固定版本源码的整理，海岸配图为生成示意，帮助先看清能力与边界。下方三张实拍用于核对实际画面；完整图片均在[网页引导区](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#guide-map)可点击放大。
+
 ## 真实样例引导图
 
 | GPU 移植版：新增礁石实测 | 原始库：Ocean to Shore | 原始库：Wash & Wet Sand |
 | --- | --- | --- |
 | ![GPU 移植版新增礁石与白沫的部署实拍](assets/online-reef-verification.png) | ![原始库整体海岸、岩石与浅水实拍](assets/source-ocean-to-shore.jpg) | ![原始库湿沙与水际线实拍](assets/source-wash-wet-sand.jpg) |
 
-这些均为实际运行截图，分别标明移植版与原版；[网页引导区](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#guide-map)提供完整图注和原图链接。截图只是单帧，动态效果请打开[源库三维场景](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/extensions.html)。来源与版本见[图片说明](assets/README.md)。另保留[算法数据路径图](assets/capability-map.svg)和先前的[生成示意图](assets/coastal-capabilities-overview.png)，后者不作为运行证据。本站打包了固定版本上游运行包；可编辑地形仍是独立的简化 WebGPU 教学模型。
+这些均为实际运行截图，分别标明移植版与原版；[网页引导区](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#guide-map)提供完整图注和原图链接。截图只是单帧，动态效果请打开[源库三维场景](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/extensions.html)。来源与版本见[图片说明](assets/README.md)。另保留[算法数据路径图](assets/capability-map.svg)。能力总图中的海岸配图是生成示意，不作为运行证据。本站打包了固定版本上游运行包；可编辑地形仍是独立的简化 WebGPU 教学模型。
 
 ## 012 已完成什么
 
