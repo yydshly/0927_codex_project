@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1020" viewBox="0 0 1440 1020" role="img" aria-labelledby="title desc">
+  <title id="title">GPU 海岸模拟能力总图</title>
+  <desc id="desc">对比原版和 GPU 移植版的数据路径，归纳六组海岸能力、可见效果与模型边界。研究示意，不是运行截图。</desc>
+  <defs>
+    <linearGradient id="sea" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#0a303b"/><stop offset="1" stop-color="#0d5663"/></linearGradient>
+  </defs>
+  <rect width="1440" height="1020" fill="#edf5f2"/>
+  <path d="M0 0h1440v264H0z" fill="url(#sea)"/>
+  <path d="M0 208c200-50 304 49 490 0s295-21 450 13 281-30 500-8v51H0z" fill="#55b8ba" opacity=".22"/>
+  <g font-family="Microsoft YaHei, PingFang SC, sans-serif">
+    <text x="66" y="57" fill="#a4e5d3" font-size="18" letter-spacing="3">012  /  COASTAL GPU RESEARCH</text>
+    <text x="66" y="118" fill="#f5fbf5" font-size="45" font-weight="700">让海岸模拟留在 GPU</text>
+    <text x="68" y="162" fill="#d1e8e4" font-size="22">CUDA WebShader → WGSL → WebGPU → Three.js</text>
+    <text x="68" y="220" fill="#a9cec9" font-size="17">研究示意 · 非实际运行截图 · 2026-09-27</text>
+    <g transform="translate(1000 54)"><rect width="360" height="152" rx="22" fill="#153d47" stroke="#6cbfb5" opacity=".95"/><text x="26" y="38" fill="#b5ddd5" font-size="17">核心判断</text><text x="26" y="79" fill="#f1fff1" font-size="27" font-weight="700">模拟状态由 GPU 计算</text><text x="26" y="115" fill="#c5e7de" font-size="20">并直接进入 GPU 绘制</text></g>
+    <text x="66" y="314" fill="#0d3941" font-size="24" font-weight="700">数据路径 / 真正改变了什么</text>
+    <rect x="66" y="338" width="632" height="164" rx="20" fill="#fff" stroke="#d5e5df"/>
+    <text x="94" y="375" fill="#507179" font-size="17">原版 · CPU / Worker / Wasm 求解</text>
+    <text x="94" y="417" fill="#164a53" font-size="22" font-weight="700">计算水流 → 打包/传输 → GPU 绘制</text>
+    <text x="94" y="459" fill="#617d81" font-size="18">Three.js 已使用 GPU 渲染；模拟数据需跨设备路径。</text>
+    <rect x="718" y="338" width="656" height="164" rx="20" fill="#e4f7ee" stroke="#92d2bf"/>
+    <text x="746" y="375" fill="#366b66" font-size="17">移植版 · CUDA 源编译为 WGSL / WebGPU 求解</text>
+    <text x="746" y="417" fill="#0c554b" font-size="22" font-weight="700">GPU 计算 → GPU 常驻 → Three.js 绘制</text>
+    <text x="746" y="459" fill="#477a73" font-size="18">普通帧不依赖九个模拟场的 CPU 回读与重新上传。</text>
+    <text x="66" y="559" fill="#0d3941" font-size="24" font-weight="700">能力全景 / 六组相互配合的系统</text>
+    <g font-size="18">
+      <g transform="translate(66 586)"><rect width="418" height="125" rx="17" fill="#fff" stroke="#d3e3de"/><text x="22" y="38" fill="#238375" font-size="16">01  海岸输入</text><text x="22" y="72" fill="#163c45" font-size="22" font-weight="700">地形 · 岩石 · 入射波</text><text x="22" y="101" fill="#577478">给浅水求解提供边界和障碍</text></g>
+      <g transform="translate(511 586)"><rect width="418" height="125" rx="17" fill="#fff" stroke="#d3e3de"/><text x="22" y="38" fill="#238375" font-size="16">02  浅水流动</text><text x="22" y="72" fill="#163c45" font-size="22" font-weight="700">水深 · 面流速 · 动量</text><text x="22" y="101" fill="#577478">冲滩、退水与绕石回流</text></g>
+      <g transform="translate(956 586)"><rect width="418" height="125" rx="17" fill="#fff" stroke="#d3e3de"/><text x="22" y="38" fill="#238375" font-size="16">03  破浪状态</text><text x="22" y="72" fill="#163c45" font-size="22" font-weight="700">湍流 · 泡沫 · 输运</text><text x="22" y="101" fill="#577478">白沫持续、移动并消散</text></g>
+      <g transform="translate(66 729)"><rect width="418" height="125" rx="17" fill="#fff" stroke="#d3e3de"/><text x="22" y="38" fill="#238375" font-size="16">04  表面与着色</text><text x="22" y="72" fill="#163c45" font-size="22" font-weight="700">八组短波 · 法线 · 高光</text><text x="22" y="101" fill="#577478">近景波纹、浪尖与清水色</text></g>
+      <g transform="translate(511 729)"><rect width="418" height="125" rx="17" fill="#fff" stroke="#d3e3de"/><text x="22" y="38" fill="#238375" font-size="16">05  接触环境</text><text x="22" y="72" fill="#163c45" font-size="22" font-weight="700">湿沙 · 湿岩 · 喷溅</text><text x="22" y="101" fill="#577478">退水痕迹与撞击喷雾</text></g>
+      <g transform="translate(956 729)"><rect width="418" height="125" rx="17" fill="#fff" stroke="#d3e3de"/><text x="22" y="38" fill="#238375" font-size="16">06  运行与探索</text><text x="22" y="72" fill="#163c45" font-size="22" font-weight="700">视角 · 海况 · 诊断</text><text x="22" y="101" fill="#577478">自由飞行、调参与性能观察</text></g>
+    </g>
+    <rect x="66" y="885" width="1308" height="87" rx="18" fill="#103c45"/>
+    <text x="90" y="922" fill="#b8eadb" font-size="18" font-weight="700">模型边界</text>
+    <text x="217" y="922" fill="#e7f5ed" font-size="18">主体仍是二维浅水高度场；短波是表面细节；无完整三维翻卷浪体或工程预测验证。</text>
+    <text x="90" y="951" fill="#94c7bd" font-size="15">资料：SamG-Coder/coastal-simulation-cuda-webshader README、CREDITS · 页面和分类由本站整理</text>
+  </g>
+</svg>

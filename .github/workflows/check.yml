@@ -57,3 +57,13 @@ jobs:
           python3 projects/008-coastal-simulation/web/build.py
           python3 projects/009-shorebreak/web/build.py
           python3 projects/010-algorithm-scene-lab/web/build.py
+      - name: Check GPU coastal simulation guide
+        run: |
+          node --check projects/012-coastal-simulation-cuda-webshader/web/app.mjs
+          node --check projects/012-coastal-simulation-cuda-webshader/web/extensions.mjs
+          node --check projects/012-coastal-simulation-cuda-webshader/web/source-view.mjs
+          node --check projects/012-coastal-simulation-cuda-webshader/web/upstream/src/main.js
+          node --check projects/012-coastal-simulation-cuda-webshader/web/upstream/src/resident-coast.js
+          node --check projects/012-coastal-simulation-cuda-webshader/web/upstream/src/local-extension.js
+          node --test projects/012-coastal-simulation-cuda-webshader/web/extensions-core.test.mjs
+          python3 projects/012-coastal-simulation-cuda-webshader/web/build.py

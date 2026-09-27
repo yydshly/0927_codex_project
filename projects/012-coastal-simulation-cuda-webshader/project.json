@@ -1,0 +1,14 @@
+{
+  "id": 12,
+  "order": 12,
+  "slug": "coastal-simulation-cuda-webshader",
+  "name": "coastal-simulation GPU 海岸能力研究",
+  "summary": "能力：模拟海岸浅水与固定岩石、海床和岸线的接触、阻挡与绕流，岩石不会被水推动；呈现效果：浪涌绕石、冲滩退水、流动白沫、细碎波纹、湿沙湿岩石和撞击喷溅；内部模块：地形与来浪输入、浅水求解、泡沫输运、水面重建、湿润水膜、喷溅粒子、材质光照、GPU 调度与交互诊断；内部算法：有限体积浅水求解、动量平流、保正水量输运与湿干处理、泡沫生成和衰减、定向短波、法线重建、粒子更新与 GGX 高光，经 CUDA WebShader / WebGPU 计算并供 Three.js 绘制；使用场景：海岸主题网页与展陈原型、浅水和图形教学、GPU 架构研究；可扩展产品方向：可保存和分享的海岸场景编辑器、可嵌入的互动海岸背景、算法教学实验工具，均需继续开发；对我的意义：理解算法怎样形成画面，复用源库已有海岸画质，逐步配置并制作自己的海岸场景。",
+  "source": "https://github.com/SamG-Coder/coastal-simulation-cuda-webshader",
+  "source_type": "github",
+  "status": "已完成",
+  "demo": "",
+  "cover": "assets/coastal-capabilities-overview.png",
+  "cover_alt": "GPU 海岸模拟能力总览：核心能力、内部算法、可见效果、使用场景、个人价值与实现边界；海岸配图为生成示意，非运行截图。",
+  "source_name": "coastal-simulation-cuda-webshader"
+}

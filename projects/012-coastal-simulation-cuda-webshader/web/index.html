@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="水与固定岩石、海床和岸线怎样互动：汇总海岸浅水模拟的效果、内部模块、算法、使用场景、产品方向与个人价值，并体验源库三维场景。">
+  <meta name="color-scheme" content="light">
+  <title>让海岸留在 GPU · coastal-simulation 研究 / 012</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.mjs" type="module"></script>
+</head>
+<body>
+  <a class="skip" href="#overview">跳到正文</a>
+  <header class="site-header">
+    <a class="brand" href="../" aria-label="返回研究项目索引"><span class="brand-icon" aria-hidden="true">∿</span><span>COASTAL / GPU<small>FIELD STUDY 012</small></span></a>
+    <nav class="top-nav" aria-label="页面导航"><a href="#summary">理解汇总</a><a href="#guide-map">能力总图</a><a href="#capabilities">内部模块</a><a href="#experience">实时演示</a></nav>
+    <a class="top-source" href="https://github.com/SamG-Coder/coastal-simulation-cuda-webshader" target="_blank" rel="noopener noreferrer">上游源码 <span aria-hidden="true">↗</span></a>
+  </header>
+  <main>
+    <section class="hero" id="overview">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> 012 / 海岸模拟技术研究</p>
+        <h1>水与岩石，<br><em>实时互动。</em></h1>
+        <p class="hero-lead">这套海岸系统用浅水算法计算水怎样冲滩、绕岩和退回，用三维渲染呈现白沫、短波与喷雾，再由 GPU 执行计算。适用范围是海岸浅水与固定环境的互动。</p>
+        <div class="hero-actions"><a class="button primary" href="./extensions.html">体验源库三维场景 <span aria-hidden="true">↗</span></a><a class="button secondary" href="#guide-map">一图看懂能力 <span aria-hidden="true">↓</span></a></div>
+        <p class="hero-fine">场景与原有浅水方程来自 iamtechartist 的原项目；本站打包了 SamG-Coder 移植版的固定源码，供本地运行。</p>
+      </div>
+      <div class="hero-visual" role="img" aria-label="研究示意：GPU 计算的水流、泡沫与表面状态进入 Three.js 绘制；非模拟器截图">
+        <div class="visual-grid"></div><div class="visual-sun"></div><div class="visual-horizon"></div>
+        <div class="wave wave-one"></div><div class="wave wave-two"></div><div class="wave wave-three"></div>
+        <div class="visual-rock rock-one"></div><div class="visual-rock rock-two"></div>
+        <div class="visual-caption"><span>SIMULATE</span><b>water depth + velocity</b><i></i><span>RENDER</span><b>surface + foam + spray</b></div>
+        <div class="visual-disclaimer">结构示意 / 实际效果见本地源库场景</div>
+      </div>
+      <div class="hero-stats" aria-label="项目技术概览"><div><strong>21</strong><span>CUDA 计算入口</span></div><div><strong>60 Hz</strong><span>浅水固定步长</span></div><div><strong>30 Hz</strong><span>平流与发布节奏</span></div><div><strong>WebGPU</strong><span>必需的浏览器后端</span></div></div>
+    </section>
+
+    <section class="section summary-section" id="summary" aria-labelledby="summary-title">
+      <p class="kicker">OUR UNDERSTANDING / 理解汇总</p>
+      <h2 id="summary-title">水遇到岩石和海岸，会发生什么？</h2>
+      <p>水受到固定地形阻挡，沿低处流动、分流并退回。浅水模型计算这些变化，视觉层把状态呈现为浪、白沫、湿痕和喷溅。这里的“碰撞”指水流与固定环境的接触响应；岩石保持静止。</p>
+      <dl class="understanding-summary"><div><dt>能力</dt><dd>模拟海岸浅水与固定岩石、海床和岸线的接触、阻挡与绕流，岩石不会被水推动</dd></div>
+<div><dt>呈现效果</dt><dd>浪涌绕石、冲滩退水、流动白沫、细碎波纹、湿沙湿岩石和撞击喷溅</dd></div>
+<div><dt>内部模块</dt><dd>地形与来浪输入、浅水求解、泡沫输运、水面重建、湿润水膜、喷溅粒子、材质光照、GPU 调度与交互诊断</dd></div>
+<div><dt>内部算法</dt><dd>有限体积浅水求解、动量平流、保正水量输运与湿干处理、泡沫生成和衰减、定向短波、法线重建、粒子更新与 GGX 高光，经 CUDA WebShader / WebGPU 计算并供 Three.js 绘制</dd></div>
+<div><dt>使用场景</dt><dd>海岸主题网页与展陈原型、浅水和图形教学、GPU 架构研究</dd></div>
+<div><dt>可扩展产品方向</dt><dd>可保存和分享的海岸场景编辑器、可嵌入的互动海岸背景、算法教学实验工具，均需继续开发</dd></div>
+<div><dt>对我的意义</dt><dd>理解算法怎样形成画面，复用源库已有海岸画质，逐步配置并制作自己的海岸场景。</dd></div>
+</dl>
+      <p class="summary-boundary">适用范围：二维浅水高度场生成三维海岸画面。移动船只、浮力、侵蚀、倒水、管道流动和完整翻卷浪，需要额外模型。012 已验证源库运行与单处新增礁石；自由地形和完整场景编辑器仍待开发。</p>
+    </section>
+
+    <section class="section flow-section" id="flow">
+      <div class="section-heading"><div><p class="kicker">01 / THE ACTUAL CHANGE</p><h2>变化发生在计算，<br>也发生在数据流。</h2></div><p>原版就已用 GPU 绘制三维海岸。移植版的核心，是把更多动态状态交给 GPU 计算，并避免每帧跨 CPU 往返。</p></div>
+      <div class="flow-compare">
+        <article class="flow-card old"><div class="flow-top"><span>原版 / coastal-simulation</span><b>CPU 求解 → GPU 绘制</b></div><div class="steps"><span>外海波浪</span><i>→</i><span>Worker / Wasm 求解</span><i>→</i><span>水面与材质数据</span><i>→</i><span>Three.js 绘制</span></div><p>方程、场景和原有湿沙/泡沫效果来自原项目。本页以你已有的 008 研究为对照。</p></article>
+        <article class="flow-card new"><div class="flow-top"><span>移植版 / WebGPU resident</span><b>GPU 求解 → GPU 绘制</b></div><div class="steps"><span>CUDA 源 → WGSL</span><i>→</i><span>WebGPU 求解</span><i>→</i><span>GPU 表面重建与共享资源</span><i>→</i><span>Three.js 绘制</span></div><p>普通帧中，九个演化场不依赖 CPU 回读、重建和重新上传。JavaScript 仍管理交互、相机和任务提交。</p></article>
+      </div>
+      <div class="flow-bottom"><div><span class="dot green"></span><strong>执行变化</strong><p>模拟场常驻 GPU，减少搬运与 CPU 打包。</p></div><div><span class="dot aqua"></span><strong>效果变化</strong><p>新增动量、破浪湍流、定向短波和更丰富的岩石喷雾。</p></div><div><span class="dot sand"></span><strong>没有变成</strong><p>原生浏览器 CUDA，也没有变成完整三维流体求解器。</p></div></div>
+      <figure class="map-preview" id="guide-map"><a href="./assets/coastal-capabilities-overview.png" target="_blank" rel="noopener noreferrer"><img src="./assets/coastal-capabilities-overview.png" alt="海岸模拟库总览：核心能力、内部算法、可见效果、使用场景、个人价值与实现边界；海岸示意，非运行截图" loading="lazy"></a><figcaption>完整能力总览 · 点击放大；使用本次讨论生成的引导图，海岸配图为示意，非运行截图。模型决定模拟范围，视觉算法决定观感，GPU 负责执行。<a href="./assets/capability-map.svg" target="_blank" rel="noopener noreferrer">另看简版数据路径图 ↗</a></figcaption></figure>
+      <a class="inline-link" href="https://github.com/SamG-Coder/coastal-simulation-cuda-webshader#port-details" target="_blank" rel="noopener noreferrer">查看上游的数据路径说明 ↗</a>
+    </section>
+
+    <section class="section capability-section" id="capabilities">
+      <div class="section-heading"><div><p class="kicker">02 / CAPABILITY ATLAS</p><h2>从海床到浪尖，<br>逐层拆开看。</h2></div><p>这里按作用分组整理上游 README 所列的 CUDA 入口与交互能力。点击分类可只看某一层；展开卡片可看它怎样影响画面。</p></div>
+      <div class="filters" role="group" aria-label="筛选能力"><button type="button" data-filter="all" aria-pressed="true">全部能力</button><button type="button" data-filter="foundation" aria-pressed="false">海岸输入</button><button type="button" data-filter="physics" aria-pressed="false">水流求解</button><button type="button" data-filter="appearance" aria-pressed="false">表面效果</button><button type="button" data-filter="contact" aria-pressed="false">岸线接触</button><button type="button" data-filter="runtime" aria-pressed="false">运行与诊断</button></div>
+      <p class="filter-count" id="filter-count" role="status">显示全部 18 项能力</p>
+      <div class="capability-grid" id="capability-grid">
+        <details class="cap-card" data-group="foundation"><summary><span>01 / 海岸输入</span><h3>地形与障碍网格</h3><p>程序化海床、岩石遮挡和 CUDA 障碍场。</p></summary><div>可见岩石与求解器中的固体区域相互对应；换场景时两套表示必须一起更新。</div></details>
+        <details class="cap-card" data-group="foundation"><summary><span>02 / 海岸输入</span><h3>外海入射波</h3><p>边界行给近岸水体持续输入波动。</p></summary><div>推动浪向岸边传播；海况、潮位与方向控制逐渐影响岸线状态。</div></details>
+        <details class="cap-card" data-group="foundation"><summary><span>03 / 海岸输入</span><h3>辐射边界与材料噪声</h3><p>边界系数与 512 × 512 材料噪声纹理。</p></summary><div>降低边缘硬反射，并给岩石、地表材质提供变化。</div></details>
+        <details class="cap-card" data-group="physics"><summary><span>04 / 水流求解</span><h3>浅水高度场</h3><p>水深与两个水平流速分量构成主体状态。</p></summary><div>能计算冲滩、退水和绕石；每个水平位置只有一个水面高度，不能形成完整翻卷浪腔。</div></details>
+        <details class="cap-card" data-group="physics"><summary><span>05 / 水流求解</span><h3>动量平流</h3><p>交错网格面流速先随水流搬运。</p></summary><div>让潮流与回流携带自身动量，再进入压力及保正水量输运步骤。</div></details>
+        <details class="cap-card" data-group="physics"><summary><span>06 / 水流求解</span><h3>水量与湿干边界</h3><p>保正通量、岸线干湿切换与条件平滑。</p></summary><div>水沿坡面上冲再退下，同时避免数值更新把局部水深推成负值。</div></details>
+        <details class="cap-card" data-group="physics"><summary><span>07 / 水流求解</span><h3>破浪湍流储量</h3><p>陡波和岩石撞击产生、输运与耗散。</p></summary><div>浪头经过后白沫仍会短暂存在；这是一层视觉近似，不是解析三维湍流。</div></details>
+        <details class="cap-card" data-group="appearance"><summary><span>08 / 表面效果</span><h3>泡沫生成与输运</h3><p>白沫随流移动、变化并衰减。</p></summary><div>能看到与浪头、岩石接触相关的泡沫丝线、泡沫块与清水间隙。</div></details>
+        <details class="cap-card" data-group="appearance"><summary><span>09 / 表面效果</span><h3>八组定向短波</h3><p>色散速度与二次谐波塑造波峰。</p></summary><div>强化近景碎波与波峰；细节在浅水、泡沫处和网格边缘淡出，不增加求解器水量。</div></details>
+        <details class="cap-card" data-group="appearance"><summary><span>10 / 表面效果</span><h3>水面重建与法线</h3><p>GPU 重建湿干水面并保持连续法线。</p></summary><div>把模拟网格变成绘制所需的高度、材质与流速纹理，再在渲染帧间插值。</div></details>
+        <details class="cap-card" data-group="appearance"><summary><span>11 / 表面效果</span><h3>水色与太阳高光</h3><p>粗糙度相关 GGX、高光过滤与背光浪尖。</p></summary><div>清水、白沫、亮波峰呈现不同反光；这些是视觉着色，不改物理状态。</div></details>
+        <details class="cap-card" data-group="contact"><summary><span>12 / 岸线接触</span><h3>湿沙与薄水膜</h3><p>水膜快退、湿度慢退的双时间尺度。</p></summary><div>水冲过之后，沙面先失去亮反光，再逐渐恢复原本颜色。</div></details>
+        <details class="cap-card" data-group="contact"><summary><span>13 / 岸线接触</span><h3>湿岩石与水位接合</h3><p>湿润保持、岩内表面外推与深度裁切。</p></summary><div>岩壁水位线附近渐暗；尽量避免水面以粗网格台阶穿出岩石。</div></details>
+        <details class="cap-card" data-group="contact"><summary><span>14 / 岸线接触</span><h3>撞击驱动喷雾</h3><p>水滴、密集碎雾和扩散薄雾三层。</p></summary><div>作者设置每块岩石 384 槽、共 5376 槽；静水不会无故持续喷射。</div></details>
+        <details class="cap-card" data-group="runtime"><summary><span>15 / 运行与诊断</span><h3>GPU 常驻互操作</h3><p>共享缓冲区、纹理拷贝与 Three.js r185 适配。</p></summary><div>普通渲染帧不回读完整模拟场；适配器依赖指定 Three.js 版本，迁移时需核对接口。</div></details>
+        <details class="cap-card" data-group="runtime"><summary><span>16 / 运行与诊断</span><h3>固定步长调度</h3><p>60 Hz 流体、30 Hz 平流与双纹理插值。</p></summary><div>模拟按确定步长推进，显示帧率可变化；调度边界保证相互依赖的步骤按序运行。</div></details>
+        <details class="cap-card" data-group="runtime"><summary><span>17 / 运行与诊断</span><h3>环境与自由飞行</h3><p>海况、风向、潮位、云量、光照、画质及预设视角。</p></summary><div>鼠标与键盘可自由观察浪、岩石和湿沙；飞行无碰撞、高度跟随或高度限制。</div></details>
+        <details class="cap-card" data-group="runtime"><summary><span>18 / 运行与诊断</span><h3>FPS 与分级诊断</h3><p>页面帧时、`?profile` 与 CUDA 缩减摘要。</p></summary><div>可查看运行后端、资源计数与小型诊断；正常帧依旧不依赖完整状态同步。</div></details>
+      </div>
+      <p class="section-footnote">分类是本站整理，不等同于 21 个 CUDA 入口逐一对应。技术细节来自 <a href="https://github.com/SamG-Coder/coastal-simulation-cuda-webshader#port-details" target="_blank" rel="noopener noreferrer">上游 Port details ↗</a></p>
+    </section>
+
+    <section class="section experience-section" id="experience">
+      <div class="section-heading"><div><p class="kicker">03 / LIVE EXPERIENCE</p><h2>直接看水怎样动。</h2></div><p>点击后按需加载本站打包的上游固定版本，并确认 WebGPU 是否运行。也可进入实验台查看完整场景和独立地形实验。</p></div>
+      <div class="experience-shell"><div class="experience-stage"><div class="stage-bar"><span><i></i> BUNDLED UPSTREAM DEMO</span><span id="stage-state">未加载</span></div><div class="stage-screen" id="stage-screen"><div class="stage-placeholder" id="stage-placeholder"><span class="placeholder-wave" aria-hidden="true">∿</span><p>COASTAL SIMULATION / WEBGPU</p><h3>选择开始，进入真实海岸。</h3><button class="button primary" id="load-demo" type="button">加载本地源库场景 <span aria-hidden="true">↗</span></button></div><a class="embed-fallback" id="embed-fallback" href="https://samg-coder.github.io/coastal-simulation-cuda-webshader/" target="_blank" rel="noopener noreferrer" hidden>嵌入若未显示，在官方页面打开 ↗</a></div><div class="stage-toolbar"><p id="demo-status" role="status">本地源库场景按需加载；首次启动需要初始化 GPU 资源。</p><button id="stop-demo" type="button" hidden>停止并卸载</button></div></div><aside class="experience-guide"><p class="guide-label">观看建议 / 三个角度</p><h3>从岩石，到岸线。</h3><ol><li><strong>Rocky Surf</strong><span>观察绕岩浪涌、接触白沫与撞击喷雾。</span></li><li><strong>Shoreline</strong><span>观察浅水颜色、波纹与水际线。</span></li><li><strong>Along the Breaker</strong><span>贴近白沫和喷雾，注意它们随时间变化。</span></li></ol><div class="control-note"><b>操控</b><p>拖动观察 · WASD 飞行 · E/Q 升降 · Shift 加速 · C 切视角 · 空格暂停 · H 隐藏界面</p></div><a class="button outline" href="https://samg-coder.github.io/coastal-simulation-cuda-webshader/" target="_blank" rel="noopener noreferrer">在官方页面运行 ↗</a><p class="tiny">需要支持 WebGPU 的浏览器。源库场景已在本站本地打包；也可进入实验台单独查看。</p></aside></div>
+    </section>
+
+    <section class="section evidence-section" id="evidence">
+      <div class="section-heading"><div><p class="kicker">04 / EVIDENCE & LIMITS</p><h2>什么得到验证，<br>什么仍是边界。</h2></div><p>下面的数值来自作者报告；本站定性查看了在线与本地打包画面。性能数字指完成的模拟到渲染数据更新，不代表整页帧率。</p></div>
+      <div class="evidence-layout"><div class="measure-card"><div class="measure-top"><span>同机受控流水线 / 越短越快</span><a href="https://github.com/SamG-Coder/coastal-simulation-cuda-webshader#performance" target="_blank" rel="noopener noreferrer">方法与样本 ↗</a></div><div class="bar-label"><span>GPU 求解 + CPU 回读/重建/上传</span><b>6.874 ms</b></div><div class="bar-track"><div class="bar before"></div></div><div class="bar-label"><span>GPU 常驻求解/重建/拷贝</span><b>3.179 ms</b></div><div class="bar-track"><div class="bar after"></div></div><p class="measure-result"><strong>约 2.16×</strong><span>仅该流水线的完成更新速度；不是 FPS 倍数。</span></p><div class="model-note"><b>增强模型的额外开销</b><span>3.322 ms 对 3.253 ms；作者认为接近测试波动，不能宣称确定的加速。</span></div></div><div class="proof-stack"><article><span>作者数值对照</span><strong>≈ 2.9×10⁻⁶ m</strong><p>完整网格 60 步、同初始数组的最大水深误差。说明实现接近参考求解，不证明真实海岸预测精度。</p></article><article><span>本站浏览器观察</span><strong>WebGPU 运行成功</strong><p>Rocky Surf、Shoreline、Along the Breaker 三个视角可见水、泡沫、岩石及喷雾。没有本地重跑作者的完整测试。</p></article></div></div>
+      <div class="limits-grid"><div class="limit-head"><p class="kicker">IMPORTANT BOUNDARIES</p><h3>适用范围先说清。</h3></div><div><b>二维浅水高度场</b><p>每处只存一个水面高度；不是有翻卷浪腔的三维水体。</p></div><div><b>视觉细节不等于水量</b><p>短波只细化表面；泡沫与湍流是有界的视觉近似。</p></div><div><b>WebGPU 是硬要求</b><p>没有 CPU、Wasm、WebGL 回退；不支持时无法运行本演示。</p></div><div><b>固定场景与适配版本</b><p>地形和障碍关联紧密；GPU 互操作适配钉在 Three.js r185。</p></div></div>
+    </section>
+
+    <section class="section application-section" id="application"><div class="section-heading"><div><p class="kicker">05 / PUT IT TO WORK</p><h2>可以拿它做什么？</h2></div><p>从应用目标出发选择复用层：海岸主题展示、算法教学与 GPU 架构研究。</p></div><div class="application-grid"><article><span>01 / 展示</span><h3>沉浸海岸与展陈</h3><p>用实时浪涌、白沫与环境调节制作可漫游场景；上线前按设备验证 WebGPU 和启动时间。</p></article><article><span>02 / 教学</span><h3>计算到画面的解释</h3><p>沿着输入、浅水、输运、重建、着色和互操作六步教学，能看清状态如何驱动像素。</p></article><article><span>03 / 工程原型</span><h3>GPU 常驻数据管线</h3><p>借鉴共享资源和按需诊断方式，验证自己的高度场、粒子或纹理输运效果。</p></article></div><div class="extension"><div><p class="kicker">012 / CURRENT STATE</p><h3>目前做到哪里</h3><a class="button primary" href="./extensions.html">进入三维对照与数据诊断 ↗</a></div><ul><li>三维场景已接入源库完整效果，可对照原版与本站新增的一处礁石；两者使用同一求解和渲染流程。</li><li>二维数据诊断另用简化模型，支持高度图、画障碍、保存海况和帧时间记录；它不会修改源库三维地形。</li><li>自由编辑海岸、保存与分享完整三维场景仍待开发。船只浮力、侵蚀和完整三维翻卷水体还需额外模型。</li></ul></div></section>
+
+    <section class="section meaning-section" id="meaning"><p class="kicker">06 / FOR YOUR RESEARCH</p><h2>它把你已有的研究连起来。</h2><p>008 解释海岸浅水与泡沫，010 用小型实验拆解算法，006 与 011 研究三维绘制和 CUDA WebShader。这个应用展示中间的一段：<strong>把连续更新的物理状态留在 GPU，直接供画面使用。</strong></p><div class="related"><a href="../008-coastal-simulation/">008 · 原版海岸研究 ↗</a><a href="../010-algorithm-scene-lab/">010 · 算法实验室 ↗</a><a href="../011-cuda-webshader/">011 · CUDA WebShader 展厅 ↗</a></div><p class="personal-next">已有价值是看懂算法、视觉和执行的分工，并复用可运行示例。继续增加产品价值，需要让你在同一套三维效果中配置地形与岩石、保存并分享自己的海岸。当前单处礁石仅验证了接入路径；性能研究还需固定输入、设备与采样条件。</p></section>
+  </main>
+  <footer><span>012 / COASTAL GPU FIELD STUDY</span><p>研究图、分类与中文说明由本站整理。场景及原作归属请见上游 <a href="https://github.com/SamG-Coder/coastal-simulation-cuda-webshader/blob/main/CREDITS.md" target="_blank" rel="noopener noreferrer">CREDITS ↗</a>。数据记录与限制见 <a href="https://github.com/SamG-Coder/coastal-simulation-cuda-webshader#validation" target="_blank" rel="noopener noreferrer">上游验证说明 ↗</a>。</p><a href="#overview">回到顶部 ↑</a></footer>
+  <noscript><p class="noscript">分类与嵌入需要 JavaScript。仍可阅读本页内容并<a href="https://samg-coder.github.io/coastal-simulation-cuda-webshader/">打开官方演示</a>。</p></noscript>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="本地接入原版 WebGPU 三维海岸效果，并以独立地形实验观察岩石、海况与画质变化。">
+  <title>海岸 GPU 实验台 · 012</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./extensions.css">
+  <script type="module" src="./extensions.mjs"></script>
+  <script type="module" src="./source-view.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#lab">跳到实验台</a>
+  <header class="topbar"><a class="back" href="./index.html">← 返回 012 能力导览</a><span>COASTAL / GPU <b>EXTENSION LAB</b></span><a href="https://github.com/SamG-Coder/coastal-simulation-cuda-webshader" target="_blank" rel="noopener noreferrer">上游源码 ↗</a></header>
+  <main id="lab">
+    <div class="intro"><div><p class="eyebrow">012 / SOURCE + EXTENSION</p><h1>在源库场景里看扩展效果。</h1><p>上游完整求解器与三维画面现在可切换原版和新增礁石。下方二维地形实验用于检查网格数据，不能用来评价源库的视觉质量。</p></div><div class="intro-note"><span>为什么两幅画面不同</span><p>三维场景使用源库的波浪、泡沫、材质、光照和喷雾；二维实验使用本站独立的简化计算与俯视着色。它们不是同一场景的高低画质档位。</p></div></div>
+    <div class="mode-tabs" role="group" aria-label="演示模式"><button id="show-source" class="selected" type="button" aria-pressed="true">源库真实场景 <span>3D / CUDA WebShader</span></button><button id="show-experiment" type="button" aria-pressed="false">地形数据诊断 <span>2D / WebGPU</span></button></div>
+    <section id="source-stage" class="source-stage" aria-label="源库真实三维海岸演示">
+      <div class="source-heading"><div><span>01 / SOURCE EFFECT</span><h2>用源库本身展示新增礁石。</h2><p>原版场景保持上游视觉。选择“新增礁石”后，本站在初始化前把礁石同时加入三维几何、GPU 障碍与喷雾系统，场景需要重新启动。</p></div><a href="./upstream/index.html" target="_blank" rel="noopener noreferrer">单独全屏打开原版 ↗</a></div>
+      <div class="source-variation"><div><strong>同一套真实三维模拟</strong><p>切换原版 / 本地扩展，观察新礁石周围的浪与泡沫；第一次加载扩展需要计算初始海况。</p></div><label for="source-reef">场景版本<select id="source-reef"><option value="original">上游原版</option><option value="reef">加入一处前景礁石</option></select></label></div>
+      <div class="source-layout"><div class="source-player"><div class="source-bar"><span><i class="live-dot"></i> UPSTREAM · THREE.JS / WEBGPU</span><strong id="source-status" role="status">准备加载上游场景…</strong></div><iframe id="upstream-frame" title="上游完整三维海岸实时演示" allow="fullscreen" loading="eager"></iframe></div><aside class="source-controls"><span>观看与控制</span><h3>从岩石看回岸线</h3><label for="source-camera">观察视角</label><select id="source-camera"><option value="surf">Rocky Surf · 岩石浪区</option><option value="shore">Shoreline · 浅水岸线</option><option value="breaker">Along the Breaker · 破浪近景</option><option value="waterline">Wet Sand · 湿沙水线</option></select><label for="source-sea">海况强度</label><input id="source-sea" type="range" min="0.5" max="1.65" step="0.05" value="1"><output id="source-sea-value">1.00</output><label for="source-tide">潮位</label><input id="source-tide" type="range" min="-0.25" max="0.3" step="0.01" value="0"><output id="source-tide-value">0.00 m</output><label for="source-quality">上游画质</label><select id="source-quality"><option value="low">省电</option><option value="balanced" selected>均衡</option><option value="high">精细</option></select><button id="source-pause" type="button">暂停模拟</button><p>也可直接使用场景内的视角、天气与飞行控件。拖动视角，WASD 移动，E/Q 升降。</p><div class="source-provenance"><a href="https://github.com/SamG-Coder/coastal-simulation-cuda-webshader" target="_blank" rel="noopener noreferrer">移植版源码 ↗</a><a href="https://github.com/iamtechartist/coastal-simulation" target="_blank" rel="noopener noreferrer">原场景源码 ↗</a><a href="./upstream/CREDITS.md" target="_blank" rel="noopener noreferrer">归属与许可 ↗</a></div></aside></div>
+    </section>
+    <div id="experiment-view" hidden><div class="experiment-heading"><span>02 / TERRAIN EXPERIMENT</span><h2>再看地形变化怎样进入求解网格。</h2><p>这是可编辑边界的二维诊断画面，用来观察数据流；画面尺度、岩石形状和浪的外观不能代表上游三维效果。</p></div><div class="workspace">
+      <section class="stage" aria-label="GPU 海岸模拟画面">
+        <div class="stage-head"><div><i class="live-dot"></i><strong>LIVE GPU FIELD</strong><span id="run-state">初始化中</span></div><div><span id="grid-label">160 × 90</span><button id="play-toggle" type="button">暂停</button><button id="reset" type="button">重置</button></div></div>
+        <div class="canvas-wrap"><canvas id="coast" aria-label="俯视海岸水流模拟，可点击或拖动绘制岩石"></canvas><div class="canvas-overlay"><span>外海来浪 →</span><span>拖动画面添加岩石</span></div><div id="gpu-error" class="gpu-error" hidden><h2>当前无法启动 WebGPU</h2><p id="gpu-error-detail">请使用支持 WebGPU 的浏览器，并通过本地服务器打开此页面。</p></div></div>
+        <div class="stage-foot"><span id="stage-message" role="status">正在连接 GPU…</span><span>深蓝：深水　浅蓝：浅水　白：泡沫　灰绿：岩石</span></div>
+      </section>
+      <aside class="controls" aria-label="实验控制">
+        <section class="panel"><div class="panel-title"><span>01 / 海床和岩石</span><h2>改变边界</h2></div><label for="terrain">地形场景</label><select id="terrain"><option value="cove">弯曲海岸与三块岩石</option><option value="channel">中间水道</option><option value="open">开阔斜滩</option></select><div class="row"><label class="upload" for="heightmap">导入灰度高度图 <span>PNG / JPG ↗</span></label><input id="heightmap" type="file" accept="image/png,image/jpeg,image/webp"><button id="clear-rocks" type="button">恢复场景</button></div><p class="hint">高度图越亮，海床越高；最亮区域作为固体障碍。导入与画岩石都会同时更新可见地形和求解网格。</p></section>
+        <section class="panel"><div class="panel-title"><span>02 / 入射海况</span><h2>调节波浪</h2></div><label for="preset">海况预设</label><select id="preset"><option value="calm">平静海湾</option><option value="moderate" selected>日常浪涌</option><option value="storm">风暴海况</option></select><div class="slider-label"><label for="amplitude">浪幅</label><output id="amplitude-value">0.13</output></div><input id="amplitude" type="range" min="0.01" max="0.35" step="0.005" value="0.13"><div class="slider-label"><label for="tide">潮位</label><output id="tide-value">0.12</output></div><input id="tide" type="range" min="-0.10" max="0.35" step="0.005" value="0.12"><div class="save-row"><input id="preset-name" type="text" maxlength="20" placeholder="为当前海况命名" aria-label="自定义海况名称"><button id="save-preset" type="button">保存</button></div><p class="hint" id="preset-hint">自定义预设保存在当前浏览器。</p></section>
+        <section class="panel"><div class="panel-title"><span>03 / 画质和性能</span><h2>看完整帧</h2></div><label for="quality">计算网格</label><select id="quality"><option value="low">省电 · 96 × 54</option><option value="balanced" selected>均衡 · 160 × 90</option><option value="high">精细 · 256 × 144</option></select><div class="metrics"><div><small>帧时间中位数</small><strong id="p50">—</strong><span>ms / frame</span></div><div><small>慢帧 P95</small><strong id="p95">—</strong><span>ms / frame</span></div><div><small>平均 FPS</small><strong id="fps">—</strong><span>frames / s</span></div></div><button id="export" class="export" type="button">下载当前条件与帧时间 JSON ↓</button><p class="hint">读取浏览器连续画面间隔，包含模拟、绘制与页面调度；不是 GPU 内核耗时。更换档位后重新采样约 3 秒再比较。</p></section>
+        <section class="panel compare-panel"><div class="panel-title"><span>04 / 同条件对照</span><h2>三档记录</h2></div><p class="hint">依次选择省电、均衡、精细档；每档运行约 3 秒后记录 P50 与 P95。改变地形或海况会清空这组对照。</p><table><thead><tr><th scope="col">网格</th><th scope="col">P50</th><th scope="col">P95</th></tr></thead><tbody id="comparison-body"></tbody></table></section>
+      </aside>
+    </div>
+    <section class="reading"><div><span>输入</span><strong>海床 + 岩石 + 海况</strong></div><i>→</i><div><span>GPU 求解</span><strong>水深 + 水平流速 + 泡沫</strong></div><i>→</i><div><span>GPU 着色</span><strong>水色 + 湿岸 + 岩石</strong></div></section></div>
+    <p class="closing">上方真实场景展示源库的视觉效果；地形实验展示下一步扩展的数据路径。两者分别运行，性能值只在各自条件内比较。更多说明见 <a href="./index.html#capabilities">012 能力导览</a>。</p>
+  </main>
+</body>
+</html>
