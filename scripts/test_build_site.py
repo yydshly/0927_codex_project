@@ -33,6 +33,15 @@ class SiteTests(unittest.TestCase):
         self.assertIn('height:auto', page)
         self.assertNotIn('object-fit:cover', page)
 
+    def test_svg_guide_keeps_its_file_extension(self):
+        project = dict(id=6, slug='threejs-gpu-rasterizer', name='Three.js 能力与 GPU 渲染研究',
+                       summary='能力：三维展示；技术原理：GPU 筛选',
+                       source='https://github.com/mrdoob/three.js',
+                       cover='assets/understanding-map.svg', cover_alt='三维理解总图')
+        page = render_home([project], 'yydshly/0927_codex_project')
+        self.assertIn('src="./covers/006-threejs-gpu-rasterizer.svg"', page)
+        self.assertIn('<strong>技术原理：</strong>GPU 筛选', page)
+
     def test_navigation_cannot_escape_project(self):
         for route in ('https://example.com', '/other', 'javascript:alert(1)', '#bad"quote'):
             with self.assertRaises(ValueError):

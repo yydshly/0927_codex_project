@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071c29">
+  <meta name="description" content="理解 Three.js 源码库的能力、官方示例的参考价值，以及 GPU 驱动光栅化在风电场巡检中的应用边界。">
+  <title>从 Three.js 到大场景渲染 · FIELD/FRAME</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="返回页面顶部"><span class="brand-mark">◈</span><span>FIELD<span class="brand-accent">/</span>FRAME</span></a>
+      <nav aria-label="页面导航"><a href="#map">理解总图</a><a href="#threejs">Three.js 能力</a><a href="#experience">场景演示</a><a href="#principle">PR 原理</a><a href="#applications">适用场景</a></nav>
+      <span class="issue-tag">RESEARCH NOTE 006</span>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="pulse-dot"></span>THREE.JS / FROM ENGINE TO EXPERIENCE</p>
+          <h1 id="hero-title">从 Three.js 能做什么，<br><em>看到复杂场景怎么画。</em></h1>
+          <p class="hero-lead">先认识这个网页 3D 源码库、它能呈现的效果和官方示例的用法；再进入风电场，理解一项大场景渲染实验的价值。</p>
+          <div class="hero-actions"><a class="button primary" href="#map">查看理解总图 <span aria-hidden="true">↗</span></a><a class="button quiet" href="#experience">进入交互演示 <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <div class="hero-aside" aria-label="本研究的关键数字"><div><strong>144</strong><span>台模拟风机</span></div><div><strong>3</strong><span>档模型精度</span></div><div><strong>01</strong><span>可复现的业务情境</span></div></div>
+      </section>
+
+      <section id="map" class="map-section" aria-labelledby="map-title">
+        <div class="section-heading"><div><p class="kicker">00 / THE WHOLE PICTURE</p><h2 id="map-title">一张图看懂 three.js 与这条 PR</h2></div><p>先看基础库能构建什么，再沿着 GPU 实验的五步流程，看它在大场景中解决哪一层问题。</p></div>
+        <figure class="map-figure"><a class="map-image-link" href="./understanding-map.svg" target="_blank" rel="noreferrer" aria-label="打开完整尺寸的 Three.js 与 GPU 驱动渲染理解总图"><img src="./understanding-map.svg" alt="理解总图：three.js 是网页三维基础库；官方示例展示模型、交互、动画、效果等能力；PR 33605 探索 GPU 筛选、按屏幕误差选精度、软硬件分流及可见像素上色。图中还比较轻量产品展示、工业巡检、BIM 和城市扫描等场景，并给出验证示例、接入业务、实测优化的落地路径。"></a><figcaption><span>点击图片可放大查看；图中将基础库能力与 PR 实验能力分开说明。</span><a href="./understanding-map.svg" download="threejs-understanding-map.svg">保存矢量原图 ↓</a></figcaption></figure>
+      </section>
+
+      <section id="threejs" class="threejs" aria-labelledby="threejs-title">
+        <div class="section-heading"><div><p class="kicker">01 / UNDERSTAND THE ENGINE</p><h2 id="threejs-title">three.js 是网页三维的基础工具箱</h2></div><p>它把场景、相机、模型、材质、灯光和渲染组织起来，让开发者在浏览器中构建可观看、可操作的 3D 体验。</p></div>
+        <div class="stack-map" aria-label="three.js 与示例、原 PR 的关系">
+          <div><span>基础层</span><strong>three.js 源码库</strong><p>负责三维场景和渲染的通用能力。</p></div>
+          <div><span>参考层</span><strong>官方示例与扩展</strong><p>展示模型加载、交互、动画、效果等具体做法。</p></div>
+          <div><span>研究层</span><strong>PR #33605</strong><p>其中一个 GPU 驱动大场景渲染实验。</p></div>
+        </div>
+        <div class="capability-heading"><div><p class="kicker">WHAT YOU CAN BUILD</p><h3>它能呈现哪些效果？</h3></div><p>以下示例适合看效果、读实现、验证技术路线；它们不是带业务数据的现成产品。</p></div>
+        <div class="capability-grid">
+          <article><span class="capability-no">01 / SHOW</span><div class="capability-icon" aria-hidden="true">◇</div><h4>模型与真实感场景</h4><p>加载产品、设备、建筑等 3D 模型，配置视角、材质、灯光、纹理和环境。</p><a href="https://threejs.org/examples/webgl_loader_gltf.html" target="_blank" rel="noreferrer">看模型加载示例 ↗</a></article>
+          <article><span class="capability-no">02 / INTERACT</span><div class="capability-icon" aria-hidden="true">⌖</div><h4>点选与空间交互</h4><p>旋转、缩放、点击某个对象，再结合页面信息展示状态、详情或操作入口。</p><a href="https://threejs.org/examples/webgl_interactive_cubes.html" target="_blank" rel="noreferrer">看点击交互示例 ↗</a></article>
+          <article><span class="capability-no">03 / ANIMATE</span><div class="capability-icon" aria-hidden="true">↝</div><h4>运动与状态切换</h4><p>播放设备动作、人物骨骼动画和表情，或让不同动作自然过渡。</p><a href="https://threejs.org/examples/webgl_animation_skinning_morph.html" target="_blank" rel="noreferrer">看人物动画示例 ↗</a></article>
+          <article><span class="capability-no">04 / FINISH</span><div class="capability-icon" aria-hidden="true">✧</div><h4>画面效果</h4><p>利用扩展模块加入辉光、模糊等后期处理，使重点对象更醒目。</p><a href="https://threejs.org/manual/pages/post-processing.html" target="_blank" rel="noreferrer">看后期效果说明 ↗</a></article>
+          <article><span class="capability-no">05 / SCALE</span><div class="capability-icon" aria-hidden="true">▦</div><h4>大量对象与 GPU 计算</h4><p>用实例化、精度切换等手段控制负载；WebGPU 示例进一步探索大规模计算。</p><a href="https://threejs.org/examples/webgpu_compute_particles.html" target="_blank" rel="noreferrer">看粒子计算示例 ↗</a></article>
+          <article><span class="capability-no">06 / IMMERSE</span><div class="capability-icon" aria-hidden="true">◉</div><h4>沉浸式浏览</h4><p>在支持的浏览器和设备上，通过 WebXR 扩展三维场景的观看方式。</p><a href="https://threejs.org/manual/pages/webxr-basics.html" target="_blank" rel="noreferrer">看 WebXR 入门 ↗</a></article>
+        </div>
+        <div class="value-panel"><div><p class="kicker">WHAT IT MEANS FOR YOU</p><h3>对你最直接的意义</h3><p>它让“看一张设备图”变成“在空间中定位、检查和操作设备”。本页的风电场已经用到场景绘制、镜头控制、点击选择和重复物体绘制。</p></div><div class="value-list"><p><strong>做原型</strong><span>先用官方示例验证模型展示、交互和画面效果，快速判断体验是否可行。</span></p><p><strong>做业务页面</strong><span>接入自己的模型与设备数据，形成巡检、产品展示、培训或空间可视化应用。</span></p><p><strong>做技术选型</strong><span>场景变大后先测量瓶颈，再决定是否需要 LOD、实例化，或研究这条 GPU 渲染实验。</span></p></div></div>
+        <p class="engine-boundary"><strong>能力边界：</strong>three.js 主要解决三维呈现。业务后台、模型制作与转换、告警规则需要另做；真实物理模拟通常还要接入物理引擎。官方示例是参考代码，不等于一键可用的产品组件。<a href="https://threejs.org/manual/pages/fundamentals.html" target="_blank" rel="noreferrer">基础概念 ↗</a> <a href="https://threejs.org/manual/pages/physics.html" target="_blank" rel="noreferrer">物理能力说明 ↗</a></p>
+      </section>
+
+      <section id="experience" class="experience" aria-labelledby="experience-title">
+        <div class="section-heading"><div><p class="kicker">02 / INTERACTIVE CASE</p><h2 id="experience-title">风电场远程巡检</h2></div><p>值班员先看全场，再定位异常风机。对远处设备使用较少几何细节，接近目标时恢复细节。</p></div>
+        <div class="demo-layout">
+          <div class="scene-wrap">
+            <div id="scene" class="scene" role="img" aria-label="可拖动旋转和缩放的海上风电场三维演示"></div>
+            <div class="scene-top"><span class="live-pill"><span class="pulse-dot"></span>模拟场景 · 非真实设备数据</span><span class="scene-coord">北海示意海域 / 144 台风机</span></div>
+            <div class="scene-bottom"><div class="legend"><span><i class="swatch high"></i>高精度</span><span><i class="swatch medium"></i>中精度</span><span><i class="swatch low"></i>低精度</span><span><i class="swatch alert"></i>异常设备</span></div><span class="scene-hint">拖动旋转 · 滚轮缩放 · 点击风机</span></div>
+            <div id="scene-error" class="scene-error" hidden>当前浏览器未能启动三维画面。下方研究内容仍可阅读。</div>
+          </div>
+          <aside class="control-panel" aria-label="巡检与渲染控制">
+            <div class="panel-top"><span class="panel-label">巡检控制台</span><span class="panel-indicator">LIVE DEMO</span></div>
+            <div class="case-summary"><span>当前任务</span><strong>定位 W-087 风机异常</strong><p>从全场视角切换到单台设备，观察几何工作量如何变化。</p></div>
+            <div class="control-group"><span class="control-label">绘制策略</span><div class="mode-switch" role="group" aria-label="绘制策略"><button type="button" data-mode="full" aria-pressed="false">全部高精度</button><button type="button" data-mode="cull" aria-pressed="false">只做视野筛选</button><button type="button" data-mode="adaptive" class="active" aria-pressed="true">按需选精度</button></div></div>
+            <div class="control-group"><label class="control-label" for="threshold">可接受的屏幕误差 <output id="threshold-value">2.0 px</output></label><input id="threshold" type="range" min="0.5" max="5" step="0.5" value="2"><div class="range-labels"><span>更精细</span><span>更节省</span></div></div>
+            <div class="metric-grid"><div class="metric"><span>本帧绘制风机</span><strong id="visible-count">—</strong><small>共 144 台</small></div><div class="metric"><span>几何提交估算</span><strong id="triangle-count">—</strong><small>三角形 / 当前视角</small></div></div>
+            <div class="savings"><div class="savings-head"><span>相对全部高精度</span><strong id="reduction">—</strong></div><div class="savings-track"><div id="reduction-bar"></div></div><p>此处比较几何数量；不代表帧率提升比例。</p></div>
+            <div class="focus-actions"><button type="button" id="overview" class="button secondary">全场俯瞰</button><button type="button" id="locate" class="button accent">定位 W-087 ↗</button></div>
+            <div class="device-card"><div><span class="control-label">当前设备</span><span id="device-status" class="device-status">待复核</span></div><strong id="device-name">W-087 · 东南区</strong><p id="device-detail">齿轮箱温度偏高。接近目标查看设备结构，几何精度会随屏幕需求提升。</p></div>
+          </aside>
+        </div>
+        <p class="demo-disclosure"><strong>演示边界：</strong>本页用 Three.js 常规渲染器在浏览器中模拟“视野筛选 + 按屏幕误差选精度”，用于直观看几何工作量的变化。原 PR 的 GPU 计算、软件光栅化和硬件混合绘制需在<a href="https://threejs.org/examples/webgpu_compute_rasterizer.html" target="_blank" rel="noreferrer">上游 WebGPU 示例</a>中验证。风机、告警与指标均为模拟数据。</p>
+      </section>
+
+      <section id="principle" class="principle" aria-labelledby="principle-title"><div class="section-heading"><div><p class="kicker">03 / HOW IT WORKS</p><h2 id="principle-title">原 PR 真正研究的流程</h2></div><p>核心价值是让 GPU 组织更细粒度的绘制工作，并针对不同大小的三角形选择合适路径。</p></div>
+        <div class="pipeline"><article><span class="step">01</span><div class="step-symbol">⌁</div><h3>筛选</h3><p>把三角形编成小组。GPU 排除镜头外的小组，并按投影到屏幕上的误差选择模型精度。</p></article><article><span class="step">02</span><div class="step-symbol">◇</div><h3>分流</h3><p>小三角形由 GPU 计算程序逐像素绘制；大三角形走显卡常规绘制路径。</p></article><article><span class="step">03</span><div class="step-symbol">▦</div><h3>上色</h3><p>先记住每个像素最终看到的三角形，再读取几何与纹理，为可见像素计算颜色。</p></article></div>
+        <div class="difference"><div><p class="kicker">WHAT CHANGES</p><h3>和常规 three.js 有什么不同？</h3></div><p>常规 three.js 已提供物体级的视野剔除、距离 LOD 和重复绘制。这个实验把选择细化到三角形小组，并让 GPU 生成后续任务，加入小三角形的自定义绘制路径。它探索的是<strong>渲染流程的控制权与任务粒度</strong>。</p></div>
+      </section>
+
+      <section id="applications" class="applications" aria-labelledby="applications-title"><div class="section-heading"><div><p class="kicker">04 / WHERE IT MATTERS</p><h2 id="applications-title">适合什么样的产品？</h2></div><p>three.js 可用于不同规模的网页三维产品；下面这些场景尤其值得进一步研究大场景优化。</p></div><div class="application-grid"><article><span>01 / 工业</span><h3>工厂与风电场数字孪生</h3><p>设备密集，值班员常在“全场概览”和“单台巡检”之间切换。远近精度随视角变化，有助于把预算留给正在查看的设备。</p></article><article><span>02 / 建筑</span><h3>BIM 与大型工程审阅</h3><p>建筑构件、机电管线数量巨大。可按视角处理可见结构，再逐步补齐点选、剖切、批注与协同。</p></article><article><span>03 / 空间内容</span><h3>城市、遗产与扫描场景</h3><p>扫描模型往往非常精细。全景浏览需要控制几何量，靠近建筑或文物时再恢复细节。</p></article></div><div class="product-path"><div><p class="kicker">PRODUCT PATH</p><h3>如果做成产品</h3></div><p>从“研究示例”走向“上传大型模型即可在线巡检”，还需要模型自动分块、多档精度生成、按需加载、材质和光照、交互工具，以及真实设备上的性能测试。这是可扩展方向，属于本项目的产品推断。</p></div></section>
+
+      <section id="source" class="sources" aria-labelledby="source-title"><div><p class="kicker">05 / EVIDENCE & LIMITS</p><h2 id="source-title">研究依据与判断边界</h2></div><div><p>原 PR 于 2026 年 5 月合并，作者将其描述为 GPU 驱动的软件光栅化实验，称当前示例涉及超过十亿三角形。源码中这个数字由大量重复茶壶按最高精度估算；每帧实际处理的数量会随视角与精度选择改变。它不是任意模型的性能承诺。</p><div class="source-links"><a href="https://threejs.org/manual/pages/fundamentals.html" target="_blank" rel="noreferrer">three.js 基础说明 ↗</a><a href="https://threejs.org/examples/" target="_blank" rel="noreferrer">官方示例库 ↗</a><a href="https://github.com/mrdoob/three.js/pull/33605" target="_blank" rel="noreferrer">原始 PR ↗</a><a href="https://github.com/mrdoob/three.js/blob/dev/examples/webgpu_compute_rasterizer.html" target="_blank" rel="noreferrer">现版示例源码 ↗</a><a href="https://threejs.org/docs/pages/LOD.html" target="_blank" rel="noreferrer">常规 LOD 文档 ↗</a><a href="https://threejs.org/docs/pages/InstancedMesh.html" target="_blank" rel="noreferrer">常规重复绘制文档 ↗</a></div></div></section>
+    </main>
+    <footer><span>FIELD/FRAME · RESEARCH NOTE 006</span><span>独立教育演示 · 2026</span><a href="../">返回项目索引 ↑</a></footer>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

@@ -11,7 +11,7 @@
 编号从 `001` 开始，创建后保持不变；默认按编号顺序展示，也可通过 `order` 调整展示顺序。
 
 <!-- PROJECTS:START -->
-当前收录 **5** 个项目。
+当前收录 **6** 个项目。
 
 | 编号 | 项目与研究入口 | 摘要 | 研究状态 | 参考来源 | Web 演示 |
 | --- | --- | --- | --- | --- | --- |
@@ -20,6 +20,7 @@
 | 003 | [Lofi Cities](projects/003-lofi-cities/README.md) | <strong>能力：</strong>动态城市、实时合成音乐与环境混音<br><strong>效果：</strong>可调节的沉浸氛围<br><strong>场景：</strong>阅读、工作、放松<br><strong>扩展：</strong>物件联动、时间变化与空间分享<br><strong>对我：</strong>用独立产品“栖间”验证可保存、可交互的个人环境。 | 已完成 | [Lofi Cities · Istanbul](https://loficities.com/istanbul/) | [在线体验](https://yydshly.github.io/0927_codex_project/003-lofi-cities/) |
 | 004 | [AI 工程面试题库研究](projects/004-ai-engineering-interview-guide/README.md) | <strong>能力：</strong>这是按技术主题和公司组织的 AI 工程面试题库与学习索引，可用于定位知识范围、练习解释原理和分析工程取舍<br><strong>内容：</strong>固定版本收录 598 道题，包含 10 个通用模块的 119 题和 35 个公司或分组章节的 479 题，232 题附外部参考链接，本站为 45 题补充中文答题要点<br><strong>使用场景：</strong>目标公司求职、转向 AI 工程、现有项目查漏补缺、同伴模拟面试与团队讨论<br><strong>对我的意义：</strong>把岗位要求转成可练习的题目清单，用自答、实现、验证和复盘发现薄弱项，形成能解释也能动手的能力证据。 | 已完成 | [ai-engineering-interview-questions-company-wise](https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise) | [在线体验](https://yydshly.github.io/0927_codex_project/004-ai-engineering-interview-guide/#overview) |
 | 005 | [Jailbreaks 越狱提示词库研究](projects/005-jailbreaks-research/README.md) | <strong>能力：</strong>收录面向 10 组模型或系列的 23 份越狱提示词与配置样本，尝试改变内容边界和拒绝条件<br><strong>呈现效果：</strong>可能实质越界、表面顺从或继续拒绝，网页用完整引导图展示机制与证据，成功率未实测<br><strong>使用场景：</strong>理解受限请求的拒绝机制，对自有模型系统开展授权防护评估<br><strong>可扩展方向：</strong>样本版本管理、跨模型对照评测、误拒绝与稳定性记录<br><strong>对我的意义：</strong>判断越狱是否可能改变拒绝，区分回答行为与真实权限，也明确它不能替代无人机系统的工程实现。 | 已完成 | [jailbreaks](https://github.com/togg53192-cmd/jailbreaks) | [在线体验](https://yydshly.github.io/0927_codex_project/005-jailbreaks-research/#overview) |
+| 006 | [Three\.js 能力与 GPU 渲染研究](projects/006-threejs-gpu-rasterizer/README.md) | <strong>能力：</strong>three\.js 提供网页三维场景、模型材质、光照、交互、动画及 WebXR/WebGPU 扩展；PR \#33605 探索超大几何场景的 GPU 驱动绘制<br><strong>呈现效果：</strong>完整理解总图、六类官方示例入口，以及 144 台模拟风机的可交互巡检与精度策略对比<br><strong>使用场景：</strong>产品展示、工业设备巡检、BIM 工程审阅、城市与扫描资产浏览<br><strong>技术原理：</strong>three\.js 组织场景并交给 WebGL/WebGPU 渲染；PR 将几何分组，GPU 做视锥筛选和屏幕误差 LOD，再以软件与硬件路径绘制并给可见像素上色<br><strong>可扩展方向：</strong>真实模型导入、自动分块与多档精度、按需加载、设备数据接入、协同巡检及性能基准<br><strong>对我的意义：</strong>先用 three\.js 验证三维产品体验，再根据真实模型和设备测试决定是否采用 PR 的深度优化路线。 | 已完成 | [three\.js](https://github.com/mrdoob/three.js) | — |
 
 ### 项目图片
 
@@ -100,6 +101,24 @@ Jailbreaks 完整引导图：10 组模型或系列、越狱目标、规则遵循
 <strong>可扩展方向：</strong>样本版本管理、跨模型对照评测、误拒绝与稳定性记录
 
 <strong>对我的意义：</strong>判断越狱是否可能改变拒绝，区分回答行为与真实权限，也明确它不能替代无人机系统的工程实现。
+
+#### 006 · Three\.js 能力与 GPU 渲染研究
+
+[![Three\.js 与 GPU 驱动渲染理解总图：区分基础库、官方示例与 PR \#33605，概括能力、技术原理、呈现效果、使用场景、产品方向和个人价值。](projects/006-threejs-gpu-rasterizer/assets/understanding-map.svg)](projects/006-threejs-gpu-rasterizer/README.md)
+
+Three\.js 与 GPU 驱动渲染理解总图：区分基础库、官方示例与 PR \#33605，概括能力、技术原理、呈现效果、使用场景、产品方向和个人价值。
+
+<strong>能力：</strong>three\.js 提供网页三维场景、模型材质、光照、交互、动画及 WebXR/WebGPU 扩展；PR \#33605 探索超大几何场景的 GPU 驱动绘制
+
+<strong>呈现效果：</strong>完整理解总图、六类官方示例入口，以及 144 台模拟风机的可交互巡检与精度策略对比
+
+<strong>使用场景：</strong>产品展示、工业设备巡检、BIM 工程审阅、城市与扫描资产浏览
+
+<strong>技术原理：</strong>three\.js 组织场景并交给 WebGL/WebGPU 渲染；PR 将几何分组，GPU 做视锥筛选和屏幕误差 LOD，再以软件与硬件路径绘制并给可见像素上色
+
+<strong>可扩展方向：</strong>真实模型导入、自动分块与多档精度、按需加载、设备数据接入、协同巡检及性能基准
+
+<strong>对我的意义：</strong>先用 three\.js 验证三维产品体验，再根据真实模型和设备测试决定是否采用 PR 的深度优化路线。
 <!-- PROJECTS:END -->
 
 ## 开始一项研究

@@ -29,6 +29,8 @@ def render_home(projects, repository, entrypoints=None):
         folder = directory_name(project)
         entry, guide, label = project_links(folder, entrypoints)
         guide_link = f'<a href="{guide}">理解与使用引导</a>' if guide else ''
+        cover_suffix = Path(project.get('cover', 'cover.png')).suffix.lower()
+        cover_url = f'./covers/{folder}{cover_suffix}'
         cards.append(f'''<article>
           <div class="project-heading"><span>{project['id']:03d} / RESEARCH & EXPERIENCE</span><h2>{escape(project['name'])}</h2></div>
           <div class="summary">{summary_html(project['summary'])}</div>
@@ -39,7 +41,7 @@ def render_home(projects, repository, entrypoints=None):
             <a href="https://github.com/{repository}/tree/main/projects/{folder}">研究记录 ↗</a>
           </nav>
           <details class="guide" open><summary>完整引导图 · 点击折叠或展开</summary>
-            <a class="preview" href="./covers/{folder}.png"><img src="./covers/{folder}.png" alt="{escape(project['cover_alt'], quote=True)}" loading="lazy"></a>
+            <a class="preview" href="{cover_url}"><img src="{cover_url}" alt="{escape(project['cover_alt'], quote=True)}" loading="lazy"></a>
           </details>
           <small>{escape(project['cover_alt'])}</small>
         </article>''')
@@ -81,7 +83,8 @@ def build(root=ROOT, output=None):
             raise ValueError(f'Missing built index: {source}')
         shutil.copytree(source, output / folder)
         (output / 'covers').mkdir(exist_ok=True)
-        shutil.copy2(directory / project['cover'], output / 'covers' / f'{folder}.png')
+        cover_suffix = Path(project['cover']).suffix.lower()
+        shutil.copy2(directory / project['cover'], output / 'covers' / f'{folder}{cover_suffix}')
         projects.append(project)
     output.mkdir(parents=True, exist_ok=True)
     (output / 'index.html').write_text(render_home(projects, config['repository'], config.get('entrypoints')), encoding='utf-8')

@@ -1,0 +1,14 @@
+{
+  "id": 6,
+  "order": 6,
+  "slug": "threejs-gpu-rasterizer",
+  "name": "Three.js 能力与 GPU 渲染研究",
+  "summary": "能力：three.js 提供网页三维场景、模型材质、光照、交互、动画及 WebXR/WebGPU 扩展；PR #33605 探索超大几何场景的 GPU 驱动绘制；呈现效果：完整理解总图、六类官方示例入口，以及 144 台模拟风机的可交互巡检与精度策略对比；使用场景：产品展示、工业设备巡检、BIM 工程审阅、城市与扫描资产浏览；技术原理：three.js 组织场景并交给 WebGL/WebGPU 渲染；PR 将几何分组，GPU 做视锥筛选和屏幕误差 LOD，再以软件与硬件路径绘制并给可见像素上色；可扩展方向：真实模型导入、自动分块与多档精度、按需加载、设备数据接入、协同巡检及性能基准；对我的意义：先用 three.js 验证三维产品体验，再根据真实模型和设备测试决定是否采用 PR 的深度优化路线。",
+  "source": "https://github.com/mrdoob/three.js",
+  "source_name": "three.js",
+  "source_type": "github",
+  "status": "已完成",
+  "demo": "",
+  "cover": "assets/understanding-map.svg",
+  "cover_alt": "Three.js 与 GPU 驱动渲染理解总图：区分基础库、官方示例与 PR #33605，概括能力、技术原理、呈现效果、使用场景、产品方向和个人价值。"
+}

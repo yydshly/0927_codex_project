@@ -1,6 +1,6 @@
 # 多个 Web 演示的远端部署
 
-本仓库沿用 GitHub Pages 的统一站点结构，通过 `.github/workflows/deploy-pages.yml` 构建和发布。发布清单包含 **001 · 西安夜行图**、**002 · FreeMoCap 动作实验室**、**003 · Lofi Cities**、**004 · AI 工程面试题库导览** 和 **005 · Jailbreaks 越狱研究指南**；统一构建发布，保留已经上线的演示。
+本仓库沿用 GitHub Pages 的统一站点结构，通过 `.github/workflows/deploy-pages.yml` 构建和发布。发布清单包含 **001 · 西安夜行图**、**002 · FreeMoCap 动作实验室**、**003 · Lofi Cities**、**004 · AI 工程面试题库导览**、**005 · Jailbreaks 越狱研究指南** 和 **006 · Three.js 能力与 GPU 渲染研究**；统一构建发布，保留已经上线的演示。
 
 ## 站点入口
 
@@ -12,6 +12,7 @@
 - 产品理解：演示地址加 `#understanding`。
 - AI 工程面试题库导览：`https://yydshly.github.io/0927_codex_project/004-ai-engineering-interview-guide/#overview`；完整引导图使用 `#guide-map`。
 - Jailbreaks 越狱研究指南：`https://yydshly.github.io/0927_codex_project/005-jailbreaks-research/#overview`；完整引导图使用 `#guide-map`。
+- Three.js 能力与 GPU 渲染研究：构建后理解总图入口为 `/006-threejs-gpu-rasterizer/#map`，能力导览为 `#threejs`，交互演示为 `#experience`，PR 原理说明为 `#principle`。风机与告警为模拟数据；完整公网地址须在实际部署并验证后写入 `project.json`。
 
 001、002、003 与 005 均已于 2026-09-27 完成发布和远端网页验证，正式地址已写入各自 `project.json` 的 `demo` 字段。[西安夜行图首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36299771812) 后，已在公开页面核对三维地图、夜游返程面板、五项摘要、原网页名称与使用本项目截图的引导图。班次与可达范围仍为模拟数据。
 
@@ -32,12 +33,14 @@ npm --prefix projects/003-lofi-cities/web run check
 npm --prefix projects/003-lofi-cities/web test
 npm --prefix projects/004-ai-engineering-interview-guide/web run build
 npm --prefix projects/005-jailbreaks-research/web run check
+npm --prefix projects/006-threejs-gpu-rasterizer/web ci
+npm --prefix projects/006-threejs-gpu-rasterizer/web run check
 python scripts/build_site.py
 ```
 
 推送到 `main` 的相关修改，或手动运行 Deploy research demos 工作流，都会执行检查、构建、上传 Pages artifact 和部署。仓库 Settings → Pages 使用 GitHub Actions 来源。发布任务仅授予 `pages: write` 与 `id-token: write`，不在代码或浏览器中放入部署密钥。
 
-站点使用相对资源路径与 hash 路由，适配五个已列入发布清单的项目子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或用户本地数据。
+站点使用相对资源路径与 hash 路由，适配六个已列入发布清单的项目子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或用户本地数据。
 
 ## 增加其他子项目
 

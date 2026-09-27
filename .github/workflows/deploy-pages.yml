@@ -9,6 +9,7 @@ on:
       - 'projects/003-lofi-cities/**'
       - 'projects/004-ai-engineering-interview-guide/**'
       - 'projects/005-jailbreaks-research/**'
+      - 'projects/006-threejs-gpu-rasterizer/**'
       - 'scripts/build_site.py'
       - 'scripts/projects.py'
       - 'docs/site-projects.json'
@@ -42,6 +43,8 @@ jobs:
           npm --prefix projects/003-lofi-cities/web test
           npm --prefix projects/004-ai-engineering-interview-guide/web run build
           npm --prefix projects/005-jailbreaks-research/web run check
+          npm --prefix projects/006-threejs-gpu-rasterizer/web ci
+          npm --prefix projects/006-threejs-gpu-rasterizer/web run check
       - uses: actions/configure-pages@v5
       - name: Build every published demo and the shared index
         run: python3 scripts/build_site.py
