@@ -35,7 +35,7 @@ def render_home(projects, repository, entrypoints=None):
           <nav aria-label="{escape(project['name'], quote=True)} 相关入口">
             <a class="primary" href="{entry}">{escape(label)} →</a>
             {guide_link}
-            <a href="{escape(project['source'], quote=True)}">{escape(project.get('source_name', project['name']))} ↗</a>
+            <a href="{escape(project['source'], quote=True)}">参考来源：{escape(project.get('source_name') or project['source'].rstrip('/').split('/')[-1])} ↗</a>
             <a href="https://github.com/{repository}/tree/main/projects/{folder}">研究记录 ↗</a>
           </nav>
           <details class="guide" open><summary>完整引导图 · 点击折叠或展开</summary>

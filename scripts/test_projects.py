@@ -25,14 +25,20 @@ class SourceTests(unittest.TestCase):
     def test_summary_labels_are_bold_without_executing_markup(self):
         summary = '能力：<script> & 数据 | 表；使用场景：动画；对我的意义：*专属动作*'
         md = summary_markdown(summary)
-        self.assertIn('**能力：**&lt;script&gt; &amp; 数据 \\| 表', md)
-        self.assertIn('<br>**使用场景：**动画', md)
-        self.assertIn('**对我的意义：**\\*专属动作\\*', md)
+        self.assertIn('<strong>能力：</strong>&lt;script&gt; &amp; 数据 \\| 表', md)
+        self.assertIn('<br><strong>使用场景：</strong>动画', md)
+        self.assertIn('<strong>对我的意义：</strong>\\*专属动作\\*', md)
         page = summary_html(summary)
         self.assertIn('<strong>能力：</strong>&lt;script&gt; &amp;', page)
         self.assertNotIn('<script>', page)
         self.assertEqual(summary_markdown('普通摘要；场景不是标题'), '普通摘要；场景不是标题')
-        self.assertIn('\n\n**场景：**动画', summary_markdown('能力：数据；场景：动画', '\n\n'))
+        self.assertIn('\n\n<strong>场景：</strong>动画', summary_markdown('能力：数据；场景：动画', '\n\n'))
+
+    def test_source_label_uses_repository_name(self):
+        self.project['source'] = 'https://github.com/freemocap/freemocap'
+        self.assertIn('[freemocap](https://github.com/freemocap/freemocap)', render_index([self.project]))
+        self.project['source_name'] = 'FreeMoCap'
+        self.assertIn('[FreeMoCap](https://github.com/freemocap/freemocap)', render_index([self.project]))
 
     def test_unsafe_website_url_rejected(self):
         self.project["source_type"] = "website"

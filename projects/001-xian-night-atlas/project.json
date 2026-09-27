@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "order": 1,
+  "slug": "xian-night-atlas",
+  "name": "西安夜行图",
+  "summary": "以西安真实地理底图展示三维末班车图谱、日夜切换、时间演化与夜间返程判断。",
+  "source": "https://tokyo-last-train.matodesign.workers.dev/",
+  "source_type": "website",
+  "status": "已完成",
+  "demo": "",
+  "cover": "assets/overview.png",
+  "cover_alt": "西安夜行图第二版：三维发光线路、真实地理底图、悬浮面板与时间轴。"
+}

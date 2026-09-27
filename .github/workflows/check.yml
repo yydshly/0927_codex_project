@@ -20,6 +20,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Test and build Xi'an Night Atlas
+        working-directory: projects/001-xian-night-atlas/web
+        run: |
+          npm ci
+          npm test
+          npm run build
       - name: Check FreeMoCap lab
         run: |
           node --check projects/002-freemocap-lab/web/src/app.mjs
@@ -29,3 +35,7 @@ jobs:
         run: |
           npm --prefix projects/003-lofi-cities/web run check
           npm --prefix projects/003-lofi-cities/web test
+      - name: Check Jailbreaks research guide
+        run: |
+          npm --prefix projects/005-jailbreaks-research/web run check
+          npm --prefix projects/005-jailbreaks-research/web run build

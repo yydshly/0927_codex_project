@@ -1,0 +1,14 @@
+{
+  "id": 5,
+  "order": 5,
+  "slug": "jailbreaks-research",
+  "name": "Jailbreaks 越狱提示词库研究",
+  "summary": "能力：收录面向 10 组模型或系列的 23 份越狱提示词与配置样本，尝试改变内容边界和拒绝条件；呈现效果：可能实质越界、表面顺从或继续拒绝，网页用完整引导图展示机制与证据，成功率未实测；使用场景：理解受限请求的拒绝机制，对自有模型系统开展授权防护评估；可扩展方向：样本版本管理、跨模型对照评测、误拒绝与稳定性记录；对我的意义：判断越狱是否可能改变拒绝，区分回答行为与真实权限，也明确它不能替代无人机系统的工程实现。",
+  "source": "https://github.com/togg53192-cmd/jailbreaks",
+  "source_name": "jailbreaks",
+  "source_type": "github",
+  "status": "已完成",
+  "demo": "",
+  "cover": "assets/jailbreaks-overview.png",
+  "cover_alt": "Jailbreaks 完整引导图：10 组模型或系列、越狱目标、规则遵循原理、可能效果及个人价值；模型效果未实测。"
+}

@@ -121,7 +121,7 @@ def summary_sections(value):
 
 
 def summary_markdown(value, separator="<br>"):
-    return separator.join(f"**{label}：**{markdown(body)}" if label else markdown(body)
+    return separator.join(f"<strong>{html.escape(label)}：</strong>{markdown(body)}" if label else markdown(body)
                           for label, body in summary_sections(value))
 
 
@@ -140,7 +140,7 @@ def render_index(projects):
         path = f"projects/{directory_name(project)}"
         demo = f"[在线体验]({link_url(project['demo'])})" if project["demo"] else "—"
         source_label = markdown(project.get("source_name") or
-                                ("参考网页" if project.get("source_type") == "website" else "GitHub"))
+                                ("参考网页" if project.get("source_type") == "website" else project["source"].rstrip("/").split("/")[-1]))
         lines.append(
             f"| {project['id']:03d} | [{markdown(project['name'])}]({path}/README.md) "
             f"| {summary_markdown(project['summary'])} | {project['status']} "

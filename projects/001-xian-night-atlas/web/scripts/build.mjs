@@ -1,0 +1,10 @@
+import { mkdir,copyFile,cp } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const out=path.join(root,'dist');
+await mkdir(out,{recursive:true});
+for(const name of ['index.html','styles.css','favicon.svg'])await copyFile(path.join(root,name),path.join(out,name));
+await cp(path.join(root,'src'),path.join(out,'src'),{recursive:true});
+for(const name of ['vendor','icons'])await cp(path.join(root,name),path.join(out,name),{recursive:true});
+console.log('Built portable static site: dist/ (relative assets; no external runtime requests)');

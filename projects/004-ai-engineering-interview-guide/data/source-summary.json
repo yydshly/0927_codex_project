@@ -1,0 +1,736 @@
+{
+  "repository": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise",
+  "commit": "14c0106e2794bd4d355e6a9145b375a19b912bac",
+  "commit_date": "2026-09-19T10:40:41Z",
+  "inspected_at": "2026-09-26T12:58:09.6929195Z",
+  "readme_sha256": "9fb83ee5872eaaf1fd76a749bccb22a64ed2e07a7ee828b5dedb8ba00fdb5f32",
+  "license": "Apache-2.0",
+  "license_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/LICENSE",
+  "tracked_files": [
+    ".gitattributes",
+    "LICENSE",
+    "README.md",
+    "assets",
+    "assets/banner.png"
+  ],
+  "counting_method": "Count unindented - bullets only within the common-questions section and five company groups. One bullet is one entry, even if it contains multiple prompts. Answer-linked entries require a nested Answer row with an HTTP(S) Markdown link. No semantic deduplication or external-link validation.",
+  "totals": {
+    "common_topics": 10,
+    "company_sections": 35,
+    "common_question_entries": 119,
+    "company_question_entries": 479,
+    "question_entries": 598,
+    "entries_with_answer_links": 232
+  },
+  "sections": [
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "LLM Internals and Architecture",
+      "line": 116,
+      "anchor": "llm-internals-and-architecture",
+      "topics": [],
+      "question_entries": 16,
+      "entries_with_answer_links": 15,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#llm-internals-and-architecture"
+    },
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "Inference, Serving and GPU Performance",
+      "line": 163,
+      "anchor": "inference-serving-and-gpu-performance",
+      "topics": [],
+      "question_entries": 15,
+      "entries_with_answer_links": 12,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#inference-serving-and-gpu-performance"
+    },
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "RAG and Retrieval",
+      "line": 207,
+      "anchor": "rag-and-retrieval",
+      "topics": [],
+      "question_entries": 12,
+      "entries_with_answer_links": 7,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#rag-and-retrieval"
+    },
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "Agents and Tool Use",
+      "line": 237,
+      "anchor": "agents-and-tool-use",
+      "topics": [],
+      "question_entries": 12,
+      "entries_with_answer_links": 9,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#agents-and-tool-use"
+    },
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "Fine-Tuning, Post-Training and Alignment",
+      "line": 270,
+      "anchor": "fine-tuning-post-training-and-alignment",
+      "topics": [],
+      "question_entries": 12,
+      "entries_with_answer_links": 11,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#fine-tuning-post-training-and-alignment"
+    },
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "Evaluation and Observability",
+      "line": 306,
+      "anchor": "evaluation-and-observability",
+      "topics": [],
+      "question_entries": 10,
+      "entries_with_answer_links": 4,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#evaluation-and-observability"
+    },
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "Safety, Security and Responsible AI",
+      "line": 331,
+      "anchor": "safety-security-and-responsible-ai",
+      "topics": [],
+      "question_entries": 10,
+      "entries_with_answer_links": 5,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#safety-security-and-responsible-ai"
+    },
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "Multimodal, Speech and Voice AI",
+      "line": 355,
+      "anchor": "multimodal-speech-and-voice-ai",
+      "topics": [],
+      "question_entries": 10,
+      "entries_with_answer_links": 5,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#multimodal-speech-and-voice-ai"
+    },
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "AI System Design",
+      "line": 382,
+      "anchor": "ai-system-design",
+      "topics": [],
+      "question_entries": 10,
+      "entries_with_answer_links": 4,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#ai-system-design"
+    },
+    {
+      "group": "Common Questions Asked Across Companies",
+      "name": "Coding and Data Structures",
+      "line": 409,
+      "anchor": "coding-and-data-structures",
+      "topics": [],
+      "question_entries": 12,
+      "entries_with_answer_links": 9,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#coding-and-data-structures"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "Anthropic",
+      "line": 445,
+      "anchor": "anthropic",
+      "topics": [
+        "Coding and Data Structures",
+        "LLM Internals and Architecture",
+        "Inference, Serving and GPU Performance",
+        "Agents and Tool Use",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Applied and Forward-Deployed Scenarios",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 37,
+      "entries_with_answer_links": 7,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#anthropic"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "OpenAI",
+      "line": 527,
+      "anchor": "openai",
+      "topics": [
+        "Coding and Data Structures",
+        "ML and DL Fundamentals",
+        "LLM Internals and Architecture",
+        "Agents and Tool Use",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Applied and Forward-Deployed Scenarios",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 31,
+      "entries_with_answer_links": 6,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#openai"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "Google DeepMind and Google AI",
+      "line": 599,
+      "anchor": "google-deepmind-and-google-ai",
+      "topics": [
+        "Coding and Data Structures",
+        "ML and DL Fundamentals",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 22,
+      "entries_with_answer_links": 4,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#google-deepmind-and-google-ai"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "Meta (Superintelligence Labs, FAIR, Llama)",
+      "line": 651,
+      "anchor": "meta-superintelligence-labs-fair-llama",
+      "topics": [
+        "Coding and Data Structures",
+        "ML and DL Fundamentals",
+        "LLM Internals and Architecture",
+        "Inference, Serving and GPU Performance",
+        "Agents and Tool Use",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Multimodal, Speech and Voice AI",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 26,
+      "entries_with_answer_links": 5,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#meta-superintelligence-labs-fair-llama"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "xAI",
+      "line": 723,
+      "anchor": "xai",
+      "topics": [
+        "Coding and Data Structures",
+        "Inference, Serving and GPU Performance",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 10,
+      "entries_with_answer_links": 1,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#xai"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "Mistral AI",
+      "line": 757,
+      "anchor": "mistral-ai",
+      "topics": [
+        "Coding and Data Structures",
+        "LLM Internals and Architecture",
+        "Inference, Serving and GPU Performance",
+        "Agents and Tool Use",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design"
+      ],
+      "question_entries": 8,
+      "entries_with_answer_links": 6,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#mistral-ai"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "Cohere",
+      "line": 797,
+      "anchor": "cohere",
+      "topics": [
+        "Coding and Data Structures",
+        "LLM Internals and Architecture",
+        "RAG and Retrieval",
+        "Agents and Tool Use",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 10,
+      "entries_with_answer_links": 3,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#cohere"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "DeepSeek",
+      "line": 839,
+      "anchor": "deepseek",
+      "topics": [
+        "LLM Internals and Architecture",
+        "Inference, Serving and GPU Performance",
+        "Fine-Tuning, Post-Training and Alignment",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 10,
+      "entries_with_answer_links": 5,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#deepseek"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "Moonshot AI (Kimi)",
+      "line": 874,
+      "anchor": "moonshot-ai-kimi",
+      "topics": [
+        "LLM Internals and Architecture",
+        "Inference, Serving and GPU Performance",
+        "RAG and Retrieval",
+        "Fine-Tuning, Post-Training and Alignment",
+        "Evaluation and Observability"
+      ],
+      "question_entries": 10,
+      "entries_with_answer_links": 8,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#moonshot-ai-kimi"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "Zhipu AI (GLM)",
+      "line": 915,
+      "anchor": "zhipu-ai-glm",
+      "topics": [
+        "LLM Internals and Architecture",
+        "Agents and Tool Use",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Evaluation and Observability"
+      ],
+      "question_entries": 11,
+      "entries_with_answer_links": 8,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#zhipu-ai-glm"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "Alibaba (Qwen)",
+      "line": 957,
+      "anchor": "alibaba-qwen",
+      "topics": [
+        "Coding and Data Structures",
+        "LLM Internals and Architecture",
+        "Fine-Tuning, Post-Training and Alignment",
+        "Evaluation and Observability",
+        "Multimodal, Speech and Voice AI",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 10,
+      "entries_with_answer_links": 8,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#alibaba-qwen"
+    },
+    {
+      "group": "Frontier AI Labs",
+      "name": "Sarvam AI",
+      "line": 1001,
+      "anchor": "sarvam-ai",
+      "topics": [
+        "Coding and Data Structures",
+        "LLM Internals and Architecture",
+        "Inference, Serving and GPU Performance",
+        "RAG and Retrieval",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Multimodal, Speech and Voice AI",
+        "Applied and Forward-Deployed Scenarios"
+      ],
+      "question_entries": 12,
+      "entries_with_answer_links": 8,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#sarvam-ai"
+    },
+    {
+      "group": "Big Tech AI Organizations",
+      "name": "Microsoft",
+      "line": 1058,
+      "anchor": "microsoft",
+      "topics": [
+        "Coding and Data Structures",
+        "Inference, Serving and GPU Performance",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 10,
+      "entries_with_answer_links": 5,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#microsoft"
+    },
+    {
+      "group": "Big Tech AI Organizations",
+      "name": "Amazon (AWS)",
+      "line": 1099,
+      "anchor": "amazon-aws",
+      "topics": [
+        "Coding and Data Structures",
+        "ML and DL Fundamentals",
+        "LLM Internals and Architecture",
+        "Inference, Serving and GPU Performance",
+        "Agents and Tool Use",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 23,
+      "entries_with_answer_links": 11,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#amazon-aws"
+    },
+    {
+      "group": "Big Tech AI Organizations",
+      "name": "Apple",
+      "line": 1165,
+      "anchor": "apple",
+      "topics": [
+        "Inference, Serving and GPU Performance",
+        "Agents and Tool Use",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 11,
+      "entries_with_answer_links": 8,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#apple"
+    },
+    {
+      "group": "Big Tech AI Organizations",
+      "name": "NVIDIA",
+      "line": 1210,
+      "anchor": "nvidia",
+      "topics": [
+        "Coding and Data Structures",
+        "ML and DL Fundamentals",
+        "Inference, Serving and GPU Performance",
+        "AI System Design",
+        "Applied and Forward-Deployed Scenarios",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 13,
+      "entries_with_answer_links": 5,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#nvidia"
+    },
+    {
+      "group": "Big Tech AI Organizations",
+      "name": "Tesla",
+      "line": 1254,
+      "anchor": "tesla",
+      "topics": [
+        "Coding and Data Structures",
+        "ML and DL Fundamentals",
+        "Inference, Serving and GPU Performance",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Multimodal, Speech and Voice AI",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 11,
+      "entries_with_answer_links": 1,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#tesla"
+    },
+    {
+      "group": "Big Tech AI Organizations",
+      "name": "Consumer-Scale ML Companies (Uber, Netflix, LinkedIn, Airbnb, Pinterest, Spotify)",
+      "line": 1293,
+      "anchor": "consumer-scale-ml-companies-uber-netflix-linkedin-airbnb-pinterest-spotify",
+      "topics": [
+        "Coding and Data Structures",
+        "ML and DL Fundamentals",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 14,
+      "entries_with_answer_links": 1,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#consumer-scale-ml-companies-uber-netflix-linkedin-airbnb-pinterest-spotify"
+    },
+    {
+      "group": "AI Infrastructure and Platform Companies",
+      "name": "Databricks",
+      "line": 1333,
+      "anchor": "databricks",
+      "topics": [
+        "Coding and Data Structures",
+        "Fine-Tuning, Post-Training and Alignment",
+        "Evaluation and Observability",
+        "Applied and Forward-Deployed Scenarios"
+      ],
+      "question_entries": 9,
+      "entries_with_answer_links": 1,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#databricks"
+    },
+    {
+      "group": "AI Infrastructure and Platform Companies",
+      "name": "Groq",
+      "line": 1363,
+      "anchor": "groq",
+      "topics": [
+        "Coding and Data Structures",
+        "Inference, Serving and GPU Performance",
+        "AI System Design",
+        "Applied and Forward-Deployed Scenarios",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 12,
+      "entries_with_answer_links": 5,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#groq"
+    },
+    {
+      "group": "AI Infrastructure and Platform Companies",
+      "name": "Together AI",
+      "line": 1403,
+      "anchor": "together-ai",
+      "topics": [
+        "Coding and Data Structures",
+        "Inference, Serving and GPU Performance",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Applied and Forward-Deployed Scenarios"
+      ],
+      "question_entries": 7,
+      "entries_with_answer_links": 4,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#together-ai"
+    },
+    {
+      "group": "AI Infrastructure and Platform Companies",
+      "name": "Hugging Face",
+      "line": 1437,
+      "anchor": "hugging-face",
+      "topics": [
+        "Coding and Data Structures",
+        "LLM Internals and Architecture",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 11,
+      "entries_with_answer_links": 2,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#hugging-face"
+    },
+    {
+      "group": "AI Infrastructure and Platform Companies",
+      "name": "Scale AI",
+      "line": 1473,
+      "anchor": "scale-ai",
+      "topics": [
+        "Coding and Data Structures",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Applied and Forward-Deployed Scenarios"
+      ],
+      "question_entries": 12,
+      "entries_with_answer_links": 3,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#scale-ai"
+    },
+    {
+      "group": "AI Infrastructure and Platform Companies",
+      "name": "Perplexity",
+      "line": 1514,
+      "anchor": "perplexity",
+      "topics": [
+        "Coding and Data Structures",
+        "Inference, Serving and GPU Performance",
+        "RAG and Retrieval",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 15,
+      "entries_with_answer_links": 6,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#perplexity"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "Cursor (Anysphere)",
+      "line": 1566,
+      "anchor": "cursor-anysphere",
+      "topics": [
+        "Coding and Data Structures",
+        "Inference, Serving and GPU Performance",
+        "RAG and Retrieval",
+        "Agents and Tool Use",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 17,
+      "entries_with_answer_links": 6,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#cursor-anysphere"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "Cognition (Devin, Windsurf)",
+      "line": 1618,
+      "anchor": "cognition-devin-windsurf",
+      "topics": [
+        "Agents and Tool Use",
+        "Fine-Tuning, Post-Training and Alignment",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Applied and Forward-Deployed Scenarios"
+      ],
+      "question_entries": 9,
+      "entries_with_answer_links": 3,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#cognition-devin-windsurf"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "Sierra",
+      "line": 1656,
+      "anchor": "sierra",
+      "topics": [
+        "Coding and Data Structures",
+        "RAG and Retrieval",
+        "Agents and Tool Use",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Multimodal, Speech and Voice AI",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 12,
+      "entries_with_answer_links": 5,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#sierra"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "Harvey",
+      "line": 1702,
+      "anchor": "harvey",
+      "topics": [
+        "Coding and Data Structures",
+        "RAG and Retrieval",
+        "Agents and Tool Use",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Applied and Forward-Deployed Scenarios"
+      ],
+      "question_entries": 11,
+      "entries_with_answer_links": 3,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#harvey"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "Glean",
+      "line": 1745,
+      "anchor": "glean",
+      "topics": [
+        "Coding and Data Structures",
+        "Inference, Serving and GPU Performance",
+        "RAG and Retrieval",
+        "Agents and Tool Use",
+        "AI System Design",
+        "Evaluation and Observability"
+      ],
+      "question_entries": 10,
+      "entries_with_answer_links": 4,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#glean"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "Character.AI",
+      "line": 1785,
+      "anchor": "characterai",
+      "topics": [
+        "Coding and Data Structures",
+        "LLM Internals and Architecture",
+        "Inference, Serving and GPU Performance",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI"
+      ],
+      "question_entries": 12,
+      "entries_with_answer_links": 6,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#characterai"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "ElevenLabs",
+      "line": 1829,
+      "anchor": "elevenlabs",
+      "topics": [
+        "Coding and Data Structures",
+        "Inference, Serving and GPU Performance",
+        "Safety, Security and Responsible AI",
+        "Multimodal, Speech and Voice AI",
+        "Applied and Forward-Deployed Scenarios"
+      ],
+      "question_entries": 8,
+      "entries_with_answer_links": 1,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#elevenlabs"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "Abridge",
+      "line": 1861,
+      "anchor": "abridge",
+      "topics": [
+        "ML and DL Fundamentals",
+        "Inference, Serving and GPU Performance",
+        "RAG and Retrieval",
+        "Agents and Tool Use",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Multimodal, Speech and Voice AI"
+      ],
+      "question_entries": 11,
+      "entries_with_answer_links": 1,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#abridge"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "Figure AI",
+      "line": 1905,
+      "anchor": "figure-ai",
+      "topics": [
+        "ML and DL Fundamentals",
+        "Inference, Serving and GPU Performance",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Safety, Security and Responsible AI",
+        "Multimodal, Speech and Voice AI"
+      ],
+      "question_entries": 12,
+      "entries_with_answer_links": 0,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#figure-ai"
+    },
+    {
+      "group": "AI-Native Product Companies",
+      "name": "Waymo",
+      "line": 1941,
+      "anchor": "waymo",
+      "topics": [
+        "Coding and Data Structures",
+        "ML and DL Fundamentals",
+        "Inference, Serving and GPU Performance",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Multimodal, Speech and Voice AI"
+      ],
+      "question_entries": 12,
+      "entries_with_answer_links": 0,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#waymo"
+    },
+    {
+      "group": "Forward-Deployed and Enterprise AI",
+      "name": "Palantir",
+      "line": 1979,
+      "anchor": "palantir",
+      "topics": [
+        "Coding and Data Structures",
+        "RAG and Retrieval",
+        "Agents and Tool Use",
+        "AI System Design",
+        "Evaluation and Observability",
+        "Applied and Forward-Deployed Scenarios",
+        "Behavioral and Culture"
+      ],
+      "question_entries": 20,
+      "entries_with_answer_links": 1,
+      "source_url": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise/blob/14c0106e2794bd4d355e6a9145b375a19b912bac/README.md#palantir"
+    }
+  ]
+}

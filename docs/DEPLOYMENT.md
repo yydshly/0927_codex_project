@@ -1,6 +1,6 @@
 # 多个 Web 演示的远端部署
 
-本仓库沿用 GitHub Pages 的统一站点结构，通过 `.github/workflows/deploy-pages.yml` 构建和发布。当前发布清单包含 **002 · FreeMoCap 动作实验室** 和 **003 · Lofi Cities**；统一构建发布，保留已经上线的演示。
+本仓库沿用 GitHub Pages 的统一站点结构，通过 `.github/workflows/deploy-pages.yml` 构建和发布。发布清单包含 **002 · FreeMoCap 动作实验室**、**003 · Lofi Cities** 和 **005 · Jailbreaks 越狱研究指南**；统一构建发布，保留已经上线的演示。
 
 ## 站点入口
 
@@ -9,8 +9,9 @@
 - FreeMoCap 动作回放 / 重建实验：演示地址加 `#motion` / `#geometry`。
 - Lofi Cities 独立演示：`https://yydshly.github.io/0927_codex_project/003-lofi-cities/`
 - 产品理解：演示地址加 `#understanding`。
+- Jailbreaks 越狱研究指南：`https://yydshly.github.io/0927_codex_project/005-jailbreaks-research/#overview`；完整引导图使用 `#guide-map`。
 
-002 与 003 均已于 2026-09-27 完成发布和远端网页验证，正式地址已写入各自 `project.json` 的 `demo` 字段。FreeMoCap 的五项加粗摘要、完整引导图及 150% 缩放、演示切换和合成 NPY 解析回放已通过公网检查；脚本、样式、PNG / SVG、数据样例与既有 Lofi Cities 页面均返回 HTTP 200。[FreeMoCap 首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36295964557)。
+002 与 003 均已于 2026-09-27 完成发布和远端网页验证，正式地址已写入各自 `project.json` 的 `demo` 字段。FreeMoCap 的五项加粗摘要、完整引导图及 150% 缩放、演示切换和合成 NPY 解析回放已通过公网检查；脚本、样式、PNG / SVG、数据样例与既有 Lofi Cities 页面均返回 HTTP 200。[FreeMoCap 首次成功部署](https://github.com/yydshly/0927_codex_project/actions/runs/36295964557)。005 已加入发布清单，远端验证完成后再将地址写入其 `demo` 字段。
 
 ## 构建和发布
 
@@ -22,12 +23,13 @@ python -m unittest discover -s scripts -p 'test_*.py'
 npm --prefix projects/002-freemocap-lab/web test
 npm --prefix projects/003-lofi-cities/web run check
 npm --prefix projects/003-lofi-cities/web test
+npm --prefix projects/005-jailbreaks-research/web run check
 python scripts/build_site.py
 ```
 
 推送到 `main` 的相关修改，或手动运行 Deploy research demos 工作流，都会执行检查、构建、上传 Pages artifact 和部署。仓库 Settings → Pages 使用 GitHub Actions 来源。发布任务仅授予 `pages: write` 与 `id-token: write`，不在代码或浏览器中放入部署密钥。
 
-站点使用相对资源路径与 hash 路由，适配 `/0927_codex_project/002-freemocap-lab/` 和 `/0927_codex_project/003-lofi-cities/` 子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或用户本地数据。
+站点使用相对资源路径与 hash 路由，适配三个已列入发布清单的项目子路径。只发布构建后的静态资源，不发布开发测试、依赖目录或用户本地数据。
 
 ## 增加其他子项目
 

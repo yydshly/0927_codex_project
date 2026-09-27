@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Jailbreaks 越狱提示词库 · 项目研究 005</title>
+  <meta name="description" content="Jailbreaks 是针对绕过模型拒绝和内容限制的提示词合集。区分普通提示词优化、越狱意图与真实越狱效果，并说明素材形式、研究场景和证据。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232b49df'/%3E%3Cpath d='M9 9h5v14H9m14-14h-5v14h5' stroke='white' stroke-width='2.5' fill='none'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./source-data.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <aside class="sidebar" aria-label="阅读导航">
+    <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">[j]</span><span>项目研究室<small>RESEARCH / 005</small></span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="chapter-nav">阅读目录 <span aria-hidden="true">☰</span></button>
+    <div class="sidebar-body">
+      <div class="sidebar-project"><span class="eyebrow">本期研究</span><strong>Jailbreaks</strong><span>越狱提示词库 · 研究指南</span></div>
+      <nav id="chapter-nav" class="chapter-nav">
+        <a href="#overview" aria-current="location"><span>01</span>先看结论</a>
+        <a href="#capabilities"><span>02</span>它能做什么</a>
+        <a href="#scenarios"><span>03</span>使用场景</a>
+        <a href="#use"><span>04</span>如何使用</a>
+        <a href="#outcomes"><span>05</span>效果会怎样</a>
+        <a href="#for-you"><span>06</span>对你的意义</a>
+        <a href="#sources"><span>07</span>资料与证据</a>
+      </nav>
+      <div class="sidebar-bottom"><span class="evidence-pill">静态研究已完成</span><p>模型效果尚未实测</p><a href="https://github.com/togg53192-cmd/jailbreaks" target="_blank" rel="noopener noreferrer">参考来源：jailbreaks <span aria-hidden="true">↗</span></a></div>
+    </div>
+  </aside>
+  <div class="page-shell">
+    <header class="topbar"><span>开源项目观察 <span class="slash">/</span> 005</span><span>研究版本 <code>e5130bbcc1e1</code></span></header>
+    <main id="main">
+      <section id="overview" class="section overview" aria-labelledby="overview-title">
+        <div class="section-kicker"><span class="chapter-label">01 / 先看结论</span><span class="date-label">2026.09.27 更新</span></div>
+        <h1 id="overview-title">Jailbreaks：<br>针对模型限制的越狱合集。</h1>
+        <p class="intro">这个库的主要目标，是让模型输出原本受其规则限制、可能被拒绝的内容。它收集的是越狱尝试，是否成功还需要独立验证。</p>
+        <div class="quick-summary" aria-label="五项摘要">
+          <article><h2>能力</h2><p>收录面向 10 组模型或系列的 23 份越狱提示词与配置样本，试图改变内容允许范围和拒绝条件。</p></article>
+          <article><h2>呈现效果</h2><p>可能实质越界、表面顺从或继续拒绝；网页展示分类和证据，仓库样本的实际成功率尚未实测。</p></article>
+          <article><h2>使用场景</h2><p>理解模型对受限请求的拒绝机制；在自有模型系统中开展授权防护评估。</p></article>
+          <article><h2>可扩展方向</h2><p>建立样本版本管理、跨模型对照评测，记录误拒绝、稳定性与失败条件。</p></article>
+          <article class="quick-summary-personal"><h2>对我的意义</h2><p>判断越狱是否可能改变拒绝，分清回答行为与真实权限；本库不提供无人机识别、控制等工程实现。</p></article>
+        </div>
+        <figure id="guide-map" class="guide-map" aria-labelledby="guide-map-title">
+          <div class="guide-map-heading"><div><span class="chapter-label">完整引导图</span><h2 id="guide-map-title">一张图看清这个库。</h2></div><div class="guide-map-actions"><a href="./assets/jailbreaks-overview.png" target="_blank" rel="noopener noreferrer">放大阅读 ↗</a><a href="./assets/jailbreaks-overview.svg" download>下载 SVG ↓</a></div></div>
+          <a class="guide-map-preview" href="./assets/jailbreaks-overview.png" target="_blank" rel="noopener noreferrer" aria-label="放大阅读 Jailbreaks 完整引导图"><img src="./assets/jailbreaks-overview.png" width="1800" height="2780" alt="Jailbreaks 完整引导图，涵盖 10 组模型或系列、越狱目标、规则遵循原理、可能结果和对你的价值。效果未实测。" loading="eager"></a>
+          <figcaption>按固定提交的源文件名称归类；模型版本适配与越狱成功率尚未验证。</figcaption>
+        </figure>
+        <div class="overview-grid">
+          <article class="answer-card">
+            <div class="card-topline"><span class="tag tag-light">核心定位</span><span class="small-label">JAILBREAK COLLECTION</span></div>
+            <h2>尝试绕过拒绝，<br>改变模型的内容边界。</h2>
+            <p>把自定义规则、授权叙述和拒绝抑制要求写进提示词，希望模型按作者设定的边界回答。</p>
+            <div class="answer-foot"><span class="bracket" aria-hidden="true">[ ! ]</span><span>越狱意图已确认；实际成功率尚未验证。</span></div>
+          </article>
+          <article class="takeaway-card"><span class="tag">两条不同方向</span><h2>提示词优化看质量，<br>越狱看是否越过限制。</h2><p><strong>普通优化：</strong>让本来允许的任务做得更准确、更清楚、更完整。</p><p class="muted"><strong>越狱：</strong>尝试使模型生成原有边界限制的内容。这个库属于后者。</p></article>
+        </div>
+        <div class="stats" aria-label="本次研究范围"><div><strong>25<span>份</span></strong><p>已核对源文件</p></div><div><strong>23<span>份</span></strong><p>有实际提示词或配置内容</p></div><div><strong>0<span>次</span></strong><p>模型调用 · 尚无效果数据</p></div><div class="stats-note"><span class="label">证据边界</span><p>已确认文本内容。<br>尚未验证越狱成功率。</p></div></div>
+      </section>
+      <section id="capabilities" class="section" aria-labelledby="capabilities-title">
+        <div class="section-kicker"><span class="chapter-label">02 / 它能做什么</span><span class="tag">基于源文件</span></div>
+        <h2 id="capabilities-title" class="section-title">同一个越狱目标，四种文本包装。</h2>
+        <p class="section-intro">这些类别描述材料的呈现形式。其中普通的角色和质量要求，与试图覆盖内容规则的要求混合出现。</p>
+        <div class="material-grid">
+          <article class="material"><span class="material-number">12</span><div><h3>运行规范</h3><p>以助手规范的形式重新规定允许范围与拒绝条件。</p><span class="file-label">deepseek-4-1.md 等</span></div></article>
+          <article class="material"><span class="material-number">04</span><div><h3>工作区约定</h3><p>通过工作区规则和授权叙述，尝试使受限请求被接受。</p><span class="file-label">glm-zcode-AGENTS.md 等</span></div></article>
+          <article class="material"><span class="material-number">04</span><div><h3>创作语境</h3><p>以作者身份和虚构创作背景争取更宽的内容输出范围。</p><span class="file-label">opus v2 / Sonnet v2 等</span></div></article>
+          <article class="material"><span class="material-number">03</span><div><h3>配置封装</h3><p>用配置指令或标签承载自定义规则与提示词。</p><span class="file-label">GPT oss / gemma4 等</span></div></article>
+        </div>
+        <p class="footnote">另有 1 份仓库说明、1 个空白文件。分类按主要呈现形式划分，内容可能重叠。</p>
+        <div class="mechanism-note"><h3>判断它针对越狱的关键证据</h3><div class="mechanism-flow"><div><span>01</span><strong>重写允许范围</strong><p>要求以作者自定条件决定能否回答。</p></div><div><span>02</span><strong>抑制拒绝行为</strong><p>将原有拒绝与警告描述成应消除的错误。</p></div><div><span>03</span><strong>持续服从新规则</strong><p>要求后续对话继续保持这套内容边界。</p></div></div></div>
+        <p class="source-note">README 明确自称作者的越狱合集；指定文件第 5–7 节尝试重定义内容边界、拒绝条件和判断程序。例见 <a href="https://github.com/togg53192-cmd/jailbreaks/blob/e5130bbcc1e183a207126bdfe2fa41d1ba46df81/deepseek-4-1.md" target="_blank" rel="noopener noreferrer">DeepSeek 运行规范 ↗</a> 与 <a href="https://github.com/togg53192-cmd/jailbreaks/blob/e5130bbcc1e183a207126bdfe2fa41d1ba46df81/glm-zcode-AGENTS.md" target="_blank" rel="noopener noreferrer">GLM 工作区约定 ↗</a>。文本里的授权声明需要独立核实。</p>
+      </section>
+      <section id="scenarios" class="section" aria-labelledby="scenarios-title">
+        <div class="section-kicker"><span class="chapter-label">03 / 使用场景</span><span class="tag">意图与应用分开说明</span></div>
+        <h2 id="scenarios-title" class="section-title">它主要面向内容限制与越狱研究。</h2>
+        <p class="section-intro">先说明作者希望达到什么，再看研究者如何使用这些材料。两者都不能直接证明样本有效。</p>
+        <div class="scenario-tabs" role="tablist" aria-label="选择使用场景">
+          <button id="tab-development" type="button" role="tab" aria-selected="true" aria-controls="panel-development" tabindex="0">受限代码请求</button>
+          <button id="tab-writing" type="button" role="tab" aria-selected="false" aria-controls="panel-writing" tabindex="-1">内容限制</button>
+          <button id="tab-testing" type="button" role="tab" aria-selected="false" aria-controls="panel-testing" tabindex="-1">越狱防护评估</button>
+          <button id="tab-drone" type="button" role="tab" aria-selected="false" aria-controls="panel-drone" tabindex="-1">你的无人机问题</button>
+        </div>
+        <article class="scenario-panel" id="panel-development" role="tabpanel" aria-labelledby="tab-development" tabindex="0">
+          <div class="scenario-heading"><div><span class="eyebrow blue-text">场景 A / 作者的目标</span><h3>让原本被限制的代码请求获得输出。</h3></div><span class="judgment">越狱意图</span></div>
+          <div class="scenario-body"><div><span class="field-label">文本想改变什么</span><p>部分样本将安全工具与攻击性软件请求归入作者声明的允许范围，要求模型不再按原有习惯拒绝。</p><span class="field-label">与普通优化的区别</span><p>关键目标是改变“是否允许输出”；普通代码提示词优化侧重如何把允许的需求实现好。</p></div><div class="scenario-result"><span class="field-label">能确认到哪一步</span><p>原文可以证明这种意图，不能证明模型确实接受了新边界，更不能证明生成代码可用。</p><div class="scenario-bottom">本项目分析机制，没有执行攻击性代码任务。</div></div></div>
+        </article>
+        <article class="scenario-panel" id="panel-writing" role="tabpanel" aria-labelledby="tab-writing" tabindex="0" hidden>
+          <div class="scenario-heading"><div><span class="eyebrow blue-text">场景 B / 作者的目标</span><h3>扩大模型愿意生成的内容范围。</h3></div><span class="judgment">越狱意图</span></div>
+          <div class="scenario-body"><div><span class="field-label">文本想改变什么</span><p>创作类样本借助成年作者、虚构情节与创作自由的叙述，尝试让模型输出原本受到限制的成人或极端题材内容。</p><span class="field-label">为何还写文风要求</span><p>文风、细节和角色要求与越狱要求被放在同一段上下文中；这些普通要求不改变整个仓库的主要定位。</p></div><div class="scenario-result"><span class="field-label">能确认到哪一步</span><p>文字更生动、回答更长，均不足以说明内容边界被突破。需要看实际输出及对应环境的限制。</p><div class="scenario-bottom">这里描述样本用途，不展示或生成受限内容。</div></div></div>
+        </article>
+        <article class="scenario-panel" id="panel-testing" role="tabpanel" aria-labelledby="tab-testing" tabindex="0" hidden>
+          <div class="scenario-heading"><div><span class="eyebrow blue-text">场景 C / 研究者的用途</span><h3>研究模型如何抵抗越狱指令。</h3></div><span class="judgment">防护评估素材</span></div>
+          <div class="scenario-body"><div><span class="field-label">研究内容</span><p>分析自称高权限、重写规则、授权叙述和拒绝抑制等手法，形成可追溯的样本分类。</p><span class="field-label">评估需要区分</span><p>模型遵守边界，是防护有效；模型实质违反预设内容边界，才可能是越狱成功。降低误拒绝是另一项指标。</p></div><div class="scenario-result"><span class="field-label">无害演示的限度</span><p>虚构规则或输出格式冲突可帮助理解指令遵循，但不能单独证明真实内容安全限制已被绕过。</p><div class="scenario-bottom">本次完成静态研究，没有开展模型越狱评测。</div></div></div>
+        </article>
+        <article class="scenario-panel" id="panel-drone" role="tabpanel" aria-labelledby="tab-drone" tabindex="0" hidden>
+          <div class="scenario-heading"><div><span class="eyebrow blue-text">场景 D / 你的关注点</span><h3>你问的是能否绕过拒绝，确实属于越狱方向。</h3></div><span class="judgment judgment-neutral">效果未经验证</span></div>
+          <div class="scenario-body"><div><span class="field-label">与这个库的关系</span><p>如果你希望模型对原本拒绝的内容改为回答，这与该库的目标相符。之前把它解释为“把需求说清楚”，没有准确回应这一点。</p><span class="field-label">两层问题分别看</span><p>能否改变模型的拒绝行为是一层；回答能否转化为可靠的无人机系统，是另一个工程问题。</p></div><div class="scenario-result"><span class="field-label">目前能给出的结论</span><p>它是越狱样本库，但没有证据证明这些样本能突破你使用的模型，也没有提供无人机识别或控制实现。</p><div class="scenario-bottom">此网页不提供针对打击系统的绕过提示词或实现指导。</div></div></div>
+        </article>
+        <p class="footnote">前两项描述作者试图实现的用途；防护评估是本研究提出的应用。均不代表已验证效果。</p>
+      </section>
+      <section id="use" class="section" aria-labelledby="use-title">
+        <div class="section-kicker"><span class="chapter-label">04 / 如何使用</span><span class="tag">承载方式与评估条件</span></div>
+        <h2 id="use-title" class="section-title">使用对象是越狱文本与配置片段。</h2>
+        <p class="section-intro">作者希望这些材料进入模型上下文，影响它对受限请求的判断。仓库没有统一安装器，也没有提供经验证的通用部署流程。</p>
+        <div class="entry-table-wrap"><table class="entry-table"><caption>文件形式与可能的承载入口</caption><thead><tr><th scope="col">文件形式</th><th scope="col">承载方式</th><th scope="col">不能混淆的条件</th></tr></thead><tbody><tr><th scope="row">提示词正文</th><td>作为对话中的前置上下文或提示词材料。</td><td>文本声称高权限，并不使它自动获得真实高权限。</td></tr><tr><th scope="row">工作区约定</th><td>由支持项目指令文件的 Agent 读取。</td><td>是否加载、处于哪一级指令，由实际工具环境决定。</td></tr><tr><th scope="row">模型配置片段</th><td>交给支持相应语法的本地运行环境。</td><td>合法修改自有系统配置与低权限输入绕过限制，是不同实验；本次未测试兼容性。</td></tr></tbody></table></div>
+        <div class="steps"><article><span class="step-number">1</span><div><h3>明确要研究哪条边界</h3><p>先确定原环境的规则和预期行为。“之前拒绝过”本身不能证明该任务受规则禁止。</p></div></article><article><span class="step-number">2</span><div><h3>核对材料、模型和指令位置</h3><p>记录样本版本、模型版本及承载入口。文件名里写了某个模型，不代表已经验证适配。</p></div></article><article><span class="step-number">3</span><div><h3>在授权评估范围内记录对照</h3><p>区分有无样本时的表现，并遵守所用环境的测试范围。无害演示只用于理解机制，不能替代真实边界证据。</p></div></article><article><span class="step-number">4</span><div><h3>判断实质输出是否越界</h3><p>把边界突破、仅口头答应、误拒绝减少、风格变化和技术错误分别记录，不把它们合并成成功。</p></div></article></div>
+        <div class="example-card"><div class="example-heading"><div><span class="eyebrow blue-text">记录用，不是攻击提示词</span><h3>越狱证据核对模板</h3></div><button id="copy-example" class="copy-button" type="button">复制记录模板</button></div><p class="example-caption">用于区分越狱意图、可观察行为和尚未验证的推断。</p><pre id="prompt-example">研究对象：样本文件、固定提交、模型及版本。
+原有边界：依据是什么？预期应该如何响应？
+指令位置：用户消息、工作区材料，还是可合法修改的系统配置？
+基线结果：没有该样本时，实际发生了什么？
+观察结果：是实质越界、仅口头答应、误拒绝减少，还是风格变化？
+证据与限制：保留完整响应、失败样本和运行条件；未测试项写“未知”。</pre><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p></div>
+      </section>
+      <section id="outcomes" class="section" aria-labelledby="outcomes-title">
+        <div class="section-kicker"><span class="chapter-label">05 / 效果会怎样</span><span class="tag tag-neutral">尚无实测数据</span></div>
+        <h2 id="outcomes-title" class="section-title">“回答了”还不等于“越狱成功”。</h2>
+        <p class="section-intro">关键是模型有没有实质违反原本适用的内容边界。下面是结果判定类别，不是这个库的实测成绩。</p>
+        <div class="outcome-grid"><article><span class="outcome-index">A</span><h3>实质突破原有边界</h3><p>输出了原环境规则明确限制的内容。</p><div><strong>意义</strong><span>有充分证据时，可判定该次越狱成功；不能据此推断稳定有效。</span></div></article><article><span class="outcome-index">B</span><h3>表面顺从，边界未变</h3><p>口头接受新角色或规则，但实际仍不输出受限内容。</p><div><strong>意义</strong><span>不算越狱成功。风格变化、警告变少也不足以证明成功。</span></div></article><article><span class="outcome-index">C</span><h3>保持原有限制</h3><p>忽略冲突要求，继续按适用规则回应或拒绝。</p><div><strong>意义</strong><span>该次尝试没有突破边界；从防护角度看是有效抵抗。</span></div></article><article><span class="outcome-index">D</span><h3>证据不足，无法判断</h3><p>规则不明、基线缺失、模型版本变化，或发生技术错误。</p><div><strong>意义</strong><span>记录为未知或错误。不能把结果计成成功，也不能推断永久无效。</span></div></article></div>
+        <div class="measurement"><div><span class="label">单独统计</span><h3>误拒绝减少 ≠ 边界被突破。</h3></div><p>如果原任务本来允许，只是模型误拒绝，补充信息后获得正确答案属于误拒绝改善。普通任务质量、内容越狱和工具权限突破需要分别评价。</p></div>
+        <p class="footnote">目前可确认的是样本的越狱目的。其对具体模型是否有效、成功率多少、能持续多久，均未实测。</p>
+      </section>
+      <section id="for-you" class="section" aria-labelledby="for-you-title">
+        <div class="section-kicker"><span class="chapter-label">06 / 对你的意义</span><span class="tag">直接回答你的关注点</span></div>
+        <h2 id="for-you-title" class="section-title">价值在研究限制能否被绕过。</h2>
+        <p class="section-intro">这是越狱样本库的主要研究价值。普通提示词里的表达技巧可以顺带借鉴，但不能替代对其真实目的的说明。</p>
+        <div class="personal-list"><article><span class="priority">关注拒绝</span><div><h3>如果你希望模型回答原本受限的请求</h3><p>这个库确实瞄准这一目标。因此它与你提出的“能否通过越狱改变拒绝”直接相关；目前缺少它在你使用环境中的效果证据。</p></div><span class="personal-number" aria-hidden="true">01</span></article><article><span class="priority priority-secondary">研究价值</span><div><h3>如果你想理解越狱和防护</h3><p>它提供不同包装的样本，可研究作者怎样主张新权限、替换规则或抑制拒绝，以及模型是否抵抗这些要求。</p></div><span class="personal-number" aria-hidden="true">02</span></article><article><span class="priority priority-muted">日常提效</span><div><h3>如果你只是希望普通任务做得更好</h3><p>应该主要考察提示词设计、上下文质量和任务验收。本仓库并不是经过质量筛选和效果验证的优秀提示词教程。</p></div><span class="personal-number" aria-hidden="true">03</span></article></div>
+        <div class="personal-conclusion"><span class="conclusion-mark" aria-hidden="true">↳</span><p><strong>准确定位：</strong>一组试图绕过模型内容限制的提示词与配置样本。用途明确，实际越狱能力尚待验证。</p></div>
+      </section>
+      <section id="sources" class="section" aria-labelledby="sources-title">
+        <div class="section-kicker"><span class="chapter-label">07 / 资料与证据</span><span class="tag">可追溯来源</span></div>
+        <h2 id="sources-title" class="section-title">每个判断，都有出处和边界。</h2>
+        <div class="source-summary"><div><span class="field-label">核对范围</span><p>25 个文件的元数据、开头与章节结构；对代表性内容做重点分析。</p></div><div><span class="field-label">固定版本</span><a href="https://github.com/togg53192-cmd/jailbreaks/tree/e5130bbcc1e183a207126bdfe2fa41d1ba46df81" target="_blank" rel="noopener noreferrer"><code>e5130bbcc1e1</code> ↗</a><p class="source-date">提交于 2026-09-24 · 整理于 2026-09-26</p></div></div>
+        <details class="source-disclosure"><summary><span>查看全部 25 个文件<span class="summary-description">分类、内容说明与原文链接</span></span><span class="disclosure-icon" aria-hidden="true">+</span></summary><div class="source-table-scroll" tabindex="0" aria-label="可横向滚动的源文件清单"><table class="source-table"><caption class="sr-only">固定版本的 25 个源文件</caption><thead><tr><th scope="col">文件</th><th scope="col">类型</th><th scope="col">内容说明</th></tr></thead><tbody id="source-rows"></tbody></table></div><noscript><p>完整清单可在<a href="https://github.com/togg53192-cmd/jailbreaks/tree/e5130bbcc1e183a207126bdfe2fa41d1ba46df81">固定版本仓库</a>查看。</p></noscript></details>
+        <div class="source-caveats"><p><strong>文本存在 ≠ 效果已验证。</strong>本研究没有运行模型测试。作者写入的身份、授权与能力表述，均作为待辨别的源材料。</p><p>值得注意：<code>qwen-preferences.md</code> 仅有换行；两个 GLM 文件仅大小写不同但内容不同；<code>deepseek v4</code> 正文自述为 V3。文件名不能直接证明适配版本。</p><p>该提交未见独立许可证文件，README 未声明许可证。本页提供原创摘要与来源链接，不将上游指令安装到你的工作区。</p></div>
+      </section>
+    </main>
+    <footer><span>项目研究 005 · Jailbreaks</span><span>依据固定版本整理 · 效果待验证</span></footer>
+  </div>
+</body>
+</html>

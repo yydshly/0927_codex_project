@@ -1,0 +1,14 @@
+{
+  "id": 4,
+  "order": 4,
+  "slug": "ai-engineering-interview-guide",
+  "name": "AI 工程面试题库研究",
+  "summary": "以中文交互网页梳理 AI 工程题库的 10 个模块、4 条岗位路线与 35 个公司章节。",
+  "source": "https://github.com/pallavi-shekhar/ai-engineering-interview-questions-company-wise",
+  "source_name": "ai-engineering-interview-questions-company-wise",
+  "source_type": "github",
+  "status": "已完成",
+  "demo": "",
+  "cover": "assets/web-overview.png",
+  "cover_alt": "AI 工程面试题库中文导览：仓库能力、内容规模与模块阅读卡片。"
+}

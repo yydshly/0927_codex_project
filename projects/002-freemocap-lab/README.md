@@ -10,7 +10,7 @@
 
 **对我的意义：** 为桌面女友“小云”录制有个人动作习惯的专属表演，与 Kimodo 生成的动作共同进入角色动作库，由对话与事件系统选择播放。
 
-[在线体验：理解与应用](https://yydshly.github.io/0927_codex_project/002-freemocap-lab/#capabilities) · [返回总索引](../../README.md) · [上游仓库](https://github.com/freemocap/freemocap) · [研究笔记](notes/research.md) · [运行说明](web/README.md)
+[在线体验：理解与应用](https://yydshly.github.io/0927_codex_project/002-freemocap-lab/#capabilities) · [返回总索引](../../README.md) · [参考来源：FreeMoCap](https://github.com/freemocap/freemocap) · [研究笔记](notes/research.md) · [运行说明](web/README.md)
 
 ## 一张图理解 FreeMoCap
 

@@ -11,6 +11,7 @@ class SiteTests(unittest.TestCase):
         page = render_home([project], 'yydshly/0927_codex_project',
                            {'003-lofi-cities': {'entry': '#space', 'guide': '#understanding'}})
         self.assertIn('href="https://loficities.com/istanbul/"', page)
+        self.assertIn('参考来源：Lofi Cities · Istanbul ↗', page)
         self.assertIn('href="./003-lofi-cities/#space"', page)
         self.assertIn('href="./003-lofi-cities/#understanding"', page)
         self.assertIn('src="./covers/003-lofi-cities.png"', page)
@@ -20,11 +21,12 @@ class SiteTests(unittest.TestCase):
     def test_freemocap_has_its_own_routes_full_guide_and_bold_summary(self):
         project = dict(id=2, slug='freemocap-lab', name='FreeMoCap 动作实验室',
                        summary='能力：三维动作；呈现效果：骨架；使用场景：动画；可扩展方向：重定向；对我的意义：小云',
-                       source='https://github.com/freemocap/freemocap', cover_alt='完整能力图')
+                       source='https://github.com/freemocap/freemocap', source_name='FreeMoCap', cover_alt='完整能力图')
         page = render_home([project], 'yydshly/0927_codex_project',
                            {'002-freemocap-lab': {'entry': '#capabilities', 'guide': '#capabilities'}})
         self.assertIn('href="./002-freemocap-lab/#capabilities"', page)
         self.assertNotIn('#space', page)
+        self.assertIn('参考来源：FreeMoCap ↗', page)
         for label in ('能力', '呈现效果', '使用场景', '可扩展方向', '对我的意义'):
             self.assertIn(f'<strong>{label}：</strong>', page)
         self.assertIn('<details class="guide" open>', page)
