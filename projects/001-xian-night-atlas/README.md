@@ -2,7 +2,7 @@
 
 > 从参考网页“東京終電図”出发，以西安为原型研究“线路地图 × 时间变化 × 夜间返程”的交互表达。来源是一处网页，未确认其对应的公开源码仓库或许可证。
 
-[返回总索引](../../README.md) · [参考网页：東京終電図](https://tokyo-last-train.matodesign.workers.dev/) · [研究记录](notes/research.md) · [演示源码与运行说明](web/README.md)
+[在线体验](https://yydshly.github.io/0927_codex_project/001-xian-night-atlas/) · [返回总索引](../../README.md) · [参考网页：東京終電図](https://tokyo-last-train.matodesign.workers.dev/) · [研究记录](notes/research.md) · [演示源码与运行说明](web/README.md)
 
 ## 我们理解的价值
 

@@ -100,3 +100,9 @@ final result: passed
 - `assets/mobile-plan-v3.png`、`assets/mobile-reach-v3.png`、`assets/mobile-map-v3.png`：手机计划、结果与地图。
 
 可达范围只表达选定样本站及有效候选区段，不是全市地理等时圈。地点预设不含实时营业、演出、入口步行或打车数据；“保存计划”没有后台提醒或云同步。
+
+### 公开部署复核
+
+- 仓库统一构建通过，输出包含四个项目；001 的静态页面、脚本和首页封面进入发布包。
+- [GitHub Pages 发布任务](https://github.com/yydshly/0927_codex_project/actions/runs/36299771812) 成功。公开页面的三维地图、车站标签、夜游返程计划及时间控制实际显示；首页列出五项摘要、原网页名“東京終電図”和使用本项目截图的完整引导图。
+- 公开地址：<https://yydshly.github.io/0927_codex_project/001-xian-night-atlas/>。线上继续显示模拟数据提示，不能据此安排实际乘车。

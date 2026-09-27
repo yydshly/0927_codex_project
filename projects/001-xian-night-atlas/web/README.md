@@ -16,7 +16,7 @@ npm test
 npm run build
 ```
 
-`dist/` 可通过静态 HTTP 服务独立运行，支持子目录路径。安装时需要网络；运行时所有依赖、图标及地理快照均为本地资源，无 API 密钥。请不要直接以 file:// 打开。仓库将本项目纳入 GitHub Pages 统一发布，公开页面为 <https://yydshly.github.io/0927_codex_project/001-xian-night-atlas/>；以远端实际可访问状态为准。
+`dist/` 可通过静态 HTTP 服务独立运行，支持子目录路径。安装时需要网络；运行时所有依赖、图标及地理快照均为本地资源，无 API 密钥。请不要直接以 file:// 打开。已通过 GitHub Pages 统一发布并核对公开页面：<https://yydshly.github.io/0927_codex_project/001-xian-night-atlas/>。
 
 ## 文件与依赖
 
