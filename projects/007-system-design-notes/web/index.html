@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d172b">
+  <meta name="description" content="用中文理解 system-design-notes：28 章内容地图、系统设计方法、适用场景、技术原理与个人价值。">
+  <title>系统设计笔记 · 能力地图与使用指南</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#overview" aria-label="系统设计笔记能力地图，返回页首"><span class="brand-mark" aria-hidden="true">∷</span><span><strong>系统设计笔记</strong><small>RESEARCH 007</small></span></a>
+      <nav class="top-nav" aria-label="页面导航">
+        <a href="#capability-map">28 章总图</a><a href="#goal-audit">目标对照</a><a href="#chapters">章节索引</a><a href="#directions">产品方向</a><a href="#value">我的价值</a>
+      </nav>
+      <a class="header-source" href="https://github.com/liquidslr/system-design-notes/tree/9d83887" target="_blank" rel="noopener noreferrer">查看上游 ↗</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="overview" class="overview section-shell" aria-labelledby="overview-title">
+      <div class="overview-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> 仓库分析 / 2026.09.27</p>
+        <h1 id="overview-title">把系统设计问题<br><em>拆成可以讨论的选择</em></h1>
+        <p class="lead">这是一套基于《System Design Interview》整理的英文学习笔记。它的效果是帮助你从需求、规模和故障出发，形成问题清单并解释方案取舍；它不是可以直接运行的系统。本站用总图、章节导读和“小云”案例展示这种用法。</p>
+        <div class="overview-actions"><a class="button primary" href="#capability-map">看 28 章总图 <span aria-hidden="true">↗</span></a><a class="button secondary" href="#goal-audit">用目标对照笔记</a></div>
+      </div>
+      <aside class="identity-card" aria-label="仓库定位">
+        <span class="card-kicker">先看清定位</span>
+        <div class="identity-main"><span class="identity-number">28</span><span>个章节<br>一张知识地图</span></div>
+        <div class="identity-row"><span>资料类型</span><strong>学习笔记与案例</strong></div>
+        <div class="identity-row"><span>可见效果</span><strong>问题清单与设计取舍</strong></div>
+        <div class="identity-row"><span>是否可直接部署</span><strong>否，需自行实现</strong></div>
+      </aside>
+      <div class="overview-strip" aria-label="核心结论">
+        <p><span class="strip-index">01 / 能力</span><strong>建立系统设计的提问框架</strong><span>从模糊需求走到可以解释的架构方案。</span></p>
+        <p><span class="strip-index">02 / 范围</span><strong>不只讨论高并发</strong><span>还包括延迟、可用性、数据正确性与成本。</span></p>
+        <p><span class="strip-index">03 / 边界</span><strong>案例假设需重新验证</strong><span>笔记中的规模数字不能直接当作生产指标。</span></p>
+      </div>
+    </section>
+
+    <section id="capability-map" class="capability-map section-shell" aria-labelledby="capability-map-title">
+      <div class="section-heading"><div><p class="eyebrow">ONE MAP / 一图理解</p><h2 id="capability-map-title">28 章怎样服务于你的目标</h2><p>按基础方法、核心组件、产品系统、平台与数据、交易系统五类看能力与场景；实际使用时，只选与你的产品目标相关的章节。</p></div><a class="text-link" href="./goal-capability-map.svg" target="_blank" rel="noopener noreferrer">打开可放大的原图 ↗</a></div>
+      <figure class="capability-map-figure"><div class="capability-map-scroll"><a href="./goal-capability-map.svg" target="_blank" rel="noopener noreferrer" aria-label="打开 28 章能力与场景总图的可放大版本"><img src="./goal-capability-map.svg" alt="28 章分为五类：基础方法、核心组件、产品系统、平台与数据、交易系统。每类展示章节、关注的能力和典型场景；底部展示根据产品目标按需选章节，以及小云项目示例。"></a></div><figcaption>图中的“能力”是设计知识与分析视角，不是可直接安装的软件模块。手机上可横向浏览，也可打开原图放大。</figcaption></figure>
+    </section>
+
+    <section id="case-study" class="case-study section-shell" aria-labelledby="case-title">
+      <div class="section-heading"><div><p class="eyebrow">YOUR SCENARIO / 小云实际场景</p><h2 id="case-title">“小云”从桌面原型走向多人使用</h2><p>你在 FreeMoCap 研究中提出：为桌面角色“小云”建立专属动作库，由对话与事件系统选择播放。下面用同一场景展示两种用法：从目标反推能力，以及按步骤设计实现。</p></div><a class="text-link" href="https://github.com/yydshly/0927_codex_project/tree/main/projects/002-freemocap-lab" target="_blank" rel="noopener noreferrer">场景依据 ↗</a></div>
+      <div class="case-context"><div><span class="context-label">已有方向</span><strong>对话触发角色动作</strong><p>动作可来自真人采集与生成素材，进入统一动作库。</p></div><div><span class="context-label">本页演示假设</span><strong>允许多用户同时与小云聊天</strong><p>人数、轮次和响应耗时由下方输入；这些不是你的真实运营数据。</p></div><div><span class="context-label">设计目标</span><strong>对话可用、动作及时、成本可控</strong><p>先用最小方案验证，再根据测量结果扩展。</p></div></div>
+      <div id="goal-audit" class="goal-audit" aria-labelledby="goal-audit-title">
+        <div class="goal-audit-heading"><div><span class="panel-index">反向分析 / 从目标到能力</span><h3 id="goal-audit-title">先看我们要达到什么，再看笔记能帮什么</h3><p>把目标写成可观察的结果，逐项对照相关章节，并列出还缺少的指标与验证。下表是“小云”项目的分析草案，不代表你已经承诺这些目标。</p></div><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/03.%20System%20Design%20Framework" target="_blank" rel="noopener noreferrer">设计框架原文 ↗</a></div>
+        <div class="goal-matrix-head" aria-hidden="true"><span>我们的候选目标</span><span>仓库提供的设计视角</span><span>要验证的证据</span><span>当前判断</span></div>
+        <div class="goal-matrix">
+          <article class="goal-row"><div><small>已有方向</small><strong>能聊天，并触发合适的角色动作</strong></div><div><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/12.%20Chat%20System" target="_blank" rel="noopener noreferrer">聊天系统 ↗</a><span>梳理消息流、连接和状态。</span></div><div>端到端成功率、回复耗时、动作匹配结果。</div><div><b>先验证单人闭环</b><span>动作是否“合适”需你定义评价方式。</span></div></article>
+          <article class="goal-row"><div><small>多人阶段假设</small><strong>多人同时聊天仍能及时回复</strong></div><div><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/02.%20Back%20Of%20the%20Envelope%20Estimation" target="_blank" rel="noopener noreferrer">容量估算 ↗</a><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/04.%20Rate%20Limiter" target="_blank" rel="noopener noreferrer">限流 ↗</a><span>估峰值、定配额和并发上限。</span></div><div>目标日活、峰值请求、响应时间分位数、错误率、模型并发。</div><div><b>规模与门槛待定</b><span>下方数字只是演示输入，须用实测替换。</span></div></article>
+          <article class="goal-row"><div><small>条件目标</small><strong>动作处理不拖慢聊天</strong></div><div><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/19.%20Distributed%20Message%20Queue" target="_blank" rel="noopener noreferrer">消息队列 ↗</a><span>判断动作任务是否适合异步处理。</span></div><div>回复耗时、动作开始延迟、待处理任务积压。</div><div><b>先测阻塞</b><span>出现实际瓶颈时再引入队列。</span></div></article>
+          <article class="goal-row"><div><small>需求待确认</small><strong>历史可恢复，重复请求不重复处理</strong></div><div><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/12.%20Chat%20System" target="_blank" rel="noopener noreferrer">聊天系统 ↗</a><span>讨论消息存储、同步与离线场景。</span></div><div>重开会话后的恢复结果、重复消息率、失败重试结果。</div><div><b>先定产品范围</b><span>是否需要历史和多端同步，由你的目标决定。</span></div></article>
+          <article class="goal-row"><div><small>运营目标</small><strong>模型费用落在可接受预算内</strong></div><div><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/20.%20Metrics%20Monitoring%20and%20Alerting%20System" target="_blank" rel="noopener noreferrer">监控告警 ↗</a><span>建立用量观测和异常提醒。</span></div><div>每轮 Token、每用户成本、峰值额度、月度总费用。</div><div><b>预算待定</b><span>仓库不提供你的模型价格或预算。</span></div></article>
+          <article class="goal-row gap-row"><div><small>库外专题</small><strong>保护用户对话与个人数据</strong></div><div><strong>需要另做隐私与安全设计</strong><span>该笔记不能替代产品的数据治理要求。</span></div><div>保存期限、访问权限、删除流程和安全测试。</div><div><b>明确缺口</b><span>不能因为章节未覆盖就忽略该目标。</span></div></article>
+        </div>
+        <p class="goal-audit-note"><strong>使用方式：</strong>先删掉不符合现阶段的候选目标，为保留项填入可接受的数值与优先级；再从相关章节选择方案并验证。仓库是设计问题与机制的对照资料，不是一张“每项都要实现”的清单。</p>
+      </div>
+      <div class="case-workspace">
+        <div class="case-estimate"><div class="case-panel-header"><span class="panel-index">01 / 容量估算</span><h3>把“很多人使用”变成量级</h3><p>修改四个演示假设，观察每天请求、峰值请求和同时运行的模型调用。</p></div>
+          <form id="case-form" class="assumption-grid" autocomplete="off">
+            <label>每日活跃用户 <span>DAU</span><input name="dau" type="number" min="1" max="10000000" step="100" value="10000" inputmode="numeric"></label>
+            <label>每人每日对话轮次 <span>轮 / 天</span><input name="turns" type="number" min="1" max="200" step="1" value="20" inputmode="numeric"></label>
+            <label>峰值倍数 <span>相对日均</span><input name="peak" type="number" min="1" max="100" step="1" value="8" inputmode="numeric"></label>
+            <label>一次模型响应时间 <span>秒</span><input name="latency" type="number" min="0.1" max="120" step="0.5" value="6" inputmode="decimal"></label>
+          </form>
+          <div class="estimate-results" aria-live="polite"><div><span>每日对话请求</span><strong id="daily-requests">—</strong><small>DAU × 轮次</small></div><div><span>峰值请求 / 秒</span><strong id="peak-rps">—</strong><small>日均请求 / 秒 × 峰值倍数</small></div><div><span>约同时进行的模型调用</span><strong id="model-inflight">—</strong><small>峰值请求 / 秒 × 响应秒数</small></div></div>
+          <p class="estimate-caveat">这是粗略估算：先用日均请求率乘峰值倍数，再按平均响应时间估计同时运行的调用。实际并发、Token 用量、费用和供应商限额必须通过日志与压测确认。</p>
+        </div>
+        <div class="case-flow"><div class="case-panel-header"><span class="panel-index">02 / 高层设计</span><h3>一轮对话怎样走完</h3><p>先保障用户看得到回复，再处理可后移的动作事件。</p></div>
+          <ol class="service-flow"><li><span>输入</span><div><strong>小云桌面端</strong><p>发送带会话 ID 的消息；重复提交有同一请求 ID。</p></div></li><li><span>入口</span><div><strong>身份、配额与限流</strong><p>控制单用户和整体调用量，防止模型额度被突发流量耗尽。</p></div></li><li><span>主链路</span><div><strong>对话服务 → 模型</strong><p>读取必要上下文，调用模型并把回复流式送回客户端，同时保存消息。</p></div></li><li><span>后续事件</span><div><strong>动作选择 → 动作库</strong><p>把可后移的动作任务交给事件处理，挑选匹配片段并通知桌面端播放。</p></div></li><li><span>观测</span><div><strong>延迟、错误、积压与成本</strong><p>监控实际峰值和失败路径，再决定是否扩容或拆分服务。</p></div></li></ol>
+        </div>
+      </div>
+      <div class="case-decisions"><div class="case-decision-intro"><span class="panel-index">03 / 从笔记到决策</span><h3>什么时候引入什么能力？</h3><p>根据真实约束逐步增加复杂度；章节提供思路，最终方案由测量结果决定。</p></div><div class="decision-list"><article><strong>先做单人桌面版</strong><p>直接完成对话、消息持久化和动作触发。此时不需要先部署分布式队列。</p><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/03.%20System%20Design%20Framework" target="_blank" rel="noopener noreferrer">第 3 章：明确范围 ↗</a><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/12.%20Chat%20System" target="_blank" rel="noopener noreferrer">第 12 章：聊天系统 ↗</a></article><article><strong>多人接入时</strong><p>按估算与实测制定用户配额、模型并发上限，补齐失败重试与消息记录。</p><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/02.%20Back%20Of%20the%20Envelope%20Estimation" target="_blank" rel="noopener noreferrer">第 2 章：容量估算 ↗</a><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/04.%20Rate%20Limiter" target="_blank" rel="noopener noreferrer">第 4 章：限流 ↗</a></article><article><strong>动作处理拖慢回复时</strong><p>把非关键的动作选择任务异步化，跟踪队列积压；回复仍优先返回用户。</p><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/19.%20Distributed%20Message%20Queue" target="_blank" rel="noopener noreferrer">第 19 章：消息队列 ↗</a></article><article><strong>服务上线后</strong><p>观察响应时间、模型失败率、每用户请求量和动作任务延迟，按证据调整架构。</p><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/20.%20Metrics%20Monitoring%20and%20Alerting%20System" target="_blank" rel="noopener noreferrer">第 20 章：监控告警 ↗</a></article></div></div>
+      <p class="case-note"><strong>演示边界：</strong>本页只展示设计推导与计算，不会调用 AI 模型或实现“小云”后端。输入仅在浏览器内计算，不会发送或保存。</p>
+    </section>
+
+    <section id="chapters" class="chapters section-shell" aria-labelledby="chapters-title">
+      <div class="section-heading"><div><p class="eyebrow">CONTENT MAP / 内容地图</p><h2 id="chapters-title">28 章，五类问题</h2><p>按主题筛选或搜索。点击章节可查看它要解决的问题与上游原文入口。</p></div><span class="section-counter" id="result-count" aria-live="polite">28 / 28</span></div>
+      <div class="chapter-workspace">
+        <div class="chapter-browser">
+          <div class="chapter-toolbar"><div class="filter-list" id="category-filters" role="group" aria-label="章节类别"></div><label class="search-box"><span class="sr-only">搜索章节</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="chapter-search" type="search" placeholder="搜索主题或章节" autocomplete="off"></label></div>
+          <div id="chapter-grid" class="chapter-grid" aria-label="章节列表"></div>
+          <p id="chapter-empty" class="empty-state" hidden>没有找到匹配章节。换个关键词或选择“全部”试试。</p>
+        </div>
+        <aside class="chapter-detail" id="chapter-detail" aria-live="polite" aria-label="章节导读"></aside>
+      </div>
+      <p class="content-note">章节名称取自上游目录；中文分类与导读是本项目的整理。<a href="https://github.com/liquidslr/system-design-notes/tree/9d83887" target="_blank" rel="noopener noreferrer">查看固定版本目录 ↗</a></p>
+    </section>
+
+    <section id="method" class="method section-shell" aria-labelledby="method-title">
+      <div class="section-heading"><div><p class="eyebrow">HOW IT WORKS / 方法与原理</p><h2 id="method-title">从题目到方案的四步</h2><p>仓库的设计框架先处理“要做什么”，再讨论“如何承载”。</p></div><a class="text-link" href="https://github.com/liquidslr/system-design-notes/tree/9d83887/03.%20System%20Design%20Framework" target="_blank" rel="noopener noreferrer">框架原文 ↗</a></div>
+      <div class="method-flow">
+        <article><span class="flow-number">01</span><h3>界定需求</h3><p>确认核心功能、用户规模、设备与约束，写明尚未确定的假设。</p><span class="flow-output">产出：问题边界</span></article>
+        <article><span class="flow-number">02</span><h3>估算规模</h3><p>用活跃用户、峰值请求、数据大小等估算吞吐、存储和带宽。</p><span class="flow-output">产出：容量量级</span></article>
+        <article><span class="flow-number">03</span><h3>搭建架构</h3><p>画出客户端、服务、缓存、队列和存储之间的主要数据流。</p><span class="flow-output">产出：整体方案</span></article>
+        <article><span class="flow-number">04</span><h3>深挖取舍</h3><p>找瓶颈和故障点，讨论延迟、可靠性、一致性与扩展方式。</p><span class="flow-output">产出：决策依据</span></article>
+      </div>
+      <div class="mechanism-heading"><h3>常见机制解决什么问题</h3><p>同一方案是否合适，取决于你的流量形态和正确性要求。</p></div>
+      <div class="mechanism-grid">
+        <article><span class="mechanism-tag">TRAFFIC</span><h4>限流与缓存</h4><p>在入口控制突发请求，把高频读取留在更快的一层。</p><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/04.%20Rate%20Limiter" target="_blank" rel="noopener noreferrer">限流章节 ↗</a></article>
+        <article><span class="mechanism-tag">SCALE</span><h4>分片与一致性哈希</h4><p>把数据分散到多台机器，并控制节点增减时的数据迁移。</p><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/05.%20Consistent%20Hashing" target="_blank" rel="noopener noreferrer">一致性哈希章节 ↗</a></article>
+        <article><span class="mechanism-tag">RESILIENCE</span><h4>副本与故障恢复</h4><p>用多份数据降低单点故障影响，同时决定读取新旧数据的规则。</p><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/06.%20Key-Value%20Store" target="_blank" rel="noopener noreferrer">键值存储章节 ↗</a></article>
+        <article><span class="mechanism-tag">ASYNC</span><h4>消息队列与批处理</h4><p>让生产者与消费者独立扩展；批量处理提高吞吐，也可能增加等待。</p><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/19.%20Distributed%20Message%20Queue" target="_blank" rel="noopener noreferrer">消息队列章节 ↗</a></article>
+        <article><span class="mechanism-tag">CORRECTNESS</span><h4>幂等、账本与对账</h4><p>资金类系统优先保证记录可追溯、重试可控制、差异可发现。</p><a href="https://github.com/liquidslr/system-design-notes/tree/9d83887/26.%20Payment%20System" target="_blank" rel="noopener noreferrer">支付系统章节 ↗</a></article>
+      </div>
+    </section>
+
+    <section id="scenarios" class="scenarios section-shell" aria-labelledby="scenarios-title">
+      <div class="section-heading"><div><p class="eyebrow">WHERE IT HELPS / 使用场景</p><h2 id="scenarios-title">把笔记放进真实问题</h2><p>选择与你当前目标接近的入口，再回到章节地图深读。</p></div></div>
+      <div class="scenario-grid">
+        <article><span>01 / 学习</span><h3>准备系统设计面试</h3><p>练习先提问、再估算、最后解释架构选择，而不是背一张标准图。</p><a href="#method">从四步框架开始 ↗</a></article>
+        <article><span>02 / 设计</span><h3>规划多人使用的产品</h3><p>给聊天、通知、搜索或文件服务列出峰值、数据量与故障路径。</p><a href="#chapters" data-category-jump="产品系统">查看产品系统 ↗</a></article>
+        <article><span>03 / 评审</span><h3>讨论可靠性和成本</h3><p>比较缓存、分片、副本、队列等方案，说明收益与新复杂度。</p><a href="#method">查看常见机制 ↗</a></article>
+        <article><span>04 / 深入</span><h3>处理强正确性业务</h3><p>从支付、钱包和交易案例理解重试、账本、对账与一致性要求。</p><a href="#chapters" data-category-jump="交易系统">查看交易系统 ↗</a></article>
+      </div>
+    </section>
+
+    <section id="directions" class="directions section-shell" aria-labelledby="directions-title">
+      <div class="section-heading"><div><p class="eyebrow">PRODUCT DIRECTIONS / 可扩展方向</p><h2 id="directions-title">从知识主题延伸产品方向</h2><p>下面是结合你现有 AI、动作与三维交互研究提出的候选方向。先确认用户目标，再选择相关章节；它们不是上游仓库已实现的产品。</p></div></div>
+      <div class="direction-grid">
+        <article><span>01 / 现有方向</span><h3>AI 互动角色</h3><p>让“小云”完成对话、记住必要状态，并在合适时机触发动作。先做单人闭环；多人使用时再评估容量、限流与观测。</p><small>参考：03、12；多人阶段 02、04、19、20</small></article>
+        <article><span>02 / 素材能力</span><h3>动作与媒体素材库</h3><p>把采集或生成的动作片段组织成可搜索、可上传、可同步的素材，并按需分发给桌面角色。</p><small>参考：13–15、24；通知需求出现时看 10</small></article>
+        <article><span>03 / 空间能力</span><h3>附近与空间体验</h3><p>如果三维交互产品需要附近地点、好友位置或地图导航，再借鉴位置索引与地图服务的设计问题。</p><small>参考：16–18</small></article>
+        <article><span>04 / 条件方向</span><h3>预约与交易</h3><p>只有出现付费、库存或预约需求时，才深入研究防超卖、支付重试、账目核对和撮合规则。</p><small>参考：22、26–28</small></article>
+      </div>
+      <p class="direction-note">任何方向上线后都需要实测延迟、错误和成本，并单独确定隐私、安全与数据治理要求；第 20 章可作为监控设计的参考。</p>
+    </section>
+
+    <section id="value" class="value section-shell" aria-labelledby="value-title">
+      <div class="value-main"><p class="eyebrow">WHY IT MATTERS / 对我的意义</p><h2 id="value-title">让已有产品研究<br>补上服务端视角</h2><p>本总仓库已有 AI 工程、三维交互和网页产品研究。这份笔记能帮助你进一步问：如果一个原型从少数体验者走向大量用户，服务端怎样承载请求、存储数据、应对故障，并控制成本？</p><p>它提供思考与沟通的框架。真正落地时，还需要把章节中的假设换成你的指标，做原型、压测和故障验证。</p></div>
+      <div class="value-path" aria-label="建议使用路径"><div><span>先学</span><strong>第 2、3 章</strong><small>估算与设计框架</small></div><div><span>再选</span><strong>一个贴近业务的案例</strong><small>聊天、存储、通知或支付</small></div><div><span>最后做</span><strong>自己的方案与验证</strong><small>指标、架构图、风险和实验</small></div></div>
+    </section>
+
+    <section id="boundaries" class="boundaries section-shell" aria-labelledby="boundaries-title">
+      <div class="boundary-box"><div><p class="eyebrow">SOURCE &amp; LIMITS / 来源与边界</p><h2 id="boundaries-title">把参考资料当起点</h2></div><div class="boundary-content"><p>本页分析基于上游提交 <a href="https://github.com/liquidslr/system-design-notes/tree/9d83887" target="_blank" rel="noopener noreferrer">9d83887</a>（2026-08-12）；上游 README 表示笔记仍在完善。本站的中文分类、场景与价值判断是独立归纳。</p><p>页面没有运行或测试上游章节中的系统。容量估算里的部分延迟数据标注为 2020 年；具体技术选型、生产指标与一致性保证，应查当前官方资料并在目标环境验证。</p><p>上游根目录所见未包含独立许可证文件。本页未转载上游正文或图片，章节入口均链接到原仓库。</p></div></div>
+      <footer class="footer"><span>007 / GITHUB 项目研究索引</span><a href="../">返回项目总览 ↗</a><a href="https://github.com/liquidslr/system-design-notes" target="_blank" rel="noopener noreferrer">上游仓库 ↗</a></footer>
+    </section>
+  </main>
+</body>
+</html>

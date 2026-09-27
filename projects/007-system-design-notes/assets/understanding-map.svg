@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 690" role="img" aria-labelledby="title desc">
+  <title id="title">系统设计笔记 · 理解总图</title>
+  <desc id="desc">28 章知识笔记覆盖五类主题，阅读方法从界定需求、估算规模、架构拆解到验证取舍。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101d35"/><stop offset="1" stop-color="#0b1324"/></linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#69d8e6"/><stop offset="1" stop-color="#ffcf70"/></linearGradient>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#254164" stroke-width="1" opacity=".4"/></pattern>
+  </defs>
+  <rect width="1200" height="690" rx="28" fill="url(#bg)"/>
+  <rect width="1200" height="690" rx="28" fill="url(#grid)"/>
+  <g font-family="Arial,'Microsoft YaHei',sans-serif">
+    <text x="64" y="77" fill="#68d9e6" font-size="21" letter-spacing="3">SYSTEM DESIGN NOTES / 007</text>
+    <text x="64" y="143" fill="#f1f7ff" font-size="49" font-weight="700">从题目到可靠系统</text>
+    <text x="64" y="184" fill="#b6c8dc" font-size="21">28 章英文学习笔记 · 中文能力地图与阅读路线</text>
+    <rect x="954" y="62" width="181" height="104" rx="16" fill="#142b42" stroke="#69d8e6" stroke-width="2"/>
+    <text x="986" y="122" fill="#ffcf70" font-size="54" font-weight="700">28</text>
+    <text x="1065" y="120" fill="#b6c8dc" font-size="20">章节</text>
+    <text x="64" y="260" fill="#ffcf70" font-size="18" letter-spacing="2">设计问题的四步解法</text>
+    <path d="M148 342H1058" stroke="url(#line)" stroke-width="4" stroke-dasharray="7 8"/>
+    <g>
+      <rect x="64" y="294" width="240" height="126" rx="18" fill="#17314b" stroke="#46768d"/><circle cx="104" cy="342" r="24" fill="#69d8e6"/><text x="97" y="350" fill="#081725" font-size="23" font-weight="700">1</text><text x="143" y="350" fill="#f1f7ff" font-size="25" font-weight="700">界定需求</text><text x="86" y="389" fill="#b6c8dc" font-size="18">功能 · 规模 · 约束</text>
+      <rect x="341" y="294" width="240" height="126" rx="18" fill="#17314b" stroke="#46768d"/><circle cx="381" cy="342" r="24" fill="#69d8e6"/><text x="374" y="350" fill="#081725" font-size="23" font-weight="700">2</text><text x="420" y="350" fill="#f1f7ff" font-size="25" font-weight="700">估算规模</text><text x="363" y="389" fill="#b6c8dc" font-size="18">QPS · 存储 · 带宽</text>
+      <rect x="618" y="294" width="240" height="126" rx="18" fill="#17314b" stroke="#46768d"/><circle cx="658" cy="342" r="24" fill="#ffcf70"/><text x="651" y="350" fill="#081725" font-size="23" font-weight="700">3</text><text x="697" y="350" fill="#f1f7ff" font-size="25" font-weight="700">拆解架构</text><text x="640" y="389" fill="#b6c8dc" font-size="18">组件 · 数据流 · 分区</text>
+      <rect x="895" y="294" width="240" height="126" rx="18" fill="#17314b" stroke="#46768d"/><circle cx="935" cy="342" r="24" fill="#ffcf70"/><text x="928" y="350" fill="#081725" font-size="23" font-weight="700">4</text><text x="974" y="350" fill="#f1f7ff" font-size="25" font-weight="700">验证取舍</text><text x="917" y="389" fill="#b6c8dc" font-size="18">瓶颈 · 故障 · 一致性</text>
+    </g>
+    <text x="64" y="484" fill="#ffcf70" font-size="18" letter-spacing="2">五类主题</text>
+    <g font-size="20" font-weight="700" text-anchor="middle">
+      <rect x="64" y="513" width="203" height="71" rx="14" fill="#132e47" stroke="#315d7b"/><text x="166" y="557" fill="#e7f4ff">01–03 基础方法</text>
+      <rect x="281" y="513" width="203" height="71" rx="14" fill="#132e47" stroke="#315d7b"/><text x="382" y="557" fill="#e7f4ff">04–07 通用组件</text>
+      <rect x="498" y="513" width="203" height="71" rx="14" fill="#132e47" stroke="#315d7b"/><text x="599" y="557" fill="#e7f4ff">08–18 产品系统</text>
+      <rect x="715" y="513" width="203" height="71" rx="14" fill="#132e47" stroke="#315d7b"/><text x="816" y="557" fill="#e7f4ff">19–25 进阶案例</text>
+      <rect x="932" y="513" width="203" height="71" rx="14" fill="#132e47" stroke="#315d7b"/><text x="1034" y="557" fill="#e7f4ff">26–28 交易系统</text>
+    </g>
+    <text x="64" y="641" fill="#9eb4c8" font-size="17">这是一份设计知识导航；具体系统仍需按真实指标设计、实现和验证。</text>
+  </g>
+</svg>

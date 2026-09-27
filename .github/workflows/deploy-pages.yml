@@ -10,6 +10,7 @@ on:
       - 'projects/004-ai-engineering-interview-guide/**'
       - 'projects/005-jailbreaks-research/**'
       - 'projects/006-threejs-gpu-rasterizer/**'
+      - 'projects/007-system-design-notes/**'
       - 'scripts/build_site.py'
       - 'scripts/projects.py'
       - 'docs/site-projects.json'
@@ -45,6 +46,8 @@ jobs:
           npm --prefix projects/005-jailbreaks-research/web run check
           npm --prefix projects/006-threejs-gpu-rasterizer/web ci
           npm --prefix projects/006-threejs-gpu-rasterizer/web run check
+          node --check projects/007-system-design-notes/web/app.js
+          node projects/007-system-design-notes/web/build.mjs
       - uses: actions/configure-pages@v5
       - name: Build every published demo and the shared index
         run: python3 scripts/build_site.py

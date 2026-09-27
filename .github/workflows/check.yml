@@ -43,3 +43,7 @@ jobs:
         run: |
           node --check projects/004-ai-engineering-interview-guide/web/app.js
           npm --prefix projects/004-ai-engineering-interview-guide/web run build
+      - name: Check system design notes guide
+        run: |
+          node --check projects/007-system-design-notes/web/app.js
+          node projects/007-system-design-notes/web/build.mjs

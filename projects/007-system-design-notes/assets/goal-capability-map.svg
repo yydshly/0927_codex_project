@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1540" viewBox="0 0 1800 1540" role="img" aria-labelledby="map-title map-desc">
+<title id="map-title">系统设计笔记：28 章主题、能力、场景与按需选用</title>
+<desc id="map-desc">28 章分为基础方法、核心组件、产品系统、平台与数据、交易系统五类。每类列出章节、关注能力和典型目标。底部说明根据产品特性选择部分主题，小云项目的选用示例以及个人价值。</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111f36"/><stop offset="1" stop-color="#0b1528"/></linearGradient><linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#83e0eb"/><stop offset="1" stop-color="#ffd48a"/></linearGradient></defs>
+<rect width="1800" height="1540" rx="22" fill="url(#bg)"/>
+<text x="60" y="66" fill="#83e0eb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start" letter-spacing="2.6">SYSTEM DESIGN NOTES / 28 CHAPTERS</text>
+<text x="60" y="123" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="46" font-weight="750" text-anchor="start">28 章关注什么能力，怎样为产品目标所用？</text>
+<text x="60" y="169" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="23" font-weight="400" text-anchor="start">28 个是设计主题与案例入口，并非 28 项必须完成的产品目标。</text>
+<rect x="1383" y="50" width="357" height="130" rx="13" fill="#182e45" stroke="#4b7289" stroke-width="1"/>
+<text x="1410" y="105" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="31" font-weight="750" text-anchor="start">28 章  /  5 类视角</text>
+<text x="1410" y="148" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="400" text-anchor="start">先定目标，再按需选主题</text>
+<rect x="48" y="206" width="1704" height="3" rx="0" fill="url(#accent)"/>
+<text x="69" y="244" fill="#83e0eb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start" letter-spacing="1.4">设计视角</text>
+<text x="326" y="244" fill="#83e0eb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start" letter-spacing="1.4">章节入口</text>
+<text x="1051" y="244" fill="#83e0eb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start" letter-spacing="1.4">关注的能力</text>
+<text x="1391" y="244" fill="#83e0eb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start" letter-spacing="1.4">典型场景 / 目标</text>
+<rect x="48" y="260" width="1704" height="158" rx="10" fill="#172a40" stroke="#3b5870" stroke-width="1"/>
+<rect x="48" y="260" width="5" height="158" rx="2" fill="#83e0eb"/>
+<rect x="301" y="277" width="1" height="124" rx="0" fill="#3b5870"/>
+<rect x="1031" y="277" width="1" height="124" rx="0" fill="#3b5870"/>
+<rect x="1371" y="277" width="1" height="124" rx="0" fill="#3b5870"/>
+<text x="68" y="294" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">01 / 05  ·  01—03</text>
+<text x="68" y="334" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="29" font-weight="750" text-anchor="start">基础方法</text>
+<text x="68" y="366" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="400" text-anchor="start">3 章  /  把问题说清楚</text>
+<rect x="326" y="288" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="316" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">01</text>
+<text x="373" y="316" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">从零到百万用户</text>
+<rect x="558" y="288" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="570" y="316" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">02</text>
+<text x="605" y="316" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">粗略容量估算</text>
+<rect x="790" y="288" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="802" y="316" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">03</text>
+<text x="837" y="316" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">系统设计框架</text>
+<text x="1051" y="305" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">界定需求与约束</text>
+<text x="1051" y="338" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">估算流量、存储和增长瓶颈</text>
+<text x="1391" y="305" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">任何系统设计的起点</text>
+<text x="1391" y="338" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">原型扩展时确定容量量级</text>
+<rect x="48" y="428" width="1704" height="182" rx="10" fill="#172a40" stroke="#3b5870" stroke-width="1"/>
+<rect x="48" y="428" width="5" height="182" rx="2" fill="#83e0eb"/>
+<rect x="301" y="445" width="1" height="148" rx="0" fill="#3b5870"/>
+<rect x="1031" y="445" width="1" height="148" rx="0" fill="#3b5870"/>
+<rect x="1371" y="445" width="1" height="148" rx="0" fill="#3b5870"/>
+<text x="68" y="462" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">02 / 05  ·  04—07</text>
+<text x="68" y="502" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="29" font-weight="750" text-anchor="start">核心组件</text>
+<text x="68" y="534" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="400" text-anchor="start">4 章  /  承载与分布</text>
+<rect x="326" y="456" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="484" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">04</text>
+<text x="373" y="484" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">限流器</text>
+<rect x="674" y="456" width="312" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="686" y="484" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">05</text>
+<text x="721" y="484" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">一致性哈希</text>
+<rect x="326" y="512" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="540" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">06</text>
+<text x="373" y="540" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">分布式键值存储</text>
+<rect x="674" y="512" width="312" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="686" y="540" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">07</text>
+<text x="721" y="540" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">分布式唯一 ID</text>
+<text x="1051" y="473" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">控制突发请求</text>
+<text x="1051" y="506" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">分配数据、复制与唯一标识</text>
+<text x="1391" y="473" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">高访问接口与多节点存储</text>
+<text x="1391" y="506" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">多服务并行写入</text>
+<rect x="48" y="620" width="1704" height="305" rx="10" fill="#193148" stroke="#3b5870" stroke-width="1"/>
+<rect x="48" y="620" width="5" height="305" rx="2" fill="#83e0eb"/>
+<rect x="301" y="637" width="1" height="271" rx="0" fill="#3b5870"/>
+<rect x="1031" y="637" width="1" height="271" rx="0" fill="#3b5870"/>
+<rect x="1371" y="637" width="1" height="271" rx="0" fill="#3b5870"/>
+<text x="68" y="654" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">03 / 05  ·  08—18, 22, 25</text>
+<text x="68" y="694" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="29" font-weight="750" text-anchor="start">产品系统</text>
+<text x="68" y="726" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="400" text-anchor="start">13 章  /  用户可见的体验</text>
+<rect x="326" y="648" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="676" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">08</text>
+<text x="373" y="676" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">短链接服务</text>
+<rect x="558" y="648" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="570" y="676" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">09</text>
+<text x="605" y="676" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">网络爬虫</text>
+<rect x="790" y="648" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="802" y="676" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">10</text>
+<text x="837" y="676" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">通知系统</text>
+<rect x="326" y="701" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="729" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">11</text>
+<text x="373" y="729" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">信息流</text>
+<rect x="558" y="701" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="570" y="729" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">12</text>
+<text x="605" y="729" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">实时聊天</text>
+<rect x="790" y="701" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="802" y="729" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">13</text>
+<text x="837" y="729" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">搜索自动补全</text>
+<rect x="326" y="754" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="782" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">14</text>
+<text x="373" y="782" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">视频平台</text>
+<rect x="558" y="754" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="570" y="782" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">15</text>
+<text x="605" y="782" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">网盘与文件同步</text>
+<rect x="790" y="754" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="802" y="782" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">16</text>
+<text x="837" y="782" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">附近地点服务</text>
+<rect x="326" y="807" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="835" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">17</text>
+<text x="373" y="835" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">附近好友</text>
+<rect x="558" y="807" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="570" y="835" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">18</text>
+<text x="605" y="835" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">地图服务</text>
+<rect x="790" y="807" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="802" y="835" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">22</text>
+<text x="837" y="835" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">酒店预订</text>
+<rect x="326" y="860" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="888" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">25</text>
+<text x="373" y="888" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">实时游戏排行榜</text>
+<text x="1051" y="665" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">消息与内容分发</text>
+<text x="1051" y="698" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">检索、媒体、同步与位置</text>
+<text x="1051" y="731" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">库存竞争及实时排名</text>
+<text x="1391" y="665" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">聊天送达、视频播放</text>
+<text x="1391" y="698" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">找内容/附近地点/好友</text>
+<text x="1391" y="731" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">预订不超卖、排名及时</text>
+<rect x="48" y="935" width="1704" height="194" rx="10" fill="#172a40" stroke="#3b5870" stroke-width="1"/>
+<rect x="48" y="935" width="5" height="194" rx="2" fill="#83e0eb"/>
+<rect x="301" y="952" width="1" height="160" rx="0" fill="#3b5870"/>
+<rect x="1031" y="952" width="1" height="160" rx="0" fill="#3b5870"/>
+<rect x="1371" y="952" width="1" height="160" rx="0" fill="#3b5870"/>
+<text x="68" y="969" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">04 / 05  ·  19—21, 23—24</text>
+<text x="68" y="1009" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="29" font-weight="750" text-anchor="start">平台与数据</text>
+<text x="68" y="1041" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="400" text-anchor="start">5 章  /  后台运行与观测</text>
+<rect x="326" y="961" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="989" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">19</text>
+<text x="373" y="989" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">分布式消息队列</text>
+<rect x="674" y="961" width="312" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="686" y="989" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">20</text>
+<text x="721" y="989" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">指标监控与告警</text>
+<rect x="326" y="1015" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="1043" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">21</text>
+<text x="373" y="1043" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">广告点击聚合</text>
+<rect x="674" y="1015" width="312" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="686" y="1043" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">23</text>
+<text x="721" y="1043" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">分布式邮件服务</text>
+<rect x="326" y="1069" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="1097" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">24</text>
+<text x="373" y="1097" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">对象存储</text>
+<text x="1051" y="980" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">异步处理与事件统计</text>
+<text x="1051" y="1013" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">监控告警、投递和对象持久化</text>
+<text x="1391" y="980" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">后台任务与日志指标</text>
+<text x="1391" y="1013" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">邮件发送、文件长期保存</text>
+<rect x="48" y="1139" width="1704" height="160" rx="10" fill="#172a40" stroke="#3b5870" stroke-width="1"/>
+<rect x="48" y="1139" width="5" height="160" rx="2" fill="#ffd48a"/>
+<rect x="301" y="1156" width="1" height="126" rx="0" fill="#3b5870"/>
+<rect x="1031" y="1156" width="1" height="126" rx="0" fill="#3b5870"/>
+<rect x="1371" y="1156" width="1" height="126" rx="0" fill="#3b5870"/>
+<text x="68" y="1173" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="17" font-weight="700" text-anchor="start">05 / 05  ·  26—28</text>
+<text x="68" y="1213" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="29" font-weight="750" text-anchor="start">交易系统</text>
+<text x="68" y="1245" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="400" text-anchor="start">3 章  /  正确性优先</text>
+<rect x="326" y="1167" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="338" y="1195" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">26</text>
+<text x="373" y="1195" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">支付系统</text>
+<rect x="558" y="1167" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="570" y="1195" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">27</text>
+<text x="605" y="1195" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">数字钱包</text>
+<rect x="790" y="1167" width="218" height="43" rx="7" fill="#193149" stroke="#3b6580" stroke-width="1"/>
+<text x="802" y="1195" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="18" font-weight="700" text-anchor="start">28</text>
+<text x="837" y="1195" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="19" font-weight="600" text-anchor="start">股票交易所</text>
+<text x="1051" y="1184" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">资金记录可追溯</text>
+<text x="1051" y="1217" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="550" text-anchor="start">失败恢复与低延迟撮合</text>
+<text x="1391" y="1184" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">支付不重扣、余额可核对</text>
+<text x="1391" y="1217" fill="#b5cbd9" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="500" text-anchor="start">订单按规则快速撮合</text>
+<rect x="48" y="1313" width="1704" height="181" rx="11" fill="#102f40" stroke="#438596" stroke-width="1"/>
+<text x="69" y="1351" fill="#83e0eb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="750" text-anchor="start">按需选用</text>
+<text x="247" y="1351" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">产品特性 / 目标</text>
+<text x="451" y="1351" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start">→</text>
+<text x="505" y="1351" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">选相关章节</text>
+<text x="687" y="1351" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start">→</text>
+<text x="741" y="1351" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">写指标与约束</text>
+<text x="944" y="1351" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start">→</text>
+<text x="998" y="1351" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">做最小方案</text>
+<text x="1176" y="1351" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="24" font-weight="700" text-anchor="start">→</text>
+<text x="1230" y="1351" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="700" text-anchor="start">实测并调整</text>
+<rect x="68" y="1370" width="1664" height="1" rx="0" fill="#3c7080"/>
+<text x="69" y="1409" fill="#ffd48a" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="750" text-anchor="start">小云示例</text>
+<text x="247" y="1409" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="21" font-weight="400" text-anchor="start">单人原型看 03 / 12；多人接入再看 02 / 04 / 20；动作处理成瓶颈时看 19。</text>
+<text x="69" y="1461" fill="#83e0eb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="20" font-weight="750" text-anchor="start">对你的意义</text>
+<text x="247" y="1461" fill="#edf6fb" font-family="'Microsoft YaHei','Noto Sans CJK SC','PingFang SC',Arial,sans-serif" font-size="21" font-weight="400" text-anchor="start">查漏补缺、说明取舍、安排实现顺序；真实指标、隐私与安全要求仍要另行确定。</text>
+</svg>
