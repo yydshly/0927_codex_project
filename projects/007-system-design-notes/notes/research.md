@@ -5,7 +5,7 @@
 - 研究日期：2026-09-27。
 - 上游仓库：https://github.com/liquidslr/system-design-notes
 - 本次阅读快照：`9d83887`（上游提交历史显示于 2026-08-12）。
-- 来源性质：Alex Xu《System Design Interview》两卷的社区学习笔记；上游 README 明确标注仍在完善。
+- 来源性质：Alex Xu《系统设计访谈——内幕指南》（System Design Interview – An Insider's Guide）第 1、2 卷内容的社区学习笔记，并非原书全文；上游 README 明确标注仍在完善。
 - 根目录未见独立 `LICENSE` 文件；网页不转载上游正文或图片。
 
 ## 已检查资料
