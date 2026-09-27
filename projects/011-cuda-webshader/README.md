@@ -2,7 +2,7 @@
 
 > **一句话：**这是一套把受支持的 CUDA C 计算核函数带进浏览器 WebGPU 的工具。它提供计算能力，画面由样例或应用根据计算结果绘制。
 
-[返回总索引](../../README.md) · [一图看懂](web/index.html#capability-map) · [模块与用途](web/index.html#understanding) · [上游样例目录](https://samg-coder.github.io/cuda-webshader/) · [研究笔记](notes/research.md)
+[返回总索引](../../README.md) · [在线一图看懂](https://yydshly.github.io/0927_codex_project/011-cuda-webshader/#capability-map) · [模块与用途](web/index.html#understanding) · [上游样例目录](https://samg-coder.github.io/cuda-webshader/) · [研究笔记](notes/research.md)
 
 ![CUDA WebShader：算法、效果、现实用途与个人价值总览](assets/capability-map.png)
 
@@ -104,4 +104,4 @@
 - **适用边界**：只支持定义好的 CUDA C 子集；浏览器需要 WebGPU；Three.js 共享缓冲区桥接依赖固定的 r186 内部接口。Chrono SPH 水体样例是实验性端口，当前慢于实时。
 - **下一步实验**：选一个粒子输运或高度场更新内核，用相同输入比较现有算法、手写 WGSL 和 CUDA→WGSL 版本的数值、画面与目标设备耗时。
 
-详细来源、构建与核对过程见 [研究笔记](notes/research.md)。演示尚未发布到本站 GitHub Pages，因此 project.json 的 demo 保持为空。
+详细来源、构建与核对过程见 [研究笔记](notes/research.md)。[正式演示](https://yydshly.github.io/0927_codex_project/011-cuda-webshader/#capability-map) 已在 GitHub Pages 发布；部署与公网核对结果见 [发布记录](notes/deployment.md)。

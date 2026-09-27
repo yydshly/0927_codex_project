@@ -7,7 +7,7 @@
   "source": "https://github.com/SamG-Coder/cuda-webshader",
   "source_type": "github",
   "status": "已完成",
-  "demo": "",
+  "demo": "https://yydshly.github.io/0927_codex_project/011-cuda-webshader/#capability-map",
   "cover": "assets/capability-map.png",
   "cover_alt": "CUDA WebShader 一图总览：从 CUDA 算法经 WGSL 和 WebGPU 计算到可见效果；汇总五类共 50 个上游样例、现实用途推演、适用条件与个人价值。",
   "source_name": "CUDA WebShader"
