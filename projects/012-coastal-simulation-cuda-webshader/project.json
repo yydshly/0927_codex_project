@@ -3,12 +3,12 @@
   "order": 12,
   "slug": "coastal-simulation-cuda-webshader",
   "name": "coastal-simulation GPU 海岸能力研究",
-  "summary": "能力：模拟海岸浅水与固定岩石、海床和岸线的接触、阻挡与绕流，岩石不会被水推动；呈现效果：浪涌绕石、冲滩退水、流动白沫、细碎波纹、湿沙湿岩石和撞击喷溅；内部模块：地形与来浪输入、浅水求解、泡沫输运、水面重建、湿润水膜、喷溅粒子、材质光照、GPU 调度与交互诊断；内部算法：有限体积浅水求解、动量平流、保正水量输运与湿干处理、泡沫生成和衰减、定向短波、法线重建、粒子更新与 GGX 高光，经 CUDA WebShader / WebGPU 计算并供 Three.js 绘制；使用场景：海岸主题网页与展陈原型、浅水和图形教学、GPU 架构研究；可扩展产品方向：可保存和分享的海岸场景编辑器、可嵌入的互动海岸背景、算法教学实验工具，均需继续开发；对我的意义：理解算法怎样形成画面，复用源库已有海岸画质，逐步配置并制作自己的海岸场景。",
+  "summary": "能力：模拟海浪与固定岩石、海床和岸线的浅水接触，水受阻后分流、绕石、冲滩和退回，岩石不会被水推动；呈现效果：浪涌、白沫、细波、撞击喷雾与退水后的湿沙湿岩石会连续变化；内部模块：地形和来浪、浅水求解、破浪湍流与泡沫、水面短波与重建、湿润和喷溅、材质光照、GPU 调度与相机诊断；内部算法：交错网格浅水更新、动量平流、保正水量通量与湿干处理、泡沫输运衰减、定向短波、法线与 GGX 高光、喷溅粒子更新；CUDA WebShader 将 CUDA 源编为 WGSL，经 WebGPU 计算并由 Three.js 绘制；使用场景：互动海岸网页和展陈、浅水与图形学教学、GPU 数据管线研究；可扩展产品方向：可保存的海岸场景编辑器、可嵌入的互动海岸组件、算法教学实验台，仍需自由地形接入和设备适配；对我的意义：看懂从水流方程到可见画面的完整路径，在源库真实三维效果上逐步制作自己的海岸场景。",
   "source": "https://github.com/SamG-Coder/coastal-simulation-cuda-webshader",
   "source_type": "github",
   "status": "已完成",
   "demo": "https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#overview",
-  "cover": "assets/coastal-capabilities-overview.png",
-  "cover_alt": "GPU 海岸模拟能力总览：核心能力、内部算法、可见效果、使用场景、个人价值与实现边界；海岸配图为生成示意，非运行截图。",
+  "cover": "assets/source-ocean-to-shore.jpg",
+  "cover_alt": "原始 coastal-simulation 在线演示 Ocean to Shore 视角的真实截图：浅水、白沫、岩石与沙滩；012 页面另展示 GPU 移植版实测图。",
   "source_name": "coastal-simulation-cuda-webshader"
 }

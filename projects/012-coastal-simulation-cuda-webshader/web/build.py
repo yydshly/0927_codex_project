@@ -40,7 +40,9 @@ def main():
     shutil.copytree(upstream, OUT / "upstream", dirs_exist_ok=True)
     assets = OUT / "assets"
     assets.mkdir(exist_ok=True)
-    for name in ("capability-map.svg", "coastal-capabilities-overview.png"):
+    for name in ("capability-map.svg", "coastal-capabilities-overview.png",
+                 "online-reef-verification.png", "source-ocean-to-shore.jpg",
+                 "source-wash-wet-sand.jpg", "README.md"):
         shutil.copy2(PROJECT / "assets" / name, assets / name)
     print(f"Built {OUT.relative_to(ROOT).as_posix()} with 18 capability cards and extension lab")
 

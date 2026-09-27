@@ -11,6 +11,6 @@ python -m http.server 4328 --bind 127.0.0.1 --directory dist
 
 首页的能力卡、原理、使用场景和证据说明随本站静态提供；点击“加载本地源库场景”后按需加载 `upstream/`，可以同源检查真实 WebGPU 状态。它固定在 [SamG-Coder/coastal-simulation-cuda-webshader](https://github.com/SamG-Coder/coastal-simulation-cuda-webshader) 提交 `e5a80fe42b4eeba6c01de1467035bafd69592d3e`，原场景来自 iamtechartist。版权与许可证见 [`upstream/CREDITS.md`](upstream/CREDITS.md)、[`upstream/LICENSE`](upstream/LICENSE) 和 [`upstream/INTEGRATION.md`](upstream/INTEGRATION.md)。
 
-“地形数据诊断”是独立编写的简化二维浅水教学模型；它不会把任意高度图送入上游三维场景。岩石写入同一份海床/障碍缓冲，WebGPU 计算水深、水平速度和泡沫，WebGPU 绘制俯视诊断画面。帧时间是浏览器画面间隔，包含调度等开销；不等于 GPU 内核耗时，也不可与上游 README 的硬件数字直接比较。首页图形、架构 SVG 与新增 PNG 能力总览均为示意，非上游模拟截图。
+“地形数据诊断”是独立编写的简化二维浅水教学模型；它不会把任意高度图送入上游三维场景。岩石写入同一份海床/障碍缓冲，WebGPU 计算水深、水平速度和泡沫，WebGPU 绘制俯视诊断画面。帧时间是浏览器画面间隔，包含调度等开销；不等于 GPU 内核耗时，也不可与上游 README 的硬件数字直接比较。首页引导区使用三个带版本标注的真实运行截图：本站 GPU 移植版一张、原始库两张；架构 SVG 与旧版 PNG 能力总览均为示意。
 
 构建同时复制总览图和完整本地运行包。项目级 `.gitignore` 对这份发布用 `web/upstream/` 放行；提交时需要包含它，不能仅提交外围页面。模型、效果和 GPU 的区别，以及适用场景和待开发能力，见[理解与应用结论](../notes/understanding.md)。

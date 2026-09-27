@@ -28,7 +28,7 @@
 | 009 | [ShoreBreak 破浪与水下研究](projects/009-shorebreak/README.md) | <strong>呈现效果：</strong>多尺度海浪、向前翻卷的水幕与浪腔、落水白沫、精细冲滩、湿岩石以及水下气泡与朦胧感；强调近景破浪与漫游。<br><strong>内部模块：</strong>三层 FFT 风浪、事件破浪、独立浪唇网格、GPU 浅水、白水与喷溅、地形和湿度、水面与水下光学、行走游泳及质量控制。<br><strong>使用场景：</strong>沉浸海岸互动、冲浪视觉镜头、水下体验、游戏与景观场景预演、图形学学习。<br><strong>可扩展产品方向：</strong>可开发海岸漫游展厅、可控破浪镜头工具、水下视觉组件或效果调试台；需完善资产许可、模块接口、编辑器、触控与设备分级。<br><strong>对我的意义：</strong>理解高度场、独立几何、粒子和局部体积各自的能力边界，学会按目标拆分系统、连接状态并评估移植成本。 | 已完成 | [ShoreBreak](https://github.com/cryptomanavan/ShoreBreak) | [在线体验](https://yydshly.github.io/0927_codex_project/009-shorebreak/#overview) |
 | 010 | [算法与场景实验室](projects/010-algorithm-scene-lab/README.md) | <strong>呈现效果：</strong>把海岸水面拆成七组可调的 A/B 教学画面，配合实时数值、历史曲线和总图解释变化原因；原库真实效果另设研究页。<br><strong>内部模块：</strong>波浪、浅水、输运、湿度、光学、翻卷与喷溅、噪声与三向投影；配套八个场景入口、参数与时间管理、24 项局部检查、链接和记录导出。<br><strong>使用场景：</strong>水面算法学习、参数对照、效果原型验证、海岸与湖池及雨后地面等场景的模块选型与复用评估。<br><strong>可扩展产品方向：</strong>图形学交互课程、水效果参数与素材编辑器、沉浸海岸展示、场景视觉预演工具；需继续接入课程管理、GPU 材质、模块接口和设备适配。<br><strong>对我的意义：</strong>建立从场景目标到算法组合、参数验证和模块复用的判断方法，区分调参数、适配场景、连接模块与新增模型，沉淀自己的三维交互知识资产。 | 已完成 | [coastal-simulation（另参照 ShoreBreak）](https://github.com/iamtechartist/coastal-simulation) | [在线体验](https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html) |
 | 011 | [CUDA WebShader 能力与效果展厅](projects/011-cuda-webshader/README.md) | <strong>能力：</strong>将受支持的 CUDA C 核函数转成 WGSL，并在浏览器用 WebGPU 运行<br><strong>呈现效果：</strong>上游 50 项样例展示海浪、流体粒子、图像处理、三维体数据、路径追踪和数值结果，本站 12 个 Canvas 画面是解释性样机<br><strong>内部模块：</strong>CUDA 前端与 WGSL 生成器、WebGPU 运行时与 Three\.js 缓冲区桥接、Sandbox 和 Kernel Lab、样例及验证<br><strong>内部算法：</strong>动态模拟 8、图像纹理 21、三维体数据 7、数值信号 10、几何渲染 4<br><strong>使用场景：</strong>网页端大量重复计算的交互展示、图像和扫描数据处理、算法教学与原生 CUDA 结果对照<br><strong>可扩展产品方向：</strong>GPU 算法工作台、交互视觉组件、图像分析工具和三维数据浏览器，均需补齐数据、界面与验证<br><strong>对我的意义：</strong>把 Three\.js 呈现与海岸、粒子等模型的 GPU 计算连接起来，并用固定输入比较精度、速度和设备适配后再决定是否采用。 | 已完成 | [CUDA WebShader](https://github.com/SamG-Coder/cuda-webshader) | [在线体验](https://yydshly.github.io/0927_codex_project/011-cuda-webshader/#capability-map) |
-| 012 | [coastal-simulation GPU 海岸能力研究](projects/012-coastal-simulation-cuda-webshader/README.md) | <strong>能力：</strong>模拟海岸浅水与固定岩石、海床和岸线的接触、阻挡与绕流，岩石不会被水推动<br><strong>呈现效果：</strong>浪涌绕石、冲滩退水、流动白沫、细碎波纹、湿沙湿岩石和撞击喷溅<br><strong>内部模块：</strong>地形与来浪输入、浅水求解、泡沫输运、水面重建、湿润水膜、喷溅粒子、材质光照、GPU 调度与交互诊断<br><strong>内部算法：</strong>有限体积浅水求解、动量平流、保正水量输运与湿干处理、泡沫生成和衰减、定向短波、法线重建、粒子更新与 GGX 高光，经 CUDA WebShader / WebGPU 计算并供 Three\.js 绘制<br><strong>使用场景：</strong>海岸主题网页与展陈原型、浅水和图形教学、GPU 架构研究<br><strong>可扩展产品方向：</strong>可保存和分享的海岸场景编辑器、可嵌入的互动海岸背景、算法教学实验工具，均需继续开发<br><strong>对我的意义：</strong>理解算法怎样形成画面，复用源库已有海岸画质，逐步配置并制作自己的海岸场景。 | 已完成 | [coastal-simulation-cuda-webshader](https://github.com/SamG-Coder/coastal-simulation-cuda-webshader) | [在线体验](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#overview) |
+| 012 | [coastal-simulation GPU 海岸能力研究](projects/012-coastal-simulation-cuda-webshader/README.md) | <strong>能力：</strong>模拟海浪与固定岩石、海床和岸线的浅水接触，水受阻后分流、绕石、冲滩和退回，岩石不会被水推动<br><strong>呈现效果：</strong>浪涌、白沫、细波、撞击喷雾与退水后的湿沙湿岩石会连续变化<br><strong>内部模块：</strong>地形和来浪、浅水求解、破浪湍流与泡沫、水面短波与重建、湿润和喷溅、材质光照、GPU 调度与相机诊断<br><strong>内部算法：</strong>交错网格浅水更新、动量平流、保正水量通量与湿干处理、泡沫输运衰减、定向短波、法线与 GGX 高光、喷溅粒子更新；CUDA WebShader 将 CUDA 源编为 WGSL，经 WebGPU 计算并由 Three\.js 绘制<br><strong>使用场景：</strong>互动海岸网页和展陈、浅水与图形学教学、GPU 数据管线研究<br><strong>可扩展产品方向：</strong>可保存的海岸场景编辑器、可嵌入的互动海岸组件、算法教学实验台，仍需自由地形接入和设备适配<br><strong>对我的意义：</strong>看懂从水流方程到可见画面的完整路径，在源库真实三维效果上逐步制作自己的海岸场景。 | 已完成 | [coastal-simulation-cuda-webshader](https://github.com/SamG-Coder/coastal-simulation-cuda-webshader) | [在线体验](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#overview) |
 
 ### 项目图片
 
@@ -216,23 +216,23 @@ CUDA WebShader 一图总览：从 CUDA 算法经 WGSL 和 WebGPU 计算到可见
 
 #### 012 · coastal-simulation GPU 海岸能力研究
 
-[![GPU 海岸模拟能力总览：核心能力、内部算法、可见效果、使用场景、个人价值与实现边界；海岸配图为生成示意，非运行截图。](projects/012-coastal-simulation-cuda-webshader/assets/coastal-capabilities-overview.png)](projects/012-coastal-simulation-cuda-webshader/README.md)
+[![原始 coastal-simulation 在线演示 Ocean to Shore 视角的真实截图：浅水、白沫、岩石与沙滩；012 页面另展示 GPU 移植版实测图。](projects/012-coastal-simulation-cuda-webshader/assets/source-ocean-to-shore.jpg)](projects/012-coastal-simulation-cuda-webshader/README.md)
 
-GPU 海岸模拟能力总览：核心能力、内部算法、可见效果、使用场景、个人价值与实现边界；海岸配图为生成示意，非运行截图。
+原始 coastal-simulation 在线演示 Ocean to Shore 视角的真实截图：浅水、白沫、岩石与沙滩；012 页面另展示 GPU 移植版实测图。
 
-<strong>能力：</strong>模拟海岸浅水与固定岩石、海床和岸线的接触、阻挡与绕流，岩石不会被水推动
+<strong>能力：</strong>模拟海浪与固定岩石、海床和岸线的浅水接触，水受阻后分流、绕石、冲滩和退回，岩石不会被水推动
 
-<strong>呈现效果：</strong>浪涌绕石、冲滩退水、流动白沫、细碎波纹、湿沙湿岩石和撞击喷溅
+<strong>呈现效果：</strong>浪涌、白沫、细波、撞击喷雾与退水后的湿沙湿岩石会连续变化
 
-<strong>内部模块：</strong>地形与来浪输入、浅水求解、泡沫输运、水面重建、湿润水膜、喷溅粒子、材质光照、GPU 调度与交互诊断
+<strong>内部模块：</strong>地形和来浪、浅水求解、破浪湍流与泡沫、水面短波与重建、湿润和喷溅、材质光照、GPU 调度与相机诊断
 
-<strong>内部算法：</strong>有限体积浅水求解、动量平流、保正水量输运与湿干处理、泡沫生成和衰减、定向短波、法线重建、粒子更新与 GGX 高光，经 CUDA WebShader / WebGPU 计算并供 Three\.js 绘制
+<strong>内部算法：</strong>交错网格浅水更新、动量平流、保正水量通量与湿干处理、泡沫输运衰减、定向短波、法线与 GGX 高光、喷溅粒子更新；CUDA WebShader 将 CUDA 源编为 WGSL，经 WebGPU 计算并由 Three\.js 绘制
 
-<strong>使用场景：</strong>海岸主题网页与展陈原型、浅水和图形教学、GPU 架构研究
+<strong>使用场景：</strong>互动海岸网页和展陈、浅水与图形学教学、GPU 数据管线研究
 
-<strong>可扩展产品方向：</strong>可保存和分享的海岸场景编辑器、可嵌入的互动海岸背景、算法教学实验工具，均需继续开发
+<strong>可扩展产品方向：</strong>可保存的海岸场景编辑器、可嵌入的互动海岸组件、算法教学实验台，仍需自由地形接入和设备适配
 
-<strong>对我的意义：</strong>理解算法怎样形成画面，复用源库已有海岸画质，逐步配置并制作自己的海岸场景。
+<strong>对我的意义：</strong>看懂从水流方程到可见画面的完整路径，在源库真实三维效果上逐步制作自己的海岸场景。
 <!-- PROJECTS:END -->
 
 ## 开始一项研究
