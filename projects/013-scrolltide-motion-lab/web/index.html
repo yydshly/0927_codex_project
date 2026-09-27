@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080e15">
+  <meta name="description" content="研究 Scrolltide 三维与电影感网页展示：五张源站真实样例截图、六种原创可操作效果，以及实现机制和技术选型。">
+  <title>Motion Atlas · 六种作品级网页动效</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#experiments">跳到演示</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Motion Atlas 返回顶部"><span class="brand-mark">M<span>·</span>A</span><span class="brand-name">MOTION<br>ATLAS</span></a>
+    <nav aria-label="页面导航"><a href="#understanding">项目理解</a><a href="#source-gallery">源站样例</a><a href="#experiments">六个实验</a><a href="#decision">如何选型</a></nav>
+    <a class="header-link" href="https://www.scrolltide.co/" target="_blank" rel="noopener noreferrer">参考来源 <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-mesh" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="eyebrow"><span class="pulse"></span> 013 / SCROLLTIDE INSPIRED MOTION STUDIES</div>
+        <h1 id="hero-title">三维展示，<br><em>如何在网页成立？</em></h1>
+        <p class="hero-lead">研究 Scrolltide 的真实作品画面，再动手比较视频、逐帧、Three.js、叠层、CSS 3D 与 Shader。相同的空间感，可以来自完全不同的实现。</p>
+        <div class="hero-actions"><a class="button button-primary" href="#source-gallery">先看源站作品 <span>↘</span></a><a class="text-link" href="#experiments">操作六种效果 <span>↓</span></a></div>
+      </div>
+      <div class="hero-aside" aria-hidden="true"><span>06</span><small>RENDERING<br>METHODS</small><div class="orbit-symbol"><i></i><i></i><i></i></div></div>
+      <div class="hero-bottom"><span>SCROLL TO EXPLORE</span><span>源站真实截图 · 原创交互实现</span><span>↓</span></div>
+    </section>
+
+    <section class="understanding wrap" id="understanding" aria-labelledby="understanding-title">
+      <div class="section-intro"><span class="kicker">01 / WHAT THIS PROJECT IS</span><h2 id="understanding-title">研究的是网页空间展示。</h2><p>Scrolltide 是提供动态网页模板、组件和 Shader 的作品库。本项目把其中的典型视觉效果拆成可观察、可操作的技术路线，并区分画面的空间感与真实实时 3D。</p></div>
+      <div class="understanding-grid">
+        <div><span>01 / 可见效果</span><p>影片式开场、滚动控制镜头、产品模型转动、视频与三维叠合、空间卡片、生成式光场。</p></div>
+        <div><span>02 / 本站模块</span><p>源站截图引导、六个原创互动实验、实时状态与验证按钮、技术路线和成本选型。</p></div>
+        <div><span>03 / 实现机制</span><p>视频时间轴、滚动到帧号的映射、Three.js 几何与相机、透明图层合成、CSS 透视、片元着色。</p></div>
+        <div><span>04 / 使用与扩展</span><p>适用于产品发布、品牌叙事、作品集与互动展陈；可延伸为三维商品展示器和可复用的滚动叙事组件。</p></div>
+      </div>
+      <p class="understanding-note">对你的价值：先看到目标画面，再亲手验证它如何运动，最后判断真实三维是否必要，以及素材、性能和开发成本。</p>
+    </section>
+
+    <section class="source-gallery wrap" id="source-gallery" aria-labelledby="source-gallery-title">
+      <div class="section-intro"><span class="kicker">02 / REAL SOURCE EXAMPLES</span><h2 id="source-gallery-title">先看 Scrolltide 的原作画面。</h2><p>以下五张均截自 Scrolltide 的公开样例页面，保留其页面标题和预览区域。静态截图只能说明画面，点击“查看原作”可看动态预览；下方六幕则是本项目重新制作的互动实验。</p></div>
+      <div class="source-grid">
+        <figure class="source-card"><a href="https://www.scrolltide.co/templates/vesper" target="_blank" rel="noopener noreferrer"><img src="assets/source-vesper.png" alt="Scrolltide Vesper 原作页面：酒瓶位于酒红色大标题前方" loading="lazy"><span>查看 Vesper 原作 ↗</span></a><figcaption><strong>Vesper · 产品成为镜头主角</strong><p>酒瓶与标题叠出真实的前后层次。源站说明以滚动控制模型姿态；本站的 <a href="#three">Three.js 酒瓶实验</a>可拖动查看另一侧。</p></figcaption></figure>
+        <figure class="source-card"><a href="https://www.scrolltide.co/templates/aeroforce" target="_blank" rel="noopener noreferrer"><img src="assets/source-aeroforce.png" alt="Scrolltide AeroForce 原作页面：战机悬于雪山航拍画面之前" loading="lazy"><span>查看 AeroForce 原作 ↗</span></a><figcaption><strong>AeroForce · 背景与三维前景</strong><p>雪山镜头和飞机有独立纵深。源站说明背景为逐帧 Canvas、飞机为 Three.js；本站的 <a href="#hybrid">混合实验</a>用 MP4 背景演示同类叠层。</p></figcaption></figure>
+        <figure class="source-card"><a href="https://www.scrolltide.co/templates/apogee" target="_blank" rel="noopener noreferrer"><img src="assets/source-apogee.png" alt="Scrolltide Apogee 原作页面：地球从页面底部进入星空场景" loading="lazy"><span>查看 Apogee 原作 ↗</span></a><figcaption><strong>Apogee · 连续的空间叙事</strong><p>地球、镜头和光线组成完整的滚动场景。它展示了产品三维实验向更大空间与长镜头扩展的方向。</p></figcaption></figure>
+        <figure class="source-card"><a href="https://www.scrolltide.co/templates/eagle" target="_blank" rel="noopener noreferrer"><img src="assets/source-eagle.png" alt="Scrolltide Eagle 原作页面：展翼飞行的鹰占据首屏画面" loading="lazy"><span>查看 Eagle 原作 ↗</span></a><figcaption><strong>Eagle · 电影式首屏</strong><p>迎面飞行的主体带来强烈空间感，但这类镜头也可以预制成视频；在本站的 <a href="#video">视频实验</a>中可暂停验证。</p></figcaption></figure>
+        <figure class="source-card"><a href="https://www.scrolltide.co/templates/ora" target="_blank" rel="noopener noreferrer"><img src="assets/source-ora.png" alt="Scrolltide Ora 原作页面：深色腕表商品卡片的动态预览画面" loading="lazy"><span>查看 Ora 原作 ↗</span></a><figcaption><strong>Ora · 滚动控制产品镜头</strong><p>腕表展示可沿预制镜头精确推进。源站说明使用逐帧图像；本站的 <a href="#sequence">Canvas 实验</a>可正向、反向定位帧。</p></figcaption></figure>
+      </div>
+      <p class="source-disclaimer">截图来源：Scrolltide 公开样例页，2026-09-27 浏览器实拍。它们是原作效果参照；本站没有使用原作模板代码、付费素材或预览视频。</p>
+    </section>
+
+    <section class="overview wrap" id="overview" aria-labelledby="overview-title">
+      <div class="section-intro"><span class="kicker">03 / THE MAP</span><h2 id="overview-title">再分清画面从哪里来。</h2><p>“3D”是看到的空间感；Three.js、视频、Canvas 和 CSS 是在浏览器里实现它的不同路线。源站效果的具体技术只依据其公开说明，下面标注的是本站真实实现。</p></div>
+      <div class="method-grid">
+        <a href="#video" class="method-card"><span class="method-num">01</span><span class="method-icon icon-play">▶</span><strong>视频播放</strong><small>时间 → 预录像素</small></a>
+        <a href="#sequence" class="method-card"><span class="method-num">02</span><span class="method-icon">▦</span><strong>图片序列</strong><small>进度 → 一张帧图</small></a>
+        <a href="#three" class="method-card"><span class="method-num">03</span><span class="method-icon">◇</span><strong>实时三维</strong><small>模型 + 光照 → 像素</small></a>
+        <a href="#hybrid" class="method-card"><span class="method-num">04</span><span class="method-icon">◈</span><strong>混合叠层</strong><small>视频 + 实时三维</small></a>
+        <a href="#css3d" class="method-card"><span class="method-num">05</span><span class="method-icon">▱</span><strong>CSS 3D</strong><small>DOM + 透视变换</small></a>
+        <a href="#shader" class="method-card"><span class="method-num">06</span><span class="method-icon">✳</span><strong>Shader</strong><small>公式 → 每个像素</small></a>
+      </div>
+    </section>
+
+    <div id="experiments" class="lab-heading wrap"><span class="kicker">04 / SIX MOTION STUDIES</span><h2>从真实作品出发，做六次实验。</h2><p>下面每一幕均对应 Scrolltide 的一个具体作品。参考的是镜头、节奏与交互方法；画面素材和代码由本项目重新制作。</p><div class="reading-guide"><strong>怎么看出它不是静态展示？</strong><span>每幕上方都写明画面来源、正在变化的部分，并提供一个可以立刻验证的操作。视频与逐帧由预制画面组成；3D 和 Shader 由浏览器实时计算；CSS 3D 则在移动真实网页卡片。</span></div></div>
+
+    <section class="experiment wrap" id="video" aria-labelledby="video-title">
+      <div class="experiment-heading"><div><span class="experiment-index">01 <i></i> EAGLE / CINEMATIC VIDEO</span><h3 id="video-title">镜头迎面而来</h3><p>参考 <a href="https://www.scrolltide.co/templates/eagle" target="_blank" rel="noopener noreferrer">Eagle ↗</a>：猛禽扑向镜头，影片播放一次后停在收尾画面。</p></div><span class="type-pill">VIDEO / MP4</span></div>
+      <div class="motion-note"><div><span>画面来源 / 预制 MP4</span><p>金雕与雪山图层预先合成为 6 秒影片；浏览器连续播放视频帧，播完会定格。</p></div><div class="motion-note-action"><output id="video-status">等待进入画面 · 00:00</output><button id="film-demo" type="button">从头播放 ↗</button></div></div>
+      <div class="experience-grid">
+        <div class="stage video-stage">
+          <video id="film" src="media/eagle-flight.mp4" poster="media/eagle-poster.jpg" muted playsinline preload="metadata" aria-label="原创雪山金雕电影镜头"></video>
+          <div class="stage-vignette"></div><div class="film-top"><span>WILDLIFE / 001</span><span>THE OPEN SKY</span></div>
+          <div class="film-copy"><small>ABOVE THE ALPINE LINE</small><strong>See beyond<br><em>the ordinary.</em></strong><a href="https://www.scrolltide.co/templates/eagle" target="_blank" rel="noopener noreferrer">查看 Eagle 原作　↗</a></div>
+          <button class="stage-replay" id="film-stage-replay" type="button" hidden>镜头已结束 · 点击重播 ↺</button><div class="film-bottom"><span>ONE-SHOT FILM</span><div class="film-progress"><i id="film-progress"></i></div><span id="film-time">00:00</span></div>
+        </div>
+        <aside class="inspector"><span class="inspector-label">LIVE CONTROLS</span><div class="control-row"><button class="control-button" id="film-toggle" type="button" aria-pressed="false">暂停影片</button><label class="range-label" for="film-speed">播放速度 <output id="film-speed-output">1.0×</output></label><input id="film-speed" type="range" min="0.25" max="2" value="1" step="0.25"></div><div class="inspector-rule"></div><h4>镜头如何成立？</h4><p>原始静态图层预先合成为动态 MP4，金雕推进与山景后退都已烘焙进视频；网页文字独立叠在上面。收尾停住最后一帧，可随时重播。</p><div class="inspector-stat"><span>参考效果</span><strong>Eagle 迎面镜头</strong></div><div class="inspector-stat"><span>渲染方式</span><strong>本地 MP4 解码</strong></div></aside>
+      </div>
+    </section>
+
+    <section class="experiment wrap" id="sequence" aria-labelledby="sequence-title">
+      <div class="experiment-heading"><div><span class="experiment-index">02 <i></i> ORA / SCROLL SCRUB</span><h3 id="sequence-title">滚动是一台精密相机</h3><p>参考 <a href="https://www.scrolltide.co/templates/ora" target="_blank" rel="noopener noreferrer">Ora ↗</a>：滚动精确控制腕表镜头，随时可倒放、停留。</p></div><span class="type-pill">72 WEBP FRAMES</span></div>
+      <div class="motion-note"><div><span>画面来源 / 72 张预渲染图片</span><p>画面每变化一次，就切换一张帧图。拖动画面或下方滑块，可前进、倒放、停在任一帧。</p></div><div class="motion-note-action"><output id="sequence-status">当前第 01 / 72 帧</output><button id="sequence-demo" type="button">播放逐帧示范 ↗</button></div></div>
+      <div class="experience-grid">
+        <div class="stage sequence-stage" id="sequence-stage"><div class="stage-corner">ATELIER / HOROLOGY</div><canvas id="sequence-canvas" width="960" height="540" aria-label="随滚动推进的原创腕表镜头帧序列"></canvas><div class="sequence-caption"><span>CHAPTER 02 / THE MOVEMENT</span><strong>Time, held<br>in every detail.</strong><small>SWISS FORM · STUDY IN SILVER</small></div><div class="frame-badge" id="frame-badge">FRAME 01 / 72</div></div>
+        <aside class="inspector"><span class="inspector-label">LIVE CONTROLS</span><p class="control-hint">滚动页面、拖动画面或时间轴，推进到表盘微距。</p><label class="range-label" for="frame-range">镜头进度 <output id="frame-output">01 / 72</output></label><input id="frame-range" type="range" min="0" max="71" value="0" step="1"><button class="control-button" id="frame-auto" type="button" aria-pressed="false">自动巡回</button><div class="inspector-rule"></div><h4>为什么能精准倒放？</h4><p>浏览器只负责把 72 张预渲染 WebP 中的对应一张画到 Canvas。滚动进度直接映射到帧号。</p><div class="inspector-stat"><span>参考效果</span><strong>Ora 腕表特写</strong></div><div class="inspector-stat"><span>渲染方式</span><strong>逐帧 Canvas</strong></div></aside>
+      </div>
+    </section>
+
+    <section class="experiment wrap" id="three" aria-labelledby="three-title">
+      <div class="experiment-heading"><div><span class="experiment-index">03 <i></i> VESPER / LIVE OBJECT</span><h3 id="three-title">让产品留在画面中央</h3><p>参考 <a href="https://www.scrolltide.co/templates/vesper" target="_blank" rel="noopener noreferrer">Vesper ↗</a>：页面流动，酒瓶在 WebGL 中改变姿态。</p></div><span class="type-pill">THREE.JS / WEBGL</span></div>
+      <div class="motion-note"><div><span>画面来源 / 实时 3D 模型</span><p>瓶身不是照片：几何、材质、标签与光照每帧重绘。转到侧面，可看到未预录的角度。</p></div><div class="motion-note-action"><output id="three-status">实时渲染 · 正面视角</output><button id="three-demo" type="button">转到侧面 ↗</button></div></div>
+      <div class="experience-grid"><div class="stage three-stage"><div class="vesper-word" aria-hidden="true">CABERNET<br>SAUVIGNON</div><canvas id="three-canvas" aria-label="可拖动的实时三维葡萄酒瓶"></canvas><div class="stage-corner">VESPER / ESTATE & CELLAR</div><div class="three-copy"><span>01 / A LONGER FINISH</span><strong>Made for the<br>moments between.</strong></div><span class="stage-tip">拖动瓶身改变视角 ↗</span><div class="webgl-fallback" id="three-fallback" hidden>此浏览器暂不支持 WebGL 实时三维。</div></div><aside class="inspector"><span class="inspector-label">LIVE CONTROLS</span><p class="control-hint">滚动至这一幕，瓶身轻微倾斜；拖动画面可自由查看。</p><label class="range-label" for="three-speed">自动转速 <output id="three-speed-output">0.6×</output></label><input id="three-speed" type="range" min="0" max="2" value="0.6" step="0.1"><button class="control-button" id="three-reset" type="button">重置视角</button><div class="inspector-rule"></div><h4>真实的空间在哪里？</h4><p>瓶身由 Three.js 几何体、玻璃材质、标签和光源构成。拖动时会显露未预录的侧面与反光。</p><div class="inspector-stat"><span>参考效果</span><strong>Vesper 固定瓶身</strong></div><div class="inspector-stat"><span>渲染方式</span><strong>实时 WebGL 模型</strong></div></aside></div>
+    </section>
+
+    <section class="experiment wrap" id="hybrid" aria-labelledby="hybrid-title">
+      <div class="experiment-heading"><div><span class="experiment-index">04 <i></i> AEROFORCE / COMPOSITED</span><h3 id="hybrid-title">电影背景，实时战机</h3><p>参考 <a href="https://www.scrolltide.co/templates/aeroforce" target="_blank" rel="noopener noreferrer">AeroForce ↗</a>：航拍板与可独立运动的三维飞机合成。</p></div><span class="type-pill">MP4 + THREE.JS</span></div>
+      <div class="motion-note"><div><span>画面来源 / 两个独立图层</span><p>雪山是底层 MP4，战机是上层实时 3D。暂停雪山后，战机仍会轻微倾斜，并跟随鼠标。</p></div><div class="motion-note-action"><output id="hybrid-status">背景播放 · 战机实时渲染</output><button id="hybrid-demo" type="button">暂停背景验证 ↗</button></div></div>
+      <div class="experience-grid"><div class="stage hybrid-stage"><video id="hybrid-film" src="media/alpine-flight.mp4" poster="media/alps-source.png" autoplay muted loop playsinline preload="metadata" aria-label="原创雪山航拍视频背景"></video><div class="hybrid-tint"></div><canvas id="hybrid-canvas" aria-label="叠加在航拍画面上的实时三维战机"></canvas><div class="stage-corner">AEROFORCE / FLIGHT SYSTEMS</div><div class="hybrid-copy"><small>ADVANCED FLIGHT / 04</small><strong>What the future<br>holds for flight.</strong><a href="https://www.scrolltide.co/templates/aeroforce" target="_blank" rel="noopener noreferrer">查看 AeroForce 原作　↗</a></div><div class="hybrid-target" aria-hidden="true">+<span>LIVE 3D AIRCRAFT</span></div><div class="webgl-fallback" id="hybrid-fallback" hidden>实时前景需要 WebGL，背景视频仍可播放。</div></div><aside class="inspector"><span class="inspector-label">LIVE CONTROLS</span><button class="control-button" id="hybrid-toggle" type="button" aria-pressed="false">暂停背景视频</button><label class="range-label" for="hybrid-depth">战机远近 <output id="hybrid-depth-output">50%</output></label><input id="hybrid-depth" type="range" min="0" max="100" value="50" step="1"><div class="inspector-rule"></div><h4>两层如何合成？</h4><p>底层播放雪山航拍视频；透明的 Three.js 画布另绘战机。暂停背景后，移动鼠标仍能让战机倾斜。</p><div class="inspector-stat"><span>参考效果</span><strong>AeroForce 航拍叠层</strong></div><div class="inspector-stat"><span>渲染方式</span><strong>视频 + 透明 WebGL</strong></div></aside></div>
+    </section>
+
+    <section class="experiment wrap" id="css3d" aria-labelledby="css3d-title">
+      <div class="experiment-heading"><div><span class="experiment-index">05 <i></i> DEPTH CAROUSEL / DOM</span><h3 id="css3d-title">卡片退入空间深处</h3><p>参考 <a href="https://www.scrolltide.co/components" target="_blank" rel="noopener noreferrer">Depth Carousel ↗</a>：封面逐张侧转、后退，消失在磨砂雾里。</p></div><span class="type-pill">CSS 3D / DOM</span></div>
+      <div class="motion-note"><div><span>画面来源 / 5 张网页卡片</span><p>照片本身不动；点击切换时，整张 HTML 卡片通过 CSS 透视、旋转与位移进入纵深。</p></div><div class="motion-note-action"><output id="carousel-status">当前第 03 / 05 张卡片</output><button id="carousel-demo" type="button">切换下一张 ↗</button></div></div>
+      <div class="experience-grid"><div class="stage carousel-stage"><div class="stage-corner">THE ARCHIVE / VOL. 01</div><div class="carousel-horizon" aria-hidden="true"></div><div class="carousel-world" id="carousel-world" aria-label="可切换的空间摄影轮播"><article class="orbit-card" data-index="0"><span>01 / DESERT</span><div class="card-art art-one"></div><strong>SONORAN</strong><small>Architecture / Earth</small></article><article class="orbit-card" data-index="1"><span>02 / COAST</span><div class="card-art art-two"></div><strong>ATLANTIC</strong><small>Landscape / Water</small></article><article class="orbit-card" data-index="2"><span>03 / STONE</span><div class="card-art art-three"></div><strong>STILLNESS</strong><small>Interior / Form</small></article><article class="orbit-card" data-index="3"><span>04 / FUTURE</span><div class="card-art art-four"></div><strong>MONOLITH</strong><small>Structure / Light</small></article><article class="orbit-card" data-index="4"><span>05 / GARDEN</span><div class="card-art art-five"></div><strong>VERDANT</strong><small>Botanical / Life</small></article></div><div class="carousel-count"><span id="carousel-count">03</span> / 05 <small>DRAG TO EXPLORE</small></div></div><aside class="inspector"><span class="inspector-label">LIVE CONTROLS</span><div class="button-pair"><button class="control-button" id="carousel-prev" type="button" aria-label="上一张">←</button><button class="control-button" id="carousel-next" type="button" aria-label="下一张">→</button></div><label class="range-label" for="carousel-tilt">纵深感 <output id="carousel-tilt-output">62%</output></label><input id="carousel-tilt" type="range" min="0" max="100" value="62" step="1"><div class="inspector-rule"></div><h4>为什么看起来是 3D？</h4><p>每张照片仍是普通 HTML 卡片。CSS 透视、侧转、缩放和磨砂雾共同制造空间感。</p><div class="inspector-stat"><span>参考效果</span><strong>Depth Carousel</strong></div><div class="inspector-stat"><span>渲染方式</span><strong>DOM + CSS 3D</strong></div></aside></div>
+    </section>
+
+    <section class="experiment wrap" id="shader" aria-labelledby="shader-title">
+      <div class="experiment-heading"><div><span class="experiment-index">06 <i></i> TIDE SWIRL / GPU</span><h3 id="shader-title">把洋流写成光</h3><p>参考 <a href="https://www.scrolltide.co/shaders" target="_blank" rel="noopener noreferrer">Tide Swirl ↗</a>：蓝白色流体缓慢折叠，成为内容背后的光场。</p></div><span class="type-pill">GLSL / GPU</span></div>
+      <div class="motion-note"><div><span>画面来源 / 实时像素公式</span><p>没有图片或视频。GPU 用坐标和时间计算每个像素；调快速度，蓝白丝带会持续流动。</p></div><div class="motion-note-action"><output id="shader-status">运行时间 0.0 秒 · 1.0×</output><button id="shader-demo" type="button">加快流动 ↗</button></div></div>
+      <div class="experience-grid"><div class="stage shader-stage"><canvas id="shader-canvas" aria-label="可调色相和速度的实时蓝白流体光场"></canvas><div class="shader-grain" aria-hidden="true"></div><div class="stage-corner">TIDE / GENERATIVE STUDY</div><div class="shader-copy"><span>AN OCEAN IN MOTION</span><strong>Follow the<br>current.</strong><small>LIGHT GENERATED LIVE · NEVER THE SAME FRAME</small></div><div class="webgl-fallback" id="shader-fallback" hidden>此浏览器暂不支持 WebGL；显示静态渐变。</div></div><aside class="inspector"><span class="inspector-label">LIVE CONTROLS</span><label class="range-label" for="shader-hue">色相 <output id="shader-hue-output">210°</output></label><input id="shader-hue" type="range" min="0" max="360" value="210" step="1"><label class="range-label" for="shader-flow">流动速度 <output id="shader-flow-output">1.0×</output></label><input id="shader-flow" type="range" min="0" max="3" value="1" step="0.1"><label class="range-label" for="shader-fold">波纹密度 <output id="shader-fold-output">50%</output></label><input id="shader-fold" type="range" min="0" max="100" value="50" step="1"><div class="inspector-rule"></div><h4>流体从哪里来？</h4><p>没有背景影片。GPU 按坐标、时间和噪声公式为每个像素计算蓝白丝带；控制条直接改变公式参数。</p><div class="inspector-stat"><span>参考效果</span><strong>Tide Swirl</strong></div><div class="inspector-stat"><span>渲染方式</span><strong>GLSL 片元着色器</strong></div></aside></div>
+    </section>
+
+    <section class="decision wrap" id="decision" aria-labelledby="decision-title"><div class="section-intro"><span class="kicker">03 / THE DECISION</span><h2 id="decision-title">需要什么控制，就选什么管线。</h2><p>不是谁更“高级”，而是画面需要什么交互、能承担多少制作与运行成本。</p></div><div class="decision-grid"><div><span>01</span><strong>只需要高质量镜头？</strong><p>选视频。制作容易控制，播放稳定；画面内容不可改变视角。</p></div><div><span>02</span><strong>滚动必须精确控制镜头？</strong><p>选图片序列。滚动可以逐帧定位，但帧数增加会带来加载成本。</p></div><div><span>03</span><strong>用户要真正绕着物体看？</strong><p>选 Three.js。几何、灯光与相机实时响应，需要处理模型和 GPU 性能。</p></div><div><span>04</span><strong>背景电影感，前景还要互动？</strong><p>选混合叠层。合成灵活，但视频和 3D 会同时消耗资源。</p></div><div><span>05</span><strong>只是卡片和界面立体？</strong><p>先试 CSS 3D。文字和交互保留在 DOM，代码与资源更轻。</p></div><div><span>06</span><strong>抽象光色要连续变化？</strong><p>选 Shader。用公式生成无限流动的背景，无需预制一段影片。</p></div></div></section>
+  </main>
+  <footer class="site-footer wrap"><div><span class="brand-mark">M<span>·</span>A</span><p>原创动效技术样例 · 013</p></div><div><a href="#top">回到顶部 ↑</a><a href="https://www.scrolltide.co/" target="_blank" rel="noopener noreferrer">灵感来源：Scrolltide ↗</a></div><small>源站样例截图仅用于效果引导；六个互动演示的画面与代码为本项目原创，未使用 Scrolltide 的模板或预览视频。</small></footer>
+</body>
+</html>

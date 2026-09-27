@@ -12,7 +12,8 @@
     "009-shorebreak",
     "010-algorithm-scene-lab",
     "011-cuda-webshader",
-    "012-coastal-simulation-cuda-webshader"
+    "012-coastal-simulation-cuda-webshader",
+    "013-scrolltide-motion-lab"
   ],
   "entrypoints": {
     "001-xian-night-atlas": {
@@ -73,6 +74,11 @@
       "entry": "#overview",
       "guide": "#guide-map",
       "label": "查看海岸模拟能力与效果"
+    },
+    "013-scrolltide-motion-lab": {
+      "entry": "#understanding",
+      "guide": "#source-gallery",
+      "label": "查看三维展示与动效实验"
     }
   }
 }

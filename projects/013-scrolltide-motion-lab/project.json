@@ -1,0 +1,14 @@
+{
+  "id": 13,
+  "order": 13,
+  "slug": "scrolltide-motion-lab",
+  "name": "Scrolltide 三维展示与动效实验室",
+  "summary": "能力：研究 Scrolltide 的三维与电影感网页展示，并以六个原创可操作场景比较视频、逐帧 Canvas、Three.js、混合叠层、CSS 3D 和 Shader；呈现效果：金雕迎面飞来、腕表随滚动推进、可转动酒瓶、战机悬于航拍画面、空间卡片和流动光场；内部模块：源站真实样例引导、六种动效实验、操作与状态说明、技术选型；内部算法：本项目使用时间轴与帧索引映射、三维模型与相机实时渲染、图层合成、透视变换和逐像素着色，不推断源站未公开的实现；使用场景：产品发布页、品牌叙事、作品集、互动展陈与网页动效教学；可扩展产品方向：可复用三维商品展示器、滚动叙事组件、模板选型工具与性能自适应动效系统；对我的意义：看懂视觉效果背后的实现路线和制作成本，为自己的三维展示产品选择合适技术。",
+  "source": "https://www.scrolltide.co/",
+  "source_type": "website",
+  "status": "已完成",
+  "demo": "https://yydshly.github.io/0927_codex_project/013-scrolltide-motion-lab/#source-gallery",
+  "cover": "assets/source-vesper.png",
+  "cover_alt": "Scrolltide 源站 Vesper 样例页面截图：居中的酒瓶展示与酒红色大标题；网页内另有四张源站样例截图。",
+  "source_name": "Scrolltide"
+}

@@ -67,3 +67,7 @@ jobs:
           node --check projects/012-coastal-simulation-cuda-webshader/web/upstream/src/local-extension.js
           node --test projects/012-coastal-simulation-cuda-webshader/web/extensions-core.test.mjs
           python3 projects/012-coastal-simulation-cuda-webshader/web/build.py
+      - name: Check Scrolltide motion laboratory
+        run: |
+          node --check projects/013-scrolltide-motion-lab/web/app.mjs
+          python3 projects/013-scrolltide-motion-lab/web/build.py

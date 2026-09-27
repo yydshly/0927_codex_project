@@ -16,6 +16,7 @@ on:
       - 'projects/010-algorithm-scene-lab/**'
       - 'projects/011-cuda-webshader/**'
       - 'projects/012-coastal-simulation-cuda-webshader/**'
+      - 'projects/013-scrolltide-motion-lab/**'
       - 'scripts/build_site.py'
       - 'scripts/projects.py'
       - 'docs/site-projects.json'
@@ -72,6 +73,8 @@ jobs:
           node --check projects/012-coastal-simulation-cuda-webshader/web/upstream/src/local-extension.js
           node --test projects/012-coastal-simulation-cuda-webshader/web/extensions-core.test.mjs
           python3 projects/012-coastal-simulation-cuda-webshader/web/build.py
+          node --check projects/013-scrolltide-motion-lab/web/app.mjs
+          python3 projects/013-scrolltide-motion-lab/web/build.py
       - uses: actions/configure-pages@v5
       - name: Build every published demo and the shared index
         run: python3 scripts/build_site.py

@@ -13,7 +13,7 @@
 编号从 `001` 开始，创建后保持不变；默认按编号顺序展示，也可通过 `order` 调整展示顺序。
 
 <!-- PROJECTS:START -->
-当前收录 **12** 个项目。
+当前收录 **13** 个项目。
 
 | 编号 | 项目与研究入口 | 摘要 | 研究状态 | 参考来源 | Web 演示 |
 | --- | --- | --- | --- | --- | --- |
@@ -29,6 +29,7 @@
 | 010 | [算法与场景实验室](projects/010-algorithm-scene-lab/README.md) | <strong>呈现效果：</strong>把海岸水面拆成七组可调的 A/B 教学画面，配合实时数值、历史曲线和总图解释变化原因；原库真实效果另设研究页。<br><strong>内部模块：</strong>波浪、浅水、输运、湿度、光学、翻卷与喷溅、噪声与三向投影；配套八个场景入口、参数与时间管理、24 项局部检查、链接和记录导出。<br><strong>使用场景：</strong>水面算法学习、参数对照、效果原型验证、海岸与湖池及雨后地面等场景的模块选型与复用评估。<br><strong>可扩展产品方向：</strong>图形学交互课程、水效果参数与素材编辑器、沉浸海岸展示、场景视觉预演工具；需继续接入课程管理、GPU 材质、模块接口和设备适配。<br><strong>对我的意义：</strong>建立从场景目标到算法组合、参数验证和模块复用的判断方法，区分调参数、适配场景、连接模块与新增模型，沉淀自己的三维交互知识资产。 | 已完成 | [coastal-simulation（另参照 ShoreBreak）](https://github.com/iamtechartist/coastal-simulation) | [在线体验](https://yydshly.github.io/0927_codex_project/010-algorithm-scene-lab/summary.html) |
 | 011 | [CUDA WebShader 能力与效果展厅](projects/011-cuda-webshader/README.md) | <strong>能力：</strong>将受支持的 CUDA C 核函数转成 WGSL，并在浏览器用 WebGPU 运行<br><strong>呈现效果：</strong>上游 50 项样例展示海浪、流体粒子、图像处理、三维体数据、路径追踪和数值结果，本站 12 个 Canvas 画面是解释性样机<br><strong>内部模块：</strong>CUDA 前端与 WGSL 生成器、WebGPU 运行时与 Three\.js 缓冲区桥接、Sandbox 和 Kernel Lab、样例及验证<br><strong>内部算法：</strong>动态模拟 8、图像纹理 21、三维体数据 7、数值信号 10、几何渲染 4<br><strong>使用场景：</strong>网页端大量重复计算的交互展示、图像和扫描数据处理、算法教学与原生 CUDA 结果对照<br><strong>可扩展产品方向：</strong>GPU 算法工作台、交互视觉组件、图像分析工具和三维数据浏览器，均需补齐数据、界面与验证<br><strong>对我的意义：</strong>把 Three\.js 呈现与海岸、粒子等模型的 GPU 计算连接起来，并用固定输入比较精度、速度和设备适配后再决定是否采用。 | 已完成 | [CUDA WebShader](https://github.com/SamG-Coder/cuda-webshader) | [在线体验](https://yydshly.github.io/0927_codex_project/011-cuda-webshader/#capability-map) |
 | 012 | [coastal-simulation GPU 海岸能力研究](projects/012-coastal-simulation-cuda-webshader/README.md) | <strong>能力：</strong>模拟海浪与固定岩石、海床和岸线的浅水接触，水受阻后分流、绕石、冲滩和退回，岩石不会被水推动<br><strong>呈现效果：</strong>浪涌、白沫、细波、撞击喷雾与退水后的湿沙湿岩石会连续变化<br><strong>内部模块：</strong>地形和来浪、浅水求解、破浪湍流与泡沫、水面短波与重建、湿润和喷溅、材质光照、GPU 调度与相机诊断<br><strong>内部算法：</strong>交错网格浅水更新、动量平流、保正水量通量与湿干处理、泡沫输运衰减、定向短波、法线与 GGX 高光、喷溅粒子更新；CUDA WebShader 将 CUDA 源编为 WGSL，经 WebGPU 计算并由 Three\.js 绘制<br><strong>使用场景：</strong>互动海岸网页和展陈、浅水与图形学教学、GPU 数据管线研究<br><strong>可扩展产品方向：</strong>可保存的海岸场景编辑器、可嵌入的互动海岸组件、算法教学实验台，仍需自由地形接入和设备适配<br><strong>对我的意义：</strong>看懂从水流方程到可见画面的完整路径，在源库真实三维效果上逐步制作自己的海岸场景。 | 已完成 | [coastal-simulation-cuda-webshader](https://github.com/SamG-Coder/coastal-simulation-cuda-webshader) | [在线体验](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#overview) |
+| 013 | [Scrolltide 三维展示与动效实验室](projects/013-scrolltide-motion-lab/README.md) | <strong>能力：</strong>研究 Scrolltide 的三维与电影感网页展示，并以六个原创可操作场景比较视频、逐帧 Canvas、Three\.js、混合叠层、CSS 3D 和 Shader<br><strong>呈现效果：</strong>金雕迎面飞来、腕表随滚动推进、可转动酒瓶、战机悬于航拍画面、空间卡片和流动光场<br><strong>内部模块：</strong>源站真实样例引导、六种动效实验、操作与状态说明、技术选型<br><strong>内部算法：</strong>本项目使用时间轴与帧索引映射、三维模型与相机实时渲染、图层合成、透视变换和逐像素着色，不推断源站未公开的实现<br><strong>使用场景：</strong>产品发布页、品牌叙事、作品集、互动展陈与网页动效教学<br><strong>可扩展产品方向：</strong>可复用三维商品展示器、滚动叙事组件、模板选型工具与性能自适应动效系统<br><strong>对我的意义：</strong>看懂视觉效果背后的实现路线和制作成本，为自己的三维展示产品选择合适技术。 | 已完成 | [Scrolltide](https://www.scrolltide.co/) | [在线体验](https://yydshly.github.io/0927_codex_project/013-scrolltide-motion-lab/#source-gallery) |
 
 ### 项目图片
 
@@ -233,6 +234,26 @@ GPU 海岸模拟库完整能力总图：水与固定岩石、地形的互动、�
 <strong>可扩展产品方向：</strong>可保存的海岸场景编辑器、可嵌入的互动海岸组件、算法教学实验台，仍需自由地形接入和设备适配
 
 <strong>对我的意义：</strong>看懂从水流方程到可见画面的完整路径，在源库真实三维效果上逐步制作自己的海岸场景。
+
+#### 013 · Scrolltide 三维展示与动效实验室
+
+[![Scrolltide 源站 Vesper 样例页面截图：居中的酒瓶展示与酒红色大标题；网页内另有四张源站样例截图。](projects/013-scrolltide-motion-lab/assets/source-vesper.png)](projects/013-scrolltide-motion-lab/README.md)
+
+Scrolltide 源站 Vesper 样例页面截图：居中的酒瓶展示与酒红色大标题；网页内另有四张源站样例截图。
+
+<strong>能力：</strong>研究 Scrolltide 的三维与电影感网页展示，并以六个原创可操作场景比较视频、逐帧 Canvas、Three\.js、混合叠层、CSS 3D 和 Shader
+
+<strong>呈现效果：</strong>金雕迎面飞来、腕表随滚动推进、可转动酒瓶、战机悬于航拍画面、空间卡片和流动光场
+
+<strong>内部模块：</strong>源站真实样例引导、六种动效实验、操作与状态说明、技术选型
+
+<strong>内部算法：</strong>本项目使用时间轴与帧索引映射、三维模型与相机实时渲染、图层合成、透视变换和逐像素着色，不推断源站未公开的实现
+
+<strong>使用场景：</strong>产品发布页、品牌叙事、作品集、互动展陈与网页动效教学
+
+<strong>可扩展产品方向：</strong>可复用三维商品展示器、滚动叙事组件、模板选型工具与性能自适应动效系统
+
+<strong>对我的意义：</strong>看懂视觉效果背后的实现路线和制作成本，为自己的三维展示产品选择合适技术。
 <!-- PROJECTS:END -->
 
 ## 开始一项研究
