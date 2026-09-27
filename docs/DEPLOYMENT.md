@@ -78,9 +78,9 @@ python scripts/build_site.py
 
 ## GPU 海岸模拟能力研究（012）
 
-`012-coastal-simulation-cuda-webshader` 已接入统一发布清单，`#overview` 为入口，`#summary` 汇总能力、效果、内部模块、内部算法、使用场景、产品方向和个人意义，`#guide-map` 使用本次讨论生成的完整 PNG。图中海岸配图为示意，实际效果见 `extensions.html`。
+2026-09-27 已完成 [Pages 发布](https://github.com/yydshly/0927_codex_project/actions/runs/36323444432) 与公网运行核验。[正式入口](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#overview) 的 `#summary` 按七项汇总能力、效果、模块、算法、场景、产品方向和个人意义；`#guide-map` 使用本次讨论生成的 PNG，保留原始比例与原图链接。
 
-交互页同源运行固定版本的源库三维场景，可对照原版与新增一处礁石。二维地形诊断使用独立简化模型，不会修改三维海岸。发布包包含 CUDA WebShader、Three.js、初始状态及许可证，通过项目级 `.gitignore` 放行 `web/upstream/`；实时效果需要 WebGPU。正式地址与公网检查结果在发布后记入项目的 `notes/deployment.md`。
+`extensions.html` 同源运行固定版本源库三维场景，原版与新增一处礁石均在公网显示 WebGPU 已运行。二维诊断切换后正常运行，状态与三维场景独立。初始加载受网络与 GPU 初始化影响，实时效果需要 WebGPU。正式地址已写入项目元数据；详细检查、截图与限制见 [012 发布记录](../projects/012-coastal-simulation-cuda-webshader/notes/deployment.md)。
 
 ```sh
 node --test projects/012-coastal-simulation-cuda-webshader/web/extensions-core.test.mjs

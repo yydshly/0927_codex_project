@@ -2,9 +2,9 @@
 
 > 能力：模拟海岸浅水与固定岩石、海床和岸线的接触、阻挡与绕流，岩石不会被水推动；呈现效果：浪涌绕石、冲滩退水、流动白沫、细碎波纹、湿沙湿岩石和撞击喷溅；内部模块：地形与来浪输入、浅水求解、泡沫输运、水面重建、湿润水膜、喷溅粒子、材质光照、GPU 调度与交互诊断；内部算法：有限体积浅水求解、动量平流、保正水量输运与湿干处理、泡沫生成和衰减、定向短波、法线重建、粒子更新与 GGX 高光，经 CUDA WebShader / WebGPU 计算并供 Three.js 绘制；使用场景：海岸主题网页与展陈原型、浅水和图形教学、GPU 架构研究；可扩展产品方向：可保存和分享的海岸场景编辑器、可嵌入的互动海岸背景、算法教学实验工具，均需继续开发；对我的意义：理解算法怎样形成画面，复用源库已有海岸画质，逐步配置并制作自己的海岸场景。
 
-[返回总索引](../../README.md) · [本地展示页与交互实验台](web/README.md) · [官方在线演示](https://samg-coder.github.io/coastal-simulation-cuda-webshader/) · [上游仓库](https://github.com/SamG-Coder/coastal-simulation-cuda-webshader) · [研究笔记](notes/research.md)
+[正式 Web 展示](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#summary) · [三维演示](https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/extensions.html) · [返回总索引](../../README.md) · [本地展示页与交互实验台](web/README.md) · [官方在线演示](https://samg-coder.github.io/coastal-simulation-cuda-webshader/) · [上游仓库](https://github.com/SamG-Coder/coastal-simulation-cuda-webshader) · [研究笔记](notes/research.md)
 
-**阅读顺序：**[理解与应用结论](notes/understanding.md) → [能力总览图](assets/coastal-capabilities-overview.png) → [运行与验证记录](notes/research.md)。提交范围、检查结果和建议说明见[提交准备](notes/submission.md)。
+**阅读顺序：**[理解与应用结论](notes/understanding.md) → [能力总览图](assets/coastal-capabilities-overview.png) → [运行与验证记录](notes/research.md)。提交范围、检查结果和建议说明见[提交范围与验收](notes/submission.md)。
 
 ## 核心结论
 
@@ -30,7 +30,7 @@
 | 二维地形数据诊断 | 独立简化模型，可编辑海床和障碍；不与源库三维场景共享状态 |
 | 自由地形接入、完整场景编辑、保存与分享 | 待开发，是进一步增加可复用价值的方向 |
 
-元数据中的“已完成”表示研究整理与上述原型验证完成；公开部署、完整场景编辑器和工程预测验证尚未完成。我们新增的产品能力仍有限，源库原有的水与岩石互动不计为 012 的原创能力。
+元数据中的“已完成”表示研究整理与上述原型验证完成；已完成公开部署与公网运行核验，详见[发布记录](notes/deployment.md)；完整场景编辑器和工程预测验证尚未完成。我们新增的产品能力仍有限，源库原有的水与岩石互动不计为 012 的原创能力。
 
 ## 全量能力清单
 

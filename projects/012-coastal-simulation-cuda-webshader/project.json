@@ -7,7 +7,7 @@
   "source": "https://github.com/SamG-Coder/coastal-simulation-cuda-webshader",
   "source_type": "github",
   "status": "已完成",
-  "demo": "",
+  "demo": "https://yydshly.github.io/0927_codex_project/012-coastal-simulation-cuda-webshader/#overview",
   "cover": "assets/coastal-capabilities-overview.png",
   "cover_alt": "GPU 海岸模拟能力总览：核心能力、内部算法、可见效果、使用场景、个人价值与实现边界；海岸配图为生成示意，非运行截图。",
   "source_name": "coastal-simulation-cuda-webshader"
